@@ -12,9 +12,14 @@ function Menu({title,url}){
 function Footer() {
     return (
         <div>
-            {footerData.map(data=>(
-                <Menu title={data.title} url={data.url} />
-            ))}
+            <div>
+                {footerData.map(data=>(
+                    <Menu title={data.title} url={data.url} />
+                ))}
+            </div>
+            <div>
+                <span>Copyright © Kakao Corp. All right reserved.</span>
+            </div>
         </div>
     );
 }
