@@ -5,9 +5,11 @@ import Main from './component/Main'
 import Sub from './component/Sub'
 import Footer from './component/Footer'
 
+import './App.scss';
+
 function App() {
   return (
-    <div>
+    <div className='app'>
       <Header />
       <Notice />
       <Main />

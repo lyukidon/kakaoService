@@ -1,10 +1,11 @@
 import React from 'react';
 import linkData from "../data/headerData";
+import '../scss/Header.scss'
 
 function Recommend( { data } ){
     return (
-        <span>
-            <a href={data.link}>{data.title}</a>
+        <span >
+            <a className='recommend' href={data.link}>{data.title}</a>
         </span>
     )
 }
@@ -12,16 +13,18 @@ function Recommend( { data } ){
 function Header(){
     return (
         <>
-            <div>
-                kakao 고객센터
+            <div className='title'>
+                <h1>kakao 고객센터</h1>
             </div>
-            <div>
+            <div className='searchBox'>
                 <input type="text" placeholder='궁금한 점이 있다면 도움말을 검색해보세요'/>
                 <img src="" alt="" />
+                <div>
+                    {linkData.map(data=>(
+                        <Recommend data={data} />
+                    ))}
+                </div>
             </div>
-            {linkData.map(data=>(
-                <Recommend data={data} />
-            ))}
         </>
     );
 }
