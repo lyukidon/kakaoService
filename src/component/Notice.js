@@ -1,20 +1,23 @@
 import React from 'react';
 import noticeData from '../data/noticeData'
+import '../common.scss'
+import '../scss/Notice.scss'
 
-let noticeChange='';
-for (let i=0;i<noticeData.length;i++){
-    setInterval(function(){
-        if(i===noticeData.length-1){
-            i=0;
-        }
-    },1000*i);
+function Content({data}){
+    return(
+        <span>
+            {data}
+        </span>
+    )
 }
 
-function Notice(props) {
+function Notice() {
     return (
-        <div>
-            <span><b>공지사항</b></span>
-            
+        <div className='noticeBox'>
+            <div  className='common-width'>
+                <span><b>공지사항</b></span>
+                <Content data={noticeData[0]}/>
+            </div>
         </div>
     );
 }

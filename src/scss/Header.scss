@@ -8,12 +8,20 @@
     width: 450px;
     height:45px;
     border:1px solid black;
-    vertical-align: -22px;
+    vertical-align: -35px;
     input {
         width:85%;
         height:95%;
         border:none;
         padding-left: 5%;
+    }
+    button{
+        background-color: rgba(0,0,0,0);
+        border: none;
+        font-size: 20px;
+    }
+    div{
+        margin-top: 10px
     }
 }
 .recommend{

@@ -1,5 +1,6 @@
 import React from 'react';
 import linkData from "../data/headerData";
+import '../common.scss'
 import '../scss/Header.scss'
 
 function Recommend( { data } ){
@@ -12,20 +13,20 @@ function Recommend( { data } ){
 
 function Header(){
     return (
-        <>
+        <header className='common-width'>
             <div className='title'>
                 <h2>kakao 고객센터</h2>
             </div>
-            <div className='searchBox'>
+            <form className='searchBox'>
                 <input type="text" placeholder='궁금한 점이 있다면 도움말을 검색해보세요'/>
-                <img src="" alt="" />
+                <button>🔍</button>
                 <div>
                     {linkData.map(data=>(
                         <Recommend data={data} />
                     ))}
                 </div>
-            </div>
-        </>
+            </form>
+        </header>
     );
 }
 
