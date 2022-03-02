@@ -14,7 +14,7 @@ function Header(){
     return (
         <>
             <div className='title'>
-                <h1>kakao 고객센터</h1>
+                <h2>kakao 고객센터</h2>
             </div>
             <div className='searchBox'>
                 <input type="text" placeholder='궁금한 점이 있다면 도움말을 검색해보세요'/>
