@@ -4,7 +4,7 @@ import mainData from '../data/mainData';
 function MainMenu({data}){
     return(
             <div>
-                <img src="" alt=''/>
+                <img src={data.src} alt=''/>
                 <div>{data.title}</div>
             </div>
     );
