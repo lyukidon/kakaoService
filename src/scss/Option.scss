@@ -1,0 +1,18 @@
+.Option{
+   display: flex;
+   justify-content: end;
+    select{
+        background: transparent;
+        color:black;
+        border: none;
+        margin-right:10px;
+        option{
+            background:transparent;
+        }
+    }
+    font-size: 13px;
+    a{
+        color:black;
+        text-decoration: none;
+    }
+}
