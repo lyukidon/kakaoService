@@ -1,9 +1,11 @@
 import React from 'react';
 import {footerData} from '../data/footerData';
+import '../common.scss'
+import '../scss/Footer.scss'
 
 function Menu({title,url}){
     return(
-        <span>
+        <span className='footerMenu'>
             <a href={url}>{title}</a>
         </span>
     )
@@ -11,13 +13,13 @@ function Menu({title,url}){
 
 function Footer() {
     return (
-        <div>
+        <div className='Footer common-width'>
             <div>
                 {footerData.map(data=>(
                     <Menu title={data.title} url={data.url} />
                 ))}
             </div>
-            <div>
+            <div className='copyright'>
                 <span>Copyright © Kakao Corp. All right reserved.</span>
             </div>
         </div>
