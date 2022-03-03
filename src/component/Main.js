@@ -15,10 +15,10 @@ function MainAllMenu({ data }){
     return (
         <div className='MainAllMenu inlineBlock'>
             <div className='title'><b>{data.title}</b></div>
-            {data.service.map(function(c){
+            {data.service.map(function(c,index){
                 const {serviceUrl,serviceName} = c
                 return(
-                    <div className='AllMenus'><a href={serviceUrl}>{serviceName}</a></div>
+                    <div key={index} className='AllMenus'><a href={serviceUrl}>{serviceName}</a></div>
                 )
             })}
         </div>
@@ -59,19 +59,19 @@ function MainAllData(){
 }
 
 function Main() {
-    const [click, setClick]= useState(true);
-    const onClick=()=>{
-        click ? setClick(false) : setClick(true);
+    const [showServicesCheck, setShowServicesCheck]= useState(true);
+    const showServices=()=>{
+        showServicesCheck ? setShowServicesCheck(false) : setShowServicesCheck(true);
     }
     return (
         <div className='common-width'>
             <div>
                 <h3>
                     고객센터를 통해 궁금증을 해결하세요
-                    <button className='mainButton' onClick={onClick}>전체보기</button>
+                    <button className='mainButton' onClick={showServices}>{showServicesCheck?'전체보기':'주요서비스'}</button>
                 </h3>
             </div>
-            {click ? <MainData />:<MainAllData />}
+            {showServicesCheck ? <MainData />:<MainAllData />}
         </div>
     );
 }
