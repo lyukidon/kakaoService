@@ -7,13 +7,12 @@ import '../common.scss'
 
 function MainMenu({data}){
     return(
-            <div>
+            <a href='' className='inlineBlock MainMenu'>
                 <img src={data.src} alt=''/>
                 <div>{data.title}</div>
-            </div>
+            </a>
     );
 }
-
 function MainAllMenu({ data }){
     return (
         <div className='MainAllMenu inlineBlock'>
@@ -45,6 +44,7 @@ function MainAllData(){
         </div>
     )
 }
+
 function Main() {
     const [click, setClick]= useState(0);
     const onClick=()=>{
@@ -52,12 +52,14 @@ function Main() {
 
     }
     return (
-        <div>
+        <div className='common-width'>
             <div>
-                <span>고객센터를 통해 궁금증을 해결하세요</span>
-                <button onClick={onClick}>전체보기</button>
+                <h3>
+                    고객센터를 통해 궁금증을 해결하세요
+                    <button className='mainButton' onClick={onClick}>전체보기</button>
+                </h3>
             </div>
-            {click ? <MainData />:<MainAllData />}
+            {click ? <MainAllData />:<MainData />}
         </div>
     );
 }
