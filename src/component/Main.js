@@ -57,12 +57,7 @@ function Main() {
                 <span>고객센터를 통해 궁금증을 해결하세요</span>
                 <button onClick={onClick}>전체보기</button>
             </div>
-            {
-                click ? <MainData />:<MainAllData />
-            }
-            
-            
-            
+            {click ? <MainData />:<MainAllData />}
         </div>
     );
 }
