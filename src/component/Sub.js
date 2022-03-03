@@ -1,35 +1,40 @@
-import React from 'react';
-import {adminData, reportData} from '../data/subData'
+import React,{useState, useEffect} from 'react';
+import axios from 'axios';
 import '../scss/Sub.scss'
 import '../common.scss'
 
-function Menu({ data }){
+function MenuData({url, title}){
     return(
         <div className='Menu inlineBlock'>
-            <a href={data.url}>{data.title} ></a>
+                <a href={url}>{title} ></a>
+        </div>
+    )
+}
+
+function Menu({ data }){
+    const {classification, subdata}=data;
+    return(
+        <div className='SubMenu inlineBlock'>
+            <h3>{classification}</h3>
+            {subdata.map((menudata,index)=>(
+                <MenuData key={index} url={menudata.url} title={menudata.title}/>
+            ))}
         </div>
     )
 }
 
 function Sub() {
+    const [sub,setSub]=useState([]);
+    useEffect(function(){
+        axios.get('/data/subData.json')
+            .then((res)=> setSub(res.data))
+            .catch((err)=>console.log(err));
+    },[])
     return (
         <div className='Sub common-width'>
-            <div className='SubMenu inlineBlock'>
-                <h3>카카오 계정관리</h3>
-                <div>
-                    {adminData.map(data=>(
-                        <Menu data={data} />
-                    ))}
-                </div>
-            </div>
-            <div className='SubMenu inlineBlock'>
-                <h3>카카오 신고센터</h3>
-                <div>
-                    {reportData.map(data=>(
-                        <Menu data={data} />
-                    ))}
-                </div>
-            </div>
+            {sub.map((data,index)=>(
+                <Menu key={index} data={data}/>
+            ))}
         </div>
     );
 }
