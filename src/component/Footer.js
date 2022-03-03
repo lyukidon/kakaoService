@@ -1,5 +1,5 @@
-import React from 'react';
-import {footerData} from '../data/footerData';
+import React,{useEffect, useState} from 'react';
+import axios from 'axios';
 import '../common.scss'
 import '../scss/Footer.scss'
 
@@ -12,12 +12,22 @@ function Menu({title,url}){
 }
 
 function Footer() {
+    const [footerData,setFooterData]=useState([]);
+    useEffect(()=>{
+        axios.get('/data/footerData.json')
+            .then(res=>setFooterData(res.data))
+            .catch(err=>console.log(err));
+    },[])
     return (
         <div className='Footer'>
             <div className='common-width'>
                 <div>
-                    {footerData.map(data=>(
-                        <Menu title={data.title} url={data.url} />
+                    {footerData.map((data,index)=>(
+                        <Menu 
+                            key={index} 
+                            title={data.title} 
+                            url={data.url} 
+                        />
                     ))}
                 </div>
                 <div className='copyright'>

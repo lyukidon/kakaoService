@@ -1,7 +1,5 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios'
-import mainData from '../data/mainData';
-import mainAllData from '../data/mainAllData.json'
 import '../scss/Main.scss'
 import '../common.scss'
 
@@ -27,29 +25,43 @@ function MainAllMenu({ data }){
     );
 }
 function MainData(){
+    const [mainRecommendData,setMainRecommendData]=useState([])
+    useEffect(()=>{
+        async function getData(){
+            const res=await axios.get('/data/mainRecommendData.json');
+            setMainRecommendData(res.data);
+        }
+        getData()
+    },[])
+
     return (
         <div>
-                {mainData.map(data=>(
-                    <MainMenu data={data} />
+                {mainRecommendData.map((data,index)=>(
+                    <MainMenu key={index} data={data} />
                 ))}
         </div>
     )
 }
 function MainAllData(){
+    const [mainAllData,setMainAllData]=useState([])
+    useEffect(()=>{
+        axios.get('/data/mainAllData.json')
+            .then((res)=> setMainAllData(res.data))
+            .catch((err)=>console.log(err))
+    },[])
     return (
         <div>
-                {mainAllData.map(data=>(
-                    <MainAllMenu data={data}/>
+                {mainAllData.map((data,index)=>(
+                    <MainAllMenu key={index} data={data}/>
                 ))}
         </div>
     )
 }
 
 function Main() {
-    const [click, setClick]= useState(0);
+    const [click, setClick]= useState(true);
     const onClick=()=>{
-        click === 0 ? setClick(1) : setClick(0) ;
-
+        click ? setClick(false) : setClick(true);
     }
     return (
         <div className='common-width'>
@@ -59,7 +71,7 @@ function Main() {
                     <button className='mainButton' onClick={onClick}>전체보기</button>
                 </h3>
             </div>
-            {click ? <MainAllData />:<MainData />}
+            {click ? <MainData />:<MainAllData />}
         </div>
     );
 }

@@ -1,0 +1,24 @@
+[
+    {
+        "title":"회사소개",
+        "url":"http://www.kakaocorp.com/"
+    },{
+        "title":"이용약관",
+        "url":"https://www.kakao.com/policy/terms"
+    },{
+        "title":"개인정보퍼리방침",
+        "url":"https://www.kakao.com/policy/privacy"
+    },{
+        "title":"운영정책",
+        "url":"https://www.kakao.com/policy/oppolicy"
+    },{
+        "title":"청소년보호정책",
+        "url":"https://www.kakao.com/policy/safeguard"
+    },{
+        "title":"권리침해신고안내",
+        "url":"https://www.kakao.com/policy/right"
+    },{
+        "title":"공지사항",
+        "url":"http://www.kakao.com/notices"
+    }
+]

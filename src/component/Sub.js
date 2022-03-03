@@ -17,7 +17,11 @@ function Menu({ data }){
         <div className='SubMenu inlineBlock'>
             <h3>{classification}</h3>
             {subdata.map((menudata,index)=>(
-                <MenuData key={index} url={menudata.url} title={menudata.title}/>
+                <MenuData 
+                    key={index} 
+                    url={menudata.url} 
+                    title={menudata.title}
+                />
             ))}
         </div>
     )
@@ -25,7 +29,7 @@ function Menu({ data }){
 
 function Sub() {
     const [sub,setSub]=useState([]);
-    useEffect(function(){
+    useEffect(()=>{
         axios.get('/data/subData.json')
             .then((res)=> setSub(res.data))
             .catch((err)=>console.log(err));
