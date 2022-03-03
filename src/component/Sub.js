@@ -1,5 +1,6 @@
 import React from 'react';
 import {adminData, reportData} from '../data/subData'
+import '../scss/Sub.scss'
 
 function Menu({ data }){
     return(
@@ -9,7 +10,7 @@ function Menu({ data }){
     )
 }
 
-function Sub(props) {
+function Sub() {
     return (
         <div>
             <div>
