@@ -16,11 +16,11 @@ function MainMenu({data}){
 function MainAllMenu({ data }){
     return (
         <div className='MainAllMenu inlineBlock'>
-            <h4>{data.title}</h4>
+            <div className='title'><b>{data.title}</b></div>
             {data.service.map(function(c){
                 const {serviceUrl,serviceName} = c
                 return(
-                    <div><a href={serviceUrl}>{serviceName}</a></div>
+                    <div className='AllMenus'><a href={serviceUrl}>{serviceName}</a></div>
                 )
             })}
         </div>
