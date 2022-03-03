@@ -13,14 +13,16 @@ function Menu({title,url}){
 
 function Footer() {
     return (
-        <div className='Footer common-width'>
-            <div>
-                {footerData.map(data=>(
-                    <Menu title={data.title} url={data.url} />
-                ))}
-            </div>
-            <div className='copyright'>
-                <span>Copyright © Kakao Corp. All right reserved.</span>
+        <div className='Footer'>
+            <div className='common-width'>
+                <div>
+                    {footerData.map(data=>(
+                        <Menu title={data.title} url={data.url} />
+                    ))}
+                </div>
+                <div className='copyright'>
+                    <span>Copyright © Kakao Corp. All right reserved.</span>
+                </div>
             </div>
         </div>
     );
