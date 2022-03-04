@@ -28,8 +28,11 @@ function Header(){
                 <button>🔍</button>
                 <div>
                     {
-                        headerData.map((title,index)=>(
-                            <Recommend key={index} title={title}/>
+                        headerData.map((headerdata)=>(
+                            <Recommend
+                                key={headerdata.id} 
+                                title={headerdata.title}
+                            />
                         ))
                     }
                 </div>

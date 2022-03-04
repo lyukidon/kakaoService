@@ -22,9 +22,9 @@ function Footer() {
         <div className='Footer'>
             <div className='common-width'>
                 <div>
-                    {footerData.map((data,index)=>(
+                    {footerData.map((data)=>(
                         <Menu 
-                            key={index} 
+                            key={data.id} 
                             title={data.title} 
                             url={data.url} 
                         />

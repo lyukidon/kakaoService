@@ -3,7 +3,7 @@ import axios from 'axios'
 import '../scss/Main.scss'
 import '../common.scss'
 
-function MainMenu({data}){
+function MainRecommendMenu({data}){
     return(
             <a href='' className='inlineBlock MainMenu'>
                 <img src={data.src} alt=''/>
@@ -15,7 +15,7 @@ function MainAllMenu({ data }){
     return (
         <div className='MainAllMenu inlineBlock'>
             <div className='title'><b>{data.title}</b></div>
-            {data.service.map(function(c,index){
+            {data.service.map((c,index)=>{
                 const {serviceUrl,serviceName} = c
                 return(
                     <div key={index} className='AllMenus'><a href={serviceUrl}>{serviceName}</a></div>
@@ -24,7 +24,7 @@ function MainAllMenu({ data }){
         </div>
     );
 }
-function MainData(){
+function MainRecommnedData(){
     const [mainRecommendData,setMainRecommendData]=useState([])
     useEffect(()=>{
         async function getData(){
@@ -36,8 +36,8 @@ function MainData(){
 
     return (
         <div>
-                {mainRecommendData.map((data,index)=>(
-                    <MainMenu key={index} data={data} />
+                {mainRecommendData.map((data)=>(
+                    <MainRecommendMenu key={data.id} data={data} />
                 ))}
         </div>
     )
@@ -71,7 +71,7 @@ function Main() {
                     <button className='mainButton' onClick={showServices}>{showServicesCheck?'전체보기':'주요서비스'}</button>
                 </h3>
             </div>
-            {showServicesCheck ? <MainData />:<MainAllData />}
+            {showServicesCheck ? <MainRecommnedData />:<MainAllData />}
         </div>
     );
 }

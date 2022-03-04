@@ -6,7 +6,7 @@ import '../common.scss'
 function MenuData({url, title}){
     return(
         <div className='Menu inlineBlock'>
-                <a href={url}>{title} `{">"}`</a>
+                <a href={url}>{title} {">"}</a>
         </div>
     )
 }
@@ -18,7 +18,7 @@ function Menu({ data }){
             <h3>{classification}</h3>
             {subdata.map((menudata,index)=>(
                 <MenuData 
-                    key={index} 
+                    key={menudata.id} 
                     url={menudata.url} 
                     title={menudata.title}
                 />
