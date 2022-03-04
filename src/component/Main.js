@@ -5,8 +5,8 @@ import '../scss/Main.scss'
 import '../common.scss'
 
 function Main() {
-    const [showServicesCheck, setShowServicesCheck]= useState(true);
-    const showServices=()=> showServicesCheck ? setShowServicesCheck(false) : setShowServicesCheck(true);
+    const [serviceOn, setService]= useState(true);
+    const onClickToggle=()=> setService(!serviceOn);
     return (
         <div className='common-width'>
             <div>
@@ -15,13 +15,13 @@ function Main() {
                     <button 
                         type='button'
                         className='mainButton' 
-                        onClick={showServices}
+                        onClick={onClickToggle}
                     >
-                        {showServicesCheck?'전체보기':'주요서비스'}
+                        {serviceOn?'전체보기':'주요서비스'}
                     </button>
                 </h3>
             </div>
-            {showServicesCheck ? <MainRecommend />:<MainAll />}
+            {serviceOn ? <MainRecommend />:<MainAll />}
         </div>
     );
 }
