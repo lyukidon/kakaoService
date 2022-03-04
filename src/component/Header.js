@@ -1,14 +1,18 @@
 import React,{useState, useEffect} from 'react';
+import PropTypes from "prop-types";
 import axios from 'axios';
-import '../common.scss'
-import '../scss/Header.scss'
+import '../common.scss';
+import '../scss/Header.scss';
 
 function Recommend( { title } ){
     return (
         <span>
-            <a className='recommend' href={'https://cs.kakao.com/search?query='+title}>{title}</a>
+            <a className='recommend' href={`https://cs.kakao.com/search?query=${title}`}>{title}</a>
         </span>
     )
+}
+Recommend.propTypes={
+    title: PropTypes.string.isRequired,
 }
 
 function Header(){
@@ -25,7 +29,7 @@ function Header(){
             </div>
             <form className='searchBox'>
                 <input type="text" placeholder='궁금한 점이 있다면 도움말을 검색해보세요' />
-                <button>🔍</button>
+                <button type='button'>🔍</button>
                 <div>
                     {
                         headerData.map((headerdata)=>(

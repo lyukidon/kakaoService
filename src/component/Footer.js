@@ -13,7 +13,7 @@ function Menu({title,url}){
 }
 Menu.propTypes={
     title: PropTypes.string.isRequired,
-    url: PropTypes.string,
+    url: PropTypes.string.isRequired,
 }
 function Footer() {
     const [footerData,setFooterData]=useState([]);
@@ -41,9 +41,5 @@ function Footer() {
         </div>
     );
 }
-// Footer.propTypes = {
-//     key: PropTypes.number,
-//     title: PropTypes.string.isRequired,
-//     url: PropTypes.string
-// }
+
 export default Footer;
