@@ -15,6 +15,7 @@ function Main() {
                 <h3>
                     고객센터를 통해 궁금증을 해결하세요
                     <button 
+                        type='button'
                         className='mainButton' 
                         onClick={showServices}
                     >

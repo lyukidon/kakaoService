@@ -1,18 +1,32 @@
 import React, {useEffect, useState} from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios'
 
-function MainAllMenu({ data }){
+function MainAllMenu({ title, services }){
     return (
         <div className='MainAllMenu inlineBlock'>
-            <div className='title'><b>{data.title}</b></div>
-            {data.service.map((c,index)=>{
-                const {serviceUrl,serviceName} = c
+            <div className='title'><b>{title}</b></div>
+            {services.map((serviceData,index)=>{
+                const {serviceUrl,serviceName} = serviceData;
                 return(
-                    <div key={index} className='AllMenus'><a href={serviceUrl}>{serviceName}</a></div>
+                    <div key={index} className='AllMenus'>
+                        <a href={serviceUrl}>{serviceName}</a>
+                    </div>
                 )
             })}
         </div>
     );
+}
+MainAllMenu.defaultProps={
+    title:'',
+    services:[],
+}
+MainAllMenu.propTypes={
+    title: PropTypes.string,
+    services: PropTypes.arrayOf(PropTypes.shape({
+        serviceName: PropTypes.string,
+        serviceUrl: PropTypes.string,
+    })),    
 }
 
 function MainAll() {
@@ -25,7 +39,11 @@ function MainAll() {
     return (
         <div>
                 {mainAllData.map((data,index)=>(
-                    <MainAllMenu key={index} data={data}/>
+                    <MainAllMenu 
+                        key={index}
+                        title={data.title}
+                        services={data.service}
+                    />
                 ))}
         </div>
     )

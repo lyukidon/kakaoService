@@ -1,7 +1,8 @@
 import React,{useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
-import '../scss/Sub.scss'
-import '../common.scss'
+import '../scss/Sub.scss';
+import '../common.scss';
 
 function MenuData({url, title}){
     return(
@@ -10,9 +11,12 @@ function MenuData({url, title}){
         </div>
     )
 }
+MenuData.propTypes={
+    url: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+}
 
-function Menu({ data }){
-    const {classification, subdata}=data;
+function Menu({classification, subdata}){
     return(
         <div className='SubMenu inlineBlock'>
             <h3>{classification}</h3>
@@ -26,6 +30,14 @@ function Menu({ data }){
         </div>
     )
 }
+Menu.propTypes={
+    classification: PropTypes.string.isRequired,
+    subdata: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string,
+        url: PropTypes.string,
+    })).isRequired
+}
 
 function Sub() {
     const [sub,setSub]=useState([]);
@@ -36,9 +48,16 @@ function Sub() {
     },[])
     return (
         <div className='Sub common-width'>
-            {sub.map((data)=>(
-                <Menu key={data.id} data={data}/>
-            ))}
+            {sub.map((data)=>{
+                const {classification,subdata}=data
+                return(
+                    <Menu 
+                        key={data.id} 
+                        classification={classification}
+                        subdata={subdata}
+                    />
+                );
+            })}
         </div>
     );
 }

@@ -1,7 +1,8 @@
 import React from 'react';
-import noticeData from '../data/noticeData'
-import '../common.scss'
-import '../scss/Notice.scss'
+import PropTypes from 'prop-types';
+import noticeData from '../data/noticeData';
+import '../common.scss';
+import '../scss/Notice.scss';
 
 function Content({data}){
     return(
@@ -9,6 +10,12 @@ function Content({data}){
             {data}
         </span>
     )
+}
+Content.defaultProps={
+    data:'',
+}
+Content.propTypes={
+    data:PropTypes.string
 }
 
 function Notice() {
