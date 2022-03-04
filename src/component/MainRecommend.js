@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function MainRecommendMenu({title, src}){
     return(
-            <a href='#;' className='inlineBlock MainMenu'>
+            <a href='/' className='inlineBlock MainMenu'>
                 <img src={src} alt=''/>
                 <div>{title}</div>
             </a>

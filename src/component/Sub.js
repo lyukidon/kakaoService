@@ -23,7 +23,7 @@ function Menu({classification, subdata}){
             {subdata.map((menudata)=>(
                 <MenuData 
                     key={menudata.id} 
-                    url='#'
+                    url={menudata.url} 
                     title={menudata.title}
                 />
             ))}

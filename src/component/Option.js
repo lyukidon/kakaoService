@@ -11,7 +11,7 @@ function Option() {
             </select>
             <span>
                 <a 
-                    href="/">
+                    href="https://accounts.kakao.com/login?continue=https%3A%2F%2Fcs.kakao.com%2F">
                         로그인
                 </a>
             </span>

@@ -30,7 +30,7 @@ function Footer() {
                         <Menu 
                             key={data.id} 
                             title={data.title} 
-                            url='#' 
+                            url={data.url} 
                         />
                     ))}
                 </div>
