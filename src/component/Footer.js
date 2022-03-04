@@ -16,7 +16,7 @@ function Footer() {
     useEffect(()=>{
         axios.get('/data/footerData.json')
             .then(res=>setFooterData(res.data))
-            .catch(err=>console.log(err));
+            .catch(err=>console.error(err));
     },[])
     return (
         <div className='Footer'>
