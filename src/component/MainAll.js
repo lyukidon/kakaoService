@@ -6,10 +6,10 @@ function MainAllMenu({ title, services }){
     return (
         <div className='MainAllMenu inlineBlock'>
             <div className='title'><b>{title}</b></div>
-            {services.map((serviceData,index)=>{
-                const {serviceUrl,serviceName} = serviceData;
+            {services.map((serviceData)=>{
+                const {serviceUrl,serviceName,id} = serviceData;
                 return(
-                    <div key={index} className='AllMenus'>
+                    <div key={id} className='AllMenus'>
                         <a href={serviceUrl}>{serviceName}</a>
                     </div>
                 )
@@ -38,9 +38,9 @@ function MainAll() {
     },[])
     return (
         <div>
-                {mainAllData.map((data,index)=>(
+                {mainAllData.map((data)=>(
                     <MainAllMenu 
-                        key={index}
+                        key={data.id}
                         title={data.title}
                         services={data.service}
                     />

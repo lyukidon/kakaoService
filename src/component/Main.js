@@ -6,9 +6,7 @@ import '../common.scss'
 
 function Main() {
     const [showServicesCheck, setShowServicesCheck]= useState(true);
-    const showServices=()=>{
-        showServicesCheck ? setShowServicesCheck(false) : setShowServicesCheck(true);
-    }
+    const showServices=()=> showServicesCheck ? setShowServicesCheck(false) : setShowServicesCheck(true);
     return (
         <div className='common-width'>
             <div>
