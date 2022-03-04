@@ -6,7 +6,7 @@ import '../common.scss'
 function MenuData({url, title}){
     return(
         <div className='Menu inlineBlock'>
-                <a href={url}>{title} ></a>
+                <a href={url}>{title} `{">"}`</a>
         </div>
     )
 }
