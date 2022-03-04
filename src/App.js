@@ -1,21 +1,14 @@
-import React from "react";
-import Option from './component/Option';
-import Header from './component/Header';
-import Notice from "./component/Notice";
-import Main from './component/Main'
-import Sub from './component/Sub'
-import Footer from './component/Footer'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Root from './compRoute/Root'
+import Kakaotalk from './compRoute/Kakaotalk';
 
-function App() {
-  return (
-    <div className='app'>
-      <Option />
-      <Header />
-      <Notice />
-      <Main />
-      <Sub />
-      <Footer />
-    </div>
+function App (){
+  return(
+      <Routes>
+        <Route path='/' element={<Root/>} />
+        <Route path='/kakaotalk' element={<Kakaotalk/>} />
+      </Routes>
   );
 }
 

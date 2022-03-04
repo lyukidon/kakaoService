@@ -1,18 +1,22 @@
 import React, {useEffect, useState} from 'react';
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-function MainRecommendMenu({title, src}){
+function MainRecommendMenu({title, src, url}){
     return(
-            <a href='#;' className='inlineBlock MainMenu'>
-                <img src={src} alt=''/>
-                <div>{title}</div>
-            </a>
+            <div className='inlineBlock MainMenu'>
+                <Link to={url}>
+                    <img src={src} alt=''/>
+                    <div>{title}</div>
+                </Link>
+            </div>
     );
 }
 MainRecommendMenu.propTypes={
     title: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired
 }
 
 
@@ -31,7 +35,8 @@ function MainRecommend() {
                     <MainRecommendMenu 
                         key={data.id} 
                         title={data.title} 
-                        src={data.src} 
+                        src={data.src}
+                        url={data.url}
                     />
                 ))}
         </div>
