@@ -7,7 +7,7 @@ import '../scss/Header.scss';
 function Recommend( { title } ){
     return (
         <span>
-            <a className='recommend' href={`https://cs.kakao.com/search?query=${title}`}>{title}</a>
+            <a className='recommend' href='#;'>{title}</a>
         </span>
     )
 }

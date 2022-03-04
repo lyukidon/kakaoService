@@ -7,10 +7,10 @@ function MainAllMenu({ title, services }){
         <div className='MainAllMenu inlineBlock'>
             <div className='title'><b>{title}</b></div>
             {services.map((serviceData)=>{
-                const {serviceUrl,serviceName,id} = serviceData;
+                const {serviceName,id} = serviceData;
                 return(
                     <div key={id} className='AllMenus'>
-                        <a href={serviceUrl}>{serviceName}</a>
+                        <a href='#;'>{serviceName}</a>
                     </div>
                 )
             })}
