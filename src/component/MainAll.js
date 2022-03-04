@@ -15,12 +15,12 @@ function MainAllMenu({ data }){
     );
 }
 
-function MainAll(props) {
+function MainAll() {
     const [mainAllData,setMainAllData]=useState([])
     useEffect(()=>{
         axios.get('/data/mainAllData.json')
             .then((res)=> setMainAllData(res.data))
-            .catch((err)=>console.log(err))
+            .catch((err)=>console.error(err))
     },[])
     return (
         <div>

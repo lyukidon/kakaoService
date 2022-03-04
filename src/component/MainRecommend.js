@@ -1,17 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios'
-const {useEffect,useState} = React;
 
 function MainRecommendMenu({data}){
     return(
-            <a href='' className='inlineBlock MainMenu'>
+            <a href='/' className='inlineBlock MainMenu'>
                 <img src={data.src} alt=''/>
                 <div>{data.title}</div>
             </a>
     );
 }
 
-function MainRecommend(props) {
+function MainRecommend() {
     const [mainRecommendData,setMainRecommendData]=useState([])
     useEffect(()=>{
         async function getData(){

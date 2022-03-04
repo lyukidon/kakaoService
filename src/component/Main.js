@@ -14,7 +14,12 @@ function Main() {
             <div>
                 <h3>
                     고객센터를 통해 궁금증을 해결하세요
-                    <button className='mainButton' onClick={showServices}>{showServicesCheck?'전체보기':'주요서비스'}</button>
+                    <button 
+                        className='mainButton' 
+                        onClick={showServices}
+                    >
+                        {showServicesCheck?'전체보기':'주요서비스'}
+                    </button>
                 </h3>
             </div>
             {showServicesCheck ? <MainRecommend />:<MainAll />}

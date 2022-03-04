@@ -1,5 +1,6 @@
 [
-    {
+    {   
+        "id":0,
         "classification":"카카오 계정관리",
         "subdata":[
             {
@@ -17,6 +18,7 @@
             }
         ]
     },{
+        "id":1,
         "classification":"카카오 신고센터",
         "subdata":[
             {
@@ -24,15 +26,15 @@
                 "title":"권리침해신고 안내",
                 "url":"http://www.kakao.com/policy/right"
             },{
-                "id":0,
+                "id":1,
                 "title":"카카오 권리침해 신고/소명",
                 "url":"https://cs.kakao.com/requests?service=41"
             },{
-                "id":0,
+                "id":2,
                 "title":"이용자 보호 현황",
                 "url":"https://clean.kakao.com/transparence/report"
             },{
-                "id":0,
+                "id":3,
                 "title":"안전한 디지털 세상",
                 "url":"https://clean.kakao.com/safe/home"
             }

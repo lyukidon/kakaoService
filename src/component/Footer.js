@@ -1,4 +1,5 @@
 import React,{useEffect, useState} from 'react';
+import PropTypes from "prop-types";
 import axios from 'axios';
 import '../common.scss'
 import '../scss/Footer.scss'
@@ -10,7 +11,10 @@ function Menu({title,url}){
         </span>
     )
 }
-
+Menu.propTypes={
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string,
+}
 function Footer() {
     const [footerData,setFooterData]=useState([]);
     useEffect(()=>{
@@ -37,5 +41,9 @@ function Footer() {
         </div>
     );
 }
-
+// Footer.propTypes = {
+//     key: PropTypes.number,
+//     title: PropTypes.string.isRequired,
+//     url: PropTypes.string
+// }
 export default Footer;
