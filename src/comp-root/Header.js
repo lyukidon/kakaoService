@@ -1,4 +1,5 @@
 import React,{useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import axios from 'axios';
 import '../common.scss';
@@ -25,7 +26,9 @@ function Header(){
     return (
         <header className='common-width'>
             <div className='title'>
-                <h2>kakao 고객센터</h2>
+                <Link to='/'>
+                    <h2>kakao 고객센터</h2>
+                </Link>
             </div>
             <form className='searchBox'>
                 <input type="text" placeholder='궁금한 점이 있다면 도움말을 검색해보세요' />
