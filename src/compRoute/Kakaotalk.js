@@ -3,7 +3,7 @@ import { Helmet }  from 'react-helmet';
 import PropTypes from 'prop-types';
 import Notice from '../comp-root/Notice';
 import SideMenu from '../comp-details/SideMenu';
-import '../common.scss';
+import Detail from '../comp-details/Detail'
 
 function Kakaotalk({ title }) {
     return (
@@ -20,6 +20,7 @@ function Kakaotalk({ title }) {
                     title="카카오톡"
                     sideBtn={[{id:0,title:'유용한 도움말'}]}
                 />
+                <Detail />
             </div>
         </div>
     );
