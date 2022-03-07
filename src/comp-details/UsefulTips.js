@@ -7,9 +7,8 @@ function UsefulTips({ classify, contents }) {
         <div>
             <div className='classify'>{classify}</div>
             <div className="tips">
-                {contents.map( function(data,index,array){
+                {contents.map( (data,index,array)=>{
                     const tips = data.id !== array.length ? 'tipsBox BottomLine': 'tipsBox';
-                    console.log(tips)
                     return(
                         <div key={data.id} className={tips}>
                             <span className='tipsID'>{data.id}</span>
