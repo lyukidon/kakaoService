@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../common.scss';
-import '../scss/Notice.scss';
+import '../scss/root/Notice.scss';
 
 function Notice({ title, content }) {
     return (

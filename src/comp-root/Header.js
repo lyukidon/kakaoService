@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import axios from 'axios';
 import '../common.scss';
-import '../scss/Header.scss';
+import '../scss/root/Header.scss';
 
 function Recommend( { title } ){
     return (

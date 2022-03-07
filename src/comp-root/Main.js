@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import MainRecommend from './MainRecommend';
 import MainAll from './MainAll';
-import '../scss/Main.scss'
+import '../scss/root/Main.scss'
 import '../common.scss'
 
 function Main() {
