@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios'
 
 function MainAllMenu({ title, services }){
     return (
@@ -29,24 +28,4 @@ MainAllMenu.propTypes={
     })),    
 }
 
-function MainAll() {
-    const [mainAllData,setMainAllData]=useState([])
-    useEffect(()=>{
-        axios.get('/data/mainAllData.json')
-            .then((res)=> setMainAllData(res.data))
-            .catch((err)=>console.error(err))
-    },[])
-    return (
-        <div>
-                {mainAllData.map((data)=>(
-                    <MainAllMenu 
-                        key={data.id}
-                        title={data.title}
-                        services={data.service}
-                    />
-                ))}
-        </div>
-    )
-}
-
-export default MainAll;
+export default MainAllMenu;
