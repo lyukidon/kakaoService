@@ -1,0 +1,28 @@
+@import '../../common.scss';
+
+.classify{
+    margin: 45px 0px;
+    font-size: 30px;
+    font-weight: bolder;
+}
+.tips{
+    margin:20px 0px;
+    border-top: 2px solid black;
+    border-bottom: 1px solid grey;
+    .tipsBox{
+        margin: 10px;
+        margin-left: 0px;
+        padding: 15px;
+        padding-left: 0px;
+        .tipsID{
+            margin-right: 30px;
+            color: #ffaa00;
+        }
+        .tipsTitle{
+        
+        }
+    }
+}
+.BottomLine{
+    border-bottom: 2px solid #f3f3f3;
+}

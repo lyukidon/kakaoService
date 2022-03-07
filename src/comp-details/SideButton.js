@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import '../scss/details/SideButton.scss'
 
 function SideButton({ name }) {
     return (
-        <div>
-            <Link to="/kakaotalk">
-                    <div>
-                        {name}
-                    </div>    
+        
+            <Link to="/kakaotalk" className='SideButton'>
+                <b>
+                    {name} 
+                </b>
             </Link>
-        </div>
+        
     );
 }
 SideButton.defaultProps={

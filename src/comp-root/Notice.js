@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import '../common.scss';
 import '../scss/root/Notice.scss';
 
@@ -7,7 +8,12 @@ function Notice({ title, content }) {
     return (
         <div className='noticeBox'>
             <div  className='common-width'>
-                <span><strong>{title}</strong></span><span>{content}</span>
+                <span>
+                    <Link to="/">
+                        <strong>{title}</strong>
+                    </Link>
+                </span>
+                <span>{content}</span>
             </div>
         </div>
     );

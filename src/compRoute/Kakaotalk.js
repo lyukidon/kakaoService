@@ -3,7 +3,8 @@ import { Helmet }  from 'react-helmet';
 import PropTypes from 'prop-types';
 import Notice from '../comp-root/Notice';
 import SideMenu from '../comp-details/SideMenu';
-import Detail from '../comp-details/Detail'
+import Detail from '../comp-details/Detail';
+
 
 function Kakaotalk({ title }) {
     return (
@@ -12,8 +13,8 @@ function Kakaotalk({ title }) {
                 <title>{title}</title>
             </Helmet>
             <Notice 
-                title='홈 > 카카오톡 '
-                content='> 유용한 도움말'
+                title='홈'
+                content=' > 카카오톡 > 유용한 도움말'
             />
             <div className='common-width'>                
                 <SideMenu 

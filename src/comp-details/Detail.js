@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import UsefulTips from './UsefulTips';
-import '../common.scss';
+import '../scss/details/Detail.scss';
 
 function Detail() {
     const [tipsData, setTipsData]=useState({});
@@ -10,7 +10,7 @@ function Detail() {
             .then(res=>setTipsData(res.data));
     },[])
     return (
-        <div className='inlineBlock'>
+        <div className='inlineBlock Detail'>
             <UsefulTips
                 key={tipsData.lang}
                 classify={tipsData.classify}
