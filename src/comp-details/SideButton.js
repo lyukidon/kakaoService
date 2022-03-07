@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../scss/details/SideButton.scss'
 
-function SideButton({ name }) {
+function SideButton({ title, url }) {
+    const menuurl=`/Kakaotalk/${url}`;
     return (
-        
-            <Link to="/kakaotalk" className='SideButton'>
+            <Link to={menuurl} className='SideButton'>
                 <b>
-                    {name} 
+                    {title} 
                 </b>
             </Link>
         

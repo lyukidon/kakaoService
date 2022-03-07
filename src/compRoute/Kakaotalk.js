@@ -16,11 +16,8 @@ function Kakaotalk({ title }) {
                 title='홈'
                 content=' > 카카오톡 > 유용한 도움말'
             />
-            <div className='common-width'>                
-                <SideMenu 
-                    title="카카오톡"
-                    sideBtn={[{id:0,title:'유용한 도움말'}]}
-                />
+            <div className='common-width'>   
+                <SideMenu />
                 <Detail />
             </div>
         </div>

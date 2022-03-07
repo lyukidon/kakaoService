@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../scss/details/UsefulTips.scss'
 
-function UsefulTips({ classify, contents }) {
+function DetailContent({ classify, contents }) {
     return (
         <div>
             <div className='classify'>{classify}</div>
@@ -20,10 +20,10 @@ function UsefulTips({ classify, contents }) {
         </div>
     );
 }
-UsefulTips.defaultProps={
+DetailContent.defaultProps={
     contents:[],
 }
-UsefulTips.propTypes={
+DetailContent.propTypes={
     classify: PropTypes.string.isRequired,
     contents: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number,
@@ -31,4 +31,4 @@ UsefulTips.propTypes={
     }))
 }
 
-export default UsefulTips;
+export default DetailContent;

@@ -1,24 +1,29 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import SideButton from './SideButton';
 import '../scss/details/SideMenu.scss';
 
-function SideMenu({ title, sideBtn }) {
+function SideMenu() {
+    const [sideData, setSideData]=useState({});
+    useEffect(()=>{
+        axios.get('/data/sideMenuData.json')
+            .then(res=>setSideData(res.data.filter(data=>data.name === '카카오톡')[0]))
+    },[])
+    const {name, menus} = sideData;
+
     return (
         <div className='inlineBlock sideMenu'>
-            <h3>{ title }</h3>
-            {sideBtn.map( name => (
-                <SideButton key={name.id} name={name.title} />
-            ))}
+            <h3>
+                {name}
+            </h3>
+            {console.log(menus)}
+            {/* {
+                menus.map(data=>(
+                    <SideButton title={data.title} url={data.url}/>
+                ))
+            } */}
         </div>
     );
-}
-SideMenu.defaultProps={
-    sideBtn:[]
-}
-SideMenu.propTypes={
-    title: PropTypes.string.isRequired,
-    sideBtn: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default SideMenu;

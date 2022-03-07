@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import UsefulTips from './UsefulTips';
+import DetailContent from './DetailContent';
 import '../scss/details/Detail.scss';
 
 function Detail() {
@@ -11,7 +11,7 @@ function Detail() {
     },[])
     return (
         <div className='inlineBlock Detail'>
-            <UsefulTips
+            <DetailContent
                 key={tipsData.lang}
                 classify={tipsData.classify}
                 contents={tipsData.contents}
