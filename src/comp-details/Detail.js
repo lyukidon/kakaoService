@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import DetailContent from './DetailContent';
+import DetailContent from './DetailContent';
 import '../scss/details/Detail.scss';
 
 function Detail() {
