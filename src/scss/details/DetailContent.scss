@@ -10,7 +10,7 @@
     padding:10px 0px;
     border-top: 2px solid black;
     border-bottom: 1px solid grey;
-    font-size: 17px;
+    font-size: 15px;
     .tipsBox{
         margin: 10px;
         margin-left: 0px;
@@ -28,6 +28,14 @@
         .arrow{
             float:right;
             vertical-align: top;
+        }
+        .tipsFontBold{
+            font-weight: bold;
+            font-size: large;
+        }
+        .tipsFontNormal{
+            font-weight: normal;
+            font-size: 17px;
         }
     }
 }

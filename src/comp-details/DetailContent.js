@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../scss/details/DetailContent.scss'
 
-function ContentTitle({tips, id, content, onClickToggle, explain}){
+function ContentTitle({ id, toggle, tips, content, onClickToggle, explain}){
     return(
         <div className={tips} onClick={onClickToggle}>
             <div className='tipsID inlineBlock'>{id}</div>
-            <div className='tipsTitle inlineBlock'>
-                <div>{content}</div>
+            <div className='tipsContentBox inlineBlock'>
+                <div className={toggle ? "tipsFontBold": "tipsFontNormal"}>{content}</div>
                 {explain && <div>{explain}</div>}
             </div>
             <div className='arrow inlineBlock'>&#11167;</div>
         </div>
-
     )
 }
 
@@ -27,12 +26,14 @@ function Content({id, tips, content, explain}){
             {!toggle ? 
                 <ContentTitle 
                     id={id}
+                    toggle={toggle}
                     tips={tips}
                     content={content}
                     onClickToggle={onClickToggle}
                 /> : 
                 <ContentTitle
                     id={id}
+                    toggle={toggle}
                     tips={tips}
                     content={content}
                     onClickToggle={onClickToggle}
