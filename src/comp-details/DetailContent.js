@@ -14,8 +14,8 @@ function DetailContent({ content }){
                 )
             })}
         </div>
-    )
-}
+    );
+};
 
 DetailContent.propTypes = {
     
