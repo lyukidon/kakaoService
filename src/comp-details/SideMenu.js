@@ -11,8 +11,14 @@ function SideMenu() {
     const {name, menus} = sideData;
     useEffect(()=>{
         axios.get('/data/sideMenuData.json')
-            .then(res=>setSideData(res.data.filter(data=>data.name === '카카오톡')[0]))
-        
+            .then(res=>{
+                const data= res.data.filter(data=>data.name === '카카오톡')[0];
+                setSideData({
+                    ...sideData,
+                    name: data.name,
+                    menus: data.menus,
+                })
+            })
     },[])
 
     return (
@@ -20,8 +26,7 @@ function SideMenu() {
             <h3>
                 {name}
             </h3>
-            {console.log(menus)}
-            {menus && menus.map(data=>(
+            {menus.map(data=>(
                     <SideButton title={data.title} url={data.url}/>
             ))}
         </div>

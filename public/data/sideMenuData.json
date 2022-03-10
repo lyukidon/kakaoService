@@ -5,12 +5,12 @@
             {
                 "id":0,
                 "title":"유용한 도움말",
-                "url":"/"
+                "url":""
             },
             {
                 "id":1,
                 "title":"일반",
-                "url":"/general"
+                "url":"general"
             }
         ]
     }

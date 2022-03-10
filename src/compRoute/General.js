@@ -2,10 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import Notice from '../comp-root/Notice';
-
-General.propTypes = {
-    title: PropTypes.string
-};
+import SideMenu from '../comp-details/SideMenu';
 
 function General({ title }) {
     return (
@@ -13,9 +10,17 @@ function General({ title }) {
             <Helmet>
                 <title>{title}</title>
             </Helmet>
-            <Notice />  
+            <Notice title='홈' content=' > 카카오톡 > 일반' />
+            <div className='common-width'>   
+                <SideMenu />
+                <Detail />
+            </div>
+
         </>
     );
 }
+General.propTypes = {
+    title: PropTypes.string.isRequired
+};
 
 export default General;

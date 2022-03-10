@@ -8,7 +8,7 @@ import Detail from '../comp-details/Detail';
 
 function Kakaotalk({ title }) {
     return (
-        <div>
+        <>
             <Helmet>
                 <title>{title}</title>
             </Helmet>
@@ -20,7 +20,7 @@ function Kakaotalk({ title }) {
                 <SideMenu />
                 <Detail />
             </div>
-        </div>
+        </>
     );
 }
 Kakaotalk.propTypes={
