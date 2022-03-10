@@ -1,15 +1,16 @@
 import React from 'react';
-import DetailContent from './DetailContent';
+import DetailMain from './DetailMain';
 import '../scss/details/Detail.scss';
 
-function Detail({ tipsData, content }) {
+function Detail({ tipsData, content, platform }) {
 
     return (
         <div className='inlineBlock Detail'>
-            <DetailContent
+            <DetailMain
                 key={tipsData.lang}
                 classify={tipsData.classify}
                 content={content}
+                platform={platform}
             />
         </div>
     );

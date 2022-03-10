@@ -12,16 +12,18 @@ function Kakaotalk({ title }) {
         lang: '',
         classify:'',
     });
+    const [platform, setPlatform]=useState([]);
     const [content,setContent]=useState([]);
     useEffect(()=>{
         axios.get('/data/kakaotalkUsefulTips.json')
         .then(res=>{
-            const {lang, classify, contents}=res.data
+            const object=res.data.filter(c=>c.classify==='유용한 도움말')[0]
             setTipsData({
-                lang: lang,
-                classify: classify,
+                lang: object.lang,
+                classify: object.classify,
             })
-            setContent([...content, ...contents])
+            setPlatform([...platform, ...object.platform])
+            setContent([...content, ...object.contents])
         });
     },[])
     return (
@@ -31,11 +33,12 @@ function Kakaotalk({ title }) {
             </Helmet>
             <Notice 
                 title='홈'
-                content=' > 카카오톡 > 유용한 도움말'
+                content='> 카카오톡 >'
+                classify={tipsData.classify}
             />
             <div className='common-width'>   
                 <SideMenu />
-                <Detail tipsData={tipsData} content={content}/>
+                <Detail tipsData={tipsData} content={content} platform={platform} />
             </div>
         </>
     );

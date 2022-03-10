@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import '../common.scss';
 import '../scss/root/Notice.scss';
 
-function Notice({ title, content }) {
+function Notice({ title, content, classify }) {
     return (
         <div className='noticeBox'>
             <div  className='common-width'>
@@ -14,6 +14,7 @@ function Notice({ title, content }) {
                     </Link>
                 </span>
                 <span>{content}</span>
+                <span>{classify}</span>
             </div>
         </div>
     );
@@ -21,10 +22,12 @@ function Notice({ title, content }) {
 Notice.defaultProps={
     title:'',
     content:'',
+    classify:'',
 }
 Notice.propTypes={
     title: PropTypes.string,
     content: PropTypes.string,
+    classify: PropTypes.string,
 }
 
 export default Notice;
