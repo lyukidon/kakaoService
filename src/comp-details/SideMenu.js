@@ -12,11 +12,11 @@ function SideMenu() {
     useEffect(()=>{
         axios.get('/data/sideMenuData.json')
             .then(res=>{
-                const data= res.data.filter(data=>data.name === '카카오톡')[0];
+                const sidedata= res.data.filter(data=>data.name === '카카오톡')[0];
                 setSideData({
                     ...sideData,
-                    name: data.name,
-                    menus: data.menus,
+                    name: sidedata.name,
+                    menus: sidedata.menus,
                 })
             })
     },[])

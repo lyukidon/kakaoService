@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import '../scss/details/SideButton.scss'
 
 function SideButton({ title, url }) {
-    const menuurl=`/Kakaotalk/${url}`;
+    const menuurl=`/kakaotalk/${url}`;
     return (
         <div>
             <Link to={menuurl} className='SideButton'>

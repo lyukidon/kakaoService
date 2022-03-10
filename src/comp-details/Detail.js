@@ -1,14 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import React from 'react';
 import DetailContent from './DetailContent';
 import '../scss/details/Detail.scss';
 
-function Detail() {
-    const [tipsData, setTipsData]=useState({});
-    useEffect(()=>{
-        axios.get('/data/kakaotalkUsefulTips.json')
-            .then(res=>setTipsData(res.data));
-    },[])
+function Detail({ tipsData }) {
+
     return (
         <div className='inlineBlock Detail'>
             <DetailContent

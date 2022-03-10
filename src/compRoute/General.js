@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import Notice from '../comp-root/Notice';
 import SideMenu from '../comp-details/SideMenu';
+import Detail from '../comp-details/Detail';
 
 function General({ title }) {
     return (
