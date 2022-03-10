@@ -17,11 +17,9 @@ function SideButton({ title, url }) {
         
     );
 }
-SideButton.defaultProps={
-    name:'',
-}
 SideButton.propTypes={
-    name: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
 }
 
 function SideMenu() {
@@ -48,7 +46,7 @@ function SideMenu() {
                 {name}
             </h3>
             {menus.map(data=>(
-                    <SideButton title={data.title} url={data.url}/>
+                    <SideButton key={data.id} title={data.title} url={data.url}/>
             ))}
         </div>
     );
