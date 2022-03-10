@@ -5,6 +5,7 @@ import Header from './comp-root/Header';
 import Footer from './comp-root/Footer';
 import Root from './compRoute/Root';
 import Kakaotalk from './compRoute/Kakaotalk';
+import General from './compRoute/General';
 
 function App (){
   const titleBack='| 카카오 고객센터'
@@ -24,6 +25,12 @@ function App (){
           element={<Kakaotalk
                     title={`카카오톡 - 유용한 도움말 ${titleBack}`}
                   />} 
+        />
+        <Route
+          path='/kakaotalk/general'
+          element={<General
+                      title={`카카오톡 - 일반 ${titleBack}`}
+                  />}
         />
       </Routes>
       <Footer />

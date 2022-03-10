@@ -6,11 +6,13 @@ import '../scss/details/SideButton.scss'
 function SideButton({ title, url }) {
     const menuurl=`/Kakaotalk/${url}`;
     return (
+        <div>
             <Link to={menuurl} className='SideButton'>
                 <b>
                     {title} 
                 </b>
             </Link>
+        </div>
         
     );
 }
