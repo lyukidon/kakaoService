@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../scss/details/UsefulTips.scss'
 
-function DetailContent({ classify, contents }) {
+function DetailContent({ classify, content }) {
     return (
         <div>
             <div className='classify'>{classify}</div>
             <div className="tips">
-                {contents.map( (data,index,array)=>{
+                {content.map( (data,index,array)=>{
                     const tips = data.id !== array.length ? 'tipsBox BottomLine': 'tipsBox';
                     return(
                         <div key={data.id} className={tips}>
@@ -21,11 +21,11 @@ function DetailContent({ classify, contents }) {
     );
 }
 DetailContent.defaultProps={
-    contents:[],
+    content:[],
 }
 DetailContent.propTypes={
     classify: PropTypes.string.isRequired,
-    contents: PropTypes.arrayOf(PropTypes.shape({
+    content: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number,
         content: PropTypes.string,
     }))

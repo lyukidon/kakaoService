@@ -15,15 +15,14 @@ function Kakaotalk({ title }) {
     const [content,setContent]=useState([]);
     useEffect(()=>{
         axios.get('/data/kakaotalkUsefulTips.json')
-            .then(res=>{
-                const {lang, classify, contentData}=res.data
-                setTipsData({
-                    lang: lang,
-                    classify: classify,
-                })
-                setContent([...content, ...contentData])
-                console.log('테스트', content)
-            });
+        .then(res=>{
+            const {lang, classify, contents}=res.data
+            setTipsData({
+                lang: lang,
+                classify: classify,
+            })
+            setContent([...content, ...contents])
+        });
     },[])
     return (
         <>
@@ -36,7 +35,7 @@ function Kakaotalk({ title }) {
             />
             <div className='common-width'>   
                 <SideMenu />
-                <Detail tipsData={tipsData}/>
+                <Detail tipsData={tipsData} content={content}/>
             </div>
         </>
     );
