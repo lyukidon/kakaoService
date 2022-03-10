@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import '../scss/details/SideMenu.scss';
-import '../scss/details/SideButton.scss'
 
 function SideButton({ title, url }) {
     const menuurl=`/kakaotalk/${url}`;
     return (
-        <div>
-            <Link to={menuurl} className='SideButton'>
+        <div className='SideButton'>
+            <Link to={menuurl}>
                 <b>
                     {title} 
                 </b>
