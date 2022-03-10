@@ -8,7 +8,7 @@ function ContentTitle({ id, toggle, tips, content, onClickToggle, explain}){
             <div className='tipsID inlineBlock'>{id}</div>
             <div className='tipsContentBox inlineBlock'>
                 <div className={toggle ? "tipsFontBold": "tipsFontNormal"}>{content}</div>
-                {explain && <div>{explain}</div>}
+                {explain && <div className='tipsExplain'>{explain}</div>}
             </div>
             <div className='arrow inlineBlock'>&#11167;</div>
         </div>
