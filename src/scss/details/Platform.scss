@@ -1,0 +1,14 @@
+@import '../../common.scss';
+
+.platformBox{
+    padding-top: 20px;
+    border-top: 2px solid black;
+    .button{
+        color: #878787;
+    }
+    span{
+        margin-right: 12px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+}

@@ -1,13 +1,21 @@
 import React from 'react';
+import '../scss/details/Platform.scss';
 
-export default ({ platform })=>{
+function Platform({ platform, onClickPlatform }){
     return (
         <div className='platformBox'>
-            {platform.map(data=>{
+            {platform.map((data,index,array)=>{
                 return(
-                    <span>{data}</span>
-                )
+                    <>
+                        <span className='button' name={index} onClick={onClickPlatform}>
+                            {data}
+                        </span>
+                        {index !== array.length-1 && <span>&bull;</span>}
+                    </>
+                );
             })}
         </div>
     );
 }
+
+export default Platform

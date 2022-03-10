@@ -1,30 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Platform from './Platform';
-import '../scss/details/UsefulTips.scss'
+import DetailContent from './DetailContent';
+import '../scss/details/UsefulTips.scss';
 
-function DetailContent({ content }){
-    return(
-        <div className="tips">
-            {content.map((data, index, array) => {
-                const tips = data.id !== array.length ? 'tipsBox BottomLine' : 'tipsBox';
-                return (
-                    <div key={data.id} className={tips}>
-                        <span className='tipsID'>{data.id}</span>
-                        <span className='tipsContent'>{data.content}</span>
-                    </div>
-                )
-            })}
-        </div>
-    )
-}
 
 function DetailMain({ classify, content, platform }) {
+    const [contentType, setContentType]=useState(0);
+    const onClickPlatform=(event)=>{
+        setContentType(event.target.getAttribute('name'))
+    }
     return (
         <div>
             <div className='classify'>{classify}</div>
-            {platform && <Platform platform={platform} />}
-            <DetailContent content={content} />
+            {platform.length !== 0 && <Platform 
+                platform={platform} 
+                onClickPlatform={onClickPlatform} 
+            />}
+            <DetailContent content={content[contentType]} />
         </div>
     );
 }
