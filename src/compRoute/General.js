@@ -14,7 +14,7 @@ function General({ title }) {
     const [platform, setPlatform]=useState([]);
     const [content,setContent]=useState([]);
     useEffect(()=>{
-        axios.get('/data/kakaotalkUsefulTips.json')
+        axios.get('/data/detailData.json')
         .then(res=>{
             const object=res.data.filter(c=>c.classify==='일반')[0]
             setTipsData({

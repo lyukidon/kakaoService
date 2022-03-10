@@ -15,7 +15,7 @@ function Kakaotalk({ title }) {
     const [platform, setPlatform]=useState([]);
     const [content,setContent]=useState([]);
     useEffect(()=>{
-        axios.get('/data/kakaotalkUsefulTips.json')
+        axios.get('/data/detailData.json')
         .then(res=>{
             const object=res.data.filter(c=>c.classify==='유용한 도움말')[0]
             setTipsData({

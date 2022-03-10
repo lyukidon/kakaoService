@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Platform from './Platform';
 import DetailContent from './DetailContent';
-import '../scss/details/UsefulTips.scss';
-
 
 function DetailMain({ classify, content, platform }) {
     const [contentType, setContentType]=useState(0);

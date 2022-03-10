@@ -1,17 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import '../scss/details/DetailContent.scss'
+
+function ContentTitle({tips, id, content, onClickToggle, explain}){
+    return(
+        <div className={tips} onClick={onClickToggle}>
+            <div className='tipsID inlineBlock'>{id}</div>
+            <div className='tipsTitle inlineBlock'>
+                <div>{content}</div>
+                {explain && <div>{explain}</div>}
+            </div>
+            <div className='arrow inlineBlock'>&#11167;</div>
+        </div>
+
+    )
+}
+
+function Content({id, tips, content, explain}){
+    const [toggle,setToggle]=useState(false);
+    const onClickToggle=()=>{
+        setToggle(!toggle);
+        console.log(explain)
+    }
+    return (
+        <>
+            {!toggle ? 
+                <ContentTitle 
+                    id={id}
+                    tips={tips}
+                    content={content}
+                    onClickToggle={onClickToggle}
+                /> : 
+                <ContentTitle
+                    id={id}
+                    tips={tips}
+                    content={content}
+                    onClickToggle={onClickToggle}
+                    explain={explain}
+                /> }
+        </>
+    )
+}
 
 function DetailContent({ content }){
     return(
         <div className="tips">
             {content.map((data, index, array) => {
                 const tips = data.id !== array.length ? 'tipsBox BottomLine' : 'tipsBox';
+                console.log(data)
                 return (
-                    <div key={data.id} className={tips}>
-                        <span className='tipsID'>{data.id}</span>
-                        <span className='tipsContent'>{data.content}</span>
-                    </div>
-                )
+                    <Content
+                        key={data.id}
+                        tips={tips}
+                        id={data.id}
+                        content={data.content}
+                        explain={data.explain}
+                    />
+                );
             })}
         </div>
     );
