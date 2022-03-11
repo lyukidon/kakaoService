@@ -1,21 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import DetailMain from './DetailMain';
 import '../scss/details/Detail.scss';
+import Request from './Request';
+import RequestBtn from './RequestBtn';
 
 function Detail({ tipsData, content, platform }) {
-
+    const [reqClick, setReqClick]=useState(false);
+    const onReqClick=()=>{
+        setReqClick(!reqClick);
+    }
     return (
         <div className='inlineBlock Detail'>
-            <DetailMain
-                key={tipsData.lang}
-                classify={tipsData.classify}
-                content={content}
-                platform={platform}
-            />
+            {!reqClick?
+                <>
+                    <DetailMain
+                        key={tipsData.lang}
+                        classify={tipsData.classify}
+                        content={content}
+                        platform={platform}
+                    />
+                    <RequestBtn onReqClick={onReqClick}/>
+                </>
+                :
+                <Request onReqClick={onReqClick}/>
+            }
         </div>
     );
 }
+
 Detail.defaultProps={
     content:[],
     platform:[]

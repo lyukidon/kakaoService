@@ -35,7 +35,6 @@ function General({ title }) {
                 <SideMenu />
                 <Detail tipsData={tipsData} content={content} platform={platform}/>
             </div>
-
         </>
     );
 }
