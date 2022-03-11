@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
 
+// 국가 보여주는 코드
 function Open(){
     return(
         <div>
 
         </div>
     )
-}
-
-function Close(){
-    return(
-        <div>
-
-        </div>
-    )
-
 }
 
 function CountryNumber() {
@@ -26,10 +18,8 @@ function CountryNumber() {
     return (
         <div>
             <div>{selected}</div>
-            {toggle?
+            {toggle &&
                 <Open onClickSelect={onClickSelect}/>
-                :
-                <Close onClickSelect={onClickSelect}/>
             }
         </div>
     );
