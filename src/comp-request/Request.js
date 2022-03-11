@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import DetailTopTitle from '../comp-details/DetailTopTitle';
+import CountryNumber from './CountryNumber';
 import '../scss/details/Request.scss';
 
 function Request({ onReqClick }) {
@@ -35,6 +36,7 @@ function Request({ onReqClick }) {
             <div className='dataBox'>
                 <div className='dataTitle'>휴대폰 번호*</div>
                 <div>
+                    <CountryNumber />
                     <input type="text" name="phone" id="" placeholder='01012345678'/>
                 </div>
             </div>
