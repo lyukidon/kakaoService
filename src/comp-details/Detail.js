@@ -23,7 +23,7 @@ function Detail({ tipsData, content, platform }) {
                     <RequestBtn onReqClick={onReqClick}/>
                 </>
                 :
-                <Request onReqClick={onReqClick}/>
+                    <Request classify={tipsData.classify} onReqClick={onReqClick}/>
             }
         </div>
     );

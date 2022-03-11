@@ -1,4 +1,5 @@
 import React,{ useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import DetailTopTitle from './DetailTopTitle';
@@ -18,6 +19,9 @@ function Request({ onReqClick }) {
     }
     return (
         <form>
+            <Helmet>
+                <title>카카오톡 문의하기 | kakao 고객센터</title>
+            </Helmet>
             <DetailTopTitle title="문의하기" />
             <div>*필수입력 사항</div>
             <div>
@@ -40,14 +44,33 @@ function Request({ onReqClick }) {
                 <div>문의 내용*</div>
                 <input type="text" name="content" id="" />
             </div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div className='dataPolicy'>
+                <div>개인정보 수집·이용에 대한 안내</div>
+                <div>(필수) 개인정보 수집·이용에 대한 안내</div>
+                <div>
+                    주)카카오는 이용자 문의를 처리하기 위해 다음과 같이 개인정보를 수집 및 이용하며, 이용자의 개인정보를 안전하게 취급하는데 최선을 다하고 있습니다.
+                </div>
+                <table>
+                    <tr>
+                        <td>수집항목</td>
+                        <td>수집목적</td>
+                        <td>보유기간</td>
+                    </tr>
+                    <tr>
+                        <td>이메일 주소, 휴대폰 번호</td>
+                        <td>문의・요청・불편사항 확인 및 처리결과 회신</td>
+                        <td>3년간 보관 후 지체없이 파기</td>
+                    </tr>
+                </table>
+                <div>위 동의를 거부할 권리가 있으며, 동의를 거부하실 경우 문의 처리 및 결과 회신이 제한됩니다.</div>
+                <div>더 자세한 내용에 대해서는 카카오 개인정보처리방침을 참고하시기 바랍니다.</div>
+            </div>
             <button type='submit' onClick={onReqClick} onKeyDown={onReqClick}>문의접수</button>
         </form>
     );
 }
 Request.propTypes={
+    classify: PropTypes.string.isRequired,
     onReqClick: PropTypes.func.isRequired,
 }
 
