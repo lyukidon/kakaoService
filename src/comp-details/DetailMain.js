@@ -6,7 +6,7 @@ import DetailContent from './DetailContent';
 function DetailMain({ classify, content, platform }) {
     const [contentType, setContentType]=useState(0);
     const onClickPlatform=(event)=>{
-        setContentType(event.target.getAttribute('name'))
+        setContentType(event.target.getAttribute('tabindex'))
     }
     return (
         <div>
