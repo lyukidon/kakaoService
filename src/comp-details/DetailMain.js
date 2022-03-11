@@ -20,10 +20,11 @@ function DetailMain({ classify, content, platform }) {
     );
 }
 DetailContent.defaultProps={
+    classify:'',
     content:[],
 }
 DetailContent.propTypes={
-    classify: PropTypes.string.isRequired,
+    classify: PropTypes.string,
     content: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number,
         content: PropTypes.string,
