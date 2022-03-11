@@ -63,8 +63,14 @@ function DetailContent({ content }){
     );
 };
 
-DetailContent.propTypes = {
-    
-};
+DetailContent.defaultProps={
+    content:[],
+}
+DetailContent.propTypes={
+    content: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number,
+        content: PropTypes.string,
+    }))
+}
 
 export default DetailContent;

@@ -19,16 +19,19 @@ function DetailMain({ classify, content, platform }) {
         </div>
     );
 }
-DetailContent.defaultProps={
-    classify:'',
+DetailMain.defaultProps={
+    classify: '',
     content:[],
+    platform:[],
 }
-DetailContent.propTypes={
+DetailMain.propTypes={
     classify: PropTypes.string,
-    content: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number,
-        content: PropTypes.string,
-    }))
+    content: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({
+        id:PropTypes.number,
+        content:PropTypes.string,
+        explain:PropTypes.string,
+    }))),
+    platform:PropTypes.arrayOf(PropTypes.string),
 }
 
 export default DetailMain;
