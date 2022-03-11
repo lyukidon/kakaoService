@@ -1,10 +1,38 @@
+form{
+    margin-bottom: 105px;
+}
+.essential{
+    width: 100%;
+    text-align: right;
+    padding: 23px 0px;
+    border-bottom:2px solid black;
+    font-size: small;
+}
+.dataBox{
+    padding:30px 20px;
+    border-bottom: 1px solid grey;
+    div{
+        display: inline-block;
+    }
+    .dataTitle{
+        width:20%;
+    }
+}
 .dataPolicy{
+    border-top: 2px solid black;
+    padding-top: 20px;
+    margin-bottom: 30px;
     table{
         border-collapse: collapse;
         td{
-            padding: 10px 0px;
+            padding: 20px 0px;
+            padding-right: 27px;
+            margin: 0px 20px;
             border: 1px solid black;
         }
 
+    }
+    div{
+        margin: 15px 0px;
     }
 }

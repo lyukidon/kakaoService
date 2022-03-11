@@ -14,12 +14,15 @@ function ContentTitle({ id, toggle, tips, content, explain, onClickToggle}){
         </div>
     )
 }
+ContentTitle.defaultProps={
+    explain: '',
+}
 ContentTitle.propTypes={
     id: PropTypes.number.isRequired,
     toggle:PropTypes.bool.isRequired,
     tips: PropTypes.string.isRequired,
     content:PropTypes.string.isRequired,
-    explain:PropTypes.string.isRequired,
+    explain:PropTypes.string,
     onClickToggle: PropTypes.func.isRequired,
 }
 
@@ -49,11 +52,14 @@ function Content({id, tips, content, explain}){
         </div>
     )
 }
+Content.defaultProps={
+    explain:'',
+}
 Content.propTypes={
     id: PropTypes.number.isRequired,
     tips: PropTypes.string.isRequired,
     content:PropTypes.string.isRequired,
-    explain:PropTypes.string.isRequired,
+    explain:PropTypes.string,
 }
 
 function DetailContent({ content }){
