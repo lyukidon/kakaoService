@@ -1,4 +1,5 @@
 import React,{ useState } from 'react';
+import * as yup from 'yup';
 import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
