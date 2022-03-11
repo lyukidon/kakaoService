@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
-import DetailTopTitle from './DetailTopTitle';
+import DetailTopTitle from '../comp-details/DetailTopTitle';
 import '../scss/details/Request.scss';
 
 function Request({ onReqClick }) {

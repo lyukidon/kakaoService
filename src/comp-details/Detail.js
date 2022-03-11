@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import DetailMain from './DetailMain';
 import '../scss/details/Detail.scss';
-import Request from './Request';
+import Request from '../comp-request/Request';
 import RequestBtn from './RequestBtn';
 
 function Detail({ tipsData, content, platform }) {
