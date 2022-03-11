@@ -24,7 +24,7 @@ function Request({ onReqClick }) {
             </Helmet>
             <DetailTopTitle title="문의하기" />
             <div>*필수입력 사항</div>
-            <div>
+            <div className='emailBox'>
                 <div>이메일 주소*</div>
                 <input type="email" name="email" id="" />
             </div>
@@ -43,6 +43,10 @@ function Request({ onReqClick }) {
             <div>
                 <div>문의 내용*</div>
                 <input type="text" name="content" id="" />
+            </div>
+            <div>
+                <div>파일 첨부*</div>
+                <input type="file" name="file" id="" />
             </div>
             <div className='dataPolicy'>
                 <div>개인정보 수집·이용에 대한 안내</div>
