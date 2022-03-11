@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DetailMain from './DetailMain';
 import '../scss/details/Detail.scss';
 
@@ -14,6 +15,22 @@ function Detail({ tipsData, content, platform }) {
             />
         </div>
     );
+}
+Detail.defaultProps={
+    content:[],
+    platform:[]
+}
+Detail.propTypes={
+    tipsData:PropTypes.shape({
+        lang: PropTypes.string,
+        classify: PropTypes.string,
+    }).isRequired,
+    content: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({
+        id:PropTypes.number,
+        content:PropTypes.string,
+        explain:PropTypes.string,
+    }))),
+    platform:PropTypes.arrayOf(PropTypes.string),
 }
 
 export default Detail;
