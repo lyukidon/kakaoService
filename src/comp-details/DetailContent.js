@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../scss/details/DetailContent.scss'
 
-function ContentTitle({ id, toggle, tips, content, onClickToggle, explain}){
+function ContentTitle({ id, toggle, tips, content, explain, onClickToggle}){
     return(
-        <div className={tips} onClick={onClickToggle}>
+        <div role='button' tabIndex={id} className={tips} onClick={onClickToggle} onKeyDown={onClickToggle}>
             <div className='tipsID inlineBlock'>{id}</div>
             <div className='tipsContentBox inlineBlock'>
                 <div className={explain && toggle ? "tipsFontBold": "tipsFontNormal"}>{content}</div>
@@ -14,15 +14,22 @@ function ContentTitle({ id, toggle, tips, content, onClickToggle, explain}){
         </div>
     )
 }
+ContentTitle.propTypes={
+    id: PropTypes.number.isRequired,
+    toggle:PropTypes.bool.isRequired,
+    tips: PropTypes.string.isRequired,
+    content:PropTypes.string.isRequired,
+    explain:PropTypes.string.isRequired,
+    onClickToggle: PropTypes.func.isRequired,
+}
 
 function Content({id, tips, content, explain}){
     const [toggle,setToggle]=useState(false);
     const onClickToggle=()=>{
         setToggle(!toggle);
-        console.log(explain)
     }
     return (
-        <>
+        <div>
             {!toggle ? 
                 <ContentTitle 
                     id={id}
@@ -39,8 +46,14 @@ function Content({id, tips, content, explain}){
                     onClickToggle={onClickToggle}
                     explain={explain}
                 /> }
-        </>
+        </div>
     )
+}
+Content.propTypes={
+    id: PropTypes.number.isRequired,
+    tips: PropTypes.string.isRequired,
+    content:PropTypes.string.isRequired,
+    explain:PropTypes.string.isRequired,
 }
 
 function DetailContent({ content }){
@@ -48,7 +61,6 @@ function DetailContent({ content }){
         <div className="tips">
             {content.map((data, index, array) => {
                 const tips = data.id !== array.length ? 'tipsBox BottomLine' : 'tipsBox';
-                console.log(data)
                 return (
                     <Content
                         key={data.id}
@@ -70,6 +82,7 @@ DetailContent.propTypes={
     content: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number,
         content: PropTypes.string,
+        explain: PropTypes.string,
     }))
 }
 
