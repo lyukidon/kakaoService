@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import DetailTopTitle from './DetailTopTitle';
 import Platform from './Platform';
 import DetailContent from './DetailContent';
 
@@ -10,7 +11,7 @@ function DetailMain({ classify, content, platform }) {
     }
     return (
         <div>
-            <div className='classify'>{classify}</div>
+            <DetailTopTitle title={classify} />
             {platform.length !== 0 && <Platform 
                 platform={platform} 
                 onClickPlatform={onClickPlatform} 
@@ -19,6 +20,7 @@ function DetailMain({ classify, content, platform }) {
         </div>
     );
 }
+
 DetailMain.defaultProps={
     classify: '',
     content:[],
