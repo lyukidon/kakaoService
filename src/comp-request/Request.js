@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Helmet } from 'react-helmet';
@@ -6,16 +6,30 @@ import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import DetailTopTitle from '../comp-details/DetailTopTitle';
 import CountryNumber from './CountryNumber';
+import Category from './Category';
 import '../scss/details/Request.scss';
 
 function Request({ onReqClick }) {
     const reqData=yup.object({
-        email: yup.string().required(),
-        phoneNumber: yup.number().required(),
-        reqCategory: yup.string().required(),
-        reqTitle: yup.string().required(),
-        reqContent: yup.string().required(),
-        reqAgree: yup.bool().required(),
+        email: 
+            yup.string()
+                .email('정확히 입력해주세요')
+                .required('입력해주세요'),
+        phoneNumber: 
+            yup.string()
+                .required('입력해주세요'),
+        reqCategory: 
+            yup.string()
+                .required('선택해주세요'),
+        reqTitle: 
+            yup.string()
+                .required('입력해주세요'),
+        reqContent: 
+            yup.string()
+                .required('입력해주세요'),
+        reqAgree:
+            yup.boolean()
+                .required('입력해주세요'),
     }).required()
     const { register, handleSubmit, formState:{errors} }=useForm({
         resolver: yupResolver(reqData)
@@ -34,7 +48,6 @@ function Request({ onReqClick }) {
                     <input 
                         {...register('email',
                             {required: true},
-                            {pattern:/^[\w]+@[\w]+\.[\w]+$/}
                         )} 
                         type="text" 
                         name="email" 
@@ -42,7 +55,7 @@ function Request({ onReqClick }) {
                         placeholder='example@kakao.com' 
                     />
                     <span className='error'>
-                        {errors.email && '이메일을 입력해주세요'}
+                        {errors.email && '이메일을 '+errors.email.message}
                     </span>
                 </div>
             </div>
@@ -53,8 +66,7 @@ function Request({ onReqClick }) {
                     <input 
                         {...register(
                             'phoneNumber',
-                            { required:true },
-                            // { pattern: /\d+/ }
+                            { required:false },
                         )}
                         type="text" 
                         name="phone" 
@@ -62,25 +74,16 @@ function Request({ onReqClick }) {
                         placeholder='01012345678'
                     />
                     <span className='error'>
-                        {errors.phoneNumber && '전화번호를 입력해주세요'}
+                        {errors.phoneNumber && '전화번호를 '+errors.phoneNumber.message}
                     </span>
                 </div>
             </div>
             <div className='dataBox'>
                 <div className='dataTitle'>문의 분류*</div>
                 <div>
-                    <input 
-                        {...register(
-                            'reqCategory',
-                            {required:true},
-                        )}
-                        type="text"
-                        name="category" 
-                        id="" 
-                        placeholder='카테고리 선택'
-                    />
+                    <Category />
                     <span className='error'>
-                        {errors.reqCategory && '카테고리를 선택해주세요'}
+                        {errors.reqCategory && '카테고리를 '+errors.reqCategory.message}
                     </span>
                 </div>
             </div>
@@ -97,7 +100,7 @@ function Request({ onReqClick }) {
                     placeholder='제목을 입력해 주세요(20자 이내)'
                 />
                 <span className='error'>
-                    {errors.reqTitle && '카테고리를 선택해주세요'}
+                    {errors.reqTitle && '제목을 '+errors.reqTitle.message}
                 </span>
             </div>
             <div className='dataBox'>
@@ -112,7 +115,7 @@ function Request({ onReqClick }) {
                     id="" 
                 />
                 <span className='error'>
-                    {errors.reqContent && '내용을 입력해주세요'}
+                    {errors.reqContent && '내용을 '+errors.reqContent.message}
                 </span>
 
             </div>

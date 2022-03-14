@@ -52,9 +52,7 @@ function CountryNumber() {
     //clickEvent
     const [toggle, setToggle]=useState(false);
     const [selected, setSelected]=useState('');
-    const onToggle=()=>{
-        setToggle(!toggle);
-    }
+    const onToggle=()=>setToggle(!toggle);
     const onClickSelect=(event)=>{
         setSelected(event.target.getAttribute('number'));
         setToggle(!toggle);
@@ -62,7 +60,7 @@ function CountryNumber() {
     return (
         <div>
             <div onClick={onToggle}>
-                {selected ? selected : '선택해주세요'}
+                {selected ? selected : '+82'}
             </div>
             {toggle &&
                 <Open 
