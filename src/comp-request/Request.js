@@ -29,7 +29,7 @@ function Request({ onReqClick }) {
                 .required('입력해주세요'),
         reqAgree:
             yup.boolean()
-                .required('입력해주세요'),
+                .required('동의 해주세요'),
     }).required()
     const { register, handleSubmit, formState:{errors} }=useForm({
         resolver: yupResolver(reqData)
@@ -55,6 +55,7 @@ function Request({ onReqClick }) {
                         placeholder='example@kakao.com' 
                     />
                     <span className='error'>
+                        {console.log(errors)}
                         {errors.email && '이메일을 '+errors.email.message}
                     </span>
                 </div>
@@ -68,7 +69,7 @@ function Request({ onReqClick }) {
                             'phoneNumber',
                             { required:false },
                         )}
-                        type="text" 
+                        type="string" 
                         name="phone" 
                         id="" 
                         placeholder='01012345678'
@@ -152,13 +153,23 @@ function Request({ onReqClick }) {
                 <div>위 동의를 거부할 권리가 있으며, 동의를 거부하실 경우 문의 처리 및 결과 회신이 제한됩니다.</div>
                 <div>더 자세한 내용에 대해서는 카카오 개인정보처리방침을 참고하시기 바랍니다.</div>
                 <div>
-                    <input type="checkbox" name="check" id="" />
+                    <input 
+                        {...register(
+                            'reqAgree',
+                        )}
+                        type="checkbox" 
+                        name="check"
+                        id="" 
+                    />
                     <span>
                         위 내용에 동의합니다.
                     </span>
                     <span>
                         개인정보수집·이용에 동의해 주세요
                     </span>
+                    <div className='error'>
+                        {errors.reqAgree && errors.reqAgree.message}
+                    </div>
                 </div>
             </div>
             <button 
