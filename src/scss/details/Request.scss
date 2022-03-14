@@ -11,11 +11,11 @@ form{
 .dataBox{
     padding:30px 20px;
     border-bottom: 1px solid grey;
-    div{
-        display: inline-block;
-    }
     .dataTitle{
         width:20%;
+    }
+    .error{
+        color: red;
     }
 }
 .dataPolicy{
@@ -35,4 +35,11 @@ form{
     div{
         margin: 15px 0px;
     }
+}
+.countryNumbers{
+        display: block;
+        border: 1px solid white;
+        button{
+            border: none;
+        }
 }

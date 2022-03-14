@@ -8,7 +8,7 @@ function RequestBtn({ onReqClick }) {
             <div className='inlineBlock'>
                 원하시는 답변을 찾지 못하셨다면, 고객센터로 문의해 주세요
             </div>
-            <button className='inlineBlock' 
+            <button className='inlineBlock reqButton' 
                 type='button' 
                 onClick={onReqClick} 
                 onKeyDown={onReqClick}

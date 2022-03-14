@@ -1,5 +1,6 @@
 import React,{ useState } from 'react';
 import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
@@ -8,20 +9,20 @@ import CountryNumber from './CountryNumber';
 import '../scss/details/Request.scss';
 
 function Request({ onReqClick }) {
-    const [info, setInfo]=useState({
-        email:'',
-        phone:'',
-        category:'',
-        title:'',
-        content:'',
-        file:'',
-        check:false,
-    })
-    const onChangeEmail=()=>{
-        
-    }
+    const reqData=yup.object({
+        email: yup.string().required(),
+        phoneNumber: yup.number().required(),
+        reqCategory: yup.string().required(),
+        reqTitle: yup.string().required(),
+        reqContent: yup.string().required(),
+        reqAgree: yup.bool().required(),
+    }).required()
+    const { register, handleSubmit, formState:{errors} }=useForm({
+        resolver: yupResolver(reqData)
+    });
+    const onSubmit=(data)=> console.log(data);
     return (
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <Helmet>
                 <title>카카오톡 문의하기 | kakao 고객센터</title>
             </Helmet>
@@ -30,29 +31,90 @@ function Request({ onReqClick }) {
             <div className='dataBox'>
                 <div className='dataTitle'>이메일 주소*</div>
                 <div>
-                    <input type="email" name="email" id="" placeholder='example@kakao.com' />
+                    <input 
+                        {...register('email',
+                            {required: true},
+                            {pattern:/^[\w]+@[\w]+\.[\w]+$/}
+                        )} 
+                        type="text" 
+                        name="email" 
+                        id="" 
+                        placeholder='example@kakao.com' 
+                    />
+                    <span className='error'>
+                        {errors.email && '이메일을 입력해주세요'}
+                    </span>
                 </div>
             </div>
             <div className='dataBox'>
                 <div className='dataTitle'>휴대폰 번호*</div>
                 <div>
                     <CountryNumber />
-                    <input type="text" name="phone" id="" placeholder='01012345678'/>
+                    <input 
+                        {...register(
+                            'phoneNumber',
+                            { required:true },
+                            // { pattern: /\d+/ }
+                        )}
+                        type="text" 
+                        name="phone" 
+                        id="" 
+                        placeholder='01012345678'
+                    />
+                    <span className='error'>
+                        {errors.phoneNumber && '전화번호를 입력해주세요'}
+                    </span>
                 </div>
             </div>
             <div className='dataBox'>
                 <div className='dataTitle'>문의 분류*</div>
                 <div>
-                    <input type="text" name="category" id="" placeholder='카테고리 선택'/>
+                    <input 
+                        {...register(
+                            'reqCategory',
+                            {required:true},
+                        )}
+                        type="text"
+                        name="category" 
+                        id="" 
+                        placeholder='카테고리 선택'
+                    />
+                    <span className='error'>
+                        {errors.reqCategory && '카테고리를 선택해주세요'}
+                    </span>
                 </div>
             </div>
             <div className='dataBox'>
                 <div className='dataTitle'>문의 제목*</div>
-                <input type="text" name="title" id="" placeholder='제목을 입력해 주세요(20자 이내)'/>
+                <input 
+                    {...register(
+                        'reqTitle',
+                        {required: true}
+                    )}
+                    type="text" 
+                    name="title" 
+                    id="" 
+                    placeholder='제목을 입력해 주세요(20자 이내)'
+                />
+                <span className='error'>
+                    {errors.reqTitle && '카테고리를 선택해주세요'}
+                </span>
             </div>
             <div className='dataBox'>
                 <div className='dataTitle'>문의 내용*</div>
-                <input type="text" name="content" id="" />
+                <input 
+                    {...register(
+                        'reqContent',
+                        {required:true},
+                    )}
+                    type="text" 
+                    name="content" 
+                    id="" 
+                />
+                <span className='error'>
+                    {errors.reqContent && '내용을 입력해주세요'}
+                </span>
+
             </div>
             <div className='dataBox'>
                 <div className='dataTitle'>파일 첨부</div>
@@ -65,7 +127,8 @@ function Request({ onReqClick }) {
                 <div>개인정보 수집·이용에 대한 안내</div>
                 <div><strong>(필수) 개인정보 수집·이용에 대한 안내</strong></div>
                 <div>
-                    주)카카오는 이용자 문의를 처리하기 위해 다음과 같이 개인정보를 수집 및 이용하며, 이용자의 개인정보를 안전하게 취급하는데 최선을 다하고 있습니다.
+                    주)카카오는 이용자 문의를 처리하기 위해 다음과 같이 개인정보를 수집 및 이용하며,
+                    이용자의 개인정보를 안전하게 취급하는데 최선을 다하고 있습니다.
                 </div>
                 <table>
                     <thead>
@@ -95,7 +158,12 @@ function Request({ onReqClick }) {
                     </span>
                 </div>
             </div>
-            <button type='submit' onClick={onReqClick} onKeyDown={onReqClick}>문의접수</button>
+            <button 
+                type='submit'
+                className='reqButton'
+                // onClick={onReqClick} 
+                // onKeyDown={onReqClick}
+            >문의접수</button>
         </form>
     );
 }
