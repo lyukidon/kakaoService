@@ -38,31 +38,31 @@ const reqData=yup.object({
             .oneOf([true], '개인정보수집·이용에 동의해 주세요'),
 })
 
+const category=[
+    {
+        first: "선택해주세요",
+        second: ["선택해주세요"],
+    }, {
+        first: '일반문의',
+        second: [
+            '선택해주세요','안드로이드', 'iOS', '안드로이드(원스토어)'
+        ]
+    }, {
+        first: '인증번호',
+        second: [
+            '선택해주세요','안드로이드', 'iOS', 'Windows', '안드로이드(원스토어)'
+        ]
+    }
+]
+
 function Request({ onReqClick }) {
     const { register, handleSubmit, formState:{errors} }=useForm({
         resolver: yupResolver(reqData)
     });
-    const onSubmit=(data)=> {
-        console.log(data)
+    const onSubmit=()=> {
         onReqClick();
     };
 
-    const [category, setCategory] = useState([
-        {
-            first: "선택해주세요",
-            second: ["선택해주세요"],
-        }, {
-            first: '일반문의',
-            second: [
-                '선택해주세요','안드로이드', 'iOS', '안드로이드(원스토어)'
-            ]
-        }, {
-            first: '인증번호',
-            second: [
-                '선택해주세요','안드로이드', 'iOS', 'Windows', '안드로이드(원스토어)'
-            ]
-        }
-    ])
     const [select1, setSelect1] = useState('선택해주세요');
     const onSelect = (event) => {
         setSelect1(event.target.value);
@@ -137,7 +137,7 @@ function Request({ onReqClick }) {
                             {select1 &&
                                 category
                                     .filter(data => data.first === select1)[0].second
-                                    .map((data,index) => (
+                                    .map(data => (
                                         <option 
                                             key={data} 
                                             value={data}

@@ -21,6 +21,11 @@ module.exports = {
     ],
     "rules": {
         "no-console": ["error", { allow: ["warn", "error"] }],
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
-    }
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "import/no-extraneous-dependencies": ["error",  {"devDependencies": true}],
+        "react/jsx-props-no-spreading": "off", 
+        'jsx-a11y/label-has-associated-control': [2,
+            {assert: 'either'},
+        ],  
+    },
 }

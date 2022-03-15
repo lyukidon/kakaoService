@@ -7,14 +7,15 @@ import '../scss/request/CountryNumber.scss'
 function Open({ onClickSelect, countries }){
     return(
         <div>
-            {countries.map( data => (
-                <label
-                    type='button'
+            {countries.map( (data,index) => (
+                <div
+                    role="button"
                     key={data.number+data.country}
                     className='countryNumbers'
                     onClick={onClickSelect}
                     onKeyDown={onClickSelect}
                     number={data.number}
+                    tabIndex={index}
                 >
                     <div
                         className='number inlineBlock'
@@ -28,7 +29,7 @@ function Open({ onClickSelect, countries }){
                     >
                         {data.country}
                     </div>
-                </label>
+                </div>
             ))}
         </div>
     )
@@ -43,7 +44,7 @@ Open.propTypes={
 }
 
 function CountryNumber() {
-    //data
+    // data
     const [countries, setCountries]=useState([])
     useEffect(()=>{
         axios.get('/data/CountryNumber.json')
@@ -52,7 +53,7 @@ function CountryNumber() {
                 ...res.data,
             ]))
     },[])
-    //clickEvent
+    // clickEvent
     const [toggle, setToggle]=useState(false);
     const [selected, setSelected]=useState('');
     const onToggle=()=>setToggle(!toggle);
@@ -62,8 +63,14 @@ function CountryNumber() {
     }
     return (
         <div className='codeInput'>
-            <div className='codeBtn' onClick={onToggle}>
-                {selected ? selected : '+82'}
+            <div 
+                role='button'
+                className='codeBtn' 
+                onClick={onToggle} 
+                onKeyDown={onToggle}
+                tabIndex={0}
+            >
+                {selected || '+82'}
             </div>
             {toggle &&
                 <div className='numberBox'>
