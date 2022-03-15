@@ -68,6 +68,12 @@ function Request({ onReqClick }) {
     const onFile=(event)=>{
         setFile(event.target.value);
     }
+    const onRequest=(errors)=>{
+        console.log(errors)
+        // if (errors.constructor !== Object){
+        //     onReqClick()
+        // }
+    }
     return (
         <form onSubmit={handleSubmit(onSubmit)} >
             <Helmet>
@@ -236,7 +242,7 @@ function Request({ onReqClick }) {
                 <button 
                     type='submit'
                     className='reqButton'
-                    // onClick={onReqClick}
+                    onClick={()=>onRequest(errors)}
                 >문의접수</button>
         </form>
     );
