@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Helmet } from 'react-helmet';
@@ -6,35 +6,59 @@ import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import DetailTopTitle from '../comp-details/DetailTopTitle';
 import CountryNumber from './CountryNumber';
-import Category from './Category';
 import '../scss/details/Request.scss';
 
+const reqData=yup.object({
+    email: 
+        yup.string()
+            .email('이메일을 입력해주세요.')
+            .required('이메일을 입력해주세요.'),
+    phoneNumber: 
+        yup.string()
+            .min(9, "전화번호가 너무 짧습니다.")
+            .max(12,'전화번호가 너무 깁니다.'),
+    reqCategory1: 
+        yup.string()
+            .required('카테고리를 선택해주세요.'),
+    reqCategory2:
+        yup.string()
+            .required('카테고리를 선택해주세요'),
+    reqTitle: 
+        yup.string()
+            .required('제목을 입력해주세요.'),
+    reqContent: 
+        yup.string()
+            .required('내용을 입력해주세요.'),
+    reqAgree:
+        yup.boolean(),
+})
+
 function Request({ onReqClick }) {
-    const reqData=yup.object({
-        email: 
-            yup.string()
-                .email('정확히 입력해주세요')
-                .required('입력해주세요'),
-        phoneNumber: 
-            yup.string()
-                .required('입력해주세요'),
-        reqCategory: 
-            yup.string()
-                .required('선택해주세요'),
-        reqTitle: 
-            yup.string()
-                .required('입력해주세요'),
-        reqContent: 
-            yup.string()
-                .required('입력해주세요'),
-        reqAgree:
-            yup.boolean()
-                .required('동의 해주세요'),
-    }).required()
     const { register, handleSubmit, formState:{errors} }=useForm({
         resolver: yupResolver(reqData)
     });
     const onSubmit=(data)=> console.log(data);
+
+    const [category, setCategory] = useState([
+        {
+            first: "선택해주세요",
+            second: ["선택해주세요"],
+        }, {
+            first: '일반문의',
+            second: [
+                '안드로이드', 'iOS', '안드로이드(원스토어)'
+            ]
+        }, {
+            first: '인증번호',
+            second: [
+                '안드로이드', 'iOS', 'Windows', '안드로이드(원스토어)'
+            ]
+        }
+    ])
+    const [select1, setSelect1] = useState('');
+    const onSelect = (event) => {
+        setSelect1(event.target.value);
+    }
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Helmet>
@@ -46,17 +70,14 @@ function Request({ onReqClick }) {
                 <div className='dataTitle'>이메일 주소*</div>
                 <div>
                     <input 
-                        {...register('email',
-                            {required: true},
-                        )} 
+                        {...register('email')} 
                         type="text" 
                         name="email" 
                         id="" 
                         placeholder='example@kakao.com' 
                     />
                     <span className='error'>
-                        {console.log(errors)}
-                        {errors.email && '이메일을 '+errors.email.message}
+                        {errors.email?.message}
                     </span>
                 </div>
             </div>
@@ -65,43 +86,57 @@ function Request({ onReqClick }) {
                 <div>
                     <CountryNumber />
                     <input 
-                        {...register(
-                            'phoneNumber',
-                            { required:false },
-                        )}
+                        {...register('phoneNumber')}
                         type="string" 
-                        name="phone" 
+                        name="phoneNumber" 
                         id="" 
                         placeholder='01012345678'
                     />
                     <span className='error'>
-                        {errors.phoneNumber && '전화번호를 '+errors.phoneNumber.message}
+                        {errors.phoneNumber?.message}
                     </span>
                 </div>
             </div>
             <div className='dataBox'>
                 <div className='dataTitle'>문의 분류*</div>
                 <div>
-                    <Category />
-                    <span className='error'>
-                        {errors.reqCategory && '카테고리를 '+errors.reqCategory.message}
-                    </span>
+                        <select
+                            {...register('reqCategory1')} 
+                            onChange={onSelect}
+                            name="reqCategory"
+                        >
+                            {category.map(data => (
+                                <option key={data.first} value={data.first}>
+                                    {data.first}
+                                </option>
+                            ))}
+                        </select>
+                        <select {...register('reqCategory2')} name="reqCategory2">
+                            {select1 &&
+                                category
+                                    .filter(data => data.first === select1)[0].second
+                                    .map(data => (
+                                        <option key={data} value={data}>{data}</option>
+                                    ))}
+                        </select>
+
+                    <div className='error'>
+                        {errors.reqCategory1?.message}
+                        {errors.reqCategory2?.message}
+                    </div>
                 </div>
             </div>
             <div className='dataBox'>
                 <div className='dataTitle'>문의 제목*</div>
                 <input 
-                    {...register(
-                        'reqTitle',
-                        {required: true}
-                    )}
+                    {...register('reqTitle')}
                     type="text" 
-                    name="title" 
+                    name="reqTitle" 
                     id="" 
                     placeholder='제목을 입력해 주세요(20자 이내)'
                 />
                 <span className='error'>
-                    {errors.reqTitle && '제목을 '+errors.reqTitle.message}
+                    {errors.reqTitle?.message}
                 </span>
             </div>
             <div className='dataBox'>
@@ -112,11 +147,11 @@ function Request({ onReqClick }) {
                         {required:true},
                     )}
                     type="text" 
-                    name="content" 
+                    name="reqContent" 
                     id="" 
                 />
                 <span className='error'>
-                    {errors.reqContent && '내용을 '+errors.reqContent.message}
+                    {errors.reqContent?.message}
                 </span>
 
             </div>
@@ -154,9 +189,7 @@ function Request({ onReqClick }) {
                 <div>더 자세한 내용에 대해서는 카카오 개인정보처리방침을 참고하시기 바랍니다.</div>
                 <div>
                     <input 
-                        {...register(
-                            'reqAgree',
-                        )}
+                        {...register('reqAgree')}
                         type="checkbox" 
                         name="check"
                         id="" 
@@ -168,7 +201,7 @@ function Request({ onReqClick }) {
                         개인정보수집·이용에 동의해 주세요
                     </span>
                     <div className='error'>
-                        {errors.reqAgree && errors.reqAgree.message}
+                        {errors.reqAgree?.message}
                     </div>
                 </div>
             </div>
