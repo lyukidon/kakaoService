@@ -12,7 +12,7 @@ function Detail({ tipsData, content, platform }) {
     }
     return (
         <div className='inlineBlock Detail'>
-            {!reqClick?
+            {reqClick ?
                 <>
                     <DetailMain
                         key={tipsData.lang}
@@ -23,7 +23,7 @@ function Detail({ tipsData, content, platform }) {
                     <RequestBtn onReqClick={onReqClick}/>
                 </>
                 :
-                    <Request classify={tipsData.classify} onReqClick={onReqClick}/>
+                    <Request classify={tipsData.classify} onReqClick={onReqClick} />
             }
         </div>
     );

@@ -19,9 +19,11 @@ const reqData=yup.object({
             .max(12,'전화번호가 너무 깁니다.'),
     reqCategory1: 
         yup.string()
+            .notOneOf(['선택해주세요'], '카테고리를 선택해주세요')
             .required('카테고리를 선택해주세요.'),
     reqCategory2:
         yup.string()
+            .notOneOf(['선택해주세요'], '카테고리를 선택해주세요')
             .required('카테고리를 선택해주세요'),
     reqTitle: 
         yup.string()
@@ -46,21 +48,21 @@ function Request({ onReqClick }) {
         }, {
             first: '일반문의',
             second: [
-                '안드로이드', 'iOS', '안드로이드(원스토어)'
+                '선택해주세요','안드로이드', 'iOS', '안드로이드(원스토어)'
             ]
         }, {
             first: '인증번호',
             second: [
-                '안드로이드', 'iOS', 'Windows', '안드로이드(원스토어)'
+                '선택해주세요','안드로이드', 'iOS', 'Windows', '안드로이드(원스토어)'
             ]
         }
     ])
-    const [select1, setSelect1] = useState('');
+    const [select1, setSelect1] = useState('선택해주세요');
     const onSelect = (event) => {
         setSelect1(event.target.value);
     }
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} >
             <Helmet>
                 <title>카카오톡 문의하기 | kakao 고객센터</title>
             </Helmet>
@@ -103,7 +105,7 @@ function Request({ onReqClick }) {
                         <select
                             {...register('reqCategory1')} 
                             onChange={onSelect}
-                            name="reqCategory"
+                            name="reqCategory1"
                         >
                             {category.map(data => (
                                 <option key={data.first} value={data.first}>
@@ -111,12 +113,21 @@ function Request({ onReqClick }) {
                                 </option>
                             ))}
                         </select>
-                        <select {...register('reqCategory2')} name="reqCategory2">
+                        <select 
+                            {...register('reqCategory2')} 
+                            name="reqCategory2"
+                        >
                             {select1 &&
                                 category
                                     .filter(data => data.first === select1)[0].second
-                                    .map(data => (
-                                        <option key={data} value={data}>{data}</option>
+                                    .map((data,index) => (
+                                        <option 
+                                            key={data} 
+                                            value={data}
+                                            // { index === 0 && selected } 
+                                        >
+                                            {data}
+                                        </option>
                                     ))}
                         </select>
 
@@ -202,15 +213,15 @@ function Request({ onReqClick }) {
                     </span>
                     <div className='error'>
                         {errors.reqAgree?.message}
+                        {console.log(errors)}
                     </div>
                 </div>
             </div>
-            <button 
-                type='submit'
-                className='reqButton'
-                // onClick={onReqClick} 
-                // onKeyDown={onReqClick}
-            >문의접수</button>
+                <button 
+                    type='submit'
+                    className='reqButton'
+                    // onClick={onReqClick}
+                >문의접수</button>
         </form>
     );
 }
