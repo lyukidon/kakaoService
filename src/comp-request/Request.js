@@ -42,7 +42,10 @@ function Request({ onReqClick }) {
     const { register, handleSubmit, formState:{errors} }=useForm({
         resolver: yupResolver(reqData)
     });
-    const onSubmit=(data)=> console.log(data);
+    const onSubmit=(data)=> {
+        console.log(data)
+        onReqClick();
+    };
 
     const [category, setCategory] = useState([
         {
@@ -67,12 +70,6 @@ function Request({ onReqClick }) {
     const [file,setFile]=useState('');
     const onFile=(event)=>{
         setFile(event.target.value);
-    }
-    const onRequest=(errors)=>{
-        console.log(errors)
-        // if (errors.constructor !== Object){
-        //     onReqClick()
-        // }
     }
     return (
         <form onSubmit={handleSubmit(onSubmit)} >
@@ -242,7 +239,6 @@ function Request({ onReqClick }) {
                 <button 
                     type='submit'
                     className='reqButton'
-                    onClick={()=>onRequest(errors)}
                 >문의접수</button>
         </form>
     );
