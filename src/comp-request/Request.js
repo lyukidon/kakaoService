@@ -35,7 +35,7 @@ const reqData=yup.object({
             .required('내용을 입력해주세요.'),
     reqAgree:
         yup.boolean()
-            .oneOf([true], '동의 해주세요'),
+            .oneOf([true], '개인정보수집·이용에 동의해 주세요'),
 })
 
 function Request({ onReqClick }) {
@@ -227,11 +227,10 @@ function Request({ onReqClick }) {
                     />
                     <label htmlFor="reqAgree">
                         위 내용에 동의합니다.
-                        개인정보수집·이용에 동의해 주세요
                     </label>
-                    <div className='error'>
+                    <span className='error'>
                         {errors.reqAgree?.message}
-                    </div>
+                    </span>
                 </div>
             </div>
                 <button 
