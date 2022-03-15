@@ -24,16 +24,16 @@ form{
             padding: 10px;
         }
     }
-    .error{
-        color: red;
-        font-size: small;
-        position: relative;
-        margin-top: 10px;
-        height: 18px;
-    }
-    .noErr{
-        color:rgba(0,0,0,0);
-    }
+}
+.error{
+    color: red;
+    font-size: small;
+    z-index: 0;
+    margin-top: 10px;
+    height: 18px;
+}
+.noErr{
+    color:rgba(0,0,0,0);
 }
 .dataPolicy{
     border-top: 2px solid black;
@@ -66,6 +66,8 @@ form{
     width:100%;
     .codeInput{
         display: inline-block;
+        background-color: white;
+        z-index: 5;
         .codeBtn{
             border: 1px solid #8f8f9d;
             border-right: none;
@@ -93,6 +95,9 @@ form{
     .fileName{
         border: 1px solid #dddddd;
         padding: 10px;
+    }
+    .condition{
+        font-size: small;
     }
     input{
         display: inline-block;

@@ -34,7 +34,8 @@ const reqData=yup.object({
         yup.string()
             .required('내용을 입력해주세요.'),
     reqAgree:
-        yup.boolean(),
+        yup.boolean()
+            .oneOf([true], '동의 해주세요'),
 })
 
 function Request({ onReqClick }) {
@@ -186,10 +187,10 @@ function Request({ onReqClick }) {
             <div className='dataBox'>
                 <div className='dataTitle'>파일 첨부</div>
                 <div className='fileInput'>
-                    <label for="file">첨부파일 추가</label>
+                    <label htmlFor="file">첨부파일 추가</label>
                     <input type="file" name="file" id="file" onChange={onFile}/>
                     {file && <div className='fileName'>{file}</div>}
-                    <div className='block'>첨부파일은 최대 5개, 30MB까지 등록 가능합니다.</div>
+                    <div className='condition block'>첨부파일은 최대 5개, 30MB까지 등록 가능합니다.</div>
                 </div>
             </div>
             <div className='dataPolicy'>
@@ -222,10 +223,12 @@ function Request({ onReqClick }) {
                         {...register('reqAgree')}
                         type="checkbox" 
                         name="reqAgree"
-                        id="" 
+                        id="reqAgree" 
                     />
+                    <label htmlFor="reqAgree">
                         위 내용에 동의합니다.
                         개인정보수집·이용에 동의해 주세요
+                    </label>
                     <div className='error'>
                         {errors.reqAgree?.message}
                     </div>
