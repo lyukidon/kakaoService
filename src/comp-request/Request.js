@@ -6,17 +6,19 @@ import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import DetailTopTitle from '../comp-details/DetailTopTitle';
 import CountryNumber from './CountryNumber';
-import '../scss/details/Request.scss';
+import '../scss/request/Request.scss';
 
 const reqData=yup.object({
     email: 
         yup.string()
-            .email('이메일을 입력해주세요.')
+            .email('example@gmail.com 형식으로 작성해주세요')
             .required('이메일을 입력해주세요.'),
     phoneNumber: 
         yup.string()
-            .min(9, "전화번호가 너무 짧습니다.")
-            .max(12,'전화번호가 너무 깁니다.'),
+            .required('전화번호를 입력하세요')
+            .min(9, "전화번호가 너무 짧습니다. 9자 이상 작성해주세요.")
+            .max(12,'전화번호가 너무 깁니다.')
+            ,
     reqCategory1: 
         yup.string()
             .notOneOf(['선택해주세요'], '카테고리를 선택해주세요')
@@ -61,6 +63,10 @@ function Request({ onReqClick }) {
     const onSelect = (event) => {
         setSelect1(event.target.value);
     }
+    const [file,setFile]=useState('');
+    const onFile=(event)=>{
+        setFile(event.target.value);
+    }
     return (
         <form onSubmit={handleSubmit(onSubmit)} >
             <Helmet>
@@ -70,7 +76,7 @@ function Request({ onReqClick }) {
             <div className='essential'>*필수입력 사항</div>
             <div className='dataBox'>
                 <div className='dataTitle'>이메일 주소*</div>
-                <div>
+                <div className='dataInputBox oneInput'>
                     <input 
                         {...register('email')} 
                         type="text" 
@@ -78,15 +84,16 @@ function Request({ onReqClick }) {
                         id="" 
                         placeholder='example@kakao.com' 
                     />
-                    <span className='error'>
+                    <div className='error'>
                         {errors.email?.message}
-                    </span>
+                    </div>
                 </div>
             </div>
             <div className='dataBox'>
                 <div className='dataTitle'>휴대폰 번호*</div>
-                <div>
-                    <CountryNumber />
+                <div className='dataInputBox numberInput'>
+                {/* //className=codeInput */}
+                    <CountryNumber /> 
                     <input 
                         {...register('phoneNumber')}
                         type="string" 
@@ -94,14 +101,15 @@ function Request({ onReqClick }) {
                         id="" 
                         placeholder='01012345678'
                     />
-                    <span className='error'>
+                    <div className='error'>
                         {errors.phoneNumber?.message}
-                    </span>
+                    </div>
                 </div>
             </div>
             <div className='dataBox'>
                 <div className='dataTitle'>문의 분류*</div>
-                <div>
+                <div className='dataInputBox categoryInput'>
+                    <div className='categoryBox inlineBlock'>
                         <select
                             {...register('reqCategory1')} 
                             onChange={onSelect}
@@ -113,6 +121,11 @@ function Request({ onReqClick }) {
                                 </option>
                             ))}
                         </select>
+                        <div className='error'>
+                            {errors.reqCategory1?.message}
+                        </div>
+                    </div>
+                    <div className=' categoryBox inlineBlock'>
                         <select 
                             {...register('reqCategory2')} 
                             name="reqCategory2"
@@ -128,48 +141,54 @@ function Request({ onReqClick }) {
                                         >
                                             {data}
                                         </option>
-                                    ))}
+                            ))}
                         </select>
-
-                    <div className='error'>
-                        {errors.reqCategory1?.message}
-                        {errors.reqCategory2?.message}
+                        <div className='error'>
+                            {errors.reqCategory2?.message}
+                        </div>
                     </div>
                 </div>
             </div>
             <div className='dataBox'>
                 <div className='dataTitle'>문의 제목*</div>
-                <input 
-                    {...register('reqTitle')}
-                    type="text" 
-                    name="reqTitle" 
-                    id="" 
-                    placeholder='제목을 입력해 주세요(20자 이내)'
-                />
-                <span className='error'>
-                    {errors.reqTitle?.message}
-                </span>
+                <div className='dataInputBox oneInput'>
+                    <input 
+                        {...register('reqTitle')}
+                        type="text" 
+                        name="reqTitle" 
+                        id="" 
+                        placeholder='제목을 입력해 주세요(20자 이내)'
+                    />
+                    <div className='error'>
+                        {errors.reqTitle?.message}
+                    </div>
+                </div>
             </div>
             <div className='dataBox'>
                 <div className='dataTitle'>문의 내용*</div>
-                <input 
-                    {...register(
-                        'reqContent',
-                        {required:true},
-                    )}
-                    type="text" 
-                    name="reqContent" 
-                    id="" 
-                />
-                <span className='error'>
-                    {errors.reqContent?.message}
-                </span>
+                <div className='dataInputBox oneInput contentInput'>
+                    <input 
+                        className='contentInput'
+                        {...register(
+                            'reqContent',
+                            {required:true},
+                        )}
+                        type="text" 
+                        name="reqContent" 
+                        id="" 
+                    />
+                    <div className={errors.reqContent?'error':'noErr'}>
+                        내용을 입력해주세요
+                    </div>
+                </div>
 
             </div>
             <div className='dataBox'>
                 <div className='dataTitle'>파일 첨부</div>
-                <div>
-                    <input type="file" name="file" id="" />
+                <div className='fileInput'>
+                    <label for="file">첨부파일 추가</label>
+                    <input type="file" name="file" id="file" onChange={onFile}/>
+                    {file && <div className='fileName'>{file}</div>}
                     <div className='block'>첨부파일은 최대 5개, 30MB까지 등록 가능합니다.</div>
                 </div>
             </div>
@@ -202,18 +221,13 @@ function Request({ onReqClick }) {
                     <input 
                         {...register('reqAgree')}
                         type="checkbox" 
-                        name="check"
+                        name="reqAgree"
                         id="" 
                     />
-                    <span>
                         위 내용에 동의합니다.
-                    </span>
-                    <span>
                         개인정보수집·이용에 동의해 주세요
-                    </span>
                     <div className='error'>
                         {errors.reqAgree?.message}
-                        {console.log(errors)}
                     </div>
                 </div>
             </div>

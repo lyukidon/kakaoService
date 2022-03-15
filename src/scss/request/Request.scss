@@ -1,0 +1,123 @@
+form{
+    margin-bottom: 105px;
+}
+.essential{
+    width: 100%;
+    text-align: right;
+    padding: 0px 0px 23px 0px;
+    border-bottom:2px solid black;
+    font-size: small;
+}
+.dataBox{
+    padding:30px 20px 5px 20px;
+    border-bottom: 1px solid grey;
+    .dataTitle{
+        width:20%;
+        margin-top: 8px;
+        display: inline-block;
+        vertical-align:top;
+    }
+    .dataInputBox{
+        display: inline-block;
+        width: 80%;
+        input{
+            padding: 10px;
+        }
+    }
+    .error{
+        color: red;
+        font-size: small;
+        position: relative;
+        margin-top: 10px;
+        height: 18px;
+    }
+    .noErr{
+        color:rgba(0,0,0,0);
+    }
+}
+.dataPolicy{
+    border-top: 2px solid black;
+    padding-top: 20px;
+    margin-bottom: 30px;
+    table{
+        border-collapse: collapse;
+        td{
+            padding: 20px 0px;
+            padding-right: 27px;
+            margin: 0px 20px;
+            border: 1px solid black;
+        }
+
+    }
+    div{
+        margin: 15px 0px;
+    }
+}
+.oneInput{
+    width: 80%;
+    input{
+        width: 95%;
+    }
+}
+.contentInput{
+    height: 200px;
+}
+.numberInput{
+    width:100%;
+    .codeInput{
+        display: inline-block;
+        .codeBtn{
+            border: 1px solid #8f8f9d;
+            border-right: none;
+            padding: 10px;
+            width: 115px;
+            color:#858585;
+        }
+    }
+    input{
+        display: inline-block;
+        width: 70%;
+    }
+}
+.categoryBox{
+    width: 50%;
+    select{
+        width: 95%;
+        padding: 10px;
+        border: 1px solid #8f8f9d;
+        background-color: white;
+    }
+}
+.fileInput{
+    display: inline-block;
+    .fileName{
+        border: 1px solid #dddddd;
+        padding: 10px;
+    }
+    input{
+        display: inline-block;
+        height: 40px;
+        padding: 0 10px;
+        vertical-align: middle;
+        border: 1px solid #dddddd;
+        width: 78%;
+        color: #999999;
+    }
+    label {
+        display: inline-block;
+        color: black;
+        padding:10px;
+        width: 525px;
+        margin-bottom: 10px;
+        border: 1px solid #dddddd;
+        cursor: pointer;
+    }
+    input[type="file"]{
+        position: absolute;
+        width: 0;
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 0;
+    }
+}

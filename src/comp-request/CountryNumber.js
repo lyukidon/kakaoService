@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import '../scss/request/CountryNumber.scss'
 
 // 국가 보여주는 코드
 function Open({ onClickSelect, countries }){
@@ -15,16 +16,18 @@ function Open({ onClickSelect, countries }){
                     onKeyDown={onClickSelect}
                     number={data.number}
                 >
-                    <span
+                    <div
+                        className='number inlineBlock'
                         number={data.number}
                     >
                         {data.number}
-                    </span>
-                    <span
+                    </div>
+                    <div
+                        className='countryName inlineBlock'
                         number={data.number}
                     >
                         {data.country}
-                    </span>
+                    </div>
                 </label>
             ))}
         </div>
@@ -58,15 +61,17 @@ function CountryNumber() {
         setToggle(!toggle);
     }
     return (
-        <div>
-            <div onClick={onToggle}>
+        <div className='codeInput'>
+            <div className='codeBtn' onClick={onToggle}>
                 {selected ? selected : '+82'}
             </div>
             {toggle &&
-                <Open 
-                    onClickSelect={onClickSelect}
-                    countries={countries}    
-                />
+                <div className='numberBox'>
+                    <Open 
+                        onClickSelect={onClickSelect}
+                        countries={countries}    
+                    />
+                </div>
             }
         </div>
     );
