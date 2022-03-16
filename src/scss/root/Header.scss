@@ -28,6 +28,14 @@ a{
     div{
         margin-top: 10px
     }
+    .searchIcon{
+            background: url('../../../public/ico.png') no-repeat 0 0;
+            width: 24px;
+            height: 24px;
+            position: relative;
+            top: -6px;
+            left: 5px;
+    }
 }
 .recommend{
     margin-right: 5px;
