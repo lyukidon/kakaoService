@@ -25,9 +25,12 @@
         .tipsContentBox{
             width: 83%;
         }
-        .arrow{
+        .downwards-arrow{
             float:right;
             vertical-align: top;
+            background: url('../../../public/ico.png') no-repeat -28px -51px;
+            width: 15px;
+            height: 10px;
         }
         .tipsFontBold{
             font-weight: bold;

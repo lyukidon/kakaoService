@@ -14,8 +14,9 @@ const reqData=yup.object({
             .email('example@gmail.com 형식으로 작성해주세요')
             .required('이메일을 입력해주세요.'),
     phoneNumber: 
-        yup.string()
+        yup.string('숫자만 입력해주세요')
             .required('전화번호를 입력하세요')
+            .matches(/^[0-9]+$/, '숫자만 입력하세요')
             .min(9, "전화번호가 너무 짧습니다. 9자 이상 작성해주세요.")
             .max(12,'전화번호가 너무 깁니다.')
             ,
@@ -100,7 +101,7 @@ function Request({ onReqClick }) {
                     <CountryNumber /> 
                     <input 
                         {...register('phoneNumber')}
-                        type="string" 
+                        type="text" 
                         name="phoneNumber" 
                         id="" 
                         placeholder='01012345678'
