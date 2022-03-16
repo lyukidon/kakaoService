@@ -4,13 +4,9 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import '../scss/details/SideMenu.scss';
 
-function SideButton({ title, url }) {
-    const menuurl=`/kakaotalk${url}`;
-    // const [toggle,setToggle]=useState(true);
-    // const onToggle=()=>{
-    //     setToggle(!toggle)
-    //     console.log('test')
-    // }
+function SideButton({ title, category }) {
+    const menuurl=`/kakaotalk/?category=${category}`;
+
     return (
         <div className='sideButton'>
             <NavLink 
@@ -27,7 +23,7 @@ function SideButton({ title, url }) {
 }
 SideButton.propTypes={
     title: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
 }
 
 function SideMenu() {
@@ -54,7 +50,7 @@ function SideMenu() {
                 {name}
             </h3>
             {menus.map(data=>(
-                    <SideButton key={data.id} title={data.title} url={data.url}/>
+                    <SideButton key={data.id} title={data.title} category={data.category}/>
             ))}
         </div>
     );
