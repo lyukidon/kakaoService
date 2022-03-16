@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import '../scss/details/SideMenu.scss';
 
 function SideButton({ title, url }) {
-    const menuurl=`/kakaotalk/${url}`;
+    const menuurl=`/kakaotalk${url}`;
+    // const [toggle,setToggle]=useState(true);
+    // const onToggle=()=>{
+    //     setToggle(!toggle)
+    //     console.log('test')
+    // }
     return (
-        <div className='SideButton'>
-            <Link to={menuurl}>
+        <div className='sideButton'>
+            <NavLink 
+                to={menuurl} 
+                className={({isActive}) => isActive ? 'active' : 'inactive'}
+            >
                 <b>
                     {title} 
                 </b>
-            </Link>
+            </NavLink>
         </div>
         
     );
