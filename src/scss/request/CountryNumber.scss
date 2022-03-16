@@ -8,9 +8,13 @@
         padding: 7px 15px;
         font-size: small;
         display: block;
+        cursor: pointer;
     }
-    label:hover{
+    .countryNumbers:hover{
         background-color:whitesmoke ;
+    }
+    .countryNumbers:active{
+        background-color: grey;
     }
     .number{
         width: 70px;
