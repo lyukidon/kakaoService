@@ -2,12 +2,15 @@ import React, {useEffect,useState} from 'react';
 import { Helmet }  from 'react-helmet';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import qs from 'qs';
 import Notice from '../comp-root/Notice';
 import SideMenu from '../comp-details/SideMenu';
 import Detail from '../comp-details/Detail';
 
 
-function Kakaotalk({ title }) {
+function Kakaotalk({ title, location }) {
+    const query=qs.parse(location.search,{ignoreQueryPrefix: true})
+    console.log(query)
     const [tipsData, setTipsData]=useState({
         lang: '',
         classify:'',

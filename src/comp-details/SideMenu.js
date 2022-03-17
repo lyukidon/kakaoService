@@ -26,23 +26,7 @@ SideButton.propTypes={
     category: PropTypes.string.isRequired,
 }
 
-function SideMenu() {
-    const [sideData, setSideData]=useState({
-        name:'',
-        menus:[]
-    });
-    const {name, menus} = sideData;
-    useEffect(()=>{
-        axios.get('/data/sideMenuData.json')
-            .then(res=>{
-                const sidedata= res.data.filter(data=>data.name === '카카오톡')[0];
-                setSideData({
-                    ...sideData,
-                    name: sidedata.name,
-                    menus: sidedata.menus,
-                })
-            })
-    },[])
+function SideMenu({name, menus}) {
 
     return (
         <div className='inlineBlock sideMenu'>

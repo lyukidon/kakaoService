@@ -1,5 +1,6 @@
 [
     {
+        "service": 0,
         "name": "카카오톡",
         "menus":[
             {
