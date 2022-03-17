@@ -36,7 +36,9 @@ export default ()=>{
 			});
     const [platform, setPlatform]=useState([]);
     const [content,setContent]=useState([]);
-
+	useEffect(()=>{
+		onQuery()
+	},[]);
 	useEffect(()=>{
 		axios.get('/data/sideMenuData.json')
 			.then(res=> {

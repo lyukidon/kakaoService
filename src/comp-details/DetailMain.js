@@ -12,11 +12,11 @@ function DetailMain({ classify, content, platform }) {
     return (
         <div>
             <DetailTopTitle title={classify} />
-            {platform.length !== 0 && <Platform 
-                platform={platform} 
-                onClickPlatform={onClickPlatform} 
-            />}
+            {platform.length !== 0 && 
+                <Platform platform={platform} />
+            }
             <DetailContent content={content[contentType]} />
+
         </div>
     );
 }
