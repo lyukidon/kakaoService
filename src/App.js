@@ -4,10 +4,7 @@ import Option from './comp-root/Option';
 import Header from './comp-root/Header';
 import Footer from './comp-root/Footer';
 import Root from './compRoute/Root';
-import Kakaotalk from './compRoute/Kakaotalk';
 import RouteMenu from './compRoute/RouteMenu'
-import General from './compRoute/General';
-import Error from './Error';
 
 function App (){
   const titleBack='| 카카오 고객센터'
@@ -26,7 +23,6 @@ function App (){
             />} 
             >
           </Route>
-          <Route element={<Error />}></Route>
       </Routes>
       <Footer />
     </div>
