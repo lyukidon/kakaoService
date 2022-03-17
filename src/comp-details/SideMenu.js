@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import '../scss/details/SideMenu.scss';
 
-function SideButton({ title, category }) {
-    const menuurl=`/kakaotalk/?category=${category}`;
+function SideButton({service, title, category }) {
+    const menuurl=`/helps?service=${service}category=${category}`;
 
     return (
         <div className='sideButton'>
@@ -26,7 +25,7 @@ SideButton.propTypes={
     category: PropTypes.string.isRequired,
 }
 
-function SideMenu({name, menus}) {
+function SideMenu({service, name, menus}) {
 
     return (
         <div className='inlineBlock sideMenu'>
@@ -34,7 +33,12 @@ function SideMenu({name, menus}) {
                 {name}
             </h3>
             {menus.map(data=>(
-                    <SideButton key={data.id} title={data.title} category={data.category}/>
+                    <SideButton 
+                        key={data.id} 
+                        service={service} 
+                        title={data.title} 
+                        category={data.category}
+                    />
             ))}
         </div>
     );
