@@ -3,12 +3,13 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../scss/details/SideMenu.scss';
 
-function SideButton({service, title, category }) {
-    const menuurl=`/helps?service=${service}category=${category}`;
+function SideButton({onQuery, service, title, category }) {
+    const menuurl=`/helps?service=${service}&category=${category}`;
 
     return (
-        <div className='sideButton'>
+        <div className='sideButton' onClick={onQuery}>
             <NavLink 
+                
                 to={menuurl} 
                 className={({isActive}) => isActive ? 'active' : 'inactive'}
             >
@@ -25,7 +26,7 @@ SideButton.propTypes={
     category: PropTypes.string.isRequired,
 }
 
-function SideMenu({service, name, menus}) {
+function SideMenu({onQuery, service, name, menus}) {
 
     return (
         <div className='inlineBlock sideMenu'>
@@ -35,6 +36,7 @@ function SideMenu({service, name, menus}) {
             {menus.map(data=>(
                     <SideButton 
                         key={data.id} 
+                        onQuery={onQuery}
                         service={service} 
                         title={data.title} 
                         category={data.category}

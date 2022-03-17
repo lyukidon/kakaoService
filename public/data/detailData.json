@@ -1,6 +1,7 @@
 [
     {
         "lang":"kor",
+        "category":0,
         "classify":"유용한 도움말",
         "platform":[],
         "contents":[[
@@ -47,6 +48,7 @@
           ]]
     },{
       "lang":"kor",
+      "category":1,
       "classify":"일반",
       "platform":["안드로이드","iOS","Windows"],
       "contents":[
