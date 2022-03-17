@@ -7,7 +7,7 @@ import Notice from '../comp-root/Notice';
 import SideMenu from '../comp-details/SideMenu';
 import Detail from '../comp-details/Detail';
 
-export default ({ loaction })=>{
+export default ()=>{
 	const [query,setQuery]=useState({
 		service:0,
 		category:0
