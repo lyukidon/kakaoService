@@ -13,7 +13,7 @@ export default ()=>{
 		category:0
 	})
 	const onQuery=()=>{
-		console.log('click')
+		console.log(location.search)
 		const data = qs.parse(location.search,{ ignoreQueryPrefix:true })
 		setQuery({
 			...query,
