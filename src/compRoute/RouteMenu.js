@@ -69,8 +69,10 @@ export default ()=>{
 	return(
 		<div>
 			<Notice />
-			<SideMenu onQuery={onQuery} service={services.service} name={services.name} menus={menus} />
-			<Detail tipsData={tipsData} content={content} platform={platform} />
+			<div className='common-width'>
+				<SideMenu onQuery={onQuery} service={services.service} name={services.name} menus={menus} />
+				<Detail tipsData={tipsData} content={content} platform={platform} />
+			</div>
 		</div>
 	)
 }
