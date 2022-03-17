@@ -7,9 +7,13 @@
 }
 .SideButton{
     margin-bottom: 14px;
-    a{
-        text-decoration: none;
-        color: grey;
-        font-size: 14px;
-    }
+}
+.active{
+    text-decoration-line: underline;
+    color: black;
+}
+.inactive{
+    text-decoration: none;
+    color: grey;
+    font-size: 14px;
 }

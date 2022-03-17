@@ -10,7 +10,7 @@ function ContentTitle({ id, toggle, tips, content, explain, onClickToggle}){
                 <div className={explain && toggle ? "tipsFontBold": "tipsFontNormal"}>{content}</div>
                 {explain && <div className='tipsExplain'>{explain}</div>}
             </div>
-            <div className='arrow inlineBlock'>&#11167;</div>
+            <div className='downwards-arrow inlineBlock' />
         </div>
     )
 }

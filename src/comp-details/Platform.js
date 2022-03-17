@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import qs from 'qs';
 import '../scss/details/Platform.scss';
+import { NavLink } from 'react-router-dom';
 
-function Platform({ platform, onClickPlatform }){
+function Platform({ platform, onQueryPlatform }){
+    const query=qs.parse(location.search, {ignoreQueryPrefix:true});
+    const {service, category} = query;
     return (
         <div className='platformBox'>
             {platform.map((data,index,array)=>(
@@ -10,10 +14,12 @@ function Platform({ platform, onClickPlatform }){
                         <span className='button'
                             role='button'
                             tabIndex={index} 
-                            onClick={onClickPlatform}
-                            onKeyDown={onClickPlatform}
-                        >
-                            {data}
+                            onClick={onQueryPlatform}
+                            onKeyDown={onQueryPlatform}
+                        >   
+                            <NavLink to={`?service=${service}&category=${category}&platform=${index}`}>
+                                {data}
+                            </NavLink>
                         </span>
                         {index !== array.length-1 && <span>&bull;</span>}
                     </div>
@@ -26,4 +32,4 @@ Platform.propTypes={
     onClickPlatform: PropTypes.func.isRequired,
 }
                                                                           
-export default Platform
+export default Platform;

@@ -4,8 +4,7 @@ import Option from './comp-root/Option';
 import Header from './comp-root/Header';
 import Footer from './comp-root/Footer';
 import Root from './compRoute/Root';
-import Kakaotalk from './compRoute/Kakaotalk';
-import General from './compRoute/General';
+import RouteMenu from './compRoute/RouteMenu'
 
 function App (){
   const titleBack='| 카카오 고객센터'
@@ -14,24 +13,16 @@ function App (){
       <Option />
       <Header />
       <Routes>
+        <Route path='helps' element={<RouteMenu />}>
+          <Route path='?'element={<RouteMenu />}></Route>
+        </Route>
         <Route 
           path='/' 
           element={<Root 
-                    title={`고객센터 ${titleBack}`} 
-                  />} 
-        />
-        <Route 
-          path='/kakaotalk' 
-          element={<Kakaotalk
-                    title={`카카오톡 - 유용한 도움말 ${titleBack}`}
-                  />} 
-        />
-        <Route
-          path='/kakaotalk/general'
-          element={<General
-                      title={`카카오톡 - 일반 ${titleBack}`}
-                  />}
-        />
+            title={`고객센터 ${titleBack}`} 
+            />} 
+            >
+          </Route>
       </Routes>
       <Footer />
     </div>

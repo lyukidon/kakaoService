@@ -1,44 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import '../scss/details/SideMenu.scss';
 
-function SideButton({ title, url }) {
-    const menuurl=`/kakaotalk/${url}`;
+function SideButton({onQuery, service, title, category }) {
+    const menuurl=`/helps?service=${service}&category=${category}`;
+
     return (
-        <div className='SideButton'>
-            <Link to={menuurl}>
+        <div className='sideButton' onClick={onQuery}>
+            <NavLink 
+                
+                to={menuurl} 
+                className={({isActive}) => isActive ? 'active' : 'inactive'}
+            >
                 <b>
                     {title} 
                 </b>
-            </Link>
+            </NavLink>
         </div>
         
     );
 }
 SideButton.propTypes={
     title: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
 }
 
-function SideMenu() {
-    const [sideData, setSideData]=useState({
-        name:'',
-        menus:[]
-    });
-    const {name, menus} = sideData;
-    useEffect(()=>{
-        axios.get('/data/sideMenuData.json')
-            .then(res=>{
-                const sidedata= res.data.filter(data=>data.name === '카카오톡')[0];
-                setSideData({
-                    ...sideData,
-                    name: sidedata.name,
-                    menus: sidedata.menus,
-                })
-            })
-    },[])
+function SideMenu({onQuery, service, name, menus}) {
 
     return (
         <div className='inlineBlock sideMenu'>
@@ -46,7 +34,13 @@ function SideMenu() {
                 {name}
             </h3>
             {menus.map(data=>(
-                    <SideButton key={data.id} title={data.title} url={data.url}/>
+                    <SideButton 
+                        key={data.id} 
+                        onQuery={onQuery}
+                        service={service} 
+                        title={data.title} 
+                        category={data.category}
+                    />
             ))}
         </div>
     );
