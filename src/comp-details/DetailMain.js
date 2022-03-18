@@ -14,9 +14,8 @@ function DetailMain({ classify, content, platform }) {
     const { osType } = useSelector(state=> state)
     //Redux store 에서 데이터 변경하기 (useState처럼);
     const dispatch = useDispatch();
-    const onSetOS=(idx)=> {
-        dispatch(setOS(idx));
-    }
+    const onSetOS=(idx)=> dispatch(setOS(idx)); // 매개변수가 데이터로 들어감
+
     const onQueryPlatform=()=>{
         const query=qs.parse(location.search, {ignoreQueryPrefix:true});
         query.platform && onSetOS(query.platform);
