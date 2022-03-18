@@ -4,15 +4,11 @@
         "name": "카카오톡",
         "menus":[
             {
-                "category": 0,
-                "title":"유용한 도움말"
-            },
-            {
-                "category":1,
+                "category":0,
                 "title":"일반"
             },
             {   
-                "category":2,
+                "category":1,
                 "title": "가입/변경/탈퇴"
 
             }
