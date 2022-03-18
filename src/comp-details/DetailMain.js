@@ -20,7 +20,6 @@ function DetailMain({ classify, content, platform }) {
     const onQueryPlatform=()=>{
         const query=qs.parse(location.search, {ignoreQueryPrefix:true});
         query.platform && onSetOS(query.platform);
-        console.log()
     };
     useEffect(()=>{
         onQueryPlatform();
