@@ -2,18 +2,27 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import qs from 'qs';
+import { useSelector, useDispatch } from 'react-redux';
+import { setOS } from '../modules/osType';
 // component
 import Notice from '../comp-root/Notice';
 import SideMenu from '../comp-details/SideMenu';
 import Detail from '../comp-details/Detail';
 
 export default ()=>{
+    //Redux store 에서 데이터 변경하기 (useState처럼);
+    const dispatch = useDispatch();
+    const onSetOS=(idx)=> {
+        dispatch(setOS(idx));
+    }    
+
 	const [query,setQuery]=useState({
 		service:0,
 		category:0
 	})
 	const onQuery=()=>{
 		const data = qs.parse(location.search,{ ignoreQueryPrefix:true })
+		onSetOS(0)
 		setQuery({
 			...query,
 			service: data.service,

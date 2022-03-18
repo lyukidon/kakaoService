@@ -1,11 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+
 import '../scss/details/SideMenu.scss';
 
 function SideButton({onQuery, service, title, category }) {
     const menuurl=`/helps?service=${service}&category=${category}`;
-
     return (
         <div className='sideButton' onClick={onQuery}>
             <NavLink 

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import qs from 'qs';
-import { connect } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
 
 import DetailTopTitle from './DetailTopTitle';
@@ -26,9 +25,7 @@ function DetailMain({ classify, content, platform }) {
     useEffect(()=>{
         onQueryPlatform();
     },[]);
-    useEffect(()=>{
 
-    })
     return (
         <div>
             <DetailTopTitle title={classify} />
