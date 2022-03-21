@@ -9,7 +9,7 @@ function RequestBtn() {
             <div className='inlineBlock'>
                 원하시는 답변을 찾지 못하셨다면, 고객센터로 문의해 주세요
             </div>
-            <Link className='inlineBlock reqButton' >
+            <Link to={`/requests`} className='inlineBlock reqButton' >
                     문의하기
             </Link>
         </div>
