@@ -17,7 +17,9 @@ function Platform({ platform, onQueryPlatform }){
                             onClick={onQueryPlatform}
                             onKeyDown={onQueryPlatform}
                         >   
-                            <NavLink to={`?service=${service}&category=${category}&platform=${index}`}>
+                            <NavLink 
+                                to={`?service=${service}&category=${category}&platform=${index}`}
+                            >
                                 {data}
                             </NavLink>
                         </span>

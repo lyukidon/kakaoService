@@ -12,7 +12,6 @@ function Notice({ title, content, classify }) {
     //     category: state.breadCrumb.category,
     // })
     );
-    console.log(breadCrumb)
     return (
         <div className='noticeBox'>
             <div  className='common-width'>

@@ -1,6 +1,10 @@
-[
-    {
-      "lang":"kor",
+[ 
+  {
+    "service":0,
+    "service_name":"카카오톡",
+    "service_eng":"kakaotalk",
+    "data": [
+      {
       "category":0,
       "classify":"일반",
       "platform":["안드로이드","iOS","Windows"],
@@ -160,8 +164,7 @@
           }
         ]
       ]
-    },{
-      "lang":"kor",
+      },{
       "category":1,
       "classify":"가입/변경/탈퇴",
       "platform":["안드로이드","iOS","안드로이드(원스토어)"],
@@ -260,5 +263,7 @@
           }
         ]
       ]
-    }
-  ]
+      }
+    ]
+  }
+]

@@ -39,7 +39,6 @@ export default ()=>{
 
 	//detail data
 	const [tipsData, setTipsData]=useState({
-				lang: '',
 				classify:'',
 			});
     const [platform, setPlatform]=useState([]);
@@ -48,39 +47,75 @@ export default ()=>{
 		onQuery()
 	},[]);
 	useEffect(()=>{
-		axios.get('/data/sideMenuData.json')
-			.then(res=> {
-				const data=res.data.filter(c => c.service == service)[0]
+		axios.get('/data/detailData.json')
+			.then(res => {
+				// side
+				const side=res.data.filter(c => c.service == service)[0];
+				const name =  side.service_name;
+				const sidemenus = side.data.reduce((arr,data) => [...arr, {
+					"title": data.classify,
+					"category": data.category,
+				}], []);
 				setServices({
 					...services,
-					service: data.service,
-					name: data.name
+					service: side.service,
+					name: name
 				})
 				setMenus([
-			
-					...data.menus
+					...sidemenus
 				])
-			})
-
-		axios.get('/data/detailData.json')
-			.then(res=>{
-				const object=res.data.filter(c=>c.category == category)[0]
+				// detail
+				const detail=side.data.filter(c=>c.category == category)[0];
 				setTipsData({
 					...tipsData,
-					lang: object.lang,
-					classify: object.classify,
+					classify: detail.classify,
 				})
-				setPlatform([ ...object.platform])
-				setContent([ ...object.contents])
-			});
-		},[query])
+				setPlatform([ ...detail.platform])
+				setContent([ ...detail.contents])
+				console.log(detail)
+			})
+		// axios.get('/data/sideMenuData.json')
+		// 	.then(res=> {
+		// 		const data=res.data.filter(c => c.service == service)[0]
+		// 		setServices({
+		// 			...services,
+		// 			service: data.service,
+		// 			name: data.name
+		// 		})
+		// 		setMenus([
+			
+		// 			...data.menus
+		// 		])
+		// 	})
+
+		// axios.get('/data/detailData.json')
+		// 	.then(res=>{
+		// 		const object=res.data.filter(c=>c.category == category)[0]
+		// 		setTipsData({
+		// 			...tipsData,
+		// 			lang: object.lang,
+		// 			classify: object.classify,
+		// 		})
+		// 		setPlatform([ ...object.platform])
+		// 		setContent([ ...object.contents])
+		// 	});
+	},[query])
 
 	return(
 		<div>
 			<Notice />
 			<div className='common-width'>
-				<SideMenu onQuery={onQuery} service={services.service} name={services.name} menus={menus} />
-				<Detail tipsData={tipsData} content={content} platform={platform} />
+				<SideMenu 
+					onQuery={onQuery} 
+					service={services.service} 
+					name={services.name} 
+					menus={menus} 
+				/>
+				<Detail 
+					tipsData={tipsData} 
+					content={content} 
+					platform={platform} 
+				/>
 			</div>
 		</div>
 	)
