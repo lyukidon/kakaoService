@@ -3,18 +3,20 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import qs from 'qs';
 import { useSelector, useDispatch } from 'react-redux';
+import { setService, setCategory } from '../modules/breadCrumb';
 import { setOS } from '../modules/osType';
 // component
-import Notice from '../comp-root/Notice';
+import BreadCrumbs from '../comp-root/BreadCrumbs';
 import SideMenu from '../comp-details/SideMenu';
 import Detail from '../comp-details/Detail';
 
 export default ()=>{
-    //Redux store 에서 데이터 변경하기 (useState처럼);
     const dispatch = useDispatch();
+    // Redux store 에서 데이터 변경하기 (useState처럼);
+	// side버튼 누르면 os선택 값을 0으로 하기 위해 추가
     const onSetOS=(idx)=> {
         dispatch(setOS(idx));
-    }    
+    }
 
 	const [query,setQuery]=useState({
 		service:0,
@@ -72,19 +74,18 @@ export default ()=>{
 				})
 				setPlatform([ ...detail.platform])
 				setContent([ ...detail.contents])
-				console.log(content)
 			})
 	},[query])
 
 	return(
 		<div>
-			<Notice />
+			<BreadCrumbs />
 			<div className='common-width'>
 				<SideMenu 
 					onQuery={onQuery} 
-					service={services.service} 
+					service={services.service}
 					name={services.name} 
-					menus={menus} 
+					menus={menus}
 				/>
 				<Detail 
 					tipsData={tipsData} 

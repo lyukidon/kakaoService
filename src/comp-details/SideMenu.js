@@ -6,23 +6,27 @@ import { setService, setCategory } from '../modules/breadCrumb';
 
 import '../scss/details/SideMenu.scss';
 
-function SideButton({onQuery, service, title, category }) {
+function SideButton({onQuery, service,name, title, category }) {
     const dispatch=useDispatch();
-    const onService=(data)=> dispatch(setService(data));
-    const onCategory=(data)=> dispatch(setCategory(data));
-    const onClickBtn=(service, category)=>{
+    const onService=(service, serviceName)=> dispatch(setService(service,serviceName));
+    const onCategory=(category,categoryName)=> dispatch(setCategory(category,categoryName));
+    const onClickBtn=()=>{
         onQuery();
-        onService(service);
-        onCategory(category);
+        onService(service,name)
+        onCategory(category, title);
     }
     useEffect(()=>{
         onClickBtn();
     },[])
     const menuurl=`/helps?service=${service}&category=${category}`;
     return (
-        <div className='sideButton' onClick={()=>onClickBtn(service,category)}>
-            <NavLink 
-                
+        <div 
+            className='sideButton'
+            onClick={
+                ()=>onClickBtn(category,title)
+            }
+        >
+            <NavLink
                 to={menuurl} 
                 className={({isActive}) => isActive ? 'active' : 'inactive'}
             >
@@ -40,18 +44,18 @@ SideButton.propTypes={
 }
 
 function SideMenu({onQuery, service, name, menus}) {
-
     return (
         <div className='inlineBlock sideMenu'>
             <h3>
                 {name}
             </h3>
             {menus.map(data=>(
-                    <SideButton 
-                        key={data.id} 
+                    <SideButton
+                        key={data.id}
                         onQuery={onQuery}
-                        service={service} 
-                        title={data.title} 
+                        service={service}
+                        name={name}
+                        title={data.title}
                         category={data.category}
                     />
             ))}

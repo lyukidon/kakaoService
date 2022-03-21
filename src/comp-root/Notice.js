@@ -1,17 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import '../common.scss';
 import '../scss/root/Notice.scss';
 
-function Notice({ title, content, classify }) {
-    const { breadCrumb } = useSelector(state => state
-    //     ({        
-    //     service: state.breadCrumb.service,
-    //     category: state.breadCrumb.category,
-    // })
-    );
+function Notice({ title, content }) {
     return (
         <div className='noticeBox'>
             <div  className='common-width'>
@@ -20,8 +13,7 @@ function Notice({ title, content, classify }) {
                         <strong>{title}</strong>
                     </Link>
                 </span>
-                <span>{breadCrumb.service}</span>
-                <span>{breadCrumb.category}</span>
+                <span>{content}</span>
             </div>
         </div>
     );
