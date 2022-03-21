@@ -7,7 +7,6 @@ import '../scss/root/Notice.scss';
 
 function Notice({ title, content, classify }) {
     const { breadCrumb } = useSelector(state => state);
-    console.log(breadCrumb);
     return (
         <div className='noticeBox'>
             <div  className='common-width'>
