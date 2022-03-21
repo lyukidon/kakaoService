@@ -15,6 +15,7 @@ function SideButton({onQuery, service,name, title, category }) {
         onService(service,name)
         onCategory(category, title);
     }
+    // 이 부분 유용한 도움말 만든 후 삭제하기
     useEffect(()=>{
         onClickBtn();
     },[])
@@ -27,8 +28,11 @@ function SideButton({onQuery, service,name, title, category }) {
             }
         >
             <NavLink
-                to={menuurl} 
-                className={({isActive}) => isActive ? 'active' : 'inactive'}
+                to={menuurl}
+                className={
+                    ({isActive}) => // (data) => data.isActive ? 이런식으로 변경가능
+                    !isActive ? 'active' : 'inactive'
+                }
             >
                 <b>
                     {title} 
