@@ -19,7 +19,7 @@ function Detail({ tipsData, content, platform }) {
     return (
         <div className='inlineBlock Detail'>
             {
-                useful ? <UsefulTips /> : !reqClick ?
+                !reqClick ?
                 <>
                     <DetailMain
                         key={tipsData.lang}

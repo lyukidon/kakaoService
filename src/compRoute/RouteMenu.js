@@ -72,33 +72,8 @@ export default ()=>{
 				})
 				setPlatform([ ...detail.platform])
 				setContent([ ...detail.contents])
-				console.log(detail)
+				console.log(content)
 			})
-		// axios.get('/data/sideMenuData.json')
-		// 	.then(res=> {
-		// 		const data=res.data.filter(c => c.service == service)[0]
-		// 		setServices({
-		// 			...services,
-		// 			service: data.service,
-		// 			name: data.name
-		// 		})
-		// 		setMenus([
-			
-		// 			...data.menus
-		// 		])
-		// 	})
-
-		// axios.get('/data/detailData.json')
-		// 	.then(res=>{
-		// 		const object=res.data.filter(c=>c.category == category)[0]
-		// 		setTipsData({
-		// 			...tipsData,
-		// 			lang: object.lang,
-		// 			classify: object.classify,
-		// 		})
-		// 		setPlatform([ ...object.platform])
-		// 		setContent([ ...object.contents])
-		// 	});
 	},[query])
 
 	return(
