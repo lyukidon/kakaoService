@@ -6,7 +6,6 @@ import '../scss/details/RequestBtn.scss';
 
 function RequestBtn() {
     const { breadCrumb }=useSelector(state => state);
-    console.log(breadCrumb)
     return (
         <div className='RequestBox'>
             <div className='inlineBlock'>

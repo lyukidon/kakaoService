@@ -3,7 +3,7 @@
         "id": 0,
         "title":"카카오톡",
         "src":"/img/카카오톡.png",
-        "url":"/helps?service=0&category=0"
+        "url":"/helps?service=0"
     },{
         "id": 1,
         "title":"카카오계정",

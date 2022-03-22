@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import '../scss/details/DetailContent.scss'
 
@@ -63,15 +63,20 @@ Content.propTypes={
 }
 
 function DetailContent({ content }){
+    const [data,setData]=useState([])
+    useEffect(()=>{
+        setData([...content])
+        console.log(data)
+    },[content])
     return(
         <div className="tips">
-            {content.map((data, index, array) => {
+            {data.map((data, index, array) => {
                 const tips = data.id !== array.length ? 'tipsBox BottomLine' : 'tipsBox';
                 return (
                     <Content
                         key={data.id}
                         tips={tips}
-                        id={data.id}
+                        id={index+1}
                         content={data.content}
                         explain={data.explain}
                     />

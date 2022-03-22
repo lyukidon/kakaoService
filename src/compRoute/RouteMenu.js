@@ -9,6 +9,7 @@ import { setOS } from '../modules/osType';
 import BreadCrumbs from '../comp-root/BreadCrumbs';
 import SideMenu from '../comp-details/SideMenu';
 import Detail from '../comp-details/Detail';
+import UsefulTips from '../comp-details/UsefulTips';
 
 export default ()=>{
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ export default ()=>{
 
 	const [query,setQuery]=useState({
 		service:0,
-		category:0
+		category:undefined,
 	})
 	const onQuery=()=>{
 		const data = qs.parse(location.search,{ ignoreQueryPrefix:true })
@@ -34,15 +35,19 @@ export default ()=>{
 	const { service, category }=query
 	// side data
 	const [services, setServices]=useState({
-				service:0,
+		service:0,
 				name:'',
 			})
-	const [menus, setMenus]=useState([])
-
+	const [menus, setMenus]=useState([]);
+	
+	const [useful,setUseful]=useState([]);
+	const onResetUseful=()=>{
+		setUseful([])
+	}
 	//detail data
 	const [tipsData, setTipsData]=useState({
-				classify:'',
-			});
+		classify:'',
+	});
     const [platform, setPlatform]=useState([]);
     const [content,setContent]=useState([]);
 	useEffect(()=>{
@@ -50,8 +55,8 @@ export default ()=>{
 	},[]);
 	useEffect(()=>{
 		axios.get('/data/detailData.json')
-			.then(res => {
-				// side
+		.then(res => {
+			// side
 				const side=res.data.filter(c => c.service == service)[0];
 				const name =  side.service_name;
 				const sidemenus = side.data.reduce((arr,data) => [...arr, {
@@ -66,17 +71,34 @@ export default ()=>{
 				setMenus([
 					...sidemenus
 				])
+				// usefultips
+				let arrAllContent=[]
+				for (let i=0;i<side.data.length;i++){
+					for (let j=0;j<side.data[i].contents.length;j++){
+						for (let k=0;k<side.data[i].contents[j].length;k++){
+							// console.log('i: ', i, ' j: ',j,' k: ', k)
+							arrAllContent.push(side.data[i].contents[j][k]);
+						}
+					}
+				}
+				let arr=[];
+				for (let i=0;i<10;i++){
+					arr.push(arrAllContent[Math.floor(Math.random() * arrAllContent.length)]);
+				}
+				
+				setUseful( [...arr] );
 				// detail
-				const detail=side.data.filter(c=>c.category == category)[0];
-				setTipsData({
-					...tipsData,
-					classify: detail.classify,
-				})
-				setPlatform([ ...detail.platform])
-				setContent([ ...detail.contents])
+				if (category){
+					const detail=side.data.filter(c=>c.category == category)[0];
+					setTipsData({
+						...tipsData,
+						classify: detail.classify,
+					})
+					setPlatform([ ...detail.platform])
+					setContent([ ...detail.contents])
+				}
 			})
 	},[query])
-
 	return(
 		<div>
 			<BreadCrumbs />
@@ -86,12 +108,19 @@ export default ()=>{
 					service={services.service}
 					name={services.name} 
 					menus={menus}
+					onResetUseful={onResetUseful}
 				/>
-				<Detail 
-					tipsData={tipsData} 
-					content={content} 
-					platform={platform} 
-				/>
+				{
+					query.category === undefined ?
+
+					<UsefulTips useful={useful}/>
+					:
+					<Detail 
+						tipsData={tipsData} 
+						content={content} 
+						platform={platform} 
+					/>
+				}
 			</div>
 		</div>
 	)
