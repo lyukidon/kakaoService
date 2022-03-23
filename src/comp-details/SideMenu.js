@@ -6,20 +6,16 @@ import { setService, setCategory } from '../modules/breadCrumb';
 
 import '../scss/details/SideMenu.scss';
 
-function SideButton({onQuery, service,name, title, category, onResetUseful }) {
+function SideButton({onQuery, service,name, title, category }) {
     const dispatch=useDispatch();
-    const onService=(service, serviceName)=> dispatch(setService(service,serviceName));
     const onCategory=(category,categoryName)=> dispatch(setCategory(category,categoryName));
     const onClickBtn=()=>{
         onQuery();
-        onService(service,name)
         onCategory(category, title);
-        onResetUseful()
     }
     // 이 부분 유용한 도움말 만든 후 삭제하기
     useEffect(()=>{
         onQuery();
-        onService(service,name)
         onCategory(category, title);
     },[])
     const menuurl=`/helps?service=${service}&category=${category}`;
@@ -51,6 +47,11 @@ SideButton.propTypes={
 }
 
 function SideMenu({onQuery, service, name, menus, onResetUseful}) {
+    const dispatch=useDispatch();
+    const onService=(service, serviceName)=> dispatch(setService(service,serviceName));
+    useEffect(()=>{
+        onService(service, name)
+    },[name])
     return (
         <div className='inlineBlock sideMenu'>
             <h3>

@@ -29,13 +29,14 @@ export default ()=>{
 			service: data.service,
 			category: data.category,
 		})
+		console.log(new Date(),query)
 	}
 	const { service, category }=query
 	// side data
 	const [services, setServices]=useState({
 		service:0,
-				name:'',
-			})
+		name:'',
+	})
 	const [menus, setMenus]=useState([]);
 	
 	const [useful,setUseful]=useState([]);
@@ -99,23 +100,22 @@ export default ()=>{
 	},[query])
 	return(
 		<div>
-			<BreadCrumbs />
+			<BreadCrumbs onQuery={onQuery} />
 			<div className='common-width'>
 				<SideMenu 
 					onQuery={onQuery} 
 					service={services.service}
-					name={services.name} 
+					name={services.name}
 					menus={menus}
-					onResetUseful={onResetUseful}
 				/>
 				{
 					query.category === undefined ?
-
-					<Detail
-						usefulCheck={true}
-						tipsData={{classify: '유용한 도움말'}}
-						content={[useful]}
-					/>
+					<div>안녕하세요</div>
+					// <Detail
+					// 	usefulCheck={true}
+					// 	tipsData={{classify: '유용한 도움말'}}
+					// 	content={[useful]}
+					// />
 					:
 					<Detail 
 						usefulCheck={false}
