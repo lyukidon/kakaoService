@@ -5,8 +5,10 @@ import '../scss/details/DetailContent.scss'
 function UsefulTipsContent({ tips, index, content }){
     return(
         <div className={tips} >
-            <div className='tipsID inlineBlock'>{index}</div>
-            <div className='tipsFontNormal inlineBlock'>{content}</div>
+            <div className='tipsID inlineBlock' style={{color:'orange'}}>{index}</div>
+            <div className='tipsContentBox inlineBlock'>
+                <div className='tipsFontNormal inlineBlock'>{content}</div>
+            </div>
         </div>
     )
 }
