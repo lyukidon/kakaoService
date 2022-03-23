@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setOS } from '../modules/osType';
 // component
 import BreadCrumbs from '../comp-root/BreadCrumbs';
+import UsefulTips from '../comp-details/UsefulTips';
 import SideMenu from '../comp-details/SideMenu';
 import Detail from '../comp-details/Detail';
 
@@ -100,7 +101,6 @@ export default ()=>{
 	return(
 		<div>
 			<BreadCrumbs onQuery={onQuery} />
-			{console.log(new Date(), query)}
 			<div className='common-width'>
 				<SideMenu 
 					onQuery={onQuery} 
@@ -110,7 +110,7 @@ export default ()=>{
 				/>
 				{
 					query.category === undefined ?
-					<div>안녕하세요</div>
+					<UsefulTips useful={useful} />
 					// <Detail
 					// 	usefulCheck={true}
 					// 	tipsData={{classify: '유용한 도움말'}}

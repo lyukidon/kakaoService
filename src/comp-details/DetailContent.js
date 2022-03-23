@@ -63,14 +63,9 @@ Content.propTypes={
 }
 
 function DetailContent({ content }){
-    const [data,setData]=useState([])
-    useEffect(()=>{
-        setData([...content])
-        console.log(data)
-    },[content])
     return(
         <div className="tips">
-            {data.map((data, index, array) => {
+            {content.map((data, index, array) => {
                 const tips = data.id !== array.length ? 'tipsBox BottomLine' : 'tipsBox';
                 return (
                     <Content
