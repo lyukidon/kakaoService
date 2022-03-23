@@ -29,7 +29,6 @@ export default ()=>{
 			service: data.service,
 			category: data.category,
 		})
-		console.log(new Date(),query)
 	}
 	const { service, category }=query
 	// side data
@@ -101,6 +100,7 @@ export default ()=>{
 	return(
 		<div>
 			<BreadCrumbs onQuery={onQuery} />
+			{console.log(new Date(), query)}
 			<div className='common-width'>
 				<SideMenu 
 					onQuery={onQuery} 
