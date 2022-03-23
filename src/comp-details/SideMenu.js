@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setService, setCategory } from '../modules/breadCrumb';
 
 import '../scss/details/SideMenu.scss';
@@ -68,6 +68,7 @@ function SideMenu({onQuery, service, name, menus, onResetUseful}) {
                     <SideButton
                         key={data.id}
                         onQuery={onQuery}
+                        service={service}
                         onClickCategory={onClickCategory}
                         name={name}
                         title={data.title}

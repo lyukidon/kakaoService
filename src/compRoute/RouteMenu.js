@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import qs from 'qs';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setOS } from '../modules/osType';
 import { setCategory } from '../modules/breadCrumb';
 // component
@@ -19,7 +19,6 @@ export default ()=>{
         dispatch(setOS(idx));
     }
 	const onCategory=(category, name)=> setCategory(category, name);
-	const store=useSelector(state => state)
 	const [query,setQuery]=useState({
 		service:0,
 		category:undefined,
@@ -100,7 +99,6 @@ export default ()=>{
 				}
 			})
 			query.category === undefined && onCategory(undefined, '유용한 도움말')
-			console.log(store)
 	},[query])
 	return(
 		<div>
