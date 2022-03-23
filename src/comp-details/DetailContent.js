@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import '../scss/details/DetailContent.scss'
 
@@ -71,7 +71,7 @@ function DetailContent({ content }){
                     <Content
                         key={data.id}
                         tips={tips}
-                        id={data.id}
+                        id={index+1}
                         content={data.content}
                         explain={data.explain}
                     />

@@ -30,7 +30,7 @@ function DetailMain({ classify, content, platform }) {
             {platform.length !== 0 && 
                 <Platform platform={platform} onQueryPlatform={onQueryPlatform} />
             }
-            <DetailContent content={content[osType]} />
+            <DetailContent content={content.length <= 1 ? content[0] : content[osType]} />
 
         </div>
     );

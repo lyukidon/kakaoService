@@ -1,40 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import '../common.scss';
 import '../scss/root/Notice.scss';
 
-function Notice({ title, content, classify }) {
+function Notice({onQuery }) {
     const { breadCrumb } = useSelector(state => state);
-    console.log(breadCrumb);
     return (
         <div className='noticeBox'>
             <div  className='common-width'>
-                <Link to={`/`}>
-                    홈
-                </Link>
+                <div className='inlineBlock' onClick={onQuery}>
+                    <Link to={`/`}>홈</Link>
+                </div>
                 <div className='right_arrow'></div>
-                <Link to={`/helps?service=${breadCrumb.service}`}>
-                    {breadCrumb.service_name ? breadCrumb.service_name : '중간'}
-                </Link>
+                <div className='inlineBlock' onClick={onQuery}>
+                    <Link to={`/helps?service=${breadCrumb.service}`}>
+                        {breadCrumb.service_name}
+                    </Link>
+                </div>
                 <div className='right_arrow'></div>
-                <Link to={`/helps?service=${breadCrumb.service}&category=${breadCrumb.category}`}>
-                    {breadCrumb.category_name}
-                </Link>
+                <div className='inlineBlock' onClick={onQuery}>
+                    <Link 
+                        to={`/helps?service=${breadCrumb.service}&category=${breadCrumb.category}`}
+                    >
+                        {breadCrumb.category_name}
+                    </Link>
+                </div>
             </div>
         </div>
     );
-}
-Notice.defaultProps={
-    title:'',
-    content:'',
-    classify:'',
-}
-Notice.propTypes={
-    title: PropTypes.string,
-    content: PropTypes.string,
-    classify: PropTypes.string,
 }
 
 export default Notice;
