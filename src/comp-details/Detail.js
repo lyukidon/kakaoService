@@ -7,7 +7,7 @@ import RequestBtn from './RequestBtn';
 
 import '../scss/details/Detail.scss';
 
-function Detail({ tipsData, content, platform }) {
+function Detail({usefulCheck, tipsData, content, platform }) {
     return (
         <div className='inlineBlock Detail'>
                 <>
@@ -17,7 +17,7 @@ function Detail({ tipsData, content, platform }) {
                         content={content}
                         platform={platform}
                     />
-                    <RequestBtn />
+                    {!usefulCheck && <RequestBtn />}
                 </>
         </div>
     );

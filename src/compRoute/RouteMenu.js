@@ -3,13 +3,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import qs from 'qs';
 import { useSelector, useDispatch } from 'react-redux';
-import { setService, setCategory } from '../modules/breadCrumb';
 import { setOS } from '../modules/osType';
 // component
 import BreadCrumbs from '../comp-root/BreadCrumbs';
 import SideMenu from '../comp-details/SideMenu';
 import Detail from '../comp-details/Detail';
-import UsefulTips from '../comp-details/UsefulTips';
 
 export default ()=>{
     const dispatch = useDispatch();
@@ -113,9 +111,14 @@ export default ()=>{
 				{
 					query.category === undefined ?
 
-					<UsefulTips useful={useful}/>
+					<Detail
+						usefulCheck={true}
+						tipsData={{classify: '유용한 도움말'}}
+						content={[useful]}
+					/>
 					:
 					<Detail 
+						usefulCheck={false}
 						tipsData={tipsData} 
 						content={content} 
 						platform={platform} 
