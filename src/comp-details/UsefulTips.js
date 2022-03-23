@@ -1,15 +1,23 @@
 import React from 'react';
+import styled from 'styled-components';
+
 import '../scss/details/Detail.scss';
 import '../scss/details/DetailContent.scss'
 
+const Content=styled.div`
+    font-size: large;
+`
+
 function UsefulTipsContent({ tips, index, content }){
     return(
-        <div className={tips} >
-            <div className='tipsID inlineBlock' style={{color:'orange'}}>{index}</div>
+        <Content className={tips} >
+            <div className='tipsID inlineBlock' style={{color:'orange', fontSize:"larger"}}>
+                {index}
+            </div>
             <div className='tipsContentBox inlineBlock'>
                 <div className='tipsFontNormal inlineBlock'>{content}</div>
             </div>
-        </div>
+        </Content>
     )
 }
 
