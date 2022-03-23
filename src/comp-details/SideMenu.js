@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
@@ -6,18 +6,11 @@ import { setService, setCategory } from '../modules/breadCrumb';
 
 import '../scss/details/SideMenu.scss';
 
-function SideButton({onQuery, service,name, title, category }) {
-    const dispatch=useDispatch();
-    const onCategory=(category,categoryName)=> dispatch(setCategory(category,categoryName));
+function SideButton({onQuery, onClickCategory, service, title, category }) {
     const onClickBtn=()=>{
         onQuery();
-        onCategory(category, title);
+        onClickCategory(category, title);
     }
-    // 이 부분 유용한 도움말 만든 후 삭제하기
-    useEffect(()=>{
-        onQuery();
-        onCategory(category, title);
-    },[])
     const menuurl=`/helps?service=${service}&category=${category}`;
     return (
         <div 
@@ -49,9 +42,23 @@ SideButton.propTypes={
 function SideMenu({onQuery, service, name, menus, onResetUseful}) {
     const dispatch=useDispatch();
     const onService=(service, serviceName)=> dispatch(setService(service,serviceName));
+    const onCategory=(category,categoryName)=> dispatch(setCategory(category,categoryName));
+
     useEffect(()=>{
         onService(service, name)
     },[name])
+    const [categoryData,setCategoryData]=useState({
+        category: undefined,
+        category_name:''
+    })
+    const onClickCategory=(category,categoryName)=>{
+        setCategoryData({
+            ...categoryData,
+            category: category,
+            category_name:categoryName,
+        })
+        onCategory(categoryData.category, categoryData.category_name);
+    }
     return (
         <div className='inlineBlock sideMenu'>
             <h3>
@@ -61,7 +68,7 @@ function SideMenu({onQuery, service, name, menus, onResetUseful}) {
                     <SideButton
                         key={data.id}
                         onQuery={onQuery}
-                        service={service}
+                        onClickCategory={onClickCategory}
                         name={name}
                         title={data.title}
                         category={data.category}

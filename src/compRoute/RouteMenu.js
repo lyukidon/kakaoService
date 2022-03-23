@@ -4,6 +4,7 @@ import axios from 'axios';
 import qs from 'qs';
 import { useSelector, useDispatch } from 'react-redux';
 import { setOS } from '../modules/osType';
+import { setCategory } from '../modules/breadCrumb';
 // component
 import BreadCrumbs from '../comp-root/BreadCrumbs';
 import UsefulTips from '../comp-details/UsefulTips';
@@ -17,7 +18,8 @@ export default ()=>{
     const onSetOS=(idx)=> {
         dispatch(setOS(idx));
     }
-
+	const onCategory=(category, name)=> setCategory(category, name);
+	const store=useSelector(state => state)
 	const [query,setQuery]=useState({
 		service:0,
 		category:undefined,
@@ -97,6 +99,8 @@ export default ()=>{
 					setContent([ ...detail.contents])
 				}
 			})
+			query.category === undefined && onCategory(undefined, '유용한 도움말')
+			console.log(store)
 	},[query])
 	return(
 		<div>
@@ -111,11 +115,6 @@ export default ()=>{
 				{
 					query.category === undefined ?
 					<UsefulTips useful={useful} />
-					// <Detail
-					// 	usefulCheck={true}
-					// 	tipsData={{classify: '유용한 도움말'}}
-					// 	content={[useful]}
-					// />
 					:
 					<Detail 
 						usefulCheck={false}
