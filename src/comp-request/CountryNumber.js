@@ -81,7 +81,10 @@ function CountryNumber() {
         if (search === ''){
             setNation([...countries])
         }else{
-            setNation([...countries.filter(data => data.country.indexOf(search) !== -1) ])
+            setNation([
+                ...countries.filter(data => data.country.indexOf(search) !== -1)
+                .sort( (a,b) => a.country.indexOf(search)- b.country.indexOf(search)) 
+            ])
         }
     }, [search])
     // clickEvent
