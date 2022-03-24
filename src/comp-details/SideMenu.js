@@ -10,6 +10,7 @@ function SideButton({onQuery, onClickCategory, service, title, category }) {
     const onClickBtn=()=>{
         onQuery();
         onClickCategory(category, title);
+        console.log(category, title)
     }
     const menuurl=`/helps?service=${service}&category=${category}`;
     return (
@@ -51,13 +52,15 @@ function SideMenu({onQuery, service, name, menus, onResetUseful}) {
         category: undefined,
         category_name:''
     })
+    useEffect(()=>{
+        onCategory(categoryData.category, categoryData.category_name);
+    },[categoryData]);
     const onClickCategory=(category,categoryName)=>{
         setCategoryData({
             ...categoryData,
             category: category,
             category_name:categoryName,
         })
-        onCategory(categoryData.category, categoryData.category_name);
     }
     return (
         <div className='inlineBlock sideMenu'>
