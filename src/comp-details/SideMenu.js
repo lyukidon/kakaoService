@@ -13,23 +13,27 @@ function SideButton({onQuery, onClickCategory, service, title, category }) {
     }
     const menuurl=`/helps?service=${service}&category=${category}`;
     return (
-        <div 
-            className='sideButton'
-            onClick={
-                ()=>onClickBtn(category,title)
-            }
-        >
-            <NavLink
-                to={menuurl}
-                className={
-                    ({isActive}) => // (data) => data.isActive ? 이런식으로 변경가능
-                    !isActive ? 'active' : 'inactive'
+        <div>
+            <label 
+                className='sideButton'
+                onClick={
+                    ()=>onClickBtn(category,title)
                 }
+                for='sideNav'
             >
-                <b>
-                    {title} 
-                </b>
-            </NavLink>
+                <NavLink
+                    to={menuurl}
+                    id = 'sideNav'
+                    className={
+                        ({isActive}) => // (data) => data.isActive ? 이런식으로 변경가능
+                        !isActive ? 'active' : 'inactive'
+                    }
+                >
+                    <b>
+                        {title} 
+                    </b>
+                </NavLink>
+            </label>
         </div>
         
     );
