@@ -10,7 +10,6 @@ function SideButton({onQuery, onClickCategory, service, title, category }) {
     const onClickBtn=()=>{
         onQuery();
         onClickCategory(category, title);
-        console.log(category, title)
     }
     const menuurl=`/helps?service=${service}&category=${category}`;
     return (

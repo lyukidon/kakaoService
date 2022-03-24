@@ -99,7 +99,6 @@ export default ()=>{
 				}
 			})
 			query.category === undefined && onCategory(undefined, '유용한 도움말')
-			console.log(store)
 	},[query])
 	return(
 		<div>
