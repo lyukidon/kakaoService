@@ -15,7 +15,7 @@ function RequestBtn() {
                 to={`/requests?service=${breadCrumb.service}`} 
                 className='inlineBlock reqButton' 
             >
-                    문의하기
+                문의하기
             </Link>
         </div>
     );

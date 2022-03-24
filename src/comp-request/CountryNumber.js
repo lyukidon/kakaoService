@@ -69,7 +69,6 @@ function CountryNumber() {
                 ...res.data,
             ])
             setNation([...nation,...res.data])
-            console.log(countries)
         })
     },[])
     // search

@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import qs from 'qs';
-import { useDispatch } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import { setOS } from '../modules/osType';
-import { setCategory } from '../modules/breadCrumb';
+import { setCategory, setMenuArr } from '../modules/breadCrumb';
 // component
 import BreadCrumbs from '../comp-root/BreadCrumbs';
 import UsefulTips from '../comp-details/UsefulTips';
@@ -12,13 +12,15 @@ import SideMenu from '../comp-details/SideMenu';
 import Detail from '../comp-details/Detail';
 
 export default ()=>{
+	const store=useSelector(state=>state.breadCrumb)
     const dispatch = useDispatch();
     // Redux store 에서 데이터 변경하기 (useState처럼);
 	// side버튼 누르면 os선택 값을 0으로 하기 위해 추가
     const onSetOS=(idx)=> {
         dispatch(setOS(idx));
     }
-	const onCategory=(category, name)=> setCategory(category, name);
+	const onCategory=(category, name)=> dispatch(setCategory(category, name));
+	const onMenuArr=(menu)=> dispatch(setMenuArr(menu))
 	const [query,setQuery]=useState({
 		service:0,
 		category:undefined,
@@ -41,9 +43,6 @@ export default ()=>{
 	const [menus, setMenus]=useState([]);
 	
 	const [useful,setUseful]=useState([]);
-	const onResetUseful=()=>{
-		setUseful([])
-	}
 	//detail data
 	const [tipsData, setTipsData]=useState({
 		classify:'',
@@ -52,14 +51,15 @@ export default ()=>{
     const [content,setContent]=useState([]);
 	useEffect(()=>{
 		onQuery()
+		onMenuArr(menus);
 	},[]);
 	useEffect(()=>{
 		axios.get('/data/detailData.json')
 		.then(res => {
 			// side
 				const side=res.data.filter(c => c.service == service)[0];
-				const name =  side.service_name;
-				const sidemenus = side.data.reduce((arr,data) => [...arr, {
+				const name=side.service_name;
+				const sidemenus=side.data.reduce((arr,data) => [...arr, {
 					"title": data.classify,
 					"category": data.category,
 				}], []);
@@ -99,6 +99,7 @@ export default ()=>{
 				}
 			})
 			query.category === undefined && onCategory(undefined, '유용한 도움말')
+			console.log(store)
 	},[query])
 	return(
 		<div>
