@@ -1,12 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
 import '../scss/request/CountryNumber.scss'
 
+const SearchImg=styled.div`
+    display: inline-block;
+    background: url('/ico.png') no-repeat 0 -64px;
+	width: 19px;
+	height: 20px;
+    margin: 10px;
+`
 // 국가 보여주는 코드
-function Open({ onClickSelect, countries }){
+function Open({ onClickSelect, onChngSearch, countries }){
     return(
         <div>
+            <div>
+                
+                <SearchImg></SearchImg>
+                <input type="text" onChange={onChngSearch} />
+            </div>
             {countries.map( (data,index) => (
                 <div
                     role="button"
@@ -46,13 +60,30 @@ Open.propTypes={
 function CountryNumber() {
     // data
     const [countries, setCountries]=useState([])
+    const [nation,setNation]=useState([])
     useEffect(()=>{
         axios.get('/data/CountryNumber.json')
-            .then(res => setCountries([
+        .then(res => {
+            setCountries([
                 ...countries,
                 ...res.data,
-            ]))
+            ])
+            setNation([...nation,...res.data])
+            console.log(countries)
+        })
     },[])
+    // search
+    const [search,setSearch]=useState('');
+    const onChngSearch=(event)=>{
+        setSearch(event.target.value)
+    }
+    useEffect(()=>{
+        if (search === ''){
+            setNation([...countries])
+        }else{
+            setNation([...countries.filter(data => data.country.indexOf(search) !== -1) ])
+        }
+    }, [search])
     // clickEvent
     const [toggle, setToggle]=useState(false);
     const [selected, setSelected]=useState('');
@@ -76,7 +107,8 @@ function CountryNumber() {
                 <div className='numberBox'>
                     <Open 
                         onClickSelect={onClickSelect}
-                        countries={countries}    
+                        onChngSearch={onChngSearch}
+                        countries={nation}    
                     />
                 </div>
             }
