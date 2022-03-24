@@ -4,6 +4,11 @@ import styled from 'styled-components';
 import '../scss/details/Detail.scss';
 import '../scss/details/DetailContent.scss'
 
+const Title=styled.div`
+    margin: 45px 0px;
+    font-size: xx-large;
+    font-weight: bolder;
+`
 const Content=styled.div`
     font-size: large;
 `
@@ -24,7 +29,7 @@ function UsefulTipsContent({ tips, index, content }){
 function UsefulTips({useful}) {
     return (
         <div className='inlineBlock Detail'>
-                <h1>유용한 도움말</h1>
+                <Title>유용한 도움말</Title>
             <div className='tips'>
                 {useful.map((data,index,array) => {
                     const tips = index+1 !== array.length ? 'tipsBox BottomLine' : 'tipsBox';
