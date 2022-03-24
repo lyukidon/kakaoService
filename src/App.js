@@ -5,7 +5,7 @@ import Header from './comp-root/Header';
 import Footer from './comp-root/Footer';
 import Root from './compRoute/Root';
 import RouteMenu from './compRoute/RouteMenu';
-import Request from './comp-request/Request';
+import RouteRequest from './compRoute/RouteRequest';
 
 function App (){
   const titleBack='| 카카오 고객센터'
@@ -17,7 +17,7 @@ function App (){
         <Route  path='helps' element={<RouteMenu />}>
           <Route  path='?'element={<RouteMenu />}></Route>
         </Route>
-        <Route path='requests' element={<Request />}></Route>
+        <Route path='requests' element={<RouteRequest />}></Route>
         <Route 
           path='/' 
           element={<Root 
