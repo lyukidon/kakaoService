@@ -5,6 +5,18 @@ import styled from 'styled-components';
 
 import '../scss/request/CountryNumber.scss'
 
+const SearchBox=styled.div`
+    width:500px;
+    position:absolute;
+    background-color: white;
+    border: 1px solid black;
+`
+const SearchInput=styled.input`
+    
+    vertical-align: top;
+    border:none;
+`
+
 const SearchImg=styled.div`
     display: inline-block;
     background: url('/ico.png') no-repeat 0 -64px;
@@ -13,14 +25,9 @@ const SearchImg=styled.div`
     margin: 10px;
 `
 // 국가 보여주는 코드
-function Open({ onClickSelect, onChngSearch, countries }){
+function Open({ onClickSelect, countries }){
     return(
         <div>
-            <div>
-                
-                <SearchImg></SearchImg>
-                <input type="text" onChange={onChngSearch} />
-            </div>
             {countries.map( (data,index) => (
                 <div
                     role="button"
@@ -106,12 +113,21 @@ function CountryNumber() {
                 {selected || '+82'}
             </div>
             {toggle &&
-                <div className='numberBox'>
-                    <Open 
-                        onClickSelect={onClickSelect}
-                        onChngSearch={onChngSearch}
-                        countries={nation}    
-                    />
+                <div>
+                    <SearchBox>
+                        <SearchImg />
+                        <SearchInput type="text"
+                            placeholder='국가 검색 (국가명)' 
+                            onChange={onChngSearch} 
+                        />
+                    </SearchBox>
+                    <div className='numberBox'>
+                        <Open 
+                            onClickSelect={onClickSelect}
+                            onChngSearch={onChngSearch}
+                            countries={nation}    
+                        />
+                    </div>
                 </div>
             }
         </div>

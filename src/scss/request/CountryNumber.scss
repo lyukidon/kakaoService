@@ -1,9 +1,10 @@
 .numberBox{
     position:absolute;
+    top: 523px;
     overflow-y: scroll;
-    width: 38%;
-    height: 160px;
-    border: 2px solid black;
+    width: 500px;
+    height: 200px;
+    border: 1px solid black;
     background-color: white;
     .countryNumbers{
         padding: 7px 15px;
