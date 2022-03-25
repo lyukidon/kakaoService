@@ -7,21 +7,24 @@ import '../scss/details/DetailContent.scss'
 
 function ContentTitle({ id, toggle, tips, content, explain, onQuery, onClickToggle}){
     const { query } = useSelector(state => state);
-    const { service, category, platform} = query;
+    console.log(query)
+    const { service, category, platform } = query;
     return(
         <div 
-            role='button' 
-            tabIndex={id} 
-            className={tips}
-            onClick={onClickToggle} 
-            onKeyDown={onClickToggle}
-            onQuery={onQuery}
-            >
+                role='button' 
+                tabIndex={id} 
+                className={tips}
+                onClick={onClickToggle} 
+                onKeyDown={onClickToggle}
+        >
             <div className='tipsID inlineBlock'>{id}</div>
             <div className='tipsContentBox inlineBlock'>
-                <Link to={`?service=${service}&category=${category}&platform=${platform}${!toggle ? `articleId=${id}`:``}`}
+                <Link 
+                    to={`?service=${service}&category=${category}&platform=${platform}${!toggle ? `&articleId=${id}`:``}`}
                     className={explain && toggle ? "tipsFontBold": "tipsFontNormal"}
-                >{content}</Link>
+                >
+                    {content}
+                </Link>
                 {explain && <div className='tipsExplain'>{explain}</div>}
             </div>
             <div className='downwards-arrow inlineBlock' />
@@ -47,11 +50,11 @@ function Content({id, tips, content, explain, onQuery}){
     const [toggle,setToggle]=useState(false);
     const onClickToggle=()=>{
         setToggle(!toggle);
-        
+        onQuery()
     }
     return (
         <div>
-            {!toggle ? 
+            {!articleId ? 
                 <ContentTitle 
                     id={id}
                     toggle={toggle}
@@ -68,7 +71,8 @@ function Content({id, tips, content, explain, onQuery}){
                     onClickToggle={onClickToggle}
                     explain={explain}
                     onQuery={onQuery}
-                /> }
+                />
+            }
         </div>
     )
 }

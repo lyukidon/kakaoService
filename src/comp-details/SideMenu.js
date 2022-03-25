@@ -14,7 +14,7 @@ function SideButton({onQuery, onClickCategory, service, title, category }) {
     const menuurl=`/helps?service=${service}&category=${category}&platform=0`;
     return (
         <div>
-            <label 
+            <label
                 className='sideButton'
                 onClick={
                     ()=>onClickBtn(category,title)

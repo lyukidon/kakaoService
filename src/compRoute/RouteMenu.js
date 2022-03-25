@@ -1,5 +1,5 @@
 // library
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import qs from 'qs';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,9 +21,8 @@ export default ()=>{
     }
 	const onCategory=(category, name)=> dispatch(setCategory(category, name));
 	const { query }=useSelector(state => state);
-	console.log(query)
 	const onSetQuery=(object)=>dispatch(setQuery(object))
-	const onQuery=()=>{
+	const onQuery=useCallback( ()=>{
 		const data = qs.parse(location.search,{ ignoreQueryPrefix:true })
 		onSetOS(0)
 		onSetQuery({
@@ -33,7 +32,7 @@ export default ()=>{
 			platform: data.platform,
 			articleId: data.articleId,
 		})
-	}
+	},[query])
 	const { service, category }=query
 	// side data
 	const [services, setServices]=useState({
