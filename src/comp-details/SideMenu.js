@@ -11,7 +11,7 @@ function SideButton({onQuery, onClickCategory, service, title, category }) {
         onQuery();
         onClickCategory(category, title);
     }
-    const menuurl=`/helps?service=${service}&category=${category}`;
+    const menuurl=`/helps?service=${service}&category=${category}&platform=0`;
     return (
         <div>
             <label 
@@ -47,7 +47,6 @@ function SideMenu({onQuery, service, name, menus, onResetUseful}) {
     const dispatch=useDispatch();
     const onService=(service, serviceName)=> dispatch(setService(service,serviceName));
     const onCategory=(category,categoryName)=> dispatch(setCategory(category,categoryName));
-
     useEffect(()=>{
         onService(service, name)
     },[name])
@@ -79,7 +78,6 @@ function SideMenu({onQuery, service, name, menus, onResetUseful}) {
                         name={name}
                         title={data.title}
                         category={data.category}
-                        onResetUseful={onResetUseful}
                     />
             ))}
         </div>

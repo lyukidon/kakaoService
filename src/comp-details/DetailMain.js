@@ -9,7 +9,7 @@ import DetailContent from './DetailContent';
 
 import { setOS } from '../modules/osType';
 
-function DetailMain({ classify, content, platform }) {
+function DetailMain({ classify, content, platform, onQuery }) {
     // Redux Store 에서 데이터 받기
     const { osType } = useSelector(state=> state)
     //Redux store 에서 데이터 변경하기 (useState처럼);
@@ -30,7 +30,10 @@ function DetailMain({ classify, content, platform }) {
             {platform.length !== 0 && 
                 <Platform platform={platform} onQueryPlatform={onQueryPlatform} />
             }
-            <DetailContent content={content.length <= 1 ? content[0] : content[osType]} />
+            <DetailContent
+                onQuery={onQuery}
+                content={content.length <= 1 ? content[0] : content[osType]}
+            />
 
         </div>
     );

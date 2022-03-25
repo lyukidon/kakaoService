@@ -1,13 +1,27 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import '../scss/details/DetailContent.scss'
 
-function ContentTitle({ id, toggle, tips, content, explain, onClickToggle}){
+function ContentTitle({ id, toggle, tips, content, explain, onQuery, onClickToggle}){
+    const { query } = useSelector(state => state);
+    const { service, category, platform} = query;
     return(
-        <div role='button' tabIndex={id} className={tips} onClick={onClickToggle} onKeyDown={onClickToggle}>
+        <div 
+            role='button' 
+            tabIndex={id} 
+            className={tips}
+            onClick={onClickToggle} 
+            onKeyDown={onClickToggle}
+            onQuery={onQuery}
+            >
             <div className='tipsID inlineBlock'>{id}</div>
             <div className='tipsContentBox inlineBlock'>
-                <div className={explain && toggle ? "tipsFontBold": "tipsFontNormal"}>{content}</div>
+                <Link to={`?service=${service}&category=${category}&platform=${platform}${!toggle ? `articleId=${id}`:``}`}
+                    className={explain && toggle ? "tipsFontBold": "tipsFontNormal"}
+                >{content}</Link>
                 {explain && <div className='tipsExplain'>{explain}</div>}
             </div>
             <div className='downwards-arrow inlineBlock' />
@@ -26,10 +40,14 @@ ContentTitle.propTypes={
     onClickToggle: PropTypes.func.isRequired,
 }
 
-function Content({id, tips, content, explain}){
+function Content({id, tips, content, explain, onQuery}){
+    const { query } = useSelector(state => state);
+    const { articleId } = query;
+
     const [toggle,setToggle]=useState(false);
     const onClickToggle=()=>{
         setToggle(!toggle);
+        
     }
     return (
         <div>
@@ -40,6 +58,7 @@ function Content({id, tips, content, explain}){
                     tips={tips}
                     content={content}
                     onClickToggle={onClickToggle}
+                    onQuery={onQuery}
                 /> : 
                 <ContentTitle
                     id={id}
@@ -48,6 +67,7 @@ function Content({id, tips, content, explain}){
                     content={content}
                     onClickToggle={onClickToggle}
                     explain={explain}
+                    onQuery={onQuery}
                 /> }
         </div>
     )
@@ -62,13 +82,14 @@ Content.propTypes={
     explain:PropTypes.string,
 }
 
-function DetailContent({ content }){
+function DetailContent({ content, onQuery }){
     return(
         <div className="tips">
             {content.map((data, index, array) => {
                 const tips = data.id !== array.length ? 'tipsBox BottomLine' : 'tipsBox';
                 return (
                     <Content
+                        onQuery={onQuery}
                         key={data.id}
                         tips={tips}
                         id={index+1}

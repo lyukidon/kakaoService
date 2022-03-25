@@ -7,7 +7,9 @@ import '../scss/details/RequestBtn.scss';
 function RequestBtn() {
     const { breadCrumb }=useSelector(state => state);
     return (
-        <div className='RequestBox'>
+        <div 
+            className='RequestBox'
+        >
             <div className='inlineBlock'>
                 원하시는 답변을 찾지 못하셨다면, 고객센터로 문의해 주세요
             </div>

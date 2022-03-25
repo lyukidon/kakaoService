@@ -7,11 +7,12 @@ import RequestBtn from './RequestBtn';
 
 import '../scss/details/Detail.scss';
 
-function Detail({usefulCheck, tipsData, content, platform }) {
+function Detail({usefulCheck, tipsData, content, platform, onQuery }) {
     return (
         <div className='inlineBlock Detail'>
                 <>
                     <DetailMain
+                        onQuery={onQuery}
                         key={tipsData.lang}
                         classify={tipsData.classify}
                         content={content}
