@@ -7,8 +7,7 @@ import '../scss/details/DetailContent.scss'
 
 function ContentTitle({ id, toggle, tips, content, explain, onQuery, onClickToggle}){
     const { query } = useSelector(state => state);
-    console.log(query)
-    const { service, category, platform } = query;
+    const { service, category, platform, articleId } = query;
     return(
         <div 
                 role='button' 
@@ -48,21 +47,16 @@ function Content({id, tips, content, explain, onQuery}){
     const { articleId } = query;
 
     const [toggle,setToggle]=useState(false);
+    useEffect(()=>{
+        +articleId === +id && setToggle(!toggle)
+    },[])
     const onClickToggle=()=>{
         setToggle(!toggle);
         onQuery()
     }
     return (
         <div>
-            {!articleId ? 
-                <ContentTitle 
-                    id={id}
-                    toggle={toggle}
-                    tips={tips}
-                    content={content}
-                    onClickToggle={onClickToggle}
-                    onQuery={onQuery}
-                /> : 
+            {toggle ? 
                 <ContentTitle
                     id={id}
                     toggle={toggle}
@@ -72,6 +66,15 @@ function Content({id, tips, content, explain, onQuery}){
                     explain={explain}
                     onQuery={onQuery}
                 />
+                :
+                <ContentTitle 
+                    id={id}
+                    toggle={toggle}
+                    tips={tips}
+                    content={content}
+                    onClickToggle={onClickToggle}
+                    onQuery={onQuery}
+                /> 
             }
         </div>
     )
