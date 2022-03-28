@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setQuery } from '../modules/query';
 import '../scss/details/Platform.scss';
@@ -32,11 +32,11 @@ function Platform({ platform, onQueryPlatform, osType }){
                             // onClick={()=>onClickToggle(index)}
                             // onKeyDown={()=>onClickToggle()}
                         >   
-                            <NavLink
+                            <Link
                                 to={`?service=${service}&category=${category}&platform=${index}`}
                             >
                                 {data}
-                            </NavLink>
+                            </Link>
                         </div>
                         {index !== array.length-1 && <div>&bull;</div>}
                     </div>
