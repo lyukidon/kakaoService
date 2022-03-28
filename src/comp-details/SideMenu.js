@@ -13,9 +13,9 @@ function SideButton({ style, onQuery, onClickCategory, service, title, category 
     }
     const menuurl=`/helps?service=${service}&category=${category}&platform=0`;
     return (
-        <div>
+        <div className='sideButton'>
             <label
-                className='sideButton'
+                
                 onClick={
                     ()=>onClickBtn(category,title)
                 }
@@ -25,11 +25,9 @@ function SideButton({ style, onQuery, onClickCategory, service, title, category 
                 <Link
                     to={menuurl}
                     id = 'sideNav'
-                    className={
-                        style
+                    className={style}
                         // ({isActive}) => // (data) => data.isActive ? 이런식으로 변경가능
                         // !isActive ? 'active' : 'inactive'
-                    }
                 >
                     <b>
                         {title} 
