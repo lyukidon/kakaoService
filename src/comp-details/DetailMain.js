@@ -28,7 +28,7 @@ function DetailMain({ classify, content, platform, onQuery }) {
         <div>
             <DetailTopTitle title={classify} />
             {platform.length !== 0 && 
-                <Platform platform={platform} onQueryPlatform={onQueryPlatform} />
+                <Platform platform={platform} onQueryPlatform={onQueryPlatform} osType={osType}/>
             }
             <DetailContent
                 onQuery={onQuery}

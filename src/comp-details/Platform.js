@@ -5,34 +5,31 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setQuery } from '../modules/query';
 import '../scss/details/Platform.scss';
 
-const styled={
-    color: 'red',
-    backgroundColor: 'black',
-}
-
-function Platform({ platform, onQueryPlatform }){
+function Platform({ platform, onQueryPlatform, osType }){
     const { query }=useSelector(state=> state);
     const {service, category} = query;
-    const [toggles, setToggles]=useState({0:true})
-    const onClickToggle=(id)=>{
-        const obj=new Object;
-        obj[id] = true;
-        onQueryPlatform();
-        setToggles(obj);
-    }
+    // const [toggles, setToggles]=useState({0:true})
+    // const onClickToggle=(id)=>{
+    //     const obj=new Object;
+    //     obj[id] = true;
+    //     onQueryPlatform();
+    //     setToggles(obj);
+    // }
+
 
     return (
         <div className='platformBox'>
             {platform.map((data,index,array)=>{
                 return (
                     <div key={data}>
-                        {console.log()}
+                        {console.log(osType)}
                         <div 
                             className='button'
-                            className={ toggles[index] && 'active'  }
+                            className={ +osType === +index && 'active'  }
                             role='button'
                             tabIndex={index} 
-                            onClick={()=>onClickToggle(index)}
+                            onClick={onQueryPlatform}
+                            // onClick={()=>onClickToggle(index)}
                             // onKeyDown={()=>onClickToggle()}
                         >   
                             <NavLink
