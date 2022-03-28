@@ -43,11 +43,10 @@ function RouteRequest() {
     //                 ])
 
     //             )
-    //     console.log(menus)
+    //     console.log(menus);
     // },[service])// service가 비동기로 받아와지고 돌아가기 시작하도록 함
     return (
         <div>
-            {console.log(breadCrumb)}
             <SideMenu
                 name={service_name}
                 menus={menus}

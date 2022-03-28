@@ -8,21 +8,12 @@ import '../scss/details/Platform.scss';
 function Platform({ platform, onQueryPlatform, osType }){
     const { query }=useSelector(state=> state);
     const {service, category} = query;
-    // const [toggles, setToggles]=useState({0:true})
-    // const onClickToggle=(id)=>{
-    //     const obj=new Object;
-    //     obj[id] = true;
-    //     onQueryPlatform();
-    //     setToggles(obj);
-    // }
-
 
     return (
         <div className='platformBox'>
             {platform.map((data,index,array)=>{
                 return (
                     <div key={data}>
-                        {console.log(osType)}
                         <div 
                             className='button'
                             className={ +osType === +index && 'active'  }

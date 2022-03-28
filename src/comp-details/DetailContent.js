@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import '../scss/details/DetailContent.scss'
 
 function ContentTitle({ id, toggle, tips, content, explain, onQuery, onClickToggle}){
-    const { query } = useSelector(state => state);
-    const { service, category, platform, articleId } = query;
+    const { query,osType } = useSelector(state => state);
+    const { service, category } = query;
     return(
         <div 
                 role='button' 
@@ -19,7 +19,7 @@ function ContentTitle({ id, toggle, tips, content, explain, onQuery, onClickTogg
             <div className='tipsID inlineBlock'>{id}</div>
             <div className='tipsContentBox inlineBlock'>
                 <Link 
-                    to={`?service=${service}&category=${category}&platform=${platform}${!toggle ? `&articleId=${id}`:``}`}
+                    to={`?service=${service}&category=${category}&platform=${osType}${!toggle ? `&articleId=${id}`:``}`}
                     className={explain && toggle ? "tipsFontBold": "tipsFontNormal"}
                 >
                     {content}
@@ -52,7 +52,7 @@ function Content({id, tips, content, explain, onQuery}){
     },[])
     const onClickToggle=()=>{
         setToggle(!toggle);
-        onQuery()
+        onQuery();
     }
     return (
         <div>
@@ -108,7 +108,6 @@ function DetailContent({ content, onQuery }){
         </div>
     );
 };
-
 DetailContent.defaultProps={
     content:[],
 }

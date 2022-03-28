@@ -15,13 +15,11 @@ function SideButton({ style, onQuery, onClickCategory, service, title, category 
     return (
         <div className='sideButton'>
             <label
-                
                 onClick={
                     ()=>onClickBtn(category,title)
                 }
                 for='sideNav'
             >
-                {console.log(style)}
                 <Link
                     to={menuurl}
                     id = 'sideNav'
@@ -45,7 +43,6 @@ SideButton.propTypes={
 
 function SideMenu({onQuery, service, name, menus, onResetUseful}) {
     const { query } = useSelector(state=>state);
-    console.log(query)
     const dispatch=useDispatch();
     const onService=(service, serviceName)=> dispatch(setService(service,serviceName));
     const onCategory=(category,categoryName)=> dispatch(setCategory(category,categoryName));

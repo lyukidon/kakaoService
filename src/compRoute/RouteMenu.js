@@ -21,6 +21,7 @@ export default ()=>{
     }
 	const onCategory=(category, name)=> dispatch(setCategory(category, name));
 	const { query }=useSelector(state => state);
+	const { osType }=useSelector(state => state);
 	const onSetQuery=(object)=>dispatch(setQuery(object))
 	const onQuery=useCallback( ()=>{
 		const data = qs.parse(location.search,{ ignoreQueryPrefix:true })
