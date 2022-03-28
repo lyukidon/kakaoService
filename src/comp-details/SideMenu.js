@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { setService, setCategory } from '../modules/breadCrumb';
 
 import '../scss/details/SideMenu.scss';
 
-function SideButton({onQuery, onClickCategory, service, title, category }) {
+function SideButton({ style, onQuery, onClickCategory, service, title, category }) {
     const onClickBtn=()=>{
         onQuery();
         onClickCategory(category, title);
@@ -21,18 +21,20 @@ function SideButton({onQuery, onClickCategory, service, title, category }) {
                 }
                 for='sideNav'
             >
-                <NavLink
+                {console.log(style)}
+                <Link
                     to={menuurl}
                     id = 'sideNav'
                     className={
-                        ({isActive}) => // (data) => data.isActive ? 이런식으로 변경가능
-                        !isActive ? 'active' : 'inactive'
+                        style
+                        // ({isActive}) => // (data) => data.isActive ? 이런식으로 변경가능
+                        // !isActive ? 'active' : 'inactive'
                     }
                 >
                     <b>
                         {title} 
                     </b>
-                </NavLink>
+                </Link>
             </label>
         </div>
         
@@ -44,6 +46,8 @@ SideButton.propTypes={
 }
 
 function SideMenu({onQuery, service, name, menus, onResetUseful}) {
+    const { query } = useSelector(state=>state);
+    console.log(query)
     const dispatch=useDispatch();
     const onService=(service, serviceName)=> dispatch(setService(service,serviceName));
     const onCategory=(category,categoryName)=> dispatch(setCategory(category,categoryName));
@@ -69,11 +73,12 @@ function SideMenu({onQuery, service, name, menus, onResetUseful}) {
             <h3>
                 {name}
             </h3>
-            {menus.map(data=>(
+            {menus.map((data, index)=>(
                     <SideButton
                         key={data.id}
                         onQuery={onQuery}
                         service={service}
+                        style={+index === +query.category ? 'active': "inactive"}
                         onClickCategory={onClickCategory}
                         name={name}
                         title={data.title}
