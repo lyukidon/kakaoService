@@ -15,13 +15,10 @@ function Platform({ platform, onQueryPlatform, osType }){
                 return (
                     <div key={data}>
                         <div 
-                            className='button'
-                            className={ +osType === +index && 'active'  }
+                            className={ +osType === +index ? 'active button':'button'  }
                             role='button'
                             tabIndex={index} 
                             onClick={onQueryPlatform}
-                            // onClick={()=>onClickToggle(index)}
-                            // onKeyDown={()=>onClickToggle()}
                         >   
                             <Link
                                 to={`?service=${service}&category=${category}&platform=${index}`}

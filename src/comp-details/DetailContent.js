@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import '../scss/details/DetailContent.scss'
 
-function ContentTitle({ id, toggle, tips, content, explain, onQuery, onClickToggle}){
+function ContentTitle({ id, toggle, tips, content, explain, onClickToggle}){
     const { query,osType } = useSelector(state => state);
     const { service, category } = query;
     return(
@@ -16,6 +16,7 @@ function ContentTitle({ id, toggle, tips, content, explain, onQuery, onClickTogg
                 onClick={onClickToggle} 
                 onKeyDown={onClickToggle}
         >
+            {console.log(query, osType)}
             <div className='tipsID inlineBlock'>{id}</div>
             <div className='tipsContentBox inlineBlock'>
                 <Link 
@@ -64,7 +65,6 @@ function Content({id, tips, content, explain, onQuery}){
                     content={content}
                     onClickToggle={onClickToggle}
                     explain={explain}
-                    onQuery={onQuery}
                 />
                 :
                 <ContentTitle 
@@ -73,7 +73,6 @@ function Content({id, tips, content, explain, onQuery}){
                     tips={tips}
                     content={content}
                     onClickToggle={onClickToggle}
-                    onQuery={onQuery}
                 /> 
             }
         </div>

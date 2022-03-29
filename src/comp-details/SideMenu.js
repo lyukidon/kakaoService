@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { setService, setCategory } from '../modules/breadCrumb';
+import { setOS } from '../modules/osType';
 
 import '../scss/details/SideMenu.scss';
 
 function SideButton({ style, onQuery, onClickCategory, service, title, category }) {
+    const onSetOS= num => dispatch(setOS(num));
     const onClickBtn=()=>{
         onQuery();
+        onSetOS(0);
         onClickCategory(category, title);
     }
     const menuurl=`/helps?service=${service}&category=${category}&platform=0`;

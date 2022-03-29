@@ -15,17 +15,12 @@ import Detail from '../comp-details/Detail';
 export default ()=>{
     const dispatch = useDispatch();
     // Redux store 에서 데이터 변경하기 (useState처럼);
-	// side버튼 누르면 os선택 값을 0으로 하기 위해 추가
-    const onSetOS=(idx)=> {
-        dispatch(setOS(idx));
-    }
 	const onCategory=(category, name)=> dispatch(setCategory(category, name));
 	const { query }=useSelector(state => state);
-	const { osType }=useSelector(state => state);
+
 	const onSetQuery=(object)=>dispatch(setQuery(object))
-	const onQuery=useCallback( ()=>{
+	const onQuery= ()=>{
 		const data = qs.parse(location.search,{ ignoreQueryPrefix:true })
-		onSetOS(0)
 		onSetQuery({
 			...query,
 			service: data.service,
@@ -33,7 +28,7 @@ export default ()=>{
 			platform: data.platform,
 			articleId: data.articleId,
 		})
-	},[query])
+	}
 	const { service, category }=query
 	// side data
 	const [services, setServices]=useState({
