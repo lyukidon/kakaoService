@@ -17,7 +17,6 @@ function App (){
       <Routes>
         <Route path='*' element={<Error />}/>
         <Route  path='helps' element={<RouteMenu />}>
-          <Route  path='?'element={<RouteMenu />} />
         </Route>
         <Route path='requests' element={<RouteRequest />}></Route>
         <Route 
