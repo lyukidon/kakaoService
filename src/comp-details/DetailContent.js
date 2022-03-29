@@ -16,7 +16,6 @@ function ContentTitle({ id, toggle, tips, content, explain, onClickToggle}){
                 onClick={onClickToggle} 
                 onKeyDown={onClickToggle}
         >
-            {console.log(query, osType)}
             <div className='tipsID inlineBlock'>{id}</div>
             <div className='tipsContentBox inlineBlock'>
                 <Link 

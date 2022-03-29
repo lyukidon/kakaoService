@@ -19,7 +19,7 @@ export default ()=>{
 	const { query }=useSelector(state => state);
 
 	const onSetQuery=(object)=>dispatch(setQuery(object))
-	const onQuery= ()=>{
+	const onQuery=()=>{
 		const data = qs.parse(location.search,{ ignoreQueryPrefix:true })
 		onSetQuery({
 			...query,

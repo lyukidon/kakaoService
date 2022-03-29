@@ -8,6 +8,7 @@ import { setOS } from '../modules/osType';
 import '../scss/details/SideMenu.scss';
 
 function SideButton({ style, onQuery, onClickCategory, service, title, category }) {
+    const dispatch=useDispatch()
     const onSetOS= num => dispatch(setOS(num));
     const onClickBtn=()=>{
         onQuery();
