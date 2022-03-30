@@ -19,11 +19,11 @@ function Content({id, bottomLine, content, explain, onQuery}){
     }
     return (
         <div 
-                role='button' 
-                tabIndex={id} 
-                className={bottomLine}
-                onClick={onClickToggle} 
-                onKeyDown={onClickToggle}
+            role='button'
+            tabIndex={id}
+            className={bottomLine}
+            onClick={onClickToggle}
+            onKeyDown={onClickToggle}
         >
             <div className='tipsID inlineBlock'>{id}</div>
             <div className='tipsContentBox inlineBlock'>

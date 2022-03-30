@@ -88,7 +88,7 @@ export default ()=>{
 			<div className='common-width'>
 				{console.log(side)}
 				<SideMenu 
-					onQuery={onQuery} 
+					onQuery={onQuery}
 					side={side}
 				/>
 				{query.category === undefined ?
