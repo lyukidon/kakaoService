@@ -4,7 +4,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
-import DetailTopTitle from '../comp-details/DetailTopTitle';
 import CountryNumber from './CountryNumber';
 import '../scss/request/Request.scss';
 
@@ -77,7 +76,7 @@ function Request({ onReqClick }) {
             <Helmet>
                 <title>카카오톡 문의하기 | kakao 고객센터</title>
             </Helmet>
-            <DetailTopTitle title="문의하기" />
+            <div className='classify'>문의하기</div>
             <div className='essential'>*필수입력 사항</div>
             <div className='dataBox'>
                 <div className='dataTitle'>이메일 주소*</div>

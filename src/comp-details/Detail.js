@@ -1,25 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-// import UsefulTips from './UsefulTips';
+// component
 import DetailMain from './DetailMain';
 import RequestBtn from './RequestBtn';
 
 import '../scss/details/Detail.scss';
 
-function Detail({usefulCheck, tipsData, content, platform, onQuery }) {
+function Detail({usefulCheck, content, platform, onQuery, categoryName }) {
     return (
         <div className='inlineBlock Detail'>
-                <>
-                    <DetailMain
-                        onQuery={onQuery}
-                        key={tipsData.lang}
-                        classify={tipsData.classify}
-                        content={content}
-                        platform={platform}
-                    />
-                    {!usefulCheck && <RequestBtn />}
-                </>
+            <DetailMain
+                onQuery={onQuery}
+                categoryName={categoryName}
+                content={content}
+                platform={platform}
+            />
+            {!usefulCheck && <RequestBtn />}
         </div>
     );
 }

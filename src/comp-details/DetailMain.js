@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import qs from 'qs';
 import { useSelector, useDispatch } from 'react-redux';
 
-import DetailTopTitle from './DetailTopTitle';
 import Platform from './Platform';
 import DetailContent from './DetailContent';
 
 import { setOS } from '../modules/osType';
 
-function DetailMain({ classify, content, platform, onQuery }) {
+function DetailMain({ categoryName, content, platform, onQuery }) {
     // Redux Store 에서 데이터 받기
     const { osType } = useSelector(state=> state)
     //Redux store 에서 데이터 변경하기 (useState처럼);
@@ -26,7 +25,7 @@ function DetailMain({ classify, content, platform, onQuery }) {
 
     return (
         <div>
-            <DetailTopTitle title={classify} />
+            <div className='classify'>{categoryName}</div>
             {platform.length !== 0 && 
                 <Platform platform={platform} onQueryPlatform={onQueryPlatform} osType={osType}/>
             }
@@ -34,7 +33,6 @@ function DetailMain({ classify, content, platform, onQuery }) {
                 onQuery={onQuery}
                 content={content.length <= 1 ? content[0] : content[osType]}
             />
-
         </div>
     );
 }

@@ -7,21 +7,19 @@ import { setOS } from '../modules/osType';
 
 import '../scss/details/SideMenu.scss';
 
-function SideButton({ style, onQuery, onClickCategory, service, title, category }) {
+function SideButton({ style, onQuery, onClickCategory, service, categoryName, categoryNumber }) {
     const dispatch=useDispatch()
     const onSetOS= num => dispatch(setOS(num));
     const onClickBtn=()=>{
         onQuery();
         onSetOS(0);
-        onClickCategory(category, title);
+        onClickCategory(categoryNumber,categoryName);
     }
-    const menuurl=`/helps?service=${service}&category=${category}&platform=0`;
+    const menuurl=`/helps?service=${service}&category=${categoryNumber}&platform=0`;
     return (
         <div className='sideButton'>
             <label
-                onClick={
-                    ()=>onClickBtn(category,title)
-                }
+                onClick={onClickBtn}
                 for='sideNav'
             >
                 <Link
@@ -32,7 +30,7 @@ function SideButton({ style, onQuery, onClickCategory, service, title, category 
                         // !isActive ? 'active' : 'inactive'
                 >
                     <b>
-                        {title} 
+                        {categoryName} 
                     </b>
                 </Link>
             </label>
@@ -45,7 +43,9 @@ SideButton.propTypes={
     category: PropTypes.string.isRequired,
 }
 
-function SideMenu({onQuery, service, name, menus, onResetUseful}) {
+function SideMenu({ onQuery, side }) {
+    const { service, name, category }=side;
+    
     const { query } = useSelector(state=>state);
     const dispatch=useDispatch();
     const onService=(service, serviceName)=> dispatch(setService(service,serviceName));
@@ -72,16 +72,15 @@ function SideMenu({onQuery, service, name, menus, onResetUseful}) {
             <h3>
                 {name}
             </h3>
-            {menus.map((data, index)=>(
+            {category.map((data, index)=>(
                     <SideButton
-                        key={data.id}
                         onQuery={onQuery}
                         service={service}
                         style={+index === +query.category ? 'active': "inactive"}
                         onClickCategory={onClickCategory}
                         name={name}
-                        title={data.title}
-                        category={data.category}
+                        categoryName={data}
+                        categoryNumber={index}
                     />
             ))}
         </div>
