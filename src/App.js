@@ -8,6 +8,8 @@ import RouteMenu from './compRoute/RouteMenu';
 import RouteRequest from './compRoute/RouteRequest';
 import Error from './compRoute/Error';
 
+import RouteClean from './clean/RouteClean'
+
 function App (){
   const titleBack='| 카카오 고객센터'
   return(
@@ -18,7 +20,8 @@ function App (){
         <Route path='*' element={<Error />}/>
         <Route  path='helps' element={<RouteMenu />}>
         </Route>
-        <Route path='requests' element={<RouteRequest />}></Route>
+        <Route path='requests' element={<RouteRequest />} />
+        <Route path='clean' element={<RouteClean />} />
         <Route 
           path='/' 
           element={<Root 

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import qs from 'qs';
+
 import '../scss/details/RequestBtn.scss';
 
 const Write=styled.div`
@@ -14,7 +16,9 @@ const Write=styled.div`
 `
 
 function RequestBtn() {
-    const { breadCrumb }=useSelector(state => state);
+    const { query }=useSelector(state => state);
+    const url=qs.stringify(query)
+    console.log(url)
     return (
         <div 
             className='RequestBox'
@@ -23,7 +27,7 @@ function RequestBtn() {
                 원하시는 답변을 찾지 못하셨다면, 고객센터로 문의해 주세요
             </div>
             <Link 
-                to={`/requests?service=${breadCrumb.service}`} 
+                to={`/requests?${url}#`} 
                 className='inlineBlock reqButton' 
             >
                 <Write />
