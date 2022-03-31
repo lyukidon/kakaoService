@@ -18,8 +18,7 @@ function App (){
       <Header />
       <Routes>
         <Route path='*' element={<Error />}/>
-        <Route  path='helps' element={<RouteMenu />}>
-        </Route>
+        <Route  path='helps' element={<RouteMenu />} />
         <Route path='requests' element={<RouteRequest />} />
         <Route path='clean' element={<RouteClean />} />
         <Route 
@@ -27,7 +26,7 @@ function App (){
           element={<Root 
             title={`고객센터 ${titleBack}`} 
             />} 
-        ></Route>
+        />
       </Routes>
       <Footer />
     </div>
