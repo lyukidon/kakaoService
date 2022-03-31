@@ -1,6 +1,7 @@
 import React from 'react';
 import qs from 'qs';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setQuery } from '../modules/query';
 
 import SideMenu from '../comp-details/SideMenu';
 import Request from '../comp-request/Request';
@@ -8,10 +9,11 @@ import BreadCrumbs from '../comp-root/BreadCrumbs';
 
 
 function RouteRequest() {
+    const { side }=useSelector(state => state);
     const dispatch=useDispatch();
-    const { query, side }=useSelector(state => state);
+    const onSetQuery=(data)=>dispatch(setQuery(data))
     const onQuery=()=>{
-		const data = qs.parse(location.search,{ ignoreQueryPrefix:true })
+		const data = qs.parse(window.location.search,{ ignoreQueryPrefix:true })
 		onSetQuery({
 			service: data.service,
 			category: data.category,

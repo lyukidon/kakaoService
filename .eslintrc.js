@@ -26,6 +26,9 @@ module.exports = {
         "react/jsx-props-no-spreading": "off", 
         'jsx-a11y/label-has-associated-control': [2,
             {assert: 'either'},
-        ],  
+        ],
+        
+        "default-param-last": 0,
     },
+    
 }
