@@ -14,11 +14,10 @@ function BreadCrumbs(){
             setService(res.data.service[query.service])
             setCategory([...res.data.category[query.service]])
         })
-        console.log(query)
     },[])
     return (
         <div>
-            <Link to={`/`}>홈</Link>
+            <Link to='/'>홈</Link>
             <Link
                 to={`?service=${query.service}`}
             >{service}</Link>

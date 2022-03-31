@@ -17,10 +17,10 @@ function SideButton({ style, onQuery, onClickCategory, service, categoryName, ca
     }
     const menuurl=`/helps?service=${service}&category=${categoryNumber}&platform=0`;
     return (
-        <div className='sideButton'>
+        <div className='sideButton' >
             <label
                 onClick={onClickBtn}
-                for='sideNav'
+                htmlFor='sideNav'
             >
                 <Link
                     to={menuurl}
@@ -39,8 +39,12 @@ function SideButton({ style, onQuery, onClickCategory, service, categoryName, ca
     );
 }
 SideButton.propTypes={
-    title: PropTypes.string.isRequired,
-    category: PropTypes.string.isRequired,
+    style: PropTypes.string.isRequired,
+    onQuery: PropTypes.func.isRequired,
+    onClickCategory: PropTypes.func.isRequired,
+    service: PropTypes.number.isRequired,
+    categoryName:PropTypes.string.isRequired,
+    categoryNumber:PropTypes.number.isRequired,
 }
 
 function SideMenu({ onQuery, side }) {
@@ -48,8 +52,8 @@ function SideMenu({ onQuery, side }) {
     
     const { query } = useSelector(state=>state);
     const dispatch=useDispatch();
-    const onService=(service, serviceName)=> dispatch(setService(service,serviceName));
-    const onCategory=(category,categoryName)=> dispatch(setCategory(category,categoryName));
+    const onService=(serv, serviceName)=> dispatch(setService(serv,serviceName));
+    const onCategory=(cat,categoryName)=> dispatch(setCategory(cat,categoryName));
     useEffect(()=>{
         onService(service, name)
     },[name])
@@ -60,7 +64,7 @@ function SideMenu({ onQuery, side }) {
     useEffect(()=>{
         onCategory(categoryData.category, categoryData.category_name);
     },[categoryData]);
-    const onClickCategory=(category,categoryName)=>{
+    const onClickCategory=(cat,categoryName)=>{
         setCategoryData({
             ...categoryData,
             category: category,
@@ -74,6 +78,7 @@ function SideMenu({ onQuery, side }) {
             </h3>
             {category.map((data, index)=>(
                     <SideButton
+                        key={data}
                         onQuery={onQuery}
                         service={service}
                         style={+index === +query.category ? 'active': "inactive"}
@@ -85,6 +90,14 @@ function SideMenu({ onQuery, side }) {
             ))}
         </div>
     );
+}
+SideMenu.propTypes={
+    onQuery:PropTypes.func.isRequired,
+    side: PropTypes.shape({
+        service: PropTypes.number,
+        name: PropTypes.string,
+        category:PropTypes.number,
+    }).isRequired,
 }
 
 export default SideMenu;

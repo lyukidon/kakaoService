@@ -27,8 +27,9 @@ module.exports = {
         'jsx-a11y/label-has-associated-control': [2,
             {assert: 'either'},
         ],
-        
         "default-param-last": 0,
+        'no-plusplus': 'off',
+        "prefer-const": 'off',
     },
     
 }

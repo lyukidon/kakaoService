@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { setQuery } from '../modules/query';
+import { useSelector } from 'react-redux';
 import '../scss/details/Platform.scss';
 
 function Platform({ platform, onQueryPlatform, osType }){
@@ -11,8 +10,8 @@ function Platform({ platform, onQueryPlatform, osType }){
 
     return (
         <div className='platformBox'>
-            {platform.map((data,index,array)=>{
-                return (
+            {platform.map((data,index,array)=>
+                (
                     <div key={data}>
                         <div 
                             className={ +osType === +index ? 'active button':'button'  }
@@ -29,13 +28,14 @@ function Platform({ platform, onQueryPlatform, osType }){
                         {index !== array.length-1 && <div>&bull;</div>}
                     </div>
                 )
-            })}
+            )}
         </div>
     );
 }
 Platform.propTypes={
     platform: PropTypes.arrayOf(PropTypes.string).isRequired,
-    onClickPlatform: PropTypes.func.isRequired,
+    onQueryPlatform: PropTypes.func.isRequired,
+    osType:PropTypes.number.isRequired,
 }
                                                                           
 export default Platform;

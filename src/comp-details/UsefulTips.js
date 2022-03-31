@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import '../scss/details/Detail.scss';
 import '../scss/details/DetailContent.scss'
@@ -25,6 +26,11 @@ function UsefulTipsContent({ tips, index, content }){
         </Content>
     )
 }
+UsefulTipsContent.propTypes={
+    tips: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
+    content: PropTypes.string.isRequired,
+}
 
 function UsefulTips({useful}) {
     return (
@@ -34,7 +40,8 @@ function UsefulTips({useful}) {
                 {useful.map((data,index,array) => {
                     const tips = index+1 !== array.length ? 'tipsBox BottomLine' : 'tipsBox';
                     return(
-                        <UsefulTipsContent 
+                        <UsefulTipsContent
+                            key={data.id}
                             tips={tips}
                             index={index+1}
                             content={data.content}
@@ -44,6 +51,13 @@ function UsefulTips({useful}) {
             </div>
         </div>
     );
+}
+UsefulTips.propTypes={
+    useful:PropTypes.arrayOf({
+        id:PropTypes.number,
+        content:PropTypes.string,
+        explain:PropTypes.string, 
+    }).isRequired,
 }
 
 export default UsefulTips;

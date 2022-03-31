@@ -14,7 +14,6 @@ function SideMenu() {
             setService(res.data.service[query.service])
             setCategory([...res.data.category[query.service]])
         })
-        console.log(query)
     },[])
 
     return (
@@ -22,6 +21,7 @@ function SideMenu() {
             <div>{service}</div>
             {category.map((data,index) => (
                 <Link
+                    key={data}
                     to={`?service=${query.service}&category=${index}`}
                 >{data}</Link>
             ))}

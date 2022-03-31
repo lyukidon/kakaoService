@@ -35,6 +35,9 @@ Detail.propTypes={
         explain:PropTypes.string,
     }))),
     platform:PropTypes.arrayOf(PropTypes.string),
+    usefulCheck: PropTypes.string.isRequired,
+    onQuery: PropTypes.func.isRequired,
+    categoryName: PropTypes.string.isRequired,
 }
 
 export default Detail;

@@ -4,15 +4,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 // component
 import CountryNumber from './CountryNumber';
 // scss
 import '../scss/request/Request.scss';
-
-// const FormBox=styled.div`
-//     display: inline-block;
-// `
 
 const reqData=yup.object({
     email: 

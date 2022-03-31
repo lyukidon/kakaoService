@@ -18,7 +18,7 @@ export default ()=>{
 	const onCategory=(category, name)=> dispatch(setCategory(category, name));
 	const onSetQuery=(object)=>dispatch(setQuery(object));
 	const onSide=(object)=>{console.log('im running');dispatch(setSide(object))};
-	//redux 불러오기 (쿼리스트링, 사이드 메뉴)
+	// redux 불러오기 (쿼리스트링, 사이드 메뉴)
 	const { query, side }=useSelector(state => state);
 	const { service, category }=query;
 	// query string 받기, redux 데이터 변형
@@ -31,7 +31,7 @@ export default ()=>{
 			articleId: data.articleId,
 		})
 	}
-	//유용한 도움말 데이터
+	// 유용한 도움말 데이터
 	const [useful,setUseful]=useState([]);
 	// 세부설명 데이터
     const [platform, setPlatform]=useState([]);
@@ -43,7 +43,7 @@ export default ()=>{
 		axios.get('/data/detailData.json')
 		.then(res => {
 			// side
-			const serviceData=res.data.filter(c => c.service == service)[0];
+			const serviceData=res.data.filter(c => +c.service === +service)[0];
 			return serviceData;
 		}).then(serviceData=>{
 			const name=serviceData.service_name;
@@ -61,7 +61,6 @@ export default ()=>{
 			for (let i=0;i<serviceData.data.length;i++){
 				for (let j=0;j<serviceData.data[i].contents.length;j++){
 					for (let k=0;k<serviceData.data[i].contents[j].length;k++){
-						// console.log('i: ', i, ' j: ',j,' k: ', k)
 						arrAllContent.push(serviceData.data[i].contents[j][k]);
 					}
 				}
@@ -74,7 +73,7 @@ export default ()=>{
 			setUseful( [...arr] );
 			// detail
 			if (category){
-				const detail=serviceData.data.filter(c=>c.category == category)[0];
+				const detail=serviceData.data.filter(c=> +c.category === +category)[0];
 				setPlatform([ ...detail.platform])
 				setContent([ ...detail.contents])
 			}

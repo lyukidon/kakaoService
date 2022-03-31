@@ -44,9 +44,10 @@ Content.defaultProps={
 }
 Content.propTypes={
     id: PropTypes.number.isRequired,
-    tips: PropTypes.string.isRequired,
     content:PropTypes.string.isRequired,
     explain:PropTypes.string,
+    bottomLine:PropTypes.string.isRequired,
+    onQuery: PropTypes.func.isRequired,
 }
 
 function DetailContent({ content, onQuery }){
@@ -76,7 +77,8 @@ DetailContent.propTypes={
         id: PropTypes.number,
         content: PropTypes.string,
         explain: PropTypes.string,
-    }))
+    })),
+    onQuery: PropTypes.func.isRequired,
 }
 
 export default DetailContent;

@@ -11,12 +11,12 @@ import { setOS } from '../modules/osType';
 function DetailMain({ categoryName, content, platform, onQuery }) {
     // Redux Store 에서 데이터 받기
     const { osType } = useSelector(state=> state)
-    //Redux store 에서 데이터 변경하기 (useState처럼);
+    // Redux store 에서 데이터 변경하기 (useState처럼);
     const dispatch = useDispatch();
     const onSetOS=(idx)=> dispatch(setOS(idx)); // 매개변수가 데이터로 들어감
 
     const onQueryPlatform=()=>{
-        const query=qs.parse(location.search, {ignoreQueryPrefix:true});
+        const query=qs.parse(window.location.search, {ignoreQueryPrefix:true});
         query.platform && onSetOS(query.platform);
     };
     useEffect(()=>{
@@ -43,13 +43,14 @@ DetailMain.defaultProps={
     platform:[],
 }
 DetailMain.propTypes={
-    classify: PropTypes.string,
     content: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({
         id:PropTypes.number,
         content:PropTypes.string,
         explain:PropTypes.string,
     }))),
     platform:PropTypes.arrayOf(PropTypes.string),
+    categoryName: PropTypes.string.isRequired,
+    onQuery: PropTypes.func.isRequired,
 }
 
 export default DetailMain;
