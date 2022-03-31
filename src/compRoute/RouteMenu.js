@@ -12,18 +12,18 @@ import UsefulTips from '../comp-details/UsefulTips';
 import SideMenu from '../comp-details/SideMenu';
 import Detail from '../comp-details/Detail';
 
-export default ()=>{
+function RouteMenu(){
     const dispatch = useDispatch();
     // Redux 데이터 변경 함수
 	const onCategory=(category, name)=> dispatch(setCategory(category, name));
 	const onSetQuery=(object)=>dispatch(setQuery(object));
-	const onSide=(object)=>{console.log('im running');dispatch(setSide(object))};
+	const onSide=(object)=>dispatch(setSide(object));
 	// redux 불러오기 (쿼리스트링, 사이드 메뉴)
 	const { query, side }=useSelector(state => state);
 	const { service, category }=query;
 	// query string 받기, redux 데이터 변형
 	const onQuery=()=>{
-		const data = qs.parse(location.search,{ ignoreQueryPrefix:true })
+		const data = qs.parse(window.location.search,{ ignoreQueryPrefix:true })
 		onSetQuery({
 			service: data.service,
 			category: data.category,
@@ -53,7 +53,7 @@ export default ()=>{
 			],[]);
 			onSide({
 				service: serviceData.service,
-				name: name,
+				name,
 				category: [...sideCategoryGroup],
 			})
 			// 세부 설명 글 전부 모으기
@@ -78,14 +78,15 @@ export default ()=>{
 				setContent([ ...detail.contents])
 			}
 		})
-		query.category === undefined && onCategory(undefined, '유용한 도움말')
+		if (query.category === undefined){
+			onCategory(undefined, '유용한 도움말');
+		}
 	},[query])
 	
 	return(
 		<div>
 			<BreadCrumbs onQuery={onQuery} />
 			<div className='common-width'>
-				{console.log(side)}
 				<SideMenu 
 					onQuery={onQuery}
 					side={side}
@@ -105,3 +106,5 @@ export default ()=>{
 		</div>
 	)
 }
+
+export default RouteMenu;

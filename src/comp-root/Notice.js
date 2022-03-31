@@ -21,12 +21,10 @@ function Notice({ title, content }) {
 Notice.defaultProps={
     title:'',
     content:'',
-    classify:'',
 }
 Notice.propTypes={
     title: PropTypes.string,
     content: PropTypes.string,
-    classify: PropTypes.string,
 }
 
 export default Notice;

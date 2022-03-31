@@ -18,11 +18,8 @@ const Write=styled.div`
 function RequestBtn() {
     const { query }=useSelector(state => state);
     const url=qs.stringify(query)
-    console.log(url)
     return (
-        <div 
-            className='RequestBox'
-        >
+        <div className='RequestBox'>
             <div className='inlineBlock'>
                 원하시는 답변을 찾지 못하셨다면, 고객센터로 문의해 주세요
             </div>

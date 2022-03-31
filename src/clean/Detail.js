@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import qs from 'qs';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Detail() {
 
@@ -13,22 +13,25 @@ function Detail() {
     useEffect(()=>{
         axios.get('/data/clean.json')
         .then(res => {
-            setCategory([...res.data.category[query.service]])
-            setPlatform([...res.data.platform[query.service][query.category]])
-            setArticle([...res.data.article[query.service][query.category]])
+            setCategory([...res.data.category[query.service]]);
+            setPlatform([...res.data.platform[query.service]]);
+            setArticle([...res.data.article[query.service]]);
         })
     },[])
-
-
     return (
         <div>
             <div>
-                {article}
+                {category[query.category]}
             </div>
-            {/* {
-                query.platform ?
-                
-            } */}
+            {console.log(platform[query.category].map())}
+            {/* {platform[query.category].map((data, index) => (
+                <Link 
+                    key={data}
+                    to={`?service=${query.service}&category=${query.category}&platform=${index}`}
+                >
+                    {data}
+                </Link>
+            ))} */}
         </div>
     );
 }
