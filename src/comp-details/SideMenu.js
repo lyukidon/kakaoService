@@ -17,11 +17,13 @@ function SideButton({ style, onQuery, onClickCategory, service, categoryName, ca
     }
     const menuurl=`/helps?service=${service}&category=${categoryNumber}&platform=0`;
     return (
-        <div className='sideButton' >
-            <label
-                onClick={onClickBtn}
-                htmlFor='sideNav'
-            >
+        <div 
+            role='button'
+            tabIndex={0}
+            className='sideButton'
+            onClick={onClickBtn}
+            onKeyDown={onClickBtn}
+        >
                 <Link
                     to={menuurl}
                     id = 'sideNav'
@@ -33,7 +35,6 @@ function SideButton({ style, onQuery, onClickCategory, service, categoryName, ca
                         {categoryName} 
                     </b>
                 </Link>
-            </label>
         </div>
         
     );
@@ -67,7 +68,7 @@ function SideMenu({ onQuery, side }) {
     const onClickCategory=(cat,categoryName)=>{
         setCategoryData({
             ...categoryData,
-            category: category,
+            category,
             category_name:categoryName,
         })
     }

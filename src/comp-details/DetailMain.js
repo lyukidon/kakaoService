@@ -17,7 +17,9 @@ function DetailMain({ categoryName, content, platform, onQuery }) {
 
     const onQueryPlatform=()=>{
         const query=qs.parse(window.location.search, {ignoreQueryPrefix:true});
-        query.platform && onSetOS(query.platform);
+        if (query.platform){
+            onSetOS(query.platform);
+        }
     };
     useEffect(()=>{
         onQueryPlatform();
@@ -38,7 +40,6 @@ function DetailMain({ categoryName, content, platform, onQuery }) {
 }
 
 DetailMain.defaultProps={
-    classify: '',
     content:[],
     platform:[],
 }

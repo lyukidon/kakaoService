@@ -17,13 +17,15 @@ function SideMenu() {
     },[])
 
     return (
-        <div>
-            <div>{service}</div>
+        <div className='sidemenu inlineBlock'>
+            <div className='serviceName'><h3>{service}</h3></div>
             {category.map((data,index) => (
-                <Link
-                    key={data}
-                    to={`?service=${query.service}&category=${index}`}
-                >{data}</Link>
+                <div className='sidebtn' key={data}>
+                    <Link
+                        key={data}
+                        to={`?service=${query.service}&category=${index}&platform=0`}
+                    >{data}</Link>
+                </div>
             ))}
         </div>
     );

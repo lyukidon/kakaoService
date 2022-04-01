@@ -11,7 +11,9 @@ function Content({id, bottomLine, content, explain, onQuery}){
 
     const [toggle,setToggle]=useState(false);
     useEffect(()=>{
-        +articleId === +id && setToggle(!toggle)
+        if(+articleId === +id){
+            setToggle(!toggle);
+        }
     },[])
     const onClickToggle=()=>{
         setToggle(!toggle);

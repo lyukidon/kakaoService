@@ -18,6 +18,7 @@ function Platform({ platform, onQueryPlatform, osType }){
                             role='button'
                             tabIndex={index} 
                             onClick={onQueryPlatform}
+                            onKeyDown={onQueryPlatform}
                         >   
                             <Link
                                 to={`?service=${service}&category=${category}&platform=${index}`}

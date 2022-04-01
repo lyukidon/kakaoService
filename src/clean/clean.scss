@@ -1,0 +1,62 @@
+.breadcrumb{
+    padding:15px 0px;
+    border-top: 2px solid #f3f3f3;
+    border-bottom: 2px solid #f3f3f3;
+    .right-arrow{
+        display: inline-block;
+        margin:0px 10px;
+        background: url('../../public/ico.png') no-repeat -84px -24px;
+        width: 5px;
+        height: 9px;
+    }
+}
+.sidemenu{
+    display: inline-block;
+    width: 17%;
+    vertical-align: top;
+    .serviceName{
+        margin-top: 60px;
+        margin-bottom: 50px;
+    }
+    .sidebtn{
+        margin-bottom: 17px;
+    }
+}
+.detail{
+    display: inline-block;
+    width:73%;
+    padding-left: 55px;
+    border-left: 2px solid #f3f3f3;
+    .categoryName{
+        margin: 45px 0px;
+        font-size: xx-large;
+        font-weight: bolder;
+    }
+    .platformBox{
+        padding: 20px 0px;
+        border-top: 2px solid black;
+        div{
+            display:inline-block;
+        }
+    }
+    .contentBox{
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+        .content{
+            padding: 22px 0px;
+            div{
+                display: inline-block;
+            }
+            .contentIndex{
+                margin-right: 20px;
+                vertical-align: top;
+            }
+            .contentLink{
+                width: 85%;
+                a:hover{
+                    text-decoration-line: none;
+                }
+            }
+        }
+    }
+}
