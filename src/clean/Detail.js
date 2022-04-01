@@ -7,13 +7,18 @@ import { Link, useLocation } from 'react-router-dom';
 function Explain({ query, data, index }){
 
     const [toggle, setToggle]=useState(false)
+    useEffect(()=>{
+        if (+query.articleId === +index+1){
+            setToggle(!toggle)
+        }
+    },[])
     return(
         <div className='content' key={data.id}>
             <div className="contentIndex">{index+1}</div>
             <div className='contentLink'>
                 <Link
                     onClick={()=>setToggle(!toggle)}
-                    to={`?service=${query.service}&category=${query.category}&platform=${query.platform}${!toggle ? `&articleId=${index}`:``}`}
+                    to={`?service=${query.service}&category=${query.category}&platform=${query.platform}${!toggle ? `&articleId=${index+1}`:``}`}
                 >
                     <div className={toggle ? 'activate': 'inactivate'}>
                         {data.content}
@@ -44,7 +49,7 @@ Explain.propTypes={
         content: PropTypes.string.isRequired,
         explain: PropTypes.string.isRequired,
     }),
-    index: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
 }
 
 
@@ -67,7 +72,7 @@ function Content({ query }){
         <div className='contentBox'>
             {
                 article.map((data, index) => (
-                    <Explain key={data} query={query} data={data} index={index} />
+                    <Explain key={data.id} query={query} data={data} index={index} />
                 ))
             }
         </div>
