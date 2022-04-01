@@ -4,6 +4,50 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 
+function Explain({ query, data, index }){
+
+    const [toggle, setToggle]=useState(false)
+    return(
+        <div className='content' key={data.id}>
+            <div className="contentIndex">{index+1}</div>
+            <div className='contentLink'>
+                <Link
+                    onClick={()=>setToggle(!toggle)}
+                    to={`?service=${query.service}&category=${query.category}&platform=${query.platform}${!toggle ? `&articleId=${index}`:``}`}
+                >
+                    <div className={toggle ? 'activate': 'inactivate'}>
+                        {data.content}
+                    </div>
+                </Link>
+                {toggle && 
+                    <div className='explain'>
+                        {data.explain}
+                    </div>
+                }
+            </div>
+        </div>
+    )
+}
+Explain.defaultProps={
+    query:[],
+    data:{},
+}
+Explain.propTypes={
+    query: PropTypes.shape({
+        service:PropTypes.string,
+        category:PropTypes.string,
+        platform:PropTypes.string,
+        articleId:PropTypes.string,
+    }),
+    data: PropTypes.shape({
+        id: PropTypes.number,
+        content: PropTypes.string.isRequired,
+        explain: PropTypes.string.isRequired,
+    }),
+    index: PropTypes.string.isRequired,
+}
+
+
 function Content({ query }){
     const [article, setArticle]=useState([]);
 
@@ -23,17 +67,7 @@ function Content({ query }){
         <div className='contentBox'>
             {
                 article.map((data, index) => (
-                    <div className='content' key={data.id}>
-                        <div className="contentIndex">{index+1}</div>
-                        <div className='contentLink'>
-                            <Link
-                                
-                                to={`?service=${query.service}&category=${query.category}&platform=${query.platform}&articleId=${index}`}
-                            >
-                                {data.content}
-                            </Link>
-                        </div>
-                    </div>
+                    <Explain key={data} query={query} data={data} index={index} />
                 ))
             }
         </div>

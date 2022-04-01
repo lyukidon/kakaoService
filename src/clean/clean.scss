@@ -45,17 +45,29 @@
         border-bottom: 2px solid black;
         .content{
             padding: 22px 0px;
-            div{
-                display: inline-block;
-            }
             .contentIndex{
                 margin-right: 20px;
                 vertical-align: top;
+                display: inline-block;
             }
             .contentLink{
+                display: inline-block;
                 width: 85%;
                 a:hover{
                     text-decoration-line: none;
+                }
+                .activate{
+                    display: inline-block;
+                    color:black;
+                    font-weight: bold;
+                    font-size: 18px;
+                    text-decoration-line: none;
+                    margin-bottom: 30px;
+                }
+                .inactivate{
+                    display: inline-block;
+                    color: black;
+                    
                 }
             }
         }
