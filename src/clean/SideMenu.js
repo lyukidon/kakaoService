@@ -23,7 +23,7 @@ function SideMenu() {
                 <div className='sidebtn' key={data}>
                     <Link
                         key={data}
-                        to={`?service=${query.service}&category=${index}&platform=0`}
+                        to={`/clean?service=${query.service}&category=${index}&platform=0`}
                     >{data}</Link>
                 </div>
             ))}
