@@ -68,7 +68,6 @@ function Request() {
     const onSubmit=()=> {
         window.location.href=`clean?${qs.stringify(query)}`;
     };
-    const onError=()=> alert('다시 입력 해주세요')
 
     const [select1, setSelect1] = useState('선택해주세요');
     const onSelect = (event) => {
@@ -79,7 +78,7 @@ function Request() {
         setFile(event.target.value);
     }
     return (
-        <form onSubmit={handleSubmit(onSubmit, onError)} className='formBox' >
+        <form onSubmit={handleSubmit(onSubmit)} className='formBox' >
             <Helmet>
                 <title>카카오톡 문의하기 | kakao 고객센터</title>
             </Helmet>
