@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import Detail from './Detail';
 import SideMenu from './SideMenu';
 import BreadCrumbs from './BreadCrumbs';
+import RandomPick from './RandomPick';
 
 import './clean.scss';
 
@@ -19,7 +20,7 @@ function RouteClean() {
                 query.category ?
                 <Detail query={query} />
                 :
-                <div>유용한 도움말</div>
+                <RandomPick />
             }
         </div>
     );

@@ -23,7 +23,7 @@ function Content({ query }){
         <div className='contentBox'>
             {
                 article.map((data, index) => (
-                    <div className='content' key={data}>
+                    <div className='content' key={data.id}>
                         <div className="contentIndex">{index+1}</div>
                         <div className='contentLink'>
                             <Link
@@ -44,10 +44,10 @@ Content.defaultProps={
 }
 Content.propTypes={
     query: PropTypes.shape({
-        service:PropTypes.number,
-        category:PropTypes.number,
-        platform:PropTypes.number,
-        articleId:PropTypes.number,
+        service:PropTypes.string,
+        category:PropTypes.string,
+        platform:PropTypes.string,
+        articleId:PropTypes.string,
     })
 }
 

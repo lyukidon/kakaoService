@@ -42,10 +42,10 @@ BreadCrumbs.defaultProps={
 }
 BreadCrumbs.propTypes={
     query: PropTypes.shape({
-        service:PropTypes.number,
-        category:PropTypes.number,
-        platform:PropTypes.number,
-        articleId:PropTypes.number,
+        service:PropTypes.string,
+        category:PropTypes.string,
+        platform:PropTypes.string,
+        articleId:PropTypes.string,
     })
 }
 
