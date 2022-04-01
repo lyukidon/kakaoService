@@ -4,10 +4,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
+import qs from 'qs';
+import { useLocation } from 'react-router-dom';
 // component
 import CountryNumber from './CountryNumber';
 // scss
 import '../scss/request/Request.scss';
+
 
 const reqData=yup.object({
     email: 
@@ -57,13 +60,15 @@ const category=[
     }
 ]
 
-function Request({ onReqClick }) {
+function Request() {
+    const query=qs.parse(useLocation().search,{ignoreQueryPrefix:true});
     const { register, handleSubmit, formState:{errors} }=useForm({
         resolver: yupResolver(reqData)
     });
     const onSubmit=()=> {
-        onReqClick();
+        window.location.href=`clean?${qs.stringify(query)}`;
     };
+    const onError=()=> alert('다시 입력 해주세요')
 
     const [select1, setSelect1] = useState('선택해주세요');
     const onSelect = (event) => {
@@ -74,7 +79,7 @@ function Request({ onReqClick }) {
         setFile(event.target.value);
     }
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className='formBox' >
+        <form onSubmit={handleSubmit(onSubmit, onError)} className='formBox' >
             <Helmet>
                 <title>카카오톡 문의하기 | kakao 고객센터</title>
             </Helmet>
@@ -98,15 +103,16 @@ function Request({ onReqClick }) {
             <div className='dataBox'>
                 <div className='dataTitle'>휴대폰 번호*</div>
                 <div className='dataInputBox numberInput'>
-                {/* //className=codeInput */}
                     <CountryNumber /> 
-                    <input 
-                        {...register('phoneNumber')}
-                        type="text" 
-                        name="phoneNumber" 
-                        id="" 
-                        placeholder='01012345678'
-                    />
+                    <div className='inlineBlock numberInputBox'>
+                        <input 
+                            {...register('phoneNumber')}
+                            type="text" 
+                            name="phoneNumber" 
+                            id="" 
+                            placeholder='01012345678'
+                        />
+                    </div>
                     <div className='error'>
                         {errors.phoneNumber?.message}
                     </div>
@@ -247,7 +253,6 @@ function Request({ onReqClick }) {
 }
 Request.propTypes={
     classify: PropTypes.string.isRequired,
-    onReqClick: PropTypes.func.isRequired,
 }
 
 export default Request;

@@ -60,9 +60,13 @@ function Content({ query }){
     useEffect(()=>{
         axios.get('/data/clean.json')
             .then(res => {
-                if (query.category){
+                if (query.platform){
                     setArticle(
                         res.data.article[query.service][query.category][query.platform]
+                    );
+                }else{
+                    setArticle(
+                        res.data.article[query.service][query.category][0]
                     );
                 }
             })

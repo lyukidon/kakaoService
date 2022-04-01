@@ -27,7 +27,7 @@ const SearchImg=styled.div`
 // 국가 보여주는 코드
 function Open({ onClickSelect, countries }){
     return(
-        <div>
+        <div >
             {countries.map( (data,index) => (
                 <div
                     role="button"
@@ -105,7 +105,7 @@ function CountryNumber() {
         <div className='codeInput'>
             <div 
                 role='button'
-                className='codeBtn' 
+                className='inlineBlock codeBtn' 
                 onClick={onToggle} 
                 onKeyDown={onToggle}
                 tabIndex={0}

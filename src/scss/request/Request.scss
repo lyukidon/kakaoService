@@ -71,6 +71,15 @@
 }
 .numberInput{
     width:100%;
+    .numberInputBox{
+        display: inline-block;
+        width:76%;
+        border:1px solid #8f8f9d;
+        input{
+            border:none;
+            width: 95%;
+        }
+    }
     .codeInput{
         display: inline-block;
         background-color: white;
@@ -78,14 +87,10 @@
         .codeBtn{
             border: 1px solid #8f8f9d;
             border-right: none;
-            padding: 7px 8px 9px 8px;
+            padding: 6px 8px 8px 8px;
             width: 115px;
             color:#858585;
         }
-    }
-    input{
-        display: inline-block;
-        width: 70%;
     }
 }
 .categoryBox{
@@ -133,4 +138,11 @@
         overflow: hidden;
         border: 0;
     }
+}
+.reqButton{
+    float: right;
+    background-color: #ffe500;
+    padding: 10px 55px;
+    border: none;
+    font-weight: bold;
 }
