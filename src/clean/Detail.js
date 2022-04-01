@@ -3,6 +3,7 @@ import qs from 'qs';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
+import RequestBtn from './RequestBtn';
 
 function Explain({ query, data, index }){
 
@@ -105,9 +106,11 @@ function Detail() {
     },[])
     return (
         <div className='detail'>
+
             <div className='categoryName'>
                 {category[query.category]}
             </div>
+
             <div className='platformBox'>
                 {platform[query.category] && platform[query.category].map((data, index, arr) => (
                     <div key={data}>
@@ -122,6 +125,8 @@ function Detail() {
                 ))}
             </div>
             <Content query={query} />
+
+            <RequestBtn query={query}/>
         </div>
     );
 }
