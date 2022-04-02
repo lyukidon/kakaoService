@@ -20,7 +20,10 @@ function SideMenu() {
         <div className='sidemenu inlineBlock'>
             <div className='serviceName'><h3>{service}</h3></div>
             {category.map((data,index) => (
-                <div className='sidebtn' key={data}>
+                <div
+                    className={index === +query.category ? 'sidebtn active':'sidebtn'}
+                    key={data}
+                >
                     <Link
                         key={data}
                         to={`?service=${query.service}&category=${index}&platform=0`}
