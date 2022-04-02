@@ -21,7 +21,7 @@ function App (){
         <Route path='*' element={<Error />}/>
         <Route  path='helps' element={<RouteMenu />} />
         <Route path='requests' element={<RouteRequest />} />
-        <Route path='clean' element={<RouteClean />} />
+        <Route path='faq' element={<RouteClean />} />
         <Route path='req' element={<RouteReq />} />
         <Route 
           path='/' 
