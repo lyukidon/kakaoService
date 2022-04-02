@@ -7,30 +7,27 @@ import RequestBtn from './RequestBtn';
 
 function Explain({ query, data, index }){
 
-    const [toggle, setToggle]=useState(false)
-    useEffect(()=>{
-        if (+query.articleId === +index+1){
-            setToggle(!toggle)
-        }
-    },[])
+    // const [toggle, setToggle]=useState(false)
+    // useEffect(()=>{
+    //     if (+query.articleId === +index+1){
+    //         setToggle(!toggle)
+    //     }
+    // },[])
+    const activeUrl=`?service=${query.service}&category=${query.category}&platform=${query.platform}`
+    const inactiveUrl=`?service=${query.service}&category=${query.category}&platform=${query.platform}&articleId=${index}`
     return(
         <div className='content' key={data.id}>
             <div className="contentIndex">{index+1}</div>
-            <div className='contentLink'>
-                <Link
-                    onClick={()=>setToggle(!toggle)}
-                    to={`?service=${query.service}&category=${query.category}&platform=${query.platform}${!toggle ? `&articleId=${index+1}`:``}`}
-                >
-                    <div className={toggle ? 'activate': 'inactivate'}>
-                        {data.content}
-                    </div>
-                </Link>
-                {toggle && 
-                    <div className='explain'>
-                        {data.explain}
-                    </div>
-                }
-            </div>
+                <div className='contentLink'>
+                    <Link to={inactiveUrl}>
+                        <div className={+query.articleId === index ? 'activate':'inactivate'}>
+                            {data.content}
+                        </div>
+                    </Link>
+                    {+query.articleId === index &&
+                        <div>{data.explain}</div>
+                    }
+                </div>
         </div>
     )
 }
