@@ -21,11 +21,12 @@ function SideMenu() {
             <div className='serviceName'><h3>{service}</h3></div>
             {category.map((data,index) => (
                 <div
-                    className={index === +query.category ? 'sidebtn btnActive':'sidebtn'}
                     key={data}
+                    className='sidebtn'
                 >
                     <Link
                         key={data}
+                        className={index === +query.category && 'btnActive'}
                         to={`?service=${query.service}&category=${index}&platform=0`}
                     >{data}</Link>
                 </div>

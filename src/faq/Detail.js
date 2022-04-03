@@ -11,16 +11,16 @@ function Explain({ query, data, index }){
     return(
         <div className='content' key={data.id}>
             <div className="contentIndex">{index+1}</div>
-                <div className='contentLink'>
-                    <Link to={query.articleId && +query.articleId === index ? active : inactiveUrl}>
-                        <div className={+query.articleId === index ? 'activate':'inactivate'}>
-                            {data.content}
-                        </div>
-                    </Link>
-                    {+query.articleId === index &&
-                        <div>{data.explain}</div>
-                    }
-                </div>
+            <div className='contentLink'>
+                <Link to={query.articleId && +query.articleId === index ? active : inactiveUrl}>
+                    <div className={+query.articleId === index ? 'activate':'inactivate'}>
+                        {data.content}
+                    </div>
+                </Link>
+                {+query.articleId === index &&
+                    <div>{data.explain}</div>
+                }
+            </div>
         </div>
     )
 }
@@ -97,7 +97,8 @@ function Detail() {
                 setCategory([...res.data.category[query.service]]);
                 setPlatform([...res.data.platform[query.service]]);
             })
-    },[])
+    },[]);
+    
     return (
         <div className='detail'>
 
@@ -110,6 +111,7 @@ function Detail() {
                     <div key={data}>
                         <Link 
                             key={data}
+                            className={+query.platform === index && 'active' }
                             to={`?service=${query.service}&category=${query.category}&platform=${index}`}
                         >
                             {data}

@@ -17,9 +17,14 @@
     .serviceName{
         margin-top: 60px;
         margin-bottom: 50px;
+        
     }
     .sidebtn{
         margin-bottom: 17px;
+    }
+    a{
+        color: #878787;
+        font-weight: bold;
     }
     .btnActive{
         color: black;
@@ -42,6 +47,15 @@
         border-top: 2px solid black;
         div{
             display:inline-block;
+        }
+        a{
+            margin: 0px 10px;
+            color: #878787;
+            font-weight: bold;
+        }
+        .active{
+            color:black;
+            text-decoration-line: underline;
         }
     }
     .contentBox{

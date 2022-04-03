@@ -36,11 +36,10 @@ function RandomPick() {
             <div className='contentBox'>
             {
                 random.map((data, index) => (
-                    <div className='content' key={data.id}>
+                    <div className='content' key={data.content}>
                         <ContentIndex className="contentIndex">{index+1}</ContentIndex>
                         <div className='contentLink'>
                             <Link
-                                
                                 to={`?service=${data.service}&category=${data.category}&platform=${data.platform}&articleId=${data.id}`}
                             >
                                 {data.content}
