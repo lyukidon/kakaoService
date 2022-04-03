@@ -48,7 +48,7 @@ function Content({ query }){
     const [article, setArticle]=useState([]);
 
     useEffect(()=>{
-        axios.get('/data/clean.json')
+        axios.get('/data/faq.json')
             .then(res => {
                 if (query.platform){
                     setArticle(
@@ -92,11 +92,11 @@ function Detail() {
     const [platform,setPlatform]=useState([]);
 
     useEffect(()=>{
-        axios.get('/data/clean.json')
-        .then(res => {
-            setCategory([...res.data.category[query.service]]);
-            setPlatform([...res.data.platform[query.service]]);
-        })
+        axios.get('/data/faq.json')
+            .then(res => {
+                setCategory([...res.data.category[query.service]]);
+                setPlatform([...res.data.platform[query.service]]);
+            })
     },[])
     return (
         <div className='detail'>
