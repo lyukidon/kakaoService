@@ -7,7 +7,6 @@ import '../scss/request/CountryNumber.scss'
 
 const SearchBox=styled.div`
     width:500px;
-    position:absolute;
     background-color: white;
     border: 1px solid black;
 `
@@ -113,7 +112,7 @@ function CountryNumber() {
                 {selected || '+82'}
             </div>
             {toggle &&
-                <div>
+                <div className='nummmber'>
                     <SearchBox>
                         <SearchImg />
                         <SearchInput type="text"
