@@ -13,13 +13,13 @@ function Explain({ query, data, index }){
     //         setToggle(!toggle)
     //     }
     // },[])
-    const activeUrl=`?service=${query.service}&category=${query.category}&platform=${query.platform}`
+    const active=`?service=${query.service}&category=${query.category}&platform=${query.platform}`
     const inactiveUrl=`?service=${query.service}&category=${query.category}&platform=${query.platform}&articleId=${index}`
     return(
         <div className='content' key={data.id}>
             <div className="contentIndex">{index+1}</div>
                 <div className='contentLink'>
-                    <Link to={inactiveUrl}>
+                    <Link to={query.articleId && +query.articleId === index ? active : inactiveUrl}>
                         <div className={+query.articleId === index ? 'activate':'inactivate'}>
                             {data.content}
                         </div>
