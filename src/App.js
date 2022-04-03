@@ -4,12 +4,10 @@ import Option from './comp-root/Option';
 import Header from './comp-root/Header';
 import Footer from './comp-root/Footer';
 import Root from './compRoute/Root';
-import RouteMenu from './compRoute/RouteMenu';
-import RouteRequest from './compRoute/RouteRequest';
 import Error from './compRoute/Error';
 
-import RouteClean from './clean/RouteClean'
-import RouteReq from './clean/RouteReq'
+import RouteMenu from './compRoute/RouteFaq';
+import RouteReq from './compRoute/RouteReq';
 
 function App (){
   const titleBack='| 카카오 고객센터'
@@ -19,9 +17,7 @@ function App (){
       <Header />
       <Routes>
         <Route path='*' element={<Error />}/>
-        <Route  path='helps' element={<RouteMenu />} />
-        <Route path='requests' element={<RouteRequest />} />
-        <Route path='faq' element={<RouteClean />} />
+        <Route path='faq' element={<RouteMenu />} />
         <Route path='req' element={<RouteReq />} />
         <Route 
           path='/' 

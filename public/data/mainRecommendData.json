@@ -3,12 +3,12 @@
         "id": 0,
         "title":"카카오톡",
         "src":"/img/카카오톡.png",
-        "url":"/helps?service=0"
+        "url":"/faq?service=0"
     },{
         "id": 1,
         "title":"카카오계정",
         "src":"/img/카카오계정.png",
-        "url":"/faq?service=0"
+        "url":"#"
     },{
         "id": 2,
         "title":"카카오 이모티콘",

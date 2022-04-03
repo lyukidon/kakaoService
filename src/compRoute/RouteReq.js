@@ -3,8 +3,8 @@ import qs from 'qs';
 import { useLocation } from 'react-router-dom';
 
 import Request from '../comp-request/Request';
-import BreadCrumbs from './BreadCrumbs';
-import SideMenu from './SideMenu';
+import BreadCrumbs from '../faq/BreadCrumbs';
+import SideMenu from '../faq/SideMenu';
 
 function RouteReq() {
     const query=qs.parse(useLocation().search, {ignoreQueryPrefix:true})

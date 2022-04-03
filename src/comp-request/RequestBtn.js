@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import qs from 'qs';
 
-import '../scss/details/RequestBtn.scss';
+import '../scss/request/RequestBtn.scss';
 
 const Write=styled.div`
     display: inline-block;
@@ -13,14 +14,16 @@ const Write=styled.div`
 	height: 17px;
 `
 
-function RequestBtn({ query }) {
+function RequestBtn() {
+    const { query }=useSelector(state => state);
+    const url=qs.stringify(query)
     return (
         <div className='RequestBox'>
             <div className='inlineBlock'>
                 원하시는 답변을 찾지 못하셨다면, 고객센터로 문의해 주세요
             </div>
             <Link 
-                to={`/req?service=${query.service}&category=${query.category}`} 
+                to={`/requests?${url}#`} 
                 className='inlineBlock reqButton' 
             >
                 <Write />
@@ -29,16 +32,5 @@ function RequestBtn({ query }) {
         </div>
     );
 };
-RequestBtn.defaultProps={
-    query:[]
-}
-RequestBtn.propTypes={
-    query: PropTypes.shape({
-        service:PropTypes.string,
-        category:PropTypes.string,
-        platform:PropTypes.string,
-        articleId:PropTypes.string,
-    })
-}
 
 export default RequestBtn;

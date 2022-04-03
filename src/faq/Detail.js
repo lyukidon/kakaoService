@@ -6,13 +6,6 @@ import { Link, useLocation } from 'react-router-dom';
 import RequestBtn from './RequestBtn';
 
 function Explain({ query, data, index }){
-
-    // const [toggle, setToggle]=useState(false)
-    // useEffect(()=>{
-    //     if (+query.articleId === +index+1){
-    //         setToggle(!toggle)
-    //     }
-    // },[])
     const active=`?service=${query.service}&category=${query.category}&platform=${query.platform}`
     const inactiveUrl=`?service=${query.service}&category=${query.category}&platform=${query.platform}&articleId=${index}`
     return(
