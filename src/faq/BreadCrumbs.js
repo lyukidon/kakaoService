@@ -21,7 +21,7 @@ function BreadCrumbs({ query }){
             <Link to='/'>홈</Link>
             <div className='right-arrow'/>
             <Link
-                to={`?service=${query.service}`}
+                to={`/faq?service=${query.service}`}
             >{service}</Link>
             <div className='right-arrow'/>
             {query.category ?
