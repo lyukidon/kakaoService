@@ -79,10 +79,12 @@
     .numberInputBox{
         display: inline-block;
         width:76%;
+        height: 36px;
         border:1px solid #8f8f9d;
         input{
             border:none;
             width: 95%;
+            height: 13px;
         }
     }
     .codeInput{
@@ -94,6 +96,7 @@
             border-right: none;
             padding: 6px 8px 8px 8px;
             width: 115px;
+            height: 22px;
             color:#858585;
         }
     }
