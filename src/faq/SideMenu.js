@@ -27,7 +27,7 @@ function SideMenu() {
                     <Link
                         key={data}
                         className={index === +query.category && 'btnActive'}
-                        to={`?service=${query.service}&category=${index}&platform=0`}
+                        to={`/faq?service=${query.service}&category=${index}&platform=0`}
                     >{data}</Link>
                 </div>
             ))}
