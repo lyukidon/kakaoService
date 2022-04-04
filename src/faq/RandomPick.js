@@ -40,7 +40,7 @@ function RandomPick() {
                         <ContentIndex className="contentIndex">{index+1}</ContentIndex>
                         <div className='contentLink'>
                             <Link
-                                to={`?service=${data.service}&category=${data.category}&platform=${data.platform}&articleId=${data.id}`}
+                                to={`?service=${data.service}&category=${data.category}&platform=${data.platform}&articleId=${data.id-1}`}
                             >
                                 {data.content}
                             </Link>
