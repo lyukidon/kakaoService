@@ -48,6 +48,7 @@ function Content({ query }){
     const [article, setArticle]=useState([]);
 
     useEffect(()=>{
+        console.log('article')
         axios.get('/data/faq.json')
             .then(res => {
                 if (query.platform){
@@ -60,7 +61,7 @@ function Content({ query }){
                     );
                 }
             })
-    },[query])
+    },[query.platform, query.category])
 
 
     return(
@@ -94,18 +95,22 @@ function Detail() {
     useEffect(()=>{
         axios.get('/data/faq.json')
             .then(res => {
+                console.log('Detail')
                 setCategory([...res.data.category[query.service]]);
                 setPlatform([...res.data.platform[query.service]]);
             })
+
+        // if(query.articleId){
+        //     document.querySelector(`#article${query.article}`).scrollIntoView();
+        //     console.log('실행중')
+        // }
     },[]);
-    
+
     return (
         <div className='detail'>
-
             <div className='categoryName'>
                 {category[query.category]}
             </div>
-
             <div className='platformBox'>
                 {platform[query.category] && platform[query.category].map((data, index, arr) => (
                     <div key={data}>
