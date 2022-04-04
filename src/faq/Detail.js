@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import qs from 'qs';
 import axios from 'axios';
 import PropTypes from 'prop-types';
@@ -48,7 +48,6 @@ function Content({ query }){
     const [article, setArticle]=useState([]);
 
     useEffect(()=>{
-        console.log('article')
         axios.get('/data/faq.json')
             .then(res => {
                 if (query.platform){
@@ -63,12 +62,28 @@ function Content({ query }){
             })
     },[query.platform, query.category])
 
+    const positionRef=useRef([]);
+
+    useEffect(()=>{
+        if(positionRef.current.length !== 0 && query.articleId){
+            positionRef.current[query.articleId].scrollIntoView();
+        }
+    },[query])
 
     return(
         <div className='contentBox'>
             {
                 article.map((data, index) => (
-                    <Explain key={data.id} query={query} data={data} index={index} />
+                    <div
+                        key={data.id}
+                        ref={ element => {positionRef.current[index] = element} }
+                    >
+                        <Explain 
+                            query={query} 
+                            data={data} 
+                            index={index}
+                        />
+                    </div>
                 ))
             }
         </div>
@@ -95,15 +110,9 @@ function Detail() {
     useEffect(()=>{
         axios.get('/data/faq.json')
             .then(res => {
-                console.log('Detail')
                 setCategory([...res.data.category[query.service]]);
                 setPlatform([...res.data.platform[query.service]]);
             })
-
-        // if(query.articleId){
-        //     document.querySelector(`#article${query.article}`).scrollIntoView();
-        //     console.log('실행중')
-        // }
     },[]);
 
     return (
@@ -114,7 +123,7 @@ function Detail() {
             <div className='platformBox'>
                 {platform[query.category] && platform[query.category].map((data, index, arr) => (
                     <div key={data}>
-                        <Link 
+                        <Link
                             key={data}
                             className={+query.platform === index && 'active' }
                             to={`?service=${query.service}&category=${query.category}&platform=${index}`}
@@ -126,7 +135,6 @@ function Detail() {
                 ))}
             </div>
             <Content query={query} />
-
             <RequestBtn query={query}/>
         </div>
     );
