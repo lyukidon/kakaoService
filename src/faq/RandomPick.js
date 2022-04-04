@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -39,11 +39,11 @@ function RandomPick() {
                     <div className='content' key={data.content}>
                         <ContentIndex className="contentIndex">{index+1}</ContentIndex>
                         <div className='contentLink'>
-                            <Link
-                                to={`?service=${data.service}&category=${data.category}&platform=${data.platform}&articleId=${data.id-1}`}
+                            <HashLink
+                                to={`?service=${data.service}&category=${data.category}&platform=${data.platform}&articleId=${data.id}#article${data.id}`}
                             >
                                 {data.content}
-                            </Link>
+                            </HashLink>
                         </div>
                     </div>
                 ))
