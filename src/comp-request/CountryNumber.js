@@ -68,7 +68,7 @@ function CountryNumber() {
     const [countries, setCountries]=useState([])
     const [nation,setNation]=useState([])
     useEffect(()=>{
-        axios.get('/data/CountryNumber.json')
+        axios.get('/data/countryNumber.json')
         .then(res => {
             setCountries([
                 ...countries,
