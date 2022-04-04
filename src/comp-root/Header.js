@@ -40,7 +40,7 @@ function Header(){
             <Title to='/'>kakao 고객센터</Title>
             <form className='searchBox'>
                 <input type="text" placeholder='궁금한 점이 있다면 도움말을 검색해보세요' />
-                <button type='button' className='searchIcon'></button>
+                <input type='submit' className='searchIcon' />
                 <div>
                     {
                         headerData.map((headerdata)=>(

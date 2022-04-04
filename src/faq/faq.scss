@@ -1,0 +1,93 @@
+.breadcrumb{
+    padding:15px 0px;
+    border-top: 2px solid #f3f3f3;
+    border-bottom: 2px solid #f3f3f3;
+    .right-arrow{
+        display: inline-block;
+        margin:0px 10px;
+        background: url('../../public/ico.png') no-repeat -84px -24px;
+        width: 5px;
+        height: 9px;
+    }
+}
+.sidemenu{
+    display: inline-block;
+    width: 17%;
+    vertical-align: top;
+    .serviceName{
+        margin-top: 60px;
+        margin-bottom: 50px;
+        
+    }
+    .sidebtn{
+        margin-bottom: 17px;
+    }
+    a{
+        color: #878787;
+        font-weight: bold;
+    }
+    .btnActive{
+        color: black;
+        text-decoration-line: underline;
+    }
+}
+.detail{
+    display: inline-block;
+    width:73%;
+    padding-left: 55px;
+    padding-bottom: 50px;
+    border-left: 2px solid #f3f3f3;
+    .categoryName{
+        margin: 45px 0px;
+        font-size: xx-large;
+        font-weight: bolder;
+    }
+    .platformBox{
+        padding: 20px 0px;
+        border-top: 2px solid black;
+        div{
+            display:inline-block;
+        }
+        a{
+            margin: 0px 10px;
+            color: #878787;
+            font-weight: bold;
+        }
+        .active{
+            color:black;
+            text-decoration-line: underline;
+        }
+    }
+    .contentBox{
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+        .content{
+            padding: 22px 0px;
+            .contentIndex{
+                margin-right: 20px;
+                vertical-align: top;
+                display: inline-block;
+            }
+            .contentLink{
+                display: inline-block;
+                width: 85%;
+                a:hover{
+                    text-decoration-line: none;
+                }
+                .activate{
+                    display: inline-block;
+                    color:black;
+                    font-weight: bold;
+                    font-size: 18px;
+                    text-decoration-line: none;
+                    margin-bottom: 30px;
+                }
+                .inactivate{
+                    display: inline-block;
+                    color: black;
+                    
+                }
+            }
+        }
+    }
+}

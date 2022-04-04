@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import '../scss/details/RequestBtn.scss';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import '../scss/request/RequestBtn.scss';
 
 const Write=styled.div`
     display: inline-block;
@@ -13,17 +13,14 @@ const Write=styled.div`
 	height: 17px;
 `
 
-function RequestBtn() {
-    const { breadCrumb }=useSelector(state => state);
+function RequestBtn({ query }) {
     return (
-        <div 
-            className='RequestBox'
-        >
+        <div className='RequestBox'>
             <div className='inlineBlock'>
                 원하시는 답변을 찾지 못하셨다면, 고객센터로 문의해 주세요
             </div>
             <Link 
-                to={`/requests?service=${breadCrumb.service}`} 
+                to={`/requests?service=${query.service}&category=${query.category}`} 
                 className='inlineBlock reqButton' 
             >
                 <Write />
@@ -32,8 +29,16 @@ function RequestBtn() {
         </div>
     );
 };
+RequestBtn.defaultProps={
+    query:[]
+}
 RequestBtn.propTypes={
-    onReqClick: PropTypes.func.isRequired,
+    query: PropTypes.shape({
+        service:PropTypes.string,
+        category:PropTypes.string,
+        platform:PropTypes.string,
+        articleId:PropTypes.string,
+    })
 }
 
 export default RequestBtn;

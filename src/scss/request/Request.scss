@@ -5,6 +5,11 @@
     border-left: 1px solid #e8e8e8;
     padding-left: 7%;
 }
+.classify{
+    margin: 45px 0px;
+    font-size: xx-large;
+    font-weight: bolder;
+}
 .essential{
     width: 100%;
     text-align: right;
@@ -71,6 +76,17 @@
 }
 .numberInput{
     width:100%;
+    .numberInputBox{
+        display: inline-block;
+        width:76%;
+        height: 36px;
+        border:1px solid #8f8f9d;
+        input{
+            border:none;
+            width: 95%;
+            height: 13px;
+        }
+    }
     .codeInput{
         display: inline-block;
         background-color: white;
@@ -78,14 +94,11 @@
         .codeBtn{
             border: 1px solid #8f8f9d;
             border-right: none;
-            padding: 7px 8px 9px 8px;
+            padding: 6px 8px 8px 8px;
             width: 115px;
+            height: 22px;
             color:#858585;
         }
-    }
-    input{
-        display: inline-block;
-        width: 70%;
     }
 }
 .categoryBox{
@@ -133,4 +146,11 @@
         overflow: hidden;
         border: 0;
     }
+}
+.reqButton{
+    float: right;
+    background-color: #ffe500;
+    padding: 10px 55px;
+    border: none;
+    font-weight: bold;
 }

@@ -7,7 +7,6 @@ import '../scss/request/CountryNumber.scss'
 
 const SearchBox=styled.div`
     width:500px;
-    position:absolute;
     background-color: white;
     border: 1px solid black;
 `
@@ -27,7 +26,7 @@ const SearchImg=styled.div`
 // 국가 보여주는 코드
 function Open({ onClickSelect, countries }){
     return(
-        <div>
+        <div >
             {countries.map( (data,index) => (
                 <div
                     role="button"
@@ -105,7 +104,7 @@ function CountryNumber() {
         <div className='codeInput'>
             <div 
                 role='button'
-                className='codeBtn' 
+                className='inlineBlock codeBtn' 
                 onClick={onToggle} 
                 onKeyDown={onToggle}
                 tabIndex={0}
@@ -113,7 +112,7 @@ function CountryNumber() {
                 {selected || '+82'}
             </div>
             {toggle &&
-                <div>
+                <div className='nummmber'>
                     <SearchBox>
                         <SearchImg />
                         <SearchInput type="text"
