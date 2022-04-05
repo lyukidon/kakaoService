@@ -10,9 +10,6 @@
     - Redux
     - Axios
     - React Hook Form, yup
-- 웹 서버
-    - expressJS
-    - aws ec2
 -----------------------------
 ### 페이지 구성
 - 초기화면
