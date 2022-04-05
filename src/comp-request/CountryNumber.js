@@ -11,7 +11,7 @@ const SearchBox=styled.div`
     border: 1px solid black;
 `
 const SearchInput=styled.input`
-    
+    width: 440px;
     vertical-align: top;
     border:none;
 `
