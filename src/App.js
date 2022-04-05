@@ -3,11 +3,11 @@ import { Routes, Route } from 'react-router-dom';
 import Option from './comp-root/Option';
 import Header from './comp-root/Header';
 import Footer from './comp-root/Footer';
-import Root from './compRoute/Root';
-import Error from './compRoute/Error';
+import Root from './Route/Root';
+import Error from './Route/Error';
 
-import RouteMenu from './compRoute/RouteFaq';
-import RouteReq from './compRoute/RouteReq';
+import RouteMenu from './Route/RouteFaq';
+import RouteReq from './Route/RouteReq';
 
 function App (){
   const titleBack='| 카카오 고객센터'
