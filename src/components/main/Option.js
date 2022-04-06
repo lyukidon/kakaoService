@@ -1,6 +1,5 @@
 import React from 'react';
-import '../common.scss'
-import '../scss/root/Option.scss'
+import '../../scss/main/Option.scss'
 
 function Option() {
     return (

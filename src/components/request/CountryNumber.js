@@ -3,7 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import '../scss/request/CountryNumber.scss'
+import '../../scss/request/CountryNumber.scss'
 
 const SearchBox=styled.div`
     width:500px;

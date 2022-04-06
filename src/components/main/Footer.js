@@ -1,8 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import PropTypes from "prop-types";
 import axios from 'axios';
-import '../common.scss'
-import '../scss/root/Footer.scss'
+import '../../scss/main/Footer.scss'
 
 function Menu({title,url}){
     return(

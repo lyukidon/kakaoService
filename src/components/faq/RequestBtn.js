@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import '../scss/request/RequestBtn.scss';
+import '../../scss/request/RequestBtn.scss';
 
 const Write=styled.div`
     display: inline-block;

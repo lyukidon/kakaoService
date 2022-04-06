@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom';
 // component
 import CountryNumber from './CountryNumber';
 // scss
-import '../scss/request/Request.scss';
+import '../../scss/request/Request.scss';
 
 
 const reqData=yup.object({

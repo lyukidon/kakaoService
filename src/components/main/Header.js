@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import axios from 'axios';
 import styled from 'styled-components';
-import '../common.scss';
-import '../scss/root/Header.scss';
+import '../../scss/main/Header.scss';
 
 const Title=styled(Link)`
     margin-top: 30px;

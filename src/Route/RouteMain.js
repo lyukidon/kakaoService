@@ -1,15 +1,14 @@
 import React from "react";
 import { Helmet } from 'react-helmet';
-import PropTypes from 'prop-types';
-import Notice from "../comp-root/Notice";
-import Main from '../comp-root/Main'
-import Sub from '../comp-root/Sub'
+import Notice from "../components/main/Notice";
+import Main from '../components/main/Main';
+import Sub from '../components/main/Sub';
 
-function Root({ title }) {
+function RouteMain() {
   return (
     <div className='app'>
         <Helmet>
-          <title>{title}</title>
+          <title>고객센터 | 카카오 고객센터</title>
         </Helmet>
         <Notice 
             title='공지사항'
@@ -20,8 +19,5 @@ function Root({ title }) {
     </div>
   );
 }
-Root.propTypes={
-  title: PropTypes.string.isRequired,
-}
 
-export default Root;
+export default RouteMain;
