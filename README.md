@@ -29,7 +29,7 @@
     - ReactJS
     - SCSS, Styled-Component
     - react-router-dom
-    - Redux
+    - ~~Redux, zustand~~
     - axios
     - React Hook Form, yup
 - 웹 서버
