@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import '../../scss/main/Option.scss'
 
 function Option() {
@@ -9,10 +11,9 @@ function Option() {
                 <option value="ENG">English</option>
             </select>
             <span>
-                <a 
-                    href="/">
-                        로그인
-                </a>
+                <Link to='/login'>
+                    로그인
+                </Link>
             </span>
         </div>
     );

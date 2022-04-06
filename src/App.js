@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Option from './components/main/Option';
+import Option from './components/main/Top';
 import Header from './components/main/Header';
 import Footer from './components/main/Footer';
 import Main from './Route/Main';
