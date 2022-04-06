@@ -24,7 +24,7 @@ function MainRecommend() {
     const [mainRecommendData,setMainRecommendData]=useState([])
     useEffect(()=>{
         async function getData(){
-            const res=await axios.get('/data/mainRecommendData.json');
+            const res=await axios.get('/data/mainRecommend.json');
             setMainRecommendData(res.data);
         }
         getData()

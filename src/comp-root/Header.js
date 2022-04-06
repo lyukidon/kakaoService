@@ -31,7 +31,7 @@ Recommend.propTypes={
 function Header(){
     const [headerData, setHeaderData]=useState([]);
     useEffect(()=>{
-        axios.get('/data/headerData.json')
+        axios.get('/data/header.json')
             .then(res=>setHeaderData(res.data))
             .catch(err=>console.error(err));
     },[])

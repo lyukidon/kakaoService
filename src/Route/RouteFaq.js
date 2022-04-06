@@ -9,8 +9,9 @@ import RandomPick from '../faq/RandomPick';
 
 import '../faq/faq.scss';
 
-function RouteClean() {
+function RouteFaq() {
     const query=qs.parse(useLocation().search, {ignoreQueryPrefix:true})
+    console.log('Faq')
 
     return (
         <div className='common-width'>
@@ -26,4 +27,4 @@ function RouteClean() {
     );
 }
 
-export default RouteClean;
+export default RouteFaq;

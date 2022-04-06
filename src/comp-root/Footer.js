@@ -18,7 +18,7 @@ Menu.propTypes={
 function Footer() {
     const [footerData,setFooterData]=useState([]);
     useEffect(()=>{
-        axios.get('/data/footerData.json')
+        axios.get('/data/footer.json')
             .then(res=>setFooterData(res.data))
             .catch(err=>console.error(err));
     },[])

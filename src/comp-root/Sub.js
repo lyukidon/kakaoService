@@ -42,7 +42,7 @@ Menu.propTypes={
 function Sub() {
     const [sub,setSub]=useState([]);
     useEffect(()=>{
-        axios.get('/data/subData.json')
+        axios.get('/data/sub.json')
             .then((res)=> setSub(res.data))
             .catch((err)=>console.error(err));
     },[])

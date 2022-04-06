@@ -5,7 +5,7 @@ import MainAllMenu from './MainAllMenu';
 function MainAll() {
     const [mainAllData,setMainAllData]=useState([])
     useEffect(()=>{
-        axios.get('/data/mainAllData.json')
+        axios.get('/data/mainAll.json')
             .then((res)=> setMainAllData(res.data))
             .catch((err)=>console.error(err))
     },[])
