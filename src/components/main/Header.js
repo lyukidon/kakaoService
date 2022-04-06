@@ -14,18 +14,7 @@ const Title=styled(Link)`
     }
     font-size: 30px;
     font-weight: bold;
-`
-
-function Recommend( { title } ){
-    return (
-        <span>
-            <a className='recommend' href='#;'>{title}</a>
-        </span>
-    )
-}
-Recommend.propTypes={
-    title: PropTypes.string.isRequired,
-}
+`;
 
 function Header(){
     const [headerData, setHeaderData]=useState([]);
@@ -43,10 +32,9 @@ function Header(){
                 <div>
                     {
                         headerData.map((headerdata)=>(
-                            <Recommend
-                                key={headerdata.id} 
-                                title={headerdata.title}
-                            />
+                            <span key={headerdata.id} >
+                                <a className='recommend' href='#;'>{headerdata.title}</a>
+                            </span>
                         ))
                     }
                 </div>

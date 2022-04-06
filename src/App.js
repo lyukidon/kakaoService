@@ -8,6 +8,7 @@ import Error from './Route/Error';
 
 import Menu from './Route/Faq';
 import Req from './Route/Req';
+import Login from './Route/Login';
 
 import './scss/common.scss';
 
@@ -20,6 +21,7 @@ function App (){
         <Route path='*' element={<Error />}/>
         <Route path='faq' element={<Menu />} />
         <Route path='requests' element={<Req />} />
+        <Route path='login' element={<Login />} />
         <Route path='/' element={<Main />} 
         />
       </Routes>
