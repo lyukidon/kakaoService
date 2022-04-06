@@ -3,11 +3,11 @@ import { Routes, Route } from 'react-router-dom';
 import Option from './components/main/Option';
 import Header from './components/main/Header';
 import Footer from './components/main/Footer';
-import RouteMain from './Route/RouteMain';
+import Main from './Route/Main';
 import Error from './Route/Error';
 
-import RouteMenu from './Route/RouteFaq';
-import RouteReq from './Route/RouteReq';
+import Menu from './Route/Faq';
+import Req from './Route/Req';
 
 import './scss/common.scss';
 
@@ -18,9 +18,9 @@ function App (){
       <Header />
       <Routes>
         <Route path='*' element={<Error />}/>
-        <Route path='faq' element={<RouteMenu />} />
-        <Route path='requests' element={<RouteReq />} />
-        <Route path='/' element={<RouteMain />} 
+        <Route path='faq' element={<Menu />} />
+        <Route path='requests' element={<Req />} />
+        <Route path='/' element={<Main />} 
         />
       </Routes>
       <Footer />
