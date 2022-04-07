@@ -1,8 +1,8 @@
 import React from "react";
 import Admin from "../components/admin/Admin";
 
-const Page = () => {
+function RouteAdmin(){
     return <Admin />;
 };
 
-export default Page;
+export default RouteAdmin;

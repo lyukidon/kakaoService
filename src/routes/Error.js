@@ -7,8 +7,8 @@ const ErrMessage = styled.div`
     font-weight: bold;
 `;
 
-function Error() {
+function RouteError() {
     return <ErrMessage>404 Error</ErrMessage>;
 }
 
-export default Error;
+export default RouteError;

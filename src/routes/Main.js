@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import Option from "../components/main/Top";
+import Top from "../components/main/Top";
 import Header from "../components/main/Header";
 import Notice from "../components/main/Notice";
 import Main from "../components/main/Main";
@@ -12,7 +12,7 @@ function RouteMain() {
             <Helmet>
                 <title>고객센터 | 카카오 고객센터</title>
             </Helmet>
-            <Option />
+            <Top />
             <Header />
             <Notice
                 title="공지사항"
