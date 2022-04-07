@@ -1,7 +1,5 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Option from './components/main/Top';
-import Header from './components/main/Header';
 import Footer from './components/main/Footer';
 import Main from './Route/Main';
 import Error from './Route/Error';
@@ -16,8 +14,6 @@ import './scss/common.scss';
 function App (){
   return(
     <div>
-      <Option />
-      <Header />
       <Routes>
         <Route path='*' element={<Error />}/>
         <Route path='faq' element={<Menu />} />

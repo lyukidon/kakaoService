@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Div= styled.div`
+const ErrMessage= styled.div`
     text-align: center;
     font-size: 50px;
     font-weight:bold;
@@ -9,9 +9,9 @@ const Div= styled.div`
 
 function Error() {
     return (
-        <Div>
+        <ErrMessage>
             404 Error
-        </Div>
+        </ErrMessage>
     );
 }
 
