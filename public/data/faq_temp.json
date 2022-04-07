@@ -68,365 +68,417 @@
             "service_id": 1,
             "category_id": 1,
             "platform_id": 1,
+            "article_id": 0,
+            "content": "안드로이드 기기에서 메시지 도착알림이 오지 않아요. 어떻게 하나요?",
+            "explain": "1. 휴대폰 설정에서"
+        },
+        {
+            "service_id": 1,
+            "category_id": 1,
+            "platform_id": 1,
             "article_id": 1,
-            "content": "안드로이드 기기에서 메시지 도착알림이 오지 않아요. 어떻게 하나요?"
+            "content": "[Wear OS] Wear OS에서 카카오톡을 이용하고 싶어요",
+            "explain": "<Wear OS 이용 전 꼭 확인해주세요>"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 1,
             "article_id": 2,
-            "content": "[Wear OS] Wear OS에서 카카오톡을 이용하고 싶어요"
+            "content": "카카오톡 암호를 분실했어요. 어떻게 하나요?",
+            "explain": "카카오톡 암호를 분실한 경우,"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 1,
             "article_id": 3,
-            "content": "카카오톡 암호를 분실했어요. 어떻게 하나요?"
+            "content": "안드로이드 사용자 테마가 안보여요",
+            "explain": "안드로이드 OS 정책 변경으로 [카카오톡 설정 > 테마] 에서 일부 사용자 테마 리스트를 불러올 수 없습니다."
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 1,
             "article_id": 4,
-            "content": "안드로이드 사용자 테마가 안보여요"
+            "content": "[태블릿] 안드로이드 태블릿에서 설정한 채팅방 이름과 친구 이름이 메인 기기에서도 동기화 되나요.",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 1,
             "article_id": 5,
-            "content": "[태블릿] 안드로이드 태블릿에서 설정한 채팅방 이름과 친구 이름이 메인 기기에서도 동기화 되나요."
+            "content": "[태블릿] 안드로이드 태블릿 카카오톡을 사용할 수 있는 기기를 알고 싶습니다.",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 1,
             "article_id": 6,
-            "content": "[태블릿] 안드로이드 태블릿 카카오톡을 사용할 수 있는 기기를 알고 싶습니다."
+            "content": "[태블릿] 분할 화면을 해제하고싶어요.",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 1,
             "article_id": 7,
-            "content": "[태블릿] 분할 화면을 해제하고싶어요."
+            "content": "[태블릿] 다른 기기와 함께 사용이 무엇인가요.",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 1,
             "article_id": 8,
-            "content": "[태블릿] 다른 기기와 함께 사용이 무엇인가요."
+            "content": "[태블릿] 카카오톡 안드로이드 태블릿 공식 지원 전부터 이미 별개의 계정을 생성하여 카카오톡을 사용하고 있었는데, 이제는 스마트폰에서 사용하고 있는 계정으로 태블릿에서도 사용하고 싶습니다.",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 1,
             "article_id": 9,
-            "content": "[태블릿] 카카오톡 안드로이드 태블릿 공식 지원 전부터 이미 별개의 계정을 생성하여 카카오톡을 사용하고 있었는데, 이제는 스마트폰에서 사용하고 있는 계정으로 태블릿에서도 사용하고 싶습니다."
-        },
-        {
-            "service_id": 1,
-            "category_id": 1,
-            "platform_id": 1,
-            "article_id": 10,
-            "content": "[태블릿] 태블릿에서도 무료통화(보이스톡/페이스톡)을 사용할 수 있나요."
-        },
-        {
-            "service_id": 1,
-            "category_id": 1,
-            "platform_id": 2,
-            "article_id": 1,
-            "content": "아이폰에서 실행 중에만 카카오톡 알림이 울려요"
-        },
-        {
-            "service_id": 1,
-            "category_id": 1,
-            "platform_id": 2,
-            "article_id": 2,
-            "content": "OS 서체를 설정(혹은 설치)하고 싶어요."
-        },
-        {
-            "service_id": 1,
-            "category_id": 1,
-            "platform_id": 2,
-            "article_id": 3,
-            "content": "[Applewatch] 애플워치에서 카카오톡을 사용하고 싶어요."
-        },
-        {
-            "service_id": 1,
-            "category_id": 1,
-            "platform_id": 2,
-            "article_id": 4,
-            "content": "[Applewatch] 애플워치에 알람이 오지 않아요."
-        },
-        {
-            "service_id": 1,
-            "category_id": 1,
-            "platform_id": 2,
-            "article_id": 5,
-            "content": "[Applewatch] 애플워치에서 카카오톡을 쓸 수 없어요."
-        },
-        {
-            "service_id": 1,
-            "category_id": 1,
-            "platform_id": 2,
-            "article_id": 6,
-            "content": "초기 로딩속도가 느려졌어요. 어떻게 하나요?"
-        },
-        {
-            "service_id": 1,
-            "category_id": 1,
-            "platform_id": 2,
-            "article_id": 7,
-            "content": "위치정보 이용의 동의 및 해제는 어떻게 하나요?"
-        },
-        {
-            "service_id": 1,
-            "category_id": 1,
-            "platform_id": 2,
-            "article_id": 8,
-            "content": "카카오톡 ID는 무엇인가요?"
-        },
-        {
-            "service_id": 1,
-            "category_id": 1,
-            "platform_id": 2,
-            "article_id": 9,
-            "content": "카카오톡 ID로 친구찾기는 어떻게 하나요?"
+            "content": "[태블릿] 태블릿에서도 무료통화(보이스톡/페이스톡)을 사용할 수 있나요.",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 2,
             "article_id": 10,
-            "content": "등록한 카카오톡 ID를 \"카카오톡 ID로 친구 검색\"에서 검색되지 않게 하고 싶어요."
+            "content": "아이폰에서 실행 중에만 카카오톡 알림이 울려요",
+            "explain": "안녕하세요"
+        },
+        {
+            "service_id": 1,
+            "category_id": 1,
+            "platform_id": 2,
+            "article_id": 11,
+            "content": "OS 서체를 설정(혹은 설치)하고 싶어요.",
+            "explain": "안녕하세요"
+        },
+        {
+            "service_id": 1,
+            "category_id": 1,
+            "platform_id": 2,
+            "article_id": 12,
+            "content": "[Applewatch] 애플워치에서 카카오톡을 사용하고 싶어요.",
+            "explain": "안녕하세요"
+        },
+        {
+            "service_id": 1,
+            "category_id": 1,
+            "platform_id": 2,
+            "article_id": 13,
+            "content": "[Applewatch] 애플워치에 알람이 오지 않아요.",
+            "explain": "안녕하세요"
+        },
+        {
+            "service_id": 1,
+            "category_id": 1,
+            "platform_id": 2,
+            "article_id": 14,
+            "content": "[Applewatch] 애플워치에서 카카오톡을 쓸 수 없어요.",
+            "explain": "안녕하세요"
+        },
+        {
+            "service_id": 1,
+            "category_id": 1,
+            "platform_id": 2,
+            "article_id": 15,
+            "content": "초기 로딩속도가 느려졌어요. 어떻게 하나요?",
+            "explain": "안녕하세요"
+        },
+        {
+            "service_id": 1,
+            "category_id": 1,
+            "platform_id": 2,
+            "article_id": 16,
+            "content": "위치정보 이용의 동의 및 해제는 어떻게 하나요?",
+            "explain": "안녕하세요"
+        },
+        {
+            "service_id": 1,
+            "category_id": 1,
+            "platform_id": 2,
+            "article_id": 17,
+            "content": "카카오톡 ID는 무엇인가요?",
+            "explain": "안녕하세요"
+        },
+        {
+            "service_id": 1,
+            "category_id": 1,
+            "platform_id": 2,
+            "article_id": 18,
+            "content": "카카오톡 ID로 친구찾기는 어떻게 하나요?",
+            "explain": "안녕하세요"
+        },
+        {
+            "service_id": 1,
+            "category_id": 1,
+            "platform_id": 2,
+            "article_id": 19,
+            "content": "등록한 카카오톡 ID를 \"카카오톡 ID로 친구 검색\"에서 검색되지 않게 하고 싶어요.",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 3,
-            "article_id": 1,
-            "content": "단축키가 궁금해요."
+            "article_id": 20,
+            "content": "단축키가 궁금해요.",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 3,
-            "article_id": 2,
-            "content": "스마트폰이 없는데 카카오톡 PC를 이용할 수 있나요?"
+            "article_id": 21,
+            "content": "스마트폰이 없는데 카카오톡 PC를 이용할 수 있나요?",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 3,
-            "article_id": 3,
-            "content": "줄바꿈(개행처리)은 어떻게 하나요 ?"
+            "article_id": 22,
+            "content": "줄바꿈(개행처리)은 어떻게 하나요 ?",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 3,
-            "article_id": 4,
-            "content": "카카오톡으로 주고 받은 멀티미디어를 PC에 저장할 수 있나요?"
+            "article_id": 23,
+            "content": "카카오톡으로 주고 받은 멀티미디어를 PC에 저장할 수 있나요?",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 3,
-            "article_id": 5,
-            "content": "특정 채팅방의 알림을 끌 수 있나요?"
+            "article_id": 24,
+            "content": "특정 채팅방의 알림을 끌 수 있나요?",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 3,
-            "article_id": 6,
-            "content": "채팅방에서 지난 대화가 보이지 않습니다."
+            "article_id": 25,
+            "content": "채팅방에서 지난 대화가 보이지 않습니다.",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 3,
-            "article_id": 7,
-            "content": "모바일에서 인증받은 PC를 확인하거나 해제할 수 있나요?"
+            "article_id": 26,
+            "content": "모바일에서 인증받은 PC를 확인하거나 해제할 수 있나요?",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 3,
-            "article_id": 8,
-            "content": "모바일 카카오톡과 친구 이름이 다르게 나옵니다."
+            "article_id": 27,
+            "content": "모바일 카카오톡과 친구 이름이 다르게 나옵니다.",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 3,
-            "article_id": 9,
-            "content": "자동 로그인을 설정하면 어떻게 되나요?"
+            "article_id": 28,
+            "content": "자동 로그인을 설정하면 어떻게 되나요?",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 3,
-            "article_id": 10,
-            "content": "PC버전의 대화내용을 저장할 수 있나요?"
+            "article_id": 29,
+            "content": "PC버전의 대화내용을 저장할 수 있나요?",
+            "explain": "안녕하세요"
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 1,
-            "article_id": 1,
-            "content": "인증문자가 오지 않아요. 어떻게 하나요?"
+            "article_id": 30,
+            "content": "인증문자가 오지 않아요. 어떻게 하나요?",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 1,
-            "article_id": 2,
-            "content": "카카오톡에 등록된 전화번호를 바꾸고 싶어요."
+            "article_id": 31,
+            "content": "카카오톡에 등록된 전화번호를 바꾸고 싶어요.",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 1,
-            "article_id": 3,
-            "content": "카카오톡을 탈퇴하고 싶어요."
+            "article_id": 32,
+            "content": "카카오톡을 탈퇴하고 싶어요.",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 1,
-            "article_id": 4,
-            "content": "카카오톡을 탈퇴하면 어떻게 되나요?"
+            "article_id": 33,
+            "content": "카카오톡을 탈퇴하면 어떻게 되나요?",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 1,
-            "article_id": 5,
-            "content": "해외번호로 카카오톡을 사용하고 싶어요. 어떻게 하나요?"
+            "article_id": 34,
+            "content": "해외번호로 카카오톡을 사용하고 싶어요. 어떻게 하나요?",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 1,
-            "article_id": 6,
-            "content": "카카오톡 검색용 ID를 변경하고 싶어요."
+            "article_id": 35,
+            "content": "카카오톡 검색용 ID를 변경하고 싶어요.",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 2,
-            "article_id": 1,
-            "content": "인증문자가 오지 않아요. 어떻게 하나요?"
+            "article_id": 36,
+            "content": "인증문자가 오지 않아요. 어떻게 하나요?",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 2,
-            "article_id": 2,
-            "content": "카카오톡에 등록된 전화번호를 바꾸고 싶어요."
+            "article_id": 37,
+            "content": "카카오톡에 등록된 전화번호를 바꾸고 싶어요.",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 2,
-            "article_id": 3,
-            "content": "카카오톡을 탈퇴하고 싶어요."
+            "article_id": 38,
+            "content": "카카오톡을 탈퇴하고 싶어요.",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 2,
-            "article_id": 4,
-            "content": "카카오톡을 탈퇴하면 어떻게 되나요?"
+            "article_id": 39,
+            "content": "카카오톡을 탈퇴하면 어떻게 되나요?",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 2,
-            "article_id": 5,
-            "content": "카카오톡 검색용 ID를 변경하고 싶어요."
+            "article_id": 40,
+            "content": "카카오톡 검색용 ID를 변경하고 싶어요.",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 2,
-            "article_id": 6,
-            "content": "[아이패드] 다른 기기에서 이용중이라고 로그인이 풀렸어요."
+            "article_id": 41,
+            "content": "[아이패드] 다른 기기에서 이용중이라고 로그인이 풀렸어요.",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 2,
-            "article_id": 7,
-            "content": "[아이패드] 모바일과 PC(or Mac) 그리고 아이패드를 동시에 사용할 수 있나요?"
+            "article_id": 42,
+            "content": "[아이패드] 모바일과 PC(or Mac) 그리고 아이패드를 동시에 사용할 수 있나요?",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 2,
-            "article_id": 8,
-            "content": "[아이패드] 발급된 인증번호가 확인되지 않아요."
+            "article_id": 43,
+            "content": "[아이패드] 발급된 인증번호가 확인되지 않아요.",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 2,
-            "article_id": 9,
-            "content": "[아이패드] 설치 후 인증 과정에서 지원하지 않는 버전이라고 보여요."
+            "article_id": 44,
+            "content": "[아이패드] 설치 후 인증 과정에서 지원하지 않는 버전이라고 보여요.",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 2,
-            "article_id": 10,
-            "content": "[아이패드] 아이패드 접속 후 휴대폰 카카오톡 인증이 해제되었어요."
+            "article_id": 45,
+            "content": "[아이패드] 아이패드 접속 후 휴대폰 카카오톡 인증이 해제되었어요.",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 3,
-            "article_id": 1,
-            "content": "스마트폰 사용하다가 일반폰(피쳐폰)으로 바꿨는데 이전 사용했던 카카오톡 계정 탈퇴는 어떻게 하나요?"
+            "article_id": 46,
+            "content": "스마트폰 사용하다가 일반폰(피쳐폰)으로 바꿨는데 이전 사용했던 카카오톡 계정 탈퇴는 어떻게 하나요?",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 3,
-            "article_id": 2,
-            "content": "인증문자가 오지 않아요. 어떻게 하나요?"
+            "article_id": 47,
+            "content": "인증문자가 오지 않아요. 어떻게 하나요?",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 3,
-            "article_id": 3,
-            "content": "카카오톡에 등록된 전화번호를 바꾸고 싶어요."
+            "article_id": 48,
+            "content": "카카오톡에 등록된 전화번호를 바꾸고 싶어요.",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 3,
-            "article_id": 4,
-            "content": "카카오톡을 탈퇴하고 싶어요."
+            "article_id": 49,
+            "content": "카카오톡을 탈퇴하고 싶어요.",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 3,
-            "article_id": 5,
-            "content": "카카오톡을 탈퇴하면 어떻게 되나요?"
+            "article_id": 50,
+            "content": "카카오톡을 탈퇴하면 어떻게 되나요?",
+            "explain": ""
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 3,
-            "article_id": 6,
-            "content": "카카오톡 검색용 ID를 변경하고 싶어요."
+            "article_id": 51,
+            "content": "카카오톡 검색용 ID를 변경하고 싶어요.",
+            "explain": ""
         }
     ]
 }

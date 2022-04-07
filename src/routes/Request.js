@@ -10,6 +10,7 @@ import SideMenu from "../components/layout/SideMenu";
 
 function RouteReq() {
     const query = qs.parse(useLocation().search, { ignoreQueryPrefix: true });
+
     return (
         <div>
             <Top />
