@@ -1,127 +1,126 @@
-.formBox{
+.formBox {
     margin-bottom: 105px;
     width: 75%;
-    display:inline-block;
+    display: inline-block;
     border-left: 1px solid #e8e8e8;
     padding-left: 7%;
 }
-.classify{
+.classify {
     margin: 45px 0px;
     font-size: xx-large;
     font-weight: bolder;
 }
-.essential{
+.essential {
     width: 100%;
     text-align: right;
     padding: 0px 0px 23px 0px;
-    border-bottom:2px solid black;
+    border-bottom: 2px solid black;
     font-size: small;
 }
-.dataBox{
-    padding:30px 20px 5px 20px;
+.dataBox {
+    padding: 30px 20px 5px 20px;
     border-bottom: 1px solid grey;
-    .dataTitle{
-        width:20%;
+    .dataTitle {
+        width: 20%;
         margin-top: 8px;
         display: inline-block;
-        vertical-align:top;
+        vertical-align: top;
     }
-    .dataInputBox{
+    .dataInputBox {
         display: inline-block;
         width: 80%;
-        input{
+        input {
             padding: 10px;
         }
     }
 }
-.error{
+.error {
     color: red;
     font-size: small;
     z-index: 0;
     margin-top: 10px;
     height: 18px;
 }
-.noErr{
-    color:rgba(0,0,0,0);
+.noErr {
+    color: rgba(0, 0, 0, 0);
 }
-.dataPolicy{
+.dataPolicy {
     border-top: 2px solid black;
     padding-top: 20px;
     margin-bottom: 30px;
-    table{
+    table {
         border-collapse: collapse;
-        td{
+        td {
             padding: 20px 0px;
             padding-right: 27px;
             margin: 0px 20px;
             border: 1px solid black;
         }
-
     }
-    div{
+    div {
         margin: 15px 0px;
     }
-    span{
+    span {
         font-size: medium;
     }
 }
-.oneInput{
+.oneInput {
     width: 80%;
-    input{
+    input {
         width: 95%;
     }
 }
-.contentInput{
+.contentInput {
     height: 200px;
 }
-.numberInput{
-    width:100%;
-    .numberInputBox{
+.numberInput {
+    width: 100%;
+    .numberInputBox {
         display: inline-block;
-        width:76%;
+        width: 76%;
         height: 36px;
-        border:1px solid #8f8f9d;
+        border: 1px solid #8f8f9d;
         vertical-align: top;
-        input{
-            border:none;
+        input {
+            border: none;
             width: 95%;
             height: 13px;
         }
     }
-    .codeInput{
+    .codeInput {
         display: inline-block;
         background-color: white;
         z-index: 5;
-        .codeBtn{
+        .codeBtn {
             border: 1px solid #8f8f9d;
             border-right: none;
             padding: 6px 8px 8px 8px;
             width: 115px;
             height: 22px;
-            color:#858585;
+            color: #858585;
         }
     }
 }
-.categoryBox{
+.categoryBox {
     width: 50%;
     vertical-align: top;
-    select{
+    select {
         width: 95%;
         padding: 10px;
         border: 1px solid #8f8f9d;
         background-color: white;
     }
 }
-.fileInput{
+.fileInput {
     display: inline-block;
-    .fileName{
+    .fileName {
         border: 1px solid #dddddd;
         padding: 10px;
     }
-    .condition{
+    .condition {
         font-size: small;
     }
-    input{
+    input {
         display: inline-block;
         height: 40px;
         padding: 0 10px;
@@ -133,13 +132,13 @@
     label {
         display: inline-block;
         color: black;
-        padding:10px;
+        padding: 10px;
         width: 525px;
         margin-bottom: 10px;
         border: 1px solid #dddddd;
         cursor: pointer;
     }
-    input[type="file"]{
+    input[type="file"] {
         position: absolute;
         width: 0;
         height: 0;
@@ -148,7 +147,7 @@
         border: 0;
     }
 }
-.reqButton{
+.reqButton {
     float: right;
     background-color: #ffe500;
     padding: 10px 55px;

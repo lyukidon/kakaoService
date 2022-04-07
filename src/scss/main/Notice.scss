@@ -1,21 +1,21 @@
-.noticeBox{
+.noticeBox {
     border-top: 2px solid #f3f3f3;
     border-bottom: 2px solid #f3f3f3;
-    .common-width{
+    .common-width {
         margin-top: 15px;
         margin-bottom: 15px;
     }
-    b{
+    b {
         margin-right: 10px;
     }
-    span{
+    span {
         margin-right: 12px;
     }
 }
-.right_arrow{
+.right_arrow {
     display: inline-block;
-    margin:0px 10px;
-    background: url('../../../public/ico.png') no-repeat -84px -24px;
-	width: 5px;
-	height: 9px;
+    margin: 0px 10px;
+    background: url("../../../public/ico.png") no-repeat -84px -24px;
+    width: 5px;
+    height: 9px;
 }

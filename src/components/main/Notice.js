@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import '../../scss/main/Notice.scss';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import "../../scss/main/Notice.scss";
 
 function Notice({ title, content }) {
     return (
-        <div className='noticeBox'>
-            <div  className='common-width'>
+        <div className="noticeBox">
+            <div className="common-width">
                 <span>
                     <Link to="/">
                         <strong>{title}</strong>
@@ -17,13 +17,13 @@ function Notice({ title, content }) {
         </div>
     );
 }
-Notice.defaultProps={
-    title:'',
-    content:'',
-}
-Notice.propTypes={
+Notice.defaultProps = {
+    title: "",
+    content: "",
+};
+Notice.propTypes = {
     title: PropTypes.string,
     content: PropTypes.string,
-}
+};
 
 export default Notice;

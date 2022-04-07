@@ -1,25 +1,25 @@
-.nummmber{
-    position:absolute;
+.nummmber {
+    position: absolute;
 }
-.numberBox{
+.numberBox {
     overflow-y: scroll;
     width: 500px;
     height: 200px;
     border: 1px solid black;
     background-color: white;
-    .countryNumbers{
+    .countryNumbers {
         padding: 7px 15px;
         font-size: small;
         display: block;
         cursor: pointer;
     }
-    .countryNumbers:hover{
-        background-color:whitesmoke ;
+    .countryNumbers:hover {
+        background-color: whitesmoke;
     }
-    .countryNumbers:active{
+    .countryNumbers:active {
         background-color: grey;
     }
-    .number{
+    .number {
         width: 70px;
     }
 }

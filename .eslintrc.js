@@ -30,6 +30,6 @@ module.exports = {
         "default-param-last": 0,
         'no-plusplus': 'off',
         "prefer-const": 'off',
-    },
-    
+        "react/function-component-definition": "off"
+    }
 }

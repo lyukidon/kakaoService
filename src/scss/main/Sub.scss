@@ -1,23 +1,22 @@
-.Sub{
+.Sub {
     border-top: 2px solid #f3f3f3;
 }
-.SubMenu{
-    
+.SubMenu {
     margin-bottom: 40px;
-    width:50%;
-    h3{
+    width: 50%;
+    h3 {
         margin-bottom: 30px;
     }
 }
-.Menu{
+.Menu {
     width: 50%;
     height: 30px;
-    a{
+    a {
         text-decoration: none;
         color: black;
     }
-    .rightwards-arrow{
-        background: url('../../../public/ico.png') no-repeat -84px -24px;
+    .rightwards-arrow {
+        background: url("../../../public/ico.png") no-repeat -84px -24px;
         width: 5px;
         height: 9px;
         display: inline-block;

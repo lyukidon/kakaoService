@@ -41,22 +41,24 @@ react-router-dom 이용해 SPA로 제작
 
     ```
     컴포넌트: /src/comp-root
-    데이터: /public/data/footer.json 
-                        header.json
-                        mainAll.json
-                        mainRecommend.json
-                        sub.json
+    데이터:
+    /public/data/footer.json 
+    /public/data/header.json
+    /public/data/mainAll.json
+    /public/data/mainRecommend.json
+    /public/data/sub.json
     ```
 - 카카오톡 고객센터
     ```
     컴포넌트: /src/faq
     데이터: /public/data/faq.json
-    데이터 형태: {
-                    service: [data],
-                    category:[[data]],
-                    platform:[[[data]]],
-                    article:[[[[data]]]],
-                }
+    데이터 형태: 
+    {
+        service: [data],
+        category:[[data]],
+        platform:[[[data]]],
+        article:[[[[data]]]],
+    }
     ```
     - 작동 방식  
         1. /src/Route/RouteFaq.js에서  
@@ -89,6 +91,6 @@ react-router-dom 이용해 SPA로 제작
         4. 버튼(<Link />) 클릭 시, query string을 가진 url로 접속하도록 설정함
 - 문의하기
     ```
-    컴포넌트: /src/comp-request
+    컴포넌트: /src/components/Request.js
     데이터: /public/data/countryNumber.json
     ```

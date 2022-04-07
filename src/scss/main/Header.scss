@@ -1,44 +1,44 @@
-header{
+header {
     height: 111px;
 }
-a{
+a {
     text-decoration: none;
     color: black;
 }
-a:hover{
-    text-decoration-line: underline; 
+a:hover {
+    text-decoration-line: underline;
 }
-.searchBox{
-    display:inline-block;
+.searchBox {
+    display: inline-block;
     width: 450px;
-    height:45px;
-    border:1px solid black;
+    height: 45px;
+    border: 1px solid black;
     vertical-align: -35px;
     input {
-        width:85%;
-        height:95%;
-        border:none;
+        width: 85%;
+        height: 95%;
+        border: none;
         padding-left: 5%;
     }
-    button{
-        background-color: rgba(0,0,0,0);
+    button {
+        background-color: rgba(0, 0, 0, 0);
         border: none;
         font-size: 20px;
     }
-    div{
-        margin-top: 10px
+    div {
+        margin-top: 10px;
     }
-    .searchIcon{
-            background: url('../../../public/ico.png') no-repeat 0 0;
-            width: 24px;
-            height: 24px;
-            position: relative;
-            top: -6px;
-            left: 5px;
-            vertical-align: sub;
+    .searchIcon {
+        background: url("../../../public/ico.png") no-repeat 0 0;
+        width: 24px;
+        height: 24px;
+        position: relative;
+        top: -6px;
+        left: 5px;
+        vertical-align: sub;
     }
 }
-.recommend{
+.recommend {
     margin-right: 5px;
     margin-left: 10px;
     font-size: 12px;

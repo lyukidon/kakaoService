@@ -1,84 +1,82 @@
-.breadcrumb{
-    padding:15px 0px;
+.breadcrumb {
+    padding: 15px 0px;
     border-top: 2px solid #f3f3f3;
     border-bottom: 2px solid #f3f3f3;
 }
-.sidemenu{
+.sidemenu {
     display: inline-block;
     width: 17%;
     vertical-align: top;
-    .serviceName{
+    .serviceName {
         margin-top: 60px;
         margin-bottom: 50px;
-        
     }
-    .sidebtn{
+    .sidebtn {
         margin-bottom: 17px;
     }
-    a{
+    a {
         color: #878787;
         font-weight: bold;
     }
-    .btnActive{
+    .btnActive {
         color: black;
         text-decoration-line: underline;
     }
 }
-.detail{
+.detail {
     display: inline-block;
-    width:73%;
+    width: 73%;
     padding-left: 55px;
     padding-bottom: 50px;
     border-left: 2px solid #f3f3f3;
-    .categoryName{
+    .categoryName {
         margin: 45px 0px;
         font-size: xx-large;
         font-weight: bolder;
     }
-    .platformBox{
+    .platformBox {
         padding: 20px 0px;
         border-top: 2px solid black;
-        div{
-            display:inline-block;
+        div {
+            display: inline-block;
         }
-        a{
+        a {
             margin: 0px 10px;
             color: #878787;
             font-weight: bold;
         }
-        .active{
-            color:black;
+        .active {
+            color: black;
             text-decoration-line: underline;
         }
     }
-    .contentBox{
+    .contentBox {
         border-top: 2px solid black;
         border-bottom: 2px solid black;
-        .content{
+        .content {
             padding: 22px 0px;
-            .contentIndex{
+            .contentIndex {
                 margin-right: 20px;
                 vertical-align: top;
                 display: inline-block;
             }
-            .contentLink{
+            .contentLink {
                 display: inline-block;
                 width: 85%;
-                a:hover{
+                a:hover {
                     text-decoration-line: none;
                 }
-                .activate{
+                .activate {
                     display: inline-block;
-                    color:black;
+                    color: black;
                     font-weight: bold;
                     font-size: 18px;
                     text-decoration-line: none;
                     margin-bottom: 30px;
                 }
-                .inactivate{
+                .inactivate {
                     display: inline-block;
                     color: black;
-                    
                 }
             }
         }

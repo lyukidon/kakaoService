@@ -1,31 +1,37 @@
 [
     {
         "id": 0,
-        "title":"회사소개",
-        "url":"http://www.kakaocorp.com/"
-    },{
+        "title": "회사소개",
+        "url": "http://www.kakaocorp.com/"
+    },
+    {
         "id": 1,
-        "title":"이용약관",
-        "url":"https://www.kakao.com/policy/terms"
-    },{
+        "title": "이용약관",
+        "url": "https://www.kakao.com/policy/terms"
+    },
+    {
         "id": 2,
-        "title":"개인정보퍼리방침",
-        "url":"https://www.kakao.com/policy/privacy"
-    },{
+        "title": "개인정보퍼리방침",
+        "url": "https://www.kakao.com/policy/privacy"
+    },
+    {
         "id": 3,
-        "title":"운영정책",
-        "url":"https://www.kakao.com/policy/oppolicy"
-    },{
+        "title": "운영정책",
+        "url": "https://www.kakao.com/policy/oppolicy"
+    },
+    {
         "id": 4,
-        "title":"청소년보호정책",
-        "url":"https://www.kakao.com/policy/safeguard"
-    },{
+        "title": "청소년보호정책",
+        "url": "https://www.kakao.com/policy/safeguard"
+    },
+    {
         "id": 5,
-        "title":"권리침해신고안내",
-        "url":"https://www.kakao.com/policy/right"
-    },{
+        "title": "권리침해신고안내",
+        "url": "https://www.kakao.com/policy/right"
+    },
+    {
         "id": 6,
-        "title":"공지사항",
-        "url":"http://www.kakao.com/notices"
+        "title": "공지사항",
+        "url": "http://www.kakao.com/notices"
     }
 ]

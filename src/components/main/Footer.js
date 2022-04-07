@@ -1,39 +1,36 @@
-import React,{useEffect, useState} from 'react';
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import axios from 'axios';
-import '../../scss/main/Footer.scss'
+import axios from "axios";
+import "../../scss/main/Footer.scss";
 
-function Menu({title,url}){
-    return(
-        <span className='footerMenu'>
+function Menu({ title, url }) {
+    return (
+        <span className="footerMenu">
             <a href={url}>{title}</a>
         </span>
-    )
+    );
 }
-Menu.propTypes={
+Menu.propTypes = {
     title: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
-}
+};
 function Footer() {
-    const [footerData,setFooterData]=useState([]);
-    useEffect(()=>{
-        axios.get('/data/footer.json')
-            .then(res=>setFooterData(res.data))
-            .catch(err=>console.error(err));
-    },[])
+    const [footerData, setFooterData] = useState([]);
+    useEffect(() => {
+        axios
+            .get("/data/footer.json")
+            .then((res) => setFooterData(res.data))
+            .catch((err) => console.error(err));
+    }, []);
     return (
-        <div className='Footer'>
-            <div className='common-width'>
+        <div className="Footer">
+            <div className="common-width">
                 <div>
-                    {footerData.map((data)=>(
-                        <Menu 
-                            key={data.id} 
-                            title={data.title} 
-                            url='#' 
-                        />
+                    {footerData.map((data) => (
+                        <Menu key={data.id} title={data.title} url="#" />
                     ))}
                 </div>
-                <div className='copyright'>
+                <div className="copyright">
                     <span>Copyright © Kakao Corp. All right reserved.</span>
                 </div>
             </div>
