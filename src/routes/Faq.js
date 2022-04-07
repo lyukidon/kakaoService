@@ -2,11 +2,11 @@ import React from "react";
 import qs from "qs";
 import { useLocation } from "react-router-dom";
 
-import Option from "../components/main/Top";
-import Header from "../components/main/Header";
+import Option from "../components/layout/Top";
+import Header from "../components/layout/Header";
 import Detail from "../components/faq/Detail";
-import SideMenu from "../components/faq/SideMenu";
-import BreadCrumbs from "../components/faq/BreadCrumbs";
+import SideMenu from "../components/layout/SideMenu";
+import BreadCrumbs from "../components/layout/BreadCrumbs";
 import RandomPick from "../components/faq/RandomPick";
 
 import "../scss/faq/faq.scss";

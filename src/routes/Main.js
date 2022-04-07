@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import Top from "../components/main/Top";
-import Header from "../components/main/Header";
+import Top from "../components/layout/Top";
+import Header from "../components/layout/Header";
 import Notice from "../components/main/Notice";
 import Main from "../components/main/Main";
 import Sub from "../components/main/Sub";
