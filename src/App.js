@@ -5,6 +5,7 @@ import Header from './components/main/Header';
 import Footer from './components/main/Footer';
 import Main from './Route/Main';
 import Error from './Route/Error';
+import Admin from './Route/Admin';
 
 import Menu from './Route/Faq';
 import Req from './Route/Req';
@@ -22,6 +23,7 @@ function App (){
         <Route path='faq' element={<Menu />} />
         <Route path='requests' element={<Req />} />
         <Route path='login' element={<Login />} />
+        <Route path='admin' element={<Admin />} />
         <Route path='/' element={<Main />} 
         />
       </Routes>
