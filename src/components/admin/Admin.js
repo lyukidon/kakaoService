@@ -14,6 +14,26 @@ function ArticleComponent({ article }) {
     );
 }
 
+function SelectComponent({ data, dataName, onClick }) {
+    return (
+        <div>
+            <select name={dataName} id="">
+                {data.map((c) => (
+                    <option
+                        id={`${dataName}_id`}
+                        value={c[`${dataName}_id`]}
+                        onClick={onClick}
+                    >
+                        {c.content}
+                    </option>
+                ))}
+            </select>
+            <input type="text" />
+            <button name="addService">추가</button>
+        </div>
+    );
+}
+
 function Admin({ faqData }) {
     const [ids, setIds] = useState({
         service_id: 1,
@@ -51,8 +71,6 @@ function Admin({ faqData }) {
                     .sort((a, b) => a.article_id - b.article_id)
             );
         }
-        console.log("click");
-        console.log(ids);
     }, [faqData, ids]);
 
     const onClick = (event) => {
@@ -64,48 +82,21 @@ function Admin({ faqData }) {
     };
     return (
         <div>
-            <div>
-                <select name="service" id="">
-                    {service.map((c) => (
-                        <option
-                            id="service_id"
-                            value={c.service_id}
-                            onClick={onClick}
-                        >
-                            {c.content}
-                        </option>
-                    ))}
-                </select>
-                <button name="addService">추가</button>
-            </div>
-            <div>
-                <select name="category" id="">
-                    {category.map((c) => (
-                        <option
-                            id="category_id"
-                            value={c.category_id}
-                            onClick={onClick}
-                        >
-                            {c.content}
-                        </option>
-                    ))}
-                </select>
-                <button name="addCategory">추가</button>
-            </div>
-            <div>
-                <select name="platform" id="">
-                    {platform.map((c) => (
-                        <option
-                            id="platform_id"
-                            value={c.platform_id}
-                            onClick={onClick}
-                        >
-                            {c.content}
-                        </option>
-                    ))}
-                </select>
-                <button name="addPlatform">추가</button>
-            </div>
+            <SelectComponent
+                data={service}
+                dataName="service"
+                onClick={onClick}
+            />
+            <SelectComponent
+                data={category}
+                dataName="category"
+                onClick={onClick}
+            />
+            <SelectComponent
+                data={platform}
+                dataName="platform"
+                onClick={onClick}
+            />
 
             <button>추가 작성</button>
             <ArticleComponent article={article} />
