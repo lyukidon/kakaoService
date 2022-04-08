@@ -15,20 +15,20 @@ import "../scss/faq/faq.scss";
 function RouteFaq() {
     const query = qs.parse(useLocation().search, { ignoreQueryPrefix: true });
     const [faqData, setFaqData] = useState({});
+
     useEffect(() => {
-        console.log("click");
         axios
             .get("/data/faq_temp.json")
-            .then((res) => setFaqData({ ...res.data }));
+            .then((res) => setFaqData({ ...faqData, ...res.data }));
     }, []);
+
     return (
         <div>
-            {console.log(faqData)}
             <Option />
             <Header />
             <div className="common-width">
-                <BreadCrumbs query={query} />
-                <SideMenu query={query} />
+                <BreadCrumbs query={query} faqData={faqData} />
+                <SideMenu query={query} faqData={faqData} />
                 {query.category ? <Detail query={query} /> : <RandomPick />}
             </div>
         </div>

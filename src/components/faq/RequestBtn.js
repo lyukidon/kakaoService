@@ -20,7 +20,7 @@ function RequestBtn({ query }) {
                 원하시는 답변을 찾지 못하셨다면, 고객센터로 문의해 주세요
             </div>
             <Link
-                to={`/requests?service=${query.service}&category=${query.category}`}
+                to={`/qna?service=${query.service}&category=${query.category}`}
                 className="inlineBlock reqButton"
             >
                 <Write />

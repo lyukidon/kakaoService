@@ -1,12 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+
 import Footer from "./components/layout/Footer";
 import Main from "./routes/Main";
 import Error from "./routes/Error";
 import Admin from "./routes/Admin";
-
-import Menu from "./routes/Faq";
+import Faq from "./routes/Faq";
 import Request from "./routes/Request";
+import Login from "./routes/Login";
 
 import "./scss/common.scss";
 
@@ -15,9 +16,12 @@ function App() {
         <div>
             <Routes>
                 <Route path="/" element={<Main />} />
-                <Route path="faq" element={<Menu />} />
-                <Route path="requests" element={<Request />} />
-                <Route path="admin" element={<Admin />} />
+                <Route path="/faq" element={<Faq />} />
+                <Route path="/qna" element={<Request />} />
+                <Route path="/admin">
+                    <Route path="login" element={<Login />} />
+                    <Route path=":id" element={<Admin />} />
+                </Route>
                 <Route path="*" element={<Error />} />
             </Routes>
             <Footer />

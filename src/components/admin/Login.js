@@ -1,10 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-// import * as yup from 'yup';
-// import { yupResolver } from '@hookform/resolvers/yup';
-// import { useForm } from 'react-hook-form';
 
-export default () => {
+function Login() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -29,7 +26,7 @@ export default () => {
             return alert("다시 입력하세요");
         }
         if (find.pw === object.pw) {
-            window.location.href = "/admin";
+            window.location.href = `/admin/${find.id}`;
         } else {
             alert("다시 입력하세요");
         }
@@ -49,4 +46,6 @@ export default () => {
             </button>
         </form>
     );
-};
+}
+
+export default Login;
