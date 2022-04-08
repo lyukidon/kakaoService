@@ -4,7 +4,11 @@ function ArticleComponent({ article }) {
     return (
         <div>
             {article.map((c) => (
-                <div>{c.content}</div>
+                <div>
+                    <div>{c.content}</div>
+                    <button>삭제</button>
+                    <button>수정</button>
+                </div>
             ))}
         </div>
     );
@@ -93,6 +97,7 @@ function Admin({ faqData }) {
                     </option>
                 ))}
             </select>
+            <button>추가</button>
             <ArticleComponent article={article} />
         </div>
     );
