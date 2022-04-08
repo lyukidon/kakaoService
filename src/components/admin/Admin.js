@@ -1,19 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function ArticleComponent({ article }) {
-    return (
-        <div>
-            {article.map((c) => (
-                <div>
-                    <div>{c.content}</div>
-                    <button>삭제</button>
-                    <button>수정</button>
-                </div>
-            ))}
-        </div>
-    );
-}
-
+// 옵션 버튼 컴포넌트
 function SelectComponent({ data, dataName, onClick }) {
     return (
         <div>
@@ -34,7 +21,9 @@ function SelectComponent({ data, dataName, onClick }) {
     );
 }
 
+// 관리자 컴포넌트
 function Admin({ faqData }) {
+    // 선택된 옵션 값
     const [ids, setIds] = useState({
         service_id: 1,
         category_id: 1,
@@ -42,11 +31,13 @@ function Admin({ faqData }) {
         article_id: 1,
     });
 
+    // 분류할 데이터 변수
     const [service, setService] = useState([]);
     const [category, setCategory] = useState([]);
     const [platform, setPlatform] = useState([]);
     const [article, setArticle] = useState([]);
 
+    // 데이터 분류하기
     useEffect(() => {
         if (faqData) {
             setService(faqData.service);
@@ -73,6 +64,7 @@ function Admin({ faqData }) {
         }
     }, [faqData, ids]);
 
+    // 옵션 클릭 시 실행되는 함수
     const onClick = (event) => {
         const { id, value } = event.target;
         setIds({
@@ -80,6 +72,9 @@ function Admin({ faqData }) {
             [id]: +value,
         });
     };
+
+    // 버튼 관련 코드
+
     return (
         <div>
             <SelectComponent
@@ -99,7 +94,16 @@ function Admin({ faqData }) {
             />
 
             <button>추가 작성</button>
-            <ArticleComponent article={article} />
+
+            <div>
+                {article.map((c) => (
+                    <div>
+                        <div>{c.content}</div>
+                        <button>삭제</button>
+                        <button>수정</button>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
