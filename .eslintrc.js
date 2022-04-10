@@ -1,35 +1,34 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es2021": true
+    env: {
+        browser: true,
+        es2021: true,
     },
-    "extends": [
+    extends: [
         "airbnb",
         "eslint:recommended",
         "eslint-config-prettier",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
     ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true,
         },
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+        ecmaVersion: "latest",
+        sourceType: "module",
     },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
+    plugins: ["react"],
+    rules: {
         "no-console": ["error", { allow: ["warn", "error"] }],
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "import/no-extraneous-dependencies": ["error",  {"devDependencies": true}],
-        "react/jsx-props-no-spreading": "off", 
-        'jsx-a11y/label-has-associated-control': [2,
-            {assert: 'either'},
+        "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
+        "import/no-extraneous-dependencies": [
+            "error",
+            { devDependencies: true },
         ],
+        "react/jsx-props-no-spreading": "off",
+        "jsx-a11y/label-has-associated-control": [2, { assert: "either" }],
         "default-param-last": 0,
-        'no-plusplus': 'off',
-        "prefer-const": 'off',
-        "react/function-component-definition": "off"
-    }
-}
+        "no-plusplus": "off",
+        "prefer-const": "off",
+        "consistent-return": "off",
+    },
+};

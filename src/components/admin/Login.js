@@ -22,13 +22,14 @@ function Login() {
     };
     const onLogin = (object) => {
         const find = users.filter((data) => data.id === object.id)[0];
-        if (!find) {
-            return alert("다시 입력하세요");
-        }
-        if (find.pw === object.pw) {
-            window.location.href = `/admin/${find.id}`;
+        if (find) {
+            if (find.pw === object.pw) {
+                window.location.href = `/admin/${find.id}`;
+            } else {
+                alert("다시 입력하세요");
+            }
         } else {
-            alert("다시 입력하세요");
+            return alert("다시 입력하세요");
         }
     };
     return (

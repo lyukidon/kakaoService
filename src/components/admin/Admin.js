@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 // 옵션 버튼 컴포넌트
 function SelectComponent({ data, dataName, onClick }) {
@@ -7,6 +8,7 @@ function SelectComponent({ data, dataName, onClick }) {
             <select name={dataName} id="">
                 {data.map((c) => (
                     <option
+                        key={c.id}
                         id={`${dataName}_id`}
                         value={c[`${dataName}_id`]}
                         onClick={onClick}
@@ -16,10 +18,21 @@ function SelectComponent({ data, dataName, onClick }) {
                 ))}
             </select>
             <input type="text" />
-            <button name="addService">추가</button>
+            <button type="button" name="addService">
+                추가
+            </button>
         </div>
     );
 }
+SelectComponent.propTypes = {
+    data: PropTypes.arrayOf(
+        PropTypes.shape({
+            content: PropTypes.string,
+        })
+    ).isRequired,
+    dataName: PropTypes.string.isRequired,
+    onClick: PropTypes.func,
+};
 
 // 관리자 컴포넌트
 function Admin({ faqData }) {
@@ -97,15 +110,49 @@ function Admin({ faqData }) {
 
             <div>
                 {article.map((c) => (
-                    <div>
+                    <div key={c.article_id}>
                         <div>{c.content}</div>
-                        <button>삭제</button>
-                        <button>수정</button>
+                        <button type="button">삭제</button>
+                        <button type="button">수정</button>
                     </div>
                 ))}
             </div>
         </div>
     );
 }
+Admin.propTypes = {
+    faqData: PropTypes.shape({
+        service: PropTypes.arrayOf(
+            PropTypes.shape({
+                service_id: PropTypes.number,
+                content: PropTypes.string,
+            })
+        ),
+        category: PropTypes.arrayOf(
+            PropTypes.shape({
+                service_id: PropTypes.number,
+                category_id: PropTypes.number,
+                content: PropTypes.string,
+            })
+        ),
+        platform: PropTypes.arrayOf(
+            PropTypes.shape({
+                service_id: PropTypes.number,
+                category_id: PropTypes.number,
+                platform_id: PropTypes.number,
+                content: PropTypes.string,
+            })
+        ),
+        article: PropTypes.arrayOf(
+            PropTypes.shape({
+                service_id: PropTypes.number,
+                category_id: PropTypes.number,
+                platform_id: PropTypes.number,
+                article_id: PropTypes.string,
+                content: PropTypes.string,
+            })
+        ).isRequired,
+    }).isRequired,
+};
 
 export default Admin;
