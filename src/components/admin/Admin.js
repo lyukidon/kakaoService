@@ -94,7 +94,7 @@ function Admin({ faqData, params }) {
     const { toggleLogin } = useStore();
 
     return (
-        <div>
+        <div className="adminPage">
             {/* 상단 */}
             <div className="welcome">
                 {params.id} 님, 환영합니다.

@@ -1,3 +1,7 @@
+.adminPage {
+    width: 80%;
+    margin: 0 auto;
+}
 button {
     background-color: #ffffff;
     border: 1px solid black;
@@ -11,6 +15,7 @@ button {
     button {
         float: right;
         padding: 5px 12px;
+        margin-left: 5px;
     }
 }
 .optionBox {
