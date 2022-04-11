@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Footer from "./components/layout/Footer";
@@ -9,18 +9,23 @@ import Faq from "./routes/Faq";
 import Request from "./routes/Request";
 import Login from "./routes/Login";
 
+import useStore from "./store/store";
+
 import "./scss/common.scss";
 
 function App() {
+    const { login, num } = useStore();
+
     return (
         <div>
+            {console.log(login)}
             <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/faq" element={<Faq />} />
                 <Route path="/qna" element={<Request />} />
                 <Route path="/admin">
                     <Route path="login" element={<Login />} />
-                    <Route path=":id" element={<Admin />} />
+                    {login && <Route path=":id" element={<Admin />} />}
                 </Route>
                 <Route path="*" element={<Error />} />
             </Routes>

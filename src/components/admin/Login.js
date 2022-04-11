@@ -1,7 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+import useStore from "../../store/store";
 
 function Login() {
+    const { setLogin, setNum } = useStore((state) => state);
+
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -20,18 +25,27 @@ function Login() {
             [name]: value,
         });
     };
+
+    const navigate = useNavigate();
+    // const onLogin = (object) => {
+    //     const temp = users.filter((data) => data.id === object.id)[0];
+    //     if (temp) {
+    //         if (temp.pw === object.pw) {
+    //             setLogin();
+    //         }
+    //     }
+    // };
     const onLogin = (object) => {
-        const find = users.filter((data) => data.id === object.id)[0];
-        if (find) {
-            if (find.pw === object.pw) {
-                window.location.href = `/admin/${find.id}`;
-            } else {
-                alert("다시 입력하세요");
+        const temp = users.filter((data) => data.id === object.id)[0];
+        if (temp) {
+            if (temp.pw === object.pw) {
+                setLogin();
+                navigate(`/admin/${temp.id}`, { replace: true });
             }
-        } else {
-            return alert("다시 입력하세요");
         }
     };
+    //     [navigate]
+    // );
     return (
         <form>
             <div>
@@ -42,7 +56,13 @@ function Login() {
                 비밀번호
                 <input type="password" name="pw" onChange={onChangeInput} />
             </div>
-            <button type="button" onClick={() => onLogin(input)}>
+            <button
+                type="button"
+                onClick={() => {
+                    // onclick();
+                    onLogin(input);
+                }}
+            >
                 로그인
             </button>
         </form>

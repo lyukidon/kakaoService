@@ -57,5 +57,4 @@ function RouteAdmin() {
         </div>
     );
 }
-
 export default RouteAdmin;
