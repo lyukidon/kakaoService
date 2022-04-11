@@ -110,6 +110,15 @@ function Admin({ faqData, params }) {
                 </button>
                 <button type="button">홈</button>
             </div>
+            {/* 데이터 정보 */}
+            <div>
+                <div>서비스 갯수: {service.length}</div>
+                <div>카테고리 갯수(상위 옵션 기준): {category.length}</div>
+                <div>OS 갯수(상위 옵션 기준): {platform.length}</div>
+                <div>글 갯수: {article.length}</div>
+                <div>전체 글 갯수: {faqData && faqData.article.length}</div>
+                <div>접속 인원 수(하루, 일주일, 한달)</div>
+            </div>
             {/* 하단 */}
             <div>
                 <SelectComponent
