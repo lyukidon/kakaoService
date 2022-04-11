@@ -30,5 +30,6 @@ module.exports = {
         "no-plusplus": "off",
         "prefer-const": "off",
         "consistent-return": "off",
+        "react/prop-types": "off",
     },
 };

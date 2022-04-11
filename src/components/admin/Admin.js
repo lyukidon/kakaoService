@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 import useStore from "../../store/store";
+import Graph from "./Graph";
 
 // 옵션 버튼 컴포넌트
-function SelectComponent({ index, data, dataName, onClick }) {
+function SelectComponent({
+    index,
+    data,
+    dataName,
+    changeOption,
+    optionValue,
+    addOption,
+    option,
+}) {
     return (
         <div className="optionBox">
             <div className="optionIndex">{index}</div>
@@ -15,28 +23,34 @@ function SelectComponent({ index, data, dataName, onClick }) {
                         key={c.id}
                         id={`${dataName}_id`}
                         value={c[`${dataName}_id`]}
-                        onClick={onClick}
+                        onClick={changeOption}
                     >
                         {c.content}
                     </option>
                 ))}
             </select>
-            <input type="text" placeholder="입력해주세요" />
-            <button type="button" name="addService">
+            <input
+                type="text"
+                name={dataName}
+                placeholder="입력해주세요"
+                onChange={optionValue}
+                value={option[`${dataName}`]}
+            />
+            <button type="button" name={dataName} onClick={addOption}>
                 추가
             </button>
         </div>
     );
 }
-SelectComponent.propTypes = {
-    data: PropTypes.arrayOf(
-        PropTypes.shape({
-            content: PropTypes.string,
-        })
-    ).isRequired,
-    dataName: PropTypes.string.isRequired,
-    onClick: PropTypes.func,
-};
+// SelectComponent.propTypes = {
+//     data: PropTypes.arrayOf(
+//         PropTypes.shape({
+//             content: PropTypes.string,
+//         })
+//     ).isRequired,
+//     dataName: PropTypes.string.isRequired,
+//     onClick: PropTypes.func,
+// };
 
 // 관리자 컴포넌트
 function Admin({ faqData, params }) {
@@ -82,12 +96,46 @@ function Admin({ faqData, params }) {
     }, [faqData, ids]);
 
     // 옵션 클릭 시 실행되는 함수
-    const onClick = (event) => {
+    const changeOption = (event) => {
         const { id, value } = event.target;
         setIds({
             ...ids,
             [id]: +value,
         });
+    };
+    // 옵션 추가 하기
+    const [option, setOption] = useState({
+        service: "",
+        category: "",
+        platform: "",
+    });
+    const optionValue = (event) => {
+        const { name, value } = event.target;
+        setOption({
+            ...option,
+            [name]: value,
+        });
+    };
+    const addOption = (event) => {
+        console.log("click");
+        console.log(option);
+        const { name } = event.target;
+        const temp_arr = ["service", "category", "platform"];
+        const temp_func = [setService, setCategory, setPlatform];
+        if (temp_arr.indexOf(name) !== -1) {
+            const optionType = eval("name");
+            const optionData = option[`${optionType}`];
+            console.log(optionData);
+            temp_func[temp_arr.indexOf(name)]([
+                ...eval(name),
+                { content: optionData },
+            ]);
+            setOption({
+                service: "",
+                category: "",
+                platform: "",
+            });
+        }
     };
 
     // 상단 코드
@@ -96,6 +144,7 @@ function Admin({ faqData, params }) {
 
     return (
         <div className="adminPage">
+            {console.log(service)}
             {/* 상단 */}
             <div className="welcome">
                 {params.id} 님, 환영합니다.
@@ -118,25 +167,36 @@ function Admin({ faqData, params }) {
                 <div>글 갯수: {article.length}</div>
                 <div>전체 글 갯수: {faqData && faqData.article.length}</div>
                 <div>접속 인원 수(하루, 일주일, 한달)</div>
+                <Graph />
             </div>
             {/* 하단 */}
             <div>
+                {/* 옵션 설정 */}
                 <SelectComponent
                     data={service}
                     dataName="service"
-                    onClick={onClick}
+                    changeOption={changeOption}
+                    optionValue={optionValue}
+                    addOption={addOption}
+                    option={option}
                     index={1}
                 />
                 <SelectComponent
                     data={category}
                     dataName="category"
-                    onClick={onClick}
+                    changeOption={changeOption}
+                    optionValue={optionValue}
+                    addOption={addOption}
+                    option={option}
                     index={2}
                 />
                 <SelectComponent
                     data={platform}
                     dataName="platform"
-                    onClick={onClick}
+                    changeOption={changeOption}
+                    optionValue={optionValue}
+                    addOption={addOption}
+                    option={option}
                     index={3}
                 />
 
@@ -158,39 +218,39 @@ function Admin({ faqData, params }) {
         </div>
     );
 }
-Admin.propTypes = {
-    faqData: PropTypes.shape({
-        service: PropTypes.arrayOf(
-            PropTypes.shape({
-                service_id: PropTypes.number,
-                content: PropTypes.string,
-            })
-        ),
-        category: PropTypes.arrayOf(
-            PropTypes.shape({
-                service_id: PropTypes.number,
-                category_id: PropTypes.number,
-                content: PropTypes.string,
-            })
-        ),
-        platform: PropTypes.arrayOf(
-            PropTypes.shape({
-                service_id: PropTypes.number,
-                category_id: PropTypes.number,
-                platform_id: PropTypes.number,
-                content: PropTypes.string,
-            })
-        ),
-        article: PropTypes.arrayOf(
-            PropTypes.shape({
-                service_id: PropTypes.number,
-                category_id: PropTypes.number,
-                platform_id: PropTypes.number,
-                article_id: PropTypes.string,
-                content: PropTypes.string,
-            })
-        ).isRequired,
-    }).isRequired,
-};
+// Admin.propTypes = {
+//     faqData: PropTypes.shape({
+//         service: PropTypes.arrayOf(
+//             PropTypes.shape({
+//                 service_id: PropTypes.number,
+//                 content: PropTypes.string,
+//             })
+//         ),
+//         category: PropTypes.arrayOf(
+//             PropTypes.shape({
+//                 service_id: PropTypes.number,
+//                 category_id: PropTypes.number,
+//                 content: PropTypes.string,
+//             })
+//         ),
+//         platform: PropTypes.arrayOf(
+//             PropTypes.shape({
+//                 service_id: PropTypes.number,
+//                 category_id: PropTypes.number,
+//                 platform_id: PropTypes.number,
+//                 content: PropTypes.string,
+//             })
+//         ),
+//         article: PropTypes.arrayOf(
+//             PropTypes.shape({
+//                 service_id: PropTypes.number,
+//                 category_id: PropTypes.number,
+//                 platform_id: PropTypes.number,
+//                 article_id: PropTypes.string,
+//                 content: PropTypes.string,
+//             })
+//         ).isRequired,
+//     }).isRequired,
+// };
 
 export default Admin;
