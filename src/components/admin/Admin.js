@@ -117,19 +117,19 @@ function Admin({ faqData, params }) {
         });
     };
     const addOption = (event) => {
-        console.log("click");
-        console.log(option);
         const { name } = event.target;
-        const temp_arr = ["service", "category", "platform"];
-        const temp_func = [setService, setCategory, setPlatform];
-        if (temp_arr.indexOf(name) !== -1) {
-            const optionType = eval("name");
-            const optionData = option[`${optionType}`];
-            console.log(optionData);
-            temp_func[temp_arr.indexOf(name)]([
-                ...eval(name),
-                { content: optionData },
-            ]);
+        const tempArr = ["service", "category", "platform"];
+        const tempFunc = [setService, setCategory, setPlatform];
+        if (tempArr.indexOf(name) !== -1) {
+            const optionData = option[name];
+            if (optionData.length) {
+                tempFunc[tempArr.indexOf(name)]([
+                    ...eval(name),
+                    { content: optionData },
+                ]);
+            } else {
+                alert("내용을 입력해주세요");
+            }
             setOption({
                 service: "",
                 category: "",
@@ -144,7 +144,6 @@ function Admin({ faqData, params }) {
 
     return (
         <div className="adminPage">
-            {console.log(service)}
             {/* 상단 */}
             <div className="welcome">
                 {params.id} 님, 환영합니다.
@@ -200,7 +199,9 @@ function Admin({ faqData, params }) {
                     index={3}
                 />
 
-                <button className="addArticleBtn">추가 작성</button>
+                <button type="button" className="addArticleBtn">
+                    추가 작성
+                </button>
 
                 <div>
                     {article.map((c, index) => (

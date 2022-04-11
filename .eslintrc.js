@@ -31,5 +31,6 @@ module.exports = {
         "prefer-const": "off",
         "consistent-return": "off",
         "react/prop-types": "off",
+        "no-eval": "off",
     },
 };
