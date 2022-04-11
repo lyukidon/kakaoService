@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 import useStore from "../../store/store";
 
 // 옵션 버튼 컴포넌트
-function SelectComponent({ data, dataName, onClick }) {
+function SelectComponent({ index, data, dataName, onClick }) {
     return (
         <div className="optionBox">
+            <div className="optionIndex">{index}</div>
             <select name={dataName} id="">
                 {data.map((c) => (
                     <option
@@ -115,16 +116,19 @@ function Admin({ faqData, params }) {
                     data={service}
                     dataName="service"
                     onClick={onClick}
+                    index={1}
                 />
                 <SelectComponent
                     data={category}
                     dataName="category"
                     onClick={onClick}
+                    index={2}
                 />
                 <SelectComponent
                     data={platform}
                     dataName="platform"
                     onClick={onClick}
+                    index={3}
                 />
 
                 <button className="addArticleBtn">추가 작성</button>
