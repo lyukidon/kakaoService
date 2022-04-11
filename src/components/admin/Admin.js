@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+
+import useStore from "../../store/store";
 
 // 옵션 버튼 컴포넌트
 function SelectComponent({ data, dataName, onClick }) {
     return (
-        <div>
+        <div className="optionBox">
             <select name={dataName} id="">
                 {data.map((c) => (
                     <option
@@ -17,7 +20,7 @@ function SelectComponent({ data, dataName, onClick }) {
                     </option>
                 ))}
             </select>
-            <input type="text" />
+            <input type="text" placeholder="입력해주세요" />
             <button type="button" name="addService">
                 추가
             </button>
@@ -35,7 +38,7 @@ SelectComponent.propTypes = {
 };
 
 // 관리자 컴포넌트
-function Admin({ faqData }) {
+function Admin({ faqData, params }) {
     // 선택된 옵션 값
     const [ids, setIds] = useState({
         service_id: 1,
@@ -86,36 +89,58 @@ function Admin({ faqData }) {
         });
     };
 
-    // 버튼 관련 코드
+    // 상단 코드
+    const navigate = useNavigate();
+    const { toggleLogin } = useStore();
 
     return (
         <div>
-            <SelectComponent
-                data={service}
-                dataName="service"
-                onClick={onClick}
-            />
-            <SelectComponent
-                data={category}
-                dataName="category"
-                onClick={onClick}
-            />
-            <SelectComponent
-                data={platform}
-                dataName="platform"
-                onClick={onClick}
-            />
-
-            <button>추가 작성</button>
-
+            {/* 상단 */}
+            <div className="welcome">
+                {params.id} 님, 환영합니다.
+                <button type="button">홈</button>
+                <button
+                    type="button"
+                    onClick={() => {
+                        navigate("/");
+                        toggleLogin();
+                    }}
+                >
+                    로그 아웃
+                </button>
+            </div>
+            {/* 하단 */}
             <div>
-                {article.map((c) => (
-                    <div key={c.article_id}>
-                        <div>{c.content}</div>
-                        <button type="button">삭제</button>
-                        <button type="button">수정</button>
-                    </div>
-                ))}
+                <SelectComponent
+                    data={service}
+                    dataName="service"
+                    onClick={onClick}
+                />
+                <SelectComponent
+                    data={category}
+                    dataName="category"
+                    onClick={onClick}
+                />
+                <SelectComponent
+                    data={platform}
+                    dataName="platform"
+                    onClick={onClick}
+                />
+
+                <button className="addArticleBtn">추가 작성</button>
+
+                <div>
+                    {article.map((c, index) => (
+                        <div key={c.article_id} className="articleBox">
+                            <div className="articleIndex">{index + 1}</div>
+                            <div className="articleDiv">{c.content}</div>
+                            <div className="buttonDiv">
+                                <button type="button">삭제</button>
+                                <button type="button">수정</button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

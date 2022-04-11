@@ -1,0 +1,53 @@
+button {
+    background-color: #ffffff;
+    border: 1px solid black;
+    &:hover {
+        background-color: lightgray;
+        cursor: pointer;
+    }
+}
+.welcome {
+    margin-bottom: 20px;
+    button {
+        float: right;
+        padding: 5px 12px;
+    }
+}
+.optionBox {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    select {
+        background-color: #ffffff;
+        border: 1px solid black;
+    }
+
+    input {
+        border: none;
+    }
+}
+.addArticleBtn {
+    padding: 12px;
+    vertical-align: top;
+    float: right;
+}
+.articleBox {
+    margin: 5px 0px;
+    padding: 10px;
+    border: 1px solid black;
+    .articleIndex {
+        display: inline-block;
+        color: orange;
+        margin-right: 10px;
+        vertical-align: top;
+    }
+    .articleDiv {
+        display: inline-block;
+        width: 85%;
+    }
+    .buttonDiv {
+        display: flex;
+        float: right;
+    }
+}

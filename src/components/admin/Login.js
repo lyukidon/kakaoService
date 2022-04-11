@@ -1,11 +1,11 @@
 import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import useStore from "../../store/store";
 
 function Login() {
-    const { setLogin, setNum } = useStore((state) => state);
+    const { toggleLogin } = useStore((state) => state);
 
     const [users, setUsers] = useState([]);
 
@@ -26,20 +26,13 @@ function Login() {
         });
     };
 
+    // 버튼으로 Link to 기능 사용하기 => useNavigate Hook
     const navigate = useNavigate();
-    // const onLogin = (object) => {
-    //     const temp = users.filter((data) => data.id === object.id)[0];
-    //     if (temp) {
-    //         if (temp.pw === object.pw) {
-    //             setLogin();
-    //         }
-    //     }
-    // };
     const onLogin = (object) => {
         const temp = users.filter((data) => data.id === object.id)[0];
         if (temp) {
             if (temp.pw === object.pw) {
-                setLogin();
+                toggleLogin();
                 navigate(`/admin/${temp.id}`, { replace: true });
             }
         }

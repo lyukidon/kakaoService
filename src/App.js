@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Footer from "./components/layout/Footer";
@@ -14,11 +14,9 @@ import useStore from "./store/store";
 import "./scss/common.scss";
 
 function App() {
-    const { login, num } = useStore();
-
+    const { login } = useStore();
     return (
         <div>
-            {console.log(login)}
             <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/faq" element={<Faq />} />

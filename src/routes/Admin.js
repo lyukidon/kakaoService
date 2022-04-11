@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 
 import Admin from "../components/admin/Admin";
 
+import "../scss/admin/admin.scss";
+
 function reducer(state, action) {
     switch (action.type) {
         case "LOADING":
@@ -50,10 +52,10 @@ function RouteAdmin() {
         getfaq();
     }, []);
     const { data } = state;
+
     return (
         <div>
-            <div>{params.id} 님, 환영합니다.</div>
-            <Admin faqData={data} />
+            <Admin faqData={data} params={params} />
         </div>
     );
 }
