@@ -98,7 +98,6 @@ function Admin({ faqData, params }) {
             {/* 상단 */}
             <div className="welcome">
                 {params.id} 님, 환영합니다.
-                <button type="button">홈</button>
                 <button
                     type="button"
                     onClick={() => {
@@ -108,6 +107,7 @@ function Admin({ faqData, params }) {
                 >
                     로그 아웃
                 </button>
+                <button type="button">홈</button>
             </div>
             {/* 하단 */}
             <div>
