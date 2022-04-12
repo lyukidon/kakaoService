@@ -105,11 +105,14 @@ react-router-dom 이용해 SPA로 제작
     데이터: /public/data/countryNumber.json
     ```
 -   관리자 페이지
+
     ```
     접속방법
+
     1) 메인 페이지에서 로그인 클릭
     2) 로그인 페이지에서 { id: admin, pw: admin } 작성 후 로그인
     ```
+
     ```
     컴포넌트: src/admin/
     admin.js
@@ -130,3 +133,11 @@ react-router-dom 이용해 SPA로 제작
             }]
         }
     ```
+
+    -   구현 기능
+        -   로그인
+        -   로그아웃
+        -   옵션 설정
+        -   옵션 추가
+        -   옵션 제거
+        -   옵션 별 데이터 상태 설명
