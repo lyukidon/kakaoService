@@ -32,5 +32,7 @@ module.exports = {
         "consistent-return": "off",
         "react/prop-types": "off",
         "no-eval": "off",
+        "no-new": "off",
+        "no-return-assign": "off",
     },
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import styled from "styled-components";
 
@@ -24,8 +24,6 @@ function MonthGraph() {
     const canvasDom = useRef([]);
 
     useEffect(() => {
-        const canvasDom_0 = canvasDom.current[0];
-
         const ctx = canvasDom.current[0].getContext("2d");
 
         new Chart(ctx, {
@@ -48,7 +46,6 @@ function MonthGraph() {
     }, []);
 
     useEffect(() => {
-        const canvasDom_1 = canvasDom.current[1];
         const ctx = canvasDom.current[1].getContext("2d");
 
         new Chart(ctx, {
@@ -69,7 +66,6 @@ function MonthGraph() {
     }, []);
 
     useEffect(() => {
-        const canvasDom_2 = canvasDom.current[2];
         const ctx = canvasDom.current[2].getContext("2d");
 
         new Chart(ctx, {
