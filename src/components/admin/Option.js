@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 // import PropTypes from "prop-types";
 
 function Option({
@@ -15,18 +15,16 @@ function Option({
         <div className="optionBox">
             <div className="optionIndex">{index}</div>
             <select name={dataName} id="">
-                {data.map((c) => {
-                    return (
-                        <option
-                            key={c.id}
-                            id={`${dataName}_id`}
-                            value={c[`${dataName}_id`]}
-                            onClick={changeOption}
-                        >
-                            {c.content}
-                        </option>
-                    );
-                })}
+                {data.map((c) => (
+                    <option
+                        key={c.content}
+                        id={`${dataName}_id`}
+                        value={c[`${dataName}_id`]}
+                        onClick={changeOption}
+                    >
+                        {c.content}
+                    </option>
+                ))}
             </select>
             <button type="button" name={dataName} onClick={removeOption}>
                 삭제

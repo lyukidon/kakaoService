@@ -97,8 +97,6 @@ function Admin({ faqData, params }) {
         const index = tempStr.indexOf(name);
         const id = ids[`${name}_id`];
         tempFunc[index](tempVar[index].filter((c) => c[`${name}_id`] !== id));
-        console.log(tempVar[tempStr.indexOf(name)]);
-        console.log(`${name}_id`);
     };
 
     // 상단 코드
