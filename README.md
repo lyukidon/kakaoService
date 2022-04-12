@@ -1,9 +1,13 @@
 # 카카오 고객센터
+
 ## 목차
+
 - [시작하기](#시작하기)
 - [기술 스택](#기술-스택)
 - [프로젝트 설명](#프로젝트-설명)
+
 ## 시작하기
+
 - 접속 방법
     - aws: http://15.164.233.23:3001
     - 로컬 접속
@@ -22,7 +26,9 @@
         - 메인 페이지에서, 추천 서비스의 첫 번째 버튼 클릭 시 이동
     - 문의하기
         - 카카오톡 고객센터 페이지에서, 왼쪽 카테고리 버튼 클릭 후 하단 문의하기 버튼 클릭 시 이동
+
 ## 기술 스택
+
 - 언어
     - JavaScript
 - 라이브러리
@@ -34,11 +40,13 @@
     - React Hook Form, yup
 - 웹 서버
     - ExpressJS
+
 ## 프로젝트 설명
+
 카카오 고객센터 클론 코딩  
 react-router-dom 이용해 SPA로 제작
-- 메인
 
+- 메인
     ```
     컴포넌트: /src/comp-root
     데이터:
@@ -55,14 +63,13 @@ react-router-dom 이용해 SPA로 제작
     데이터 형태: 
     {
         service: [data],
-        category:[[data]],
-        platform:[[[data]]],
-        article:[[[[data]]]],
+        category: [[data]],
+        platform: [[[data]]],
+        article: [[[[data]]]],
     }
     ```
     - 작동 방식  
-        1. /src/Route/RouteFaq.js에서  
-        react-router-dom의 useLocation() hook을 이용해 query string 분석 및 query 변수 선언
+        1. /src/Route/RouteFaq.js에서 react-router-dom의 useLocation() hook을 이용해 query string 분석 및 query 변수 선언
             - query string 형태
                 ```
                 {
