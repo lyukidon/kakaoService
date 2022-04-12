@@ -46,11 +46,21 @@ function Login() {
             <div className="companyName">카카오</div>
             <div className="loginDiv">
                 아이디
-                <input type="text" name="id" onChange={onChangeInput} />
+                <input
+                    type="text"
+                    name="id"
+                    placeholder="입력해주세요"
+                    onChange={onChangeInput}
+                />
             </div>
             <div className="loginDiv">
                 비밀번호
-                <input type="password" name="pw" onChange={onChangeInput} />
+                <input
+                    type="password"
+                    name="pw"
+                    placeholder="입력해주세요"
+                    onChange={onChangeInput}
+                />
             </div>
             <div>
                 <button
