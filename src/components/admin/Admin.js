@@ -69,14 +69,15 @@ function Admin({ faqData, params }) {
             [name]: value,
         });
     };
-    const tempArr = ["service", "category", "platform"];
+    const tempStr = ["service", "category", "platform"];
+    const tempVar = [service, category, platform];
     const tempFunc = [setService, setCategory, setPlatform];
     const addOption = (event) => {
         const { name } = event.target;
-        if (tempArr.indexOf(name) !== -1) {
+        if (tempStr.indexOf(name) !== -1) {
             const optionData = option[name];
             if (optionData.length) {
-                tempFunc[tempArr.indexOf(name)]([
+                tempFunc[tempStr.indexOf(name)]([
                     ...eval(name),
                     { content: optionData },
                 ]);
@@ -91,7 +92,14 @@ function Admin({ faqData, params }) {
         }
     };
     // 옵션 제거하기
-    const removeOption = (event, content) => {};
+    const removeOption = (event) => {
+        const { name } = event.target;
+        const index = tempStr.indexOf(name);
+        const id = ids[`${name}_id`];
+        tempFunc[index](tempVar[index].filter((c) => c[`${name}_id`] !== id));
+        console.log(tempVar[tempStr.indexOf(name)]);
+        console.log(`${name}_id`);
+    };
 
     // 상단 코드
     const navigate = useNavigate();
@@ -126,16 +134,18 @@ function Admin({ faqData, params }) {
             {/* 하단 */}
             <div>
                 {/* 옵션 설정 */}
-                {tempArr.map((c, i) => {
+                {tempStr.map((c, i) => {
                     const variable = eval(c);
                     return (
                         <Option
+                            key={variable.content}
                             data={variable}
                             dataName={c}
                             changeOption={changeOption}
                             optionValue={optionValue}
                             addOption={addOption}
                             option={option}
+                            removeOption={removeOption}
                             index={i + 1}
                         />
                     );
@@ -163,20 +173,20 @@ function Admin({ faqData, params }) {
 }
 // Admin.propTypes = {
 //     faqData: PropTypes.shape({
-//         service: PropTypes.arrayOf(
+//         service: PropTypes.StrayOf(
 //             PropTypes.shape({
 //                 service_id: PropTypes.number,
 //                 content: PropTypes.string,
 //             })
 //         ),
-//         category: PropTypes.arrayOf(
+//         category: PropTypes.StrayOf(
 //             PropTypes.shape({
 //                 service_id: PropTypes.number,
 //                 category_id: PropTypes.number,
 //                 content: PropTypes.string,
 //             })
 //         ),
-//         platform: PropTypes.arrayOf(
+//         platform: PropTypes.StrayOf(
 //             PropTypes.shape({
 //                 service_id: PropTypes.number,
 //                 category_id: PropTypes.number,
@@ -184,7 +194,7 @@ function Admin({ faqData, params }) {
 //                 content: PropTypes.string,
 //             })
 //         ),
-//         article: PropTypes.arrayOf(
+//         article: PropTypes.StrayOf(
 //             PropTypes.shape({
 //                 service_id: PropTypes.number,
 //                 category_id: PropTypes.number,
