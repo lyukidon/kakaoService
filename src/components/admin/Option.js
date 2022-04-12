@@ -25,6 +25,7 @@ function Option({
                     </option>
                 ))}
             </select>
+            <button type="button">삭제</button>
             <input
                 type="text"
                 name={dataName}

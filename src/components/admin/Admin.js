@@ -69,10 +69,10 @@ function Admin({ faqData, params }) {
             [name]: value,
         });
     };
+    const tempArr = ["service", "category", "platform"];
+    const tempFunc = [setService, setCategory, setPlatform];
     const addOption = (event) => {
         const { name } = event.target;
-        const tempArr = ["service", "category", "platform"];
-        const tempFunc = [setService, setCategory, setPlatform];
         if (tempArr.indexOf(name) !== -1) {
             const optionData = option[name];
             if (optionData.length) {
@@ -90,6 +90,8 @@ function Admin({ faqData, params }) {
             });
         }
     };
+    // 옵션 제거하기
+    const removeOption = (event, content) => {};
 
     // 상단 코드
     const navigate = useNavigate();
@@ -124,33 +126,20 @@ function Admin({ faqData, params }) {
             {/* 하단 */}
             <div>
                 {/* 옵션 설정 */}
-                <Option
-                    data={service}
-                    dataName="service"
-                    changeOption={changeOption}
-                    optionValue={optionValue}
-                    addOption={addOption}
-                    option={option}
-                    index={1}
-                />
-                <Option
-                    data={category}
-                    dataName="category"
-                    changeOption={changeOption}
-                    optionValue={optionValue}
-                    addOption={addOption}
-                    option={option}
-                    index={2}
-                />
-                <Option
-                    data={platform}
-                    dataName="platform"
-                    changeOption={changeOption}
-                    optionValue={optionValue}
-                    addOption={addOption}
-                    option={option}
-                    index={3}
-                />
+                {tempArr.map((c, i) => {
+                    const variable = eval(c);
+                    return (
+                        <Option
+                            data={variable}
+                            dataName={c}
+                            changeOption={changeOption}
+                            optionValue={optionValue}
+                            addOption={addOption}
+                            option={option}
+                            index={i + 1}
+                        />
+                    );
+                })}
 
                 <button type="button" className="addArticleBtn">
                     추가 작성
