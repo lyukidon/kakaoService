@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useStore from "../../store/store";
-import Graph from "./Graph";
+import MonthGraph from "./MonthGraph";
 import Option from "./Option";
 
 import "../../scss/admin/admin.scss";
@@ -129,7 +129,7 @@ function Admin({ faqData, params }) {
                 <div>글 갯수: {article.length}</div>
                 <div>전체 글 갯수: {faqData && faqData.article.length}</div>
                 <div>접속 인원 수(하루, 일주일, 한달)</div>
-                <Graph />
+                <MonthGraph />
             </div>
             {/* 하단 */}
             <div>
