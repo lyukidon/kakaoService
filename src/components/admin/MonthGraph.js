@@ -88,7 +88,8 @@ function MonthGraph() {
     }, []);
 
     return (
-        <>
+        <div>
+            <div>통계</div>
             <Graph>
                 <canvas ref={(element) => (canvasDom.current[0] = element)} />
             </Graph>
@@ -98,7 +99,7 @@ function MonthGraph() {
             <Graph>
                 <canvas ref={(element) => (canvasDom.current[2] = element)} />
             </Graph>
-        </>
+        </div>
     );
 }
 
