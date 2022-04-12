@@ -4,8 +4,6 @@ import { useParams } from "react-router-dom";
 
 import Admin from "../components/admin/Admin";
 
-import "../scss/admin/admin.scss";
-
 function reducer(state, action) {
     switch (action.type) {
         case "LOADING":

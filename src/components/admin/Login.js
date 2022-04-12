@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 import useStore from "../../store/store";
 
+import "../../scss/admin/login.scss";
+
 function Login() {
     const { toggleLogin } = useStore((state) => state);
 
@@ -40,24 +42,27 @@ function Login() {
     //     [navigate]
     // );
     return (
-        <form>
-            <div>
+        <form className="loginForm">
+            <div className="companyName">카카오</div>
+            <div className="loginDiv">
                 아이디
                 <input type="text" name="id" onChange={onChangeInput} />
             </div>
-            <div>
+            <div className="loginDiv">
                 비밀번호
                 <input type="password" name="pw" onChange={onChangeInput} />
             </div>
-            <button
-                type="button"
-                onClick={() => {
-                    // onclick();
-                    onLogin(input);
-                }}
-            >
-                로그인
-            </button>
+            <div>
+                <button
+                    type="button"
+                    onClick={() => {
+                        // onclick();
+                        onLogin(input);
+                    }}
+                >
+                    로그인
+                </button>
+            </div>
         </form>
     );
 }

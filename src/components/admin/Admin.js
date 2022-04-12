@@ -5,6 +5,8 @@ import useStore from "../../store/store";
 import Graph from "./Graph";
 import Option from "./Option";
 
+import "../../scss/admin/admin.scss";
+
 // 관리자 컴포넌트
 function Admin({ faqData, params }) {
     // 선택된 옵션 값
