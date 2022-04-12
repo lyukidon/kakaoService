@@ -13,11 +13,11 @@ const month = [
     "May",
     "June",
     "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "Decemebr",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
 ];
 
 function MonthGraph() {
@@ -92,7 +92,7 @@ function MonthGraph() {
     }, []);
 
     return (
-        <div>
+        <>
             <Graph>
                 <canvas ref={(element) => (canvasDom.current[0] = element)} />
             </Graph>
@@ -102,7 +102,7 @@ function MonthGraph() {
             <Graph>
                 <canvas ref={(element) => (canvasDom.current[2] = element)} />
             </Graph>
-        </div>
+        </>
     );
 }
 
