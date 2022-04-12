@@ -3,54 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import useStore from "../../store/store";
 import Graph from "./Graph";
-
-// 옵션 버튼 컴포넌트
-function SelectComponent({
-    index,
-    data,
-    dataName,
-    changeOption,
-    optionValue,
-    addOption,
-    option,
-}) {
-    return (
-        <div className="optionBox">
-            <div className="optionIndex">{index}</div>
-            <select name={dataName} id="">
-                {data.map((c) => (
-                    <option
-                        key={c.id}
-                        id={`${dataName}_id`}
-                        value={c[`${dataName}_id`]}
-                        onClick={changeOption}
-                    >
-                        {c.content}
-                    </option>
-                ))}
-            </select>
-            <input
-                type="text"
-                name={dataName}
-                placeholder="입력해주세요"
-                onChange={optionValue}
-                value={option[`${dataName}`]}
-            />
-            <button type="button" name={dataName} onClick={addOption}>
-                추가
-            </button>
-        </div>
-    );
-}
-// SelectComponent.propTypes = {
-//     data: PropTypes.arrayOf(
-//         PropTypes.shape({
-//             content: PropTypes.string,
-//         })
-//     ).isRequired,
-//     dataName: PropTypes.string.isRequired,
-//     onClick: PropTypes.func,
-// };
+import Option from "./Option";
 
 // 관리자 컴포넌트
 function Admin({ faqData, params }) {
@@ -171,7 +124,7 @@ function Admin({ faqData, params }) {
             {/* 하단 */}
             <div>
                 {/* 옵션 설정 */}
-                <SelectComponent
+                <Option
                     data={service}
                     dataName="service"
                     changeOption={changeOption}
@@ -180,7 +133,7 @@ function Admin({ faqData, params }) {
                     option={option}
                     index={1}
                 />
-                <SelectComponent
+                <Option
                     data={category}
                     dataName="category"
                     changeOption={changeOption}
@@ -189,7 +142,7 @@ function Admin({ faqData, params }) {
                     option={option}
                     index={2}
                 />
-                <SelectComponent
+                <Option
                     data={platform}
                     dataName="platform"
                     changeOption={changeOption}
