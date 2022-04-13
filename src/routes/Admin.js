@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useRef } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -54,14 +54,18 @@ function RouteAdmin() {
     }, []);
     const { data } = state;
 
+    // Nav 누르면 스크롤
+    const scrollRef = useRef([]);
+
     return (
         <div className="admin">
-            <Nav params={params} />
+            <Nav params={params} ref={scrollRef} />
             <div className="inlineBlock explain">
-                <Graph />
-                <Edit faqData={data} />
-                <LastRequest />
+                <Graph ref={scrollRef} />
+                <Edit faqData={data} ref={scrollRef} />
+                <LastRequest ref={scrollRef} />
             </div>
+            {console.log(scrollRef)}
         </div>
     );
 }

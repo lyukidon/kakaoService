@@ -1,9 +1,11 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useStore from "../../store/store";
 
-function Nav({ params }) {
+const array = ["트래픽 통계", "데이터 통계", "글 수정하기", "최근 문의 글"];
+
+const Nav = forwardRef(({ params }, scrollRef) => {
     const navigate = useNavigate();
     const { toggleLogin } = useStore();
     return (
@@ -27,15 +29,19 @@ function Nav({ params }) {
                 <div className="profile inlineBlock">A</div>
                 <div className="inlineBlock">닉네임: {params.id}</div>
             </div>
-
             <ul className="nav">
-                <li>트래픽 통계</li>
-                <li>데이터 통계</li>
-                <li>글 수정하기</li>
-                <li>최근 문의글</li>
+                {array.map((content, index) => (
+                    <li
+                        onClick={() =>
+                            scrollRef.current[index].scrollIntoView()
+                        }
+                    >
+                        {content}
+                    </li>
+                ))}
             </ul>
         </div>
     );
-}
+});
 
 export default Nav;

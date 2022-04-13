@@ -1,11 +1,17 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
-function LastRequest() {
+const LastRequest = forwardRef(({}, scrollRef) => {
     return (
         <div className="Box">
-            <h4>최근 문의 글</h4>
+            <h4
+                ref={(element) => {
+                    scrollRef.current[3] = element;
+                }}
+            >
+                최근 문의 글
+            </h4>
         </div>
     );
-}
+});
 
 export default LastRequest;

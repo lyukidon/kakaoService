@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 
 import Option from "./Option";
 
 import "../../scss/admin/admin.scss";
 
 // 관리자 컴포넌트
-function Edit({ faqData }) {
+const Edit = forwardRef(({ faqData }, scrollRef) => {
     // 선택된 옵션 값
     const [ids, setIds] = useState({
         service_id: 1,
@@ -107,7 +107,13 @@ function Edit({ faqData }) {
         <div className="adminPage">
             {/* 데이터 통계 */}
             <div className="Box">
-                <h4>데이터 통계</h4>
+                <h4
+                    ref={(element) => {
+                        scrollRef.current[1] = element;
+                    }}
+                >
+                    데이터 통계
+                </h4>
                 <ul>
                     <li>서비스 갯수: {service.length}</li>
                     <li>카테고리 갯수(상위 옵션 기준): {category.length}</li>
@@ -119,7 +125,13 @@ function Edit({ faqData }) {
 
             {/* 글 수정하기 */}
             <div className="Box">
-                <h4>글 수정하기</h4>
+                <h4
+                    ref={(element) => {
+                        scrollRef.current[2] = element;
+                    }}
+                >
+                    글 수정하기
+                </h4>
                 {/* 옵션 설정 */}
                 {tempStr.map((c, i) => {
                     const variable = eval(c);
@@ -160,7 +172,7 @@ function Edit({ faqData }) {
             </div>
         </div>
     );
-}
+});
 // Edit.propTypes = {
 //     faqData: PropTypes.shape({
 //         service: PropTypes.StrayOf(

@@ -11,10 +11,8 @@ button {
     }
 }
 .Box {
-    margin-bottom: 20px;
     padding: 10px;
-    border: 1px solid black;
-    border-radius: 20px;
+    border-bottom: 1px solid black;
 }
 .welcome {
     display: inline-block;
@@ -37,7 +35,12 @@ button {
         margin-left: 5px;
     }
     .nav {
-        float: center;
+        li {
+            list-style: none;
+            margin-bottom: 10px;
+            width: 100px;
+            border-bottom: 1px solid black;
+        }
     }
 }
 .statistic {

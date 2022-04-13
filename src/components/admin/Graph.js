@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, forwardRef } from "react";
 import Chart from "chart.js/auto";
 import styled from "styled-components";
 
@@ -20,7 +20,7 @@ const month = [
     "Dec",
 ];
 
-function Graph() {
+const Graph = forwardRef((props, scrollRef) => {
     const canvasDom = useRef([]);
 
     useEffect(() => {
@@ -115,7 +115,13 @@ function Graph() {
 
     return (
         <div className="Box">
-            <h4>트래픽 통계</h4>
+            <h4
+                ref={(element) => {
+                    scrollRef.current[0] = element;
+                }}
+            >
+                트래픽 통계
+            </h4>
             <Canv>
                 <canvas ref={(element) => (canvasDom.current[0] = element)} />
             </Canv>
@@ -130,6 +136,6 @@ function Graph() {
             </Canv>
         </div>
     );
-}
+});
 
 export default Graph;
