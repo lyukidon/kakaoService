@@ -16,15 +16,20 @@ function Top() {
             </select>
             <span>
                 {store.login ? (
-                    <Link
-                        to="/"
-                        onClick={() => {
-                            store.toggleLogin();
-                            store.setUserName("");
-                        }}
-                    >
-                        {store.userName}님 로그아웃
-                    </Link>
+                    <>
+                        <Link
+                            to="/"
+                            onClick={() => {
+                                store.toggleLogin();
+                                store.setUserName("");
+                            }}
+                        >
+                            {store.userName}님 로그아웃
+                        </Link>
+                        <Link to={`/admin/${store.userName}`}>
+                            관리자 페이지
+                        </Link>
+                    </>
                 ) : (
                     <Link to="/admin/login">로그인</Link>
                 )}
