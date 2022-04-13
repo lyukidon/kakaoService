@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Nav from "../components/admin/Nav";
 import Graph from "../components/admin/Graph";
 import Edit from "../components/admin/Edit";
+import LastRequest from "../components/admin/LastRequest";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -54,11 +55,12 @@ function RouteAdmin() {
     const { data } = state;
 
     return (
-        <div>
+        <div className="admin">
             <Nav params={params} />
             <div className="inlineBlock explain">
                 <Graph />
                 <Edit faqData={data} />
+                <LastRequest />
             </div>
         </div>
     );

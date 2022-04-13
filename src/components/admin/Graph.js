@@ -114,8 +114,8 @@ function Graph() {
     }, []);
 
     return (
-        <div className="graphBox">
-            <h4>통계</h4>
+        <div className="Box">
+            <h4>트래픽 통계</h4>
             <Canv>
                 <canvas ref={(element) => (canvasDom.current[0] = element)} />
             </Canv>

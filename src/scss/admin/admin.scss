@@ -10,6 +10,12 @@ button {
         cursor: pointer;
     }
 }
+.Box {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
 .welcome {
     display: inline-block;
     width: 200px;
@@ -35,17 +41,12 @@ button {
     }
 }
 .statistic {
-    margin: 10px 0px;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 20px;
 }
 .optionBox {
     display: inline-block;
     margin-right: 10px;
     padding: 10px;
-    border: 1px solid black;
-    border-radius: 7px;
+    border-bottom: 1px solid black;
     select {
         background-color: #ffffff;
         border: 1px solid black;
@@ -62,10 +63,9 @@ button {
     float: right;
 }
 .articleBox {
-    margin: 5px 0px;
+    margin: 10px 0px;
     padding: 10px;
-    border: 1px solid black;
-    border-radius: 7px;
+    border-bottom: 1px solid black;
     .articleIndex {
         display: inline-block;
         color: orange;
@@ -85,8 +85,6 @@ button {
     }
 }
 .graphBox {
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 20px;
+}
+.lastRequest {
 }

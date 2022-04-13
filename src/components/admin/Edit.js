@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-import useStore from "../../store/store";
 import Option from "./Option";
 
 import "../../scss/admin/admin.scss";
@@ -100,20 +98,28 @@ function Edit({ faqData }) {
         tempFunc[index](tempVar[index].filter((c) => c[`${name}_id`] !== id));
     };
 
+    // 글 제거하기
+    const removeArticle = (id) => {
+        setArticle(article.filter((c) => c.article_id !== id));
+    };
+
     return (
         <div className="adminPage">
-            {/* 데이터 정보 */}
-            <div className="statistic">
+            {/* 데이터 통계 */}
+            <div className="Box">
                 <h4>데이터 통계</h4>
-                <div>서비스 갯수: {service.length}</div>
-                <div>카테고리 갯수(상위 옵션 기준): {category.length}</div>
-                <div>OS 갯수(상위 옵션 기준): {platform.length}</div>
-                <div>글 갯수: {article.length}</div>
-                <div>전체 글 갯수: {faqData && faqData.article.length}</div>
+                <ul>
+                    <li>서비스 갯수: {service.length}</li>
+                    <li>카테고리 갯수(상위 옵션 기준): {category.length}</li>
+                    <li>OS 갯수(상위 옵션 기준): {platform.length}</li>
+                    <li>글 갯수: {article.length}</li>
+                    <li>전체 글 갯수: {faqData && faqData.article.length}</li>
+                </ul>
             </div>
 
-            {/* 하단 */}
-            <div>
+            {/* 글 수정하기 */}
+            <div className="Box">
+                <h4>글 수정하기</h4>
                 {/* 옵션 설정 */}
                 {tempStr.map((c, i) => {
                     const variable = eval(c);
@@ -131,18 +137,21 @@ function Edit({ faqData }) {
                         />
                     );
                 })}
-
                 <button type="button" className="addArticleBtn">
-                    추가 작성
+                    + 추가 작성
                 </button>
-
                 <div>
                     {article.map((c, index) => (
                         <div key={c.article_id} className="articleBox">
                             <div className="articleIndex">{index + 1}</div>
                             <div className="articleDiv">{c.content}</div>
                             <div className="buttonDiv">
-                                <button type="button">삭제</button>
+                                <button
+                                    type="button"
+                                    onClick={() => removeArticle(c.article_id)}
+                                >
+                                    삭제
+                                </button>
                                 <button type="button">수정</button>
                             </div>
                         </div>

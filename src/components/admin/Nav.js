@@ -1,6 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
+import useStore from "../../store/store";
 
 function Nav({ params }) {
+    const navigate = useNavigate();
+    const { toggleLogin } = useStore();
     return (
         <div className="welcome">
             <div>
@@ -24,10 +29,11 @@ function Nav({ params }) {
             </div>
 
             <ul className="nav">
-                <li>통계</li>
+                <li>트래픽 통계</li>
+                <li>데이터 통계</li>
                 <li>글 수정하기</li>
+                <li>최근 문의글</li>
             </ul>
-            <div className="inlineBlock"></div>
         </div>
     );
 }
