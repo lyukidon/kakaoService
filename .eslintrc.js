@@ -33,6 +33,8 @@ module.exports = {
         "react/prop-types": "off",
         "no-eval": "off",
         "no-new": "off",
-        "no-return-assign": "off",
+        "no-return-assign": "warn",
+        "no-param-reassign": [2, { props: false }],
+        "no-unused-vars": "warn",
     },
 };

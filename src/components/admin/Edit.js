@@ -127,7 +127,8 @@ const Edit = forwardRef(({ faqData }, scrollRef) => {
             <div className="Box">
                 <h4
                     ref={(element) => {
-                        scrollRef.current[2] = element;
+                        const temp = element;
+                        scrollRef.current[2] = temp;
                     }}
                 >
                     글 수정하기
@@ -173,6 +174,7 @@ const Edit = forwardRef(({ faqData }, scrollRef) => {
         </div>
     );
 });
+Edit.displayName = "Edit";
 // Edit.propTypes = {
 //     faqData: PropTypes.shape({
 //         service: PropTypes.StrayOf(

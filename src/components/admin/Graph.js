@@ -117,7 +117,8 @@ const Graph = forwardRef((props, scrollRef) => {
         <div className="Box">
             <h4
                 ref={(element) => {
-                    scrollRef.current[0] = element;
+                    const temp = element;
+                    scrollRef.current[0] = temp;
                 }}
             >
                 트래픽 통계
@@ -137,5 +138,5 @@ const Graph = forwardRef((props, scrollRef) => {
         </div>
     );
 });
-
+Graph.displayName = "Graph";
 export default Graph;

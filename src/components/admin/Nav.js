@@ -38,7 +38,13 @@ const Nav = forwardRef(({ params }, scrollRef) => {
             <ul className="nav">
                 {array.map((content, index) => (
                     <li
+                        role="none"
+                        tabIndex={index}
+                        key={content}
                         onClick={() =>
+                            scrollRef.current[index].scrollIntoView()
+                        }
+                        onKeyDown={() =>
                             scrollRef.current[index].scrollIntoView()
                         }
                     >
@@ -49,5 +55,6 @@ const Nav = forwardRef(({ params }, scrollRef) => {
         </div>
     );
 });
+Nav.displayName = "Nav";
 
 export default Nav;

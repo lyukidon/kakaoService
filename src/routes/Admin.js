@@ -65,7 +65,6 @@ function RouteAdmin() {
                 <Edit faqData={data} ref={scrollRef} />
                 <LastRequest ref={scrollRef} />
             </div>
-            {console.log(scrollRef)}
         </div>
     );
 }
