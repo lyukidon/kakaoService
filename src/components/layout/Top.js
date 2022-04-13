@@ -1,10 +1,12 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "../../scss/main/Top.scss";
 
+import useStore from "../../store/store";
+
 function Top() {
-    const params = useParams();
+    const { ...store } = useStore();
 
     return (
         <div className="Top common-width">
@@ -13,9 +15,19 @@ function Top() {
                 <option value="ENG">English</option>
             </select>
             <span>
-                <Link to="/admin/login">
-                    {params.id ? "로그아웃" : "로그인"}
-                </Link>
+                {store.login ? (
+                    <Link
+                        to="/"
+                        onClick={() => {
+                            store.toggleLogin();
+                            store.setUserName("");
+                        }}
+                    >
+                        {store.userName}님 로그아웃
+                    </Link>
+                ) : (
+                    <Link to="/admin/login">로그인</Link>
+                )}
             </span>
         </div>
     );

@@ -7,7 +7,7 @@ import useStore from "../../store/store";
 import "../../scss/admin/login.scss";
 
 function Login() {
-    const { toggleLogin } = useStore((state) => state);
+    const { toggleLogin, setUserName } = useStore((state) => state);
 
     const [users, setUsers] = useState([]);
 
@@ -35,6 +35,7 @@ function Login() {
         if (temp) {
             if (temp.pw === object.pw) {
                 toggleLogin();
+                setUserName(temp.id);
                 navigate(`/admin/${temp.id}`, { replace: true });
             }
         }

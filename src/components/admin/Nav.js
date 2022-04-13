@@ -21,7 +21,13 @@ const Nav = forwardRef(({ params }, scrollRef) => {
                 >
                     로그 아웃
                 </button>
-                <button className="featBtn" type="button">
+                <button
+                    className="featBtn"
+                    type="button"
+                    onClick={() => {
+                        navigate("/");
+                    }}
+                >
                     홈
                 </button>
             </div>
