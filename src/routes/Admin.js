@@ -2,7 +2,9 @@ import React, { useEffect, useReducer } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-import Admin from "../components/admin/Admin";
+import Nav from "../components/admin/Nav";
+import Graph from "../components/admin/Graph";
+import Edit from "../components/admin/Edit";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -53,7 +55,11 @@ function RouteAdmin() {
 
     return (
         <div>
-            <Admin faqData={data} params={params} />
+            <Nav params={params} />
+            <div className="inlineBlock explain">
+                <Graph />
+                <Edit faqData={data} />
+            </div>
         </div>
     );
 }

@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useStore from "../../store/store";
-import MonthGraph from "./MonthGraph";
 import Option from "./Option";
 
 import "../../scss/admin/admin.scss";
 
 // 관리자 컴포넌트
-function Admin({ faqData, params }) {
+function Edit({ faqData }) {
     // 선택된 옵션 값
     const [ids, setIds] = useState({
         service_id: 1,
@@ -101,29 +100,11 @@ function Admin({ faqData, params }) {
         tempFunc[index](tempVar[index].filter((c) => c[`${name}_id`] !== id));
     };
 
-    // 상단 코드
-    const navigate = useNavigate();
-    const { toggleLogin } = useStore();
-
     return (
         <div className="adminPage">
-            {/* 상단 */}
-            <div className="welcome">
-                {params.id} 님, 환영합니다.
-                <button
-                    type="button"
-                    onClick={() => {
-                        navigate("/");
-                        toggleLogin();
-                    }}
-                >
-                    로그 아웃
-                </button>
-                <button type="button">홈</button>
-            </div>
             {/* 데이터 정보 */}
-            <div className="inlineBlock">
-                <div>데이터 통계</div>
+            <div className="statistic">
+                <h4>데이터 통계</h4>
                 <div>서비스 갯수: {service.length}</div>
                 <div>카테고리 갯수(상위 옵션 기준): {category.length}</div>
                 <div>OS 갯수(상위 옵션 기준): {platform.length}</div>
@@ -167,12 +148,11 @@ function Admin({ faqData, params }) {
                         </div>
                     ))}
                 </div>
-                <MonthGraph />
             </div>
         </div>
     );
 }
-// Admin.propTypes = {
+// Edit.propTypes = {
 //     faqData: PropTypes.shape({
 //         service: PropTypes.StrayOf(
 //             PropTypes.shape({
@@ -207,4 +187,4 @@ function Admin({ faqData, params }) {
 //     }).isRequired,
 // };
 
-export default Admin;
+export default Edit;
