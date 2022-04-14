@@ -17,16 +17,21 @@ function Top() {
             <span>
                 {store.login ? (
                     <>
+                        <span className="userName">{store.userName}님</span>
                         <Link
+                            className="logout"
                             to="/"
                             onClick={() => {
                                 store.toggleLogin();
                                 store.setUserName("");
                             }}
                         >
-                            {store.userName}님 로그아웃
+                            로그아웃
                         </Link>
-                        <Link to={`/admin/${store.userName}`}>
+                        <Link
+                            className="logout"
+                            to={`/admin/${store.userName}`}
+                        >
                             관리자 페이지
                         </Link>
                     </>
