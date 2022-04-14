@@ -1,5 +1,5 @@
 import React, { forwardRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import useStore from "../../store/store";
 
@@ -8,20 +8,12 @@ const array = ["트래픽 통계", "데이터 통계", "글 수정하기", "최�
 const Nav = forwardRef(({ params }, scrollRef) => {
     const navigate = useNavigate();
     const { toggleLogin } = useStore();
-
-    const [menuToggle, setMenuToggle] = useState(false);
     return (
         <>
             <div className="top">
-                <button
-                    className="featBtn"
-                    type="button"
-                    onClick={() => {
-                        navigate("/");
-                    }}
-                >
-                    홈
-                </button>
+                <Link className="gohome" type="button" to="/">
+                    카카오 홈
+                </Link>
                 <button
                     type="button"
                     className="right"
@@ -45,7 +37,7 @@ const Nav = forwardRef(({ params }, scrollRef) => {
                             tabIndex={index}
                             key={content}
                             onClick={() =>
-                                scrollRef.current[index].scrollIntoView()
+                                scrollRef.current[index].scrollIntoView(true)
                             }
                             onKeyDown={() =>
                                 scrollRef.current[index].scrollIntoView()

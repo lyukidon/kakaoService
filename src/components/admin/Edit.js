@@ -103,6 +103,9 @@ const Edit = forwardRef(({ faqData }, scrollRef) => {
         setArticle(article.filter((c) => c.article_id !== id));
     };
 
+    // 글 쓰기, 추가하기
+    const [write, setWrite] = useState(false);
+
     return (
         <div>
             {/* 데이터 통계 */}
@@ -150,9 +153,19 @@ const Edit = forwardRef(({ faqData }, scrollRef) => {
                         />
                     );
                 })}
-                <button type="button" className="addArticleBtn">
+                <button
+                    type="button"
+                    className="addArticleBtn"
+                    onClick={() => setWrite(!write)}
+                >
                     + 추가 작성
                 </button>
+                {write && (
+                    <div>
+                        <textarea />
+                        <button type="button">추가하기</button>
+                    </div>
+                )}
                 <div>
                     {article.map((c, index) => (
                         <div key={c.article_id} className="articleBox">
