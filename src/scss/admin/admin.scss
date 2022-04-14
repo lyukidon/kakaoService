@@ -16,37 +16,38 @@ button {
     padding: 10px;
     border-bottom: 1px solid black;
 }
-.welcome {
+
+.top {
     position: fixed;
     top: 0px;
     left: 0px;
     width: 99vw;
-    .top {
-        padding: 10px;
-        height: 2vh;
-        background-color: #414042;
-        color: white;
+    height: 2vh;
+    padding: 10px;
+    background-color: #414042;
+    color: white;
 
-        .right {
-            float: right;
-            margin-left: 10px;
-        }
+    .right {
+        float: right;
+        margin-left: 10px;
     }
-    .nav {
-        padding-top: 1vh;
-        padding-left: 1vw;
-        width: 160px;
-        height: 99vh;
-        background-color: #58595b;
-        color: white;
-        ul {
-            margin: 0;
-            li {
-                list-style: none;
-                width: 100px;
-                &:hover {
-                    cursor: pointer;
-                }
+}
+.nav {
+    position: fixed;
+    top: 4vh;
+    left: 0px;
+    padding-top: 1vh;
+    padding-left: 1vw;
+    width: 160px;
+    height: 99vh;
+    background-color: #58595b;
+    color: white;
+    ul {
+        margin: 0;
+        li {
+            margin: 5px 0px;
+            &:hover {
+                cursor: pointer;
             }
         }
     }
@@ -57,7 +58,7 @@ button {
     display: inline-block;
     margin-right: 10px;
     padding: 10px;
-    border-bottom: 1px solid #d3d3d3;
+    border: 1px solid #d3d3d3;
     select {
         background-color: #ffffff;
         border: 1px solid black;

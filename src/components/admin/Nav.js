@@ -11,7 +11,7 @@ const Nav = forwardRef(({ params }, scrollRef) => {
 
     const [menuToggle, setMenuToggle] = useState(false);
     return (
-        <div className="welcome">
+        <>
             <div className="top">
                 <button
                     className="featBtn"
@@ -56,7 +56,7 @@ const Nav = forwardRef(({ params }, scrollRef) => {
                     ))}
                 </ul>
             </div>
-        </div>
+        </>
     );
 });
 Nav.displayName = "Nav";
