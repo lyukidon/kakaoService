@@ -60,7 +60,7 @@ function RouteAdmin() {
     return (
         <div className="admin">
             <Nav params={params} ref={scrollRef} />
-            <div className="inlineBlock explain">
+            <div className="inlineBlock contents">
                 <Graph ref={scrollRef} />
                 <Edit faqData={data} ref={scrollRef} />
                 <LastRequest ref={scrollRef} />

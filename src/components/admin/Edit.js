@@ -104,7 +104,7 @@ const Edit = forwardRef(({ faqData }, scrollRef) => {
     };
 
     return (
-        <div className="adminPage">
+        <div>
             {/* 데이터 통계 */}
             <div className="Box">
                 <h4
