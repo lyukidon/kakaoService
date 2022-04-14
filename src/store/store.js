@@ -1,7 +1,7 @@
 import create from "zustand";
 
 const useStore = create((set) => ({
-    login: true,
+    login: false,
     userName: "",
     toggleLogin: () => set((state) => ({ login: !state.login })),
     setUserName: (name) => set((state) => ({ userName: name })),
