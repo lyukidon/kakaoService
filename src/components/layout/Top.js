@@ -16,14 +16,9 @@ function Top() {
             </select>
             <span>
                 {store.login ? (
-                    <>
-                        <Link
-                            className="logout"
-                            to={`/admin/${store.userName}`}
-                        >
-                            관리자 페이지
-                        </Link>
-                    </>
+                    <Link className="logout" to={`/admin/${store.userName}`}>
+                        관리자 페이지
+                    </Link>
                 ) : (
                     <Link to="/admin/login">관리자 페이지</Link>
                 )}
