@@ -17,17 +17,6 @@ function Top() {
             <span>
                 {store.login ? (
                     <>
-                        <span className="userName">{store.userName}님</span>
-                        <Link
-                            className="logout"
-                            to="/"
-                            onClick={() => {
-                                store.toggleLogin();
-                                store.setUserName("");
-                            }}
-                        >
-                            로그아웃
-                        </Link>
                         <Link
                             className="logout"
                             to={`/admin/${store.userName}`}
@@ -36,7 +25,7 @@ function Top() {
                         </Link>
                     </>
                 ) : (
-                    <Link to="/admin/login">로그인</Link>
+                    <Link to="/admin/login">관리자 로그인</Link>
                 )}
             </span>
         </div>
