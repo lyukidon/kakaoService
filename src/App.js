@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Footer from "./components/layout/Footer";
 import Main from "./routes/Main";
@@ -24,7 +24,11 @@ function App() {
                 <Route path="/qna" element={<Request />} />
                 <Route path="/admin">
                     <Route path="login" element={<Login />} />
-                    {login && <Route path=":id" element={<Admin />} />}
+                    {login ? (
+                        <Route path=":id" element={<Admin />} />
+                    ) : (
+                        <Route element={<Navigate replace to="login" />} />
+                    )}
                 </Route>
                 <Route path="/temp/:id" element={<AdminTemp />} />
                 <Route path="*" element={<Error />} />
