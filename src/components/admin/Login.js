@@ -65,7 +65,7 @@ function Login() {
             </div>
             <div>
                 <button
-                    type="button"
+                    type="submit"
                     onClick={() => {
                         // onclick();
                         onLogin(input);
