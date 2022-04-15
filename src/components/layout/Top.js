@@ -25,7 +25,7 @@ function Top() {
                         </Link>
                     </>
                 ) : (
-                    <Link to="/admin/login">관리자 로그인</Link>
+                    <Link to="/admin/login">관리자 페이지</Link>
                 )}
             </span>
         </div>

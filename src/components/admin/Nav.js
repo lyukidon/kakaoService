@@ -12,7 +12,7 @@ const Nav = forwardRef(({ params }, scrollRef) => {
         <>
             <div className="top">
                 <Link className="gohome" type="button" to="/">
-                    카카오 홈
+                    고객센터 홈
                 </Link>
                 <button
                     type="button"
