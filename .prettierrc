@@ -1,4 +1,5 @@
 {
-    "tabWidth": 4,
-    "editor.formatOnType": true
+  "[javascript]": {
+    "tabWidth": 4
+  }
 }
