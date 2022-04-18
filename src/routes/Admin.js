@@ -32,7 +32,7 @@ function reducer(state, action) {
     }
 }
 
-function RouteAdmin() {
+function Admin() {
     const params = useParams();
     const [state, dispatch] = useReducer(reducer, {
         loading: false,
@@ -68,4 +68,4 @@ function RouteAdmin() {
         </div>
     );
 }
-export default RouteAdmin;
+export default Admin;

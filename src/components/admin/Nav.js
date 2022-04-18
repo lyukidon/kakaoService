@@ -7,7 +7,7 @@ const array = ["트래픽 통계", "데이터 통계", "글 수정하기", "최�
 
 const Nav = forwardRef(({ params }, scrollRef) => {
     const navigate = useNavigate();
-    const { toggleLogin } = useStore();
+    const { toggleLogin, userName } = useStore();
     return (
         <>
             <div className="top">
@@ -25,7 +25,7 @@ const Nav = forwardRef(({ params }, scrollRef) => {
                     로그 아웃
                 </button>
                 <div className="right inlineBlock">
-                    {params.id} 님, 환영합니다
+                    {userName} 님, 환영합니다
                 </div>
             </div>
             <div className="nav">

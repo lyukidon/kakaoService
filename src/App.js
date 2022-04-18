@@ -23,8 +23,9 @@ function App() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/qna" element={<Request />} />
         <Route path="/admin" element={
-            login ? <Admin /> : <Login/>
+            login ? <Admin /> : <Navigate replace to='/admin/login'/>
         } />
+        <Route path="/admin/login" element={<Login />} />
         <Route path="/temp/:id" element={<AdminTemp />} />
         <Route path="*" element={<Error />} />
       </Routes>
