@@ -15,27 +15,22 @@ import useStore from "./store/store";
 import "./scss/common.scss";
 
 function App() {
-    const { login } = useStore();
-    return (
-        <div>
-            <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path="/faq" element={<Faq />} />
-                <Route path="/qna" element={<Request />} />
-                <Route path="/admin">
-                    <Route path="login" element={<Login />} />
-                    {login ? (
-                        <Route path=":id" element={<Admin />} />
-                    ) : (
-                        <Route element={<Navigate replace to="login" />} />
-                    )}
-                </Route>
-                <Route path="/temp/:id" element={<AdminTemp />} />
-                <Route path="*" element={<Error />} />
-            </Routes>
-            <Footer />
-        </div>
-    );
+  const { login } = useStore();
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/qna" element={<Request />} />
+        <Route path="/admin" element={
+            login ? <Admin /> : <Login/>
+        } />
+        <Route path="/temp/:id" element={<AdminTemp />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+      <Footer />
+    </div>
+  );
 }
 
 export default App;

@@ -36,7 +36,7 @@ function Login() {
             if (temp.pw === object.pw) {
                 toggleLogin();
                 setUserName(temp.id);
-                navigate(`/admin/${temp.id}`, { replace: true });
+                navigate(`/admin`, { replace: true });
             }
         }
     };
