@@ -8,7 +8,6 @@ import Admin from "./routes/Admin";
 import Faq from "./routes/Faq";
 import Request from "./routes/Request";
 import Login from "./routes/Login";
-import AdminTemp from "./routes/Admin_temp";
 
 import useStore from "./store/store";
 
@@ -26,7 +25,6 @@ function App() {
             login ? <Admin /> : <Navigate replace to='/admin/login'/>
         } />
         <Route path="/admin/login" element={<Login />} />
-        <Route path="/temp/:id" element={<AdminTemp />} />
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />
