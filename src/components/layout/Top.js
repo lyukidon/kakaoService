@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 import "../../scss/main/Top.scss";
 
-import useStore from "../../store/store";
-
 function Top() {
     return (
         <div className="Top common-width">
