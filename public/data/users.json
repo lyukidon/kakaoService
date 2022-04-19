@@ -1,7 +1,17 @@
 [
-    {
-        "date": 1649237450368,
-        "id": "admin",
-        "pw": "admin"
-    }
+  {
+    "id": 0,
+    "username": "admin1",
+    "password": "1234"
+  },
+  {
+    "id": 1,
+    "username": "admin2",
+    "password": "1234"
+  },
+  {
+    "id": 2,
+    "username": "admin3",
+    "password": "1234"
+  }
 ]
