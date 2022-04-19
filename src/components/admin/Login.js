@@ -2,10 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import useStore from "../../store/store";
-
 import "../../scss/admin/login.scss";
-import useLocalStorage from "../../hooks/useLocalStorage";
 
 function Login({ setUsername }) {
     const [users, setUsers] = useState([]);
