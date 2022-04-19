@@ -1,16 +1,15 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import useStore from "../../store/store";
 
 const array = ["트래픽 통계", "데이터 통계", "글 수정하기", "최근 문의 글"];
 
-const Nav = forwardRef(({ params }, scrollRef) => {
+const SideNav = () => {
     const navigate = useNavigate();
     const { toggleLogin, userName } = useStore();
-    return (
-        <>
-            <div className="top">
+    return(
+        <div className="topNav">
                 <Link className="gohome" type="button" to="/">
                     고객센터 홈
                 </Link>
@@ -28,7 +27,14 @@ const Nav = forwardRef(({ params }, scrollRef) => {
                     {userName} 님, 환영합니다
                 </div>
             </div>
-            <div className="nav">
+    )
+}
+
+const TopNav = forwardRef((props, scrollRef) => {
+    return (
+        <>
+            
+            <div className="sideNav">
                 <div>바로가기</div>
                 <ul>
                     {array.map((content, index) => (
@@ -51,6 +57,6 @@ const Nav = forwardRef(({ params }, scrollRef) => {
         </>
     );
 });
-Nav.displayName = "Nav";
+TopNav.displayName = "TopNav";
 
-export default Nav;
+export {TopNav, SideNav};
