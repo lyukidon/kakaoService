@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Login from "../components/admin/Login";
 
-function RouteLogin() {
+function RouteLogin({ setUsername }) {
     return (
         <div>
-            <Login />
+            <Login setUsername={setUsername} />
         </div>
     );
 }

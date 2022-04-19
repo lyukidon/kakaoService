@@ -5,10 +5,9 @@ import { useNavigate } from "react-router-dom";
 import useStore from "../../store/store";
 
 import "../../scss/admin/login.scss";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
-function Login() {
-    const { toggleLogin, setUserName } = useStore((state) => state);
-
+function Login({ setUsername }) {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -16,8 +15,8 @@ function Login() {
     }, []);
 
     const [input, setInput] = useState({
-        id: "",
-        pw: "",
+        username: "",
+        password: "",
     });
 
     const onChangeInput = (event) => {
@@ -31,17 +30,16 @@ function Login() {
     // 버튼으로 Link to 기능 사용하기 => useNavigate Hook
     const navigate = useNavigate();
     const onLogin = (object) => {
-        const temp = users.filter((data) => data.id === object.id)[0];
+        const temp = users.filter(
+            (data) => data.username === object.username
+        )[0];
         if (temp) {
-            if (temp.pw === object.pw) {
-                toggleLogin();
-                setUserName(temp.id);
+            if (temp.password === object.password) {
+                setUsername(object.username)
                 navigate(`/admin`, { replace: true });
             }
         }
     };
-    //     [navigate]
-    // );
     return (
         <form className="loginForm">
             <div className="companyName">카카오</div>
@@ -49,7 +47,7 @@ function Login() {
                 아이디
                 <input
                     type="text"
-                    name="id"
+                    name="username"
                     placeholder="입력해주세요"
                     onChange={onChangeInput}
                 />
@@ -58,7 +56,7 @@ function Login() {
                 비밀번호
                 <input
                     type="password"
-                    name="pw"
+                    name="password"
                     placeholder="입력해주세요"
                     onChange={onChangeInput}
                 />
@@ -67,7 +65,6 @@ function Login() {
                 <button
                     type="submit"
                     onClick={() => {
-                        // onclick();
                         onLogin(input);
                     }}
                 >
