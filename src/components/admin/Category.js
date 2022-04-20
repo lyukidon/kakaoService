@@ -1,7 +1,6 @@
 import React from "react";
-// import PropTypes from "prop-types";
 
-function Option({
+function Category({
     index,
     data,
     dataName,
@@ -12,8 +11,7 @@ function Option({
     removeOption,
 }) {
     return (
-        <div className="optionBox">
-            <div className="optionIndex">{index}</div>
+        <div className="categorySelectBox">
             <select name={dataName} id="">
                 {data.map((c) => (
                     <option
@@ -43,4 +41,4 @@ function Option({
     );
 }
 
-export default Option;
+export default Category;

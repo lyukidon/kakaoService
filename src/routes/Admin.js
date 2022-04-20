@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 
 import { TopNav, SideNav } from "../components/admin/Nav";
 import Graph from "../components/admin/Graph";
-import Edit from "../components/admin/Edit";
+import EditArticle from "../components/admin/EditArticle";
 import ShowRequest from "../components/admin/ShowRequest";
 
 import "../scss/admin/admin.scss";
@@ -71,7 +71,7 @@ function Admin() {
                 <div className="dashboard">
                     <Graph ref={scrollRef} />
                     <ShowRequest ref={scrollRef} />
-                    <Edit faqData={data} ref={scrollRef} />
+                    <EditArticle faqData={data} ref={scrollRef} />
                 </div>
             </div>
         </div>

@@ -1,12 +1,12 @@
 import React, { forwardRef } from "react";
 import { Link } from "react-router-dom";
 
-const array = ["트래픽 통계", "데이터 통계", "글 수정하기", "최근 문의 글"];
+const array = ["트래픽 통계", "데이터 통계", "글 수정하기", "최근 문의"];
 
 const TopNav = () => (
     <div className="topNav">
         <Link className="gohome" type="button" to="/">
-            고객센터 홈
+            {`< 고객센터 홈`}
         </Link>
         <div className="right">
             {window.localStorage.getItem("userId")} 님, 환영합니다

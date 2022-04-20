@@ -1,5 +1,20 @@
 import React, { forwardRef } from "react";
+import styled from "styled-components";
 
+const ContentBox = styled.div`
+    margin-bottom: 20px;
+`;
+const ContentNumber = styled.div`
+    display: inline-block;
+    margin-right: 20px;
+    vertical-align: top;
+    font-weight: bold;
+`;
+const ContentTitle = styled.div`
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: bold;
+`;
 const requestTemp = [
     {
         id: 1,
@@ -24,10 +39,15 @@ const ShowRequest = forwardRef(({ props }, scrollRef) => (
             최근 문의 글
         </h4>
         {requestTemp.map((contents) => (
-            <div key={contents.id}>
-                <div>{contents.title}</div>
-                <div>{contents.content}</div>
-            </div>
+            <ContentBox key={contents.id}>
+                <ContentNumber>{contents.id}</ContentNumber>
+                <div className="inlineBlock">
+                    <ContentTitle className="inlineBlock">
+                        {contents.title}
+                    </ContentTitle>
+                    <div>{contents.content}</div>
+                </div>
+            </ContentBox>
         ))}
     </div>
 ));

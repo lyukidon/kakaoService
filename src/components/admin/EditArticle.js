@@ -1,6 +1,6 @@
 import React, { forwardRef, useEffect, useState } from "react";
 
-import Option from "./Option";
+import Category from "./Category";
 
 // 관리자 컴포넌트
 const Edit = forwardRef(({ faqData }, scrollRef) => {
@@ -135,25 +135,27 @@ const Edit = forwardRef(({ faqData }, scrollRef) => {
                     글 수정하기
                 </h4>
                 {/* 옵션 설정 */}
-                {tempStr.map((c, i) => {
-                    const variable = eval(c);
-                    return (
-                        <Option
-                            key={variable.content}
-                            data={variable}
-                            dataName={c}
-                            changeOption={changeOption}
-                            optionValue={optionValue}
-                            addOption={addOption}
-                            option={option}
-                            removeOption={removeOption}
-                            index={i + 1}
-                        />
-                    );
-                })}
+                <div className="categorySelectAll inlineBlock">
+                    {tempStr.map((c, i) => {
+                        const variable = eval(c);
+                        return (
+                            <Category
+                                key={variable.content}
+                                data={variable}
+                                dataName={c}
+                                changeOption={changeOption}
+                                optionValue={optionValue}
+                                addOption={addOption}
+                                option={option}
+                                removeOption={removeOption}
+                                index={i + 1}
+                            />
+                        );
+                    })}
+                </div>
                 <button
                     type="button"
-                    className="addArticleBtn"
+                    className="addArticleBtn inlineBlock"
                     onClick={() => setWrite(!write)}
                 >
                     + 추가 작성
@@ -167,9 +169,8 @@ const Edit = forwardRef(({ faqData }, scrollRef) => {
                 <div>
                     {article.map((c, index) => (
                         <div key={c.article_id} className="articleBox">
-                            <div className="articleIndex">{index + 1}</div>
-                            <div className="articleDiv">{c.content}</div>
-                            <div className="buttonDiv">
+                            <div className="articleDiv inlineBlock">{c.content}</div>
+                            <div className="buttonDiv inlineBlock">
                                 <button
                                     type="button"
                                     onClick={() => removeArticle(c.article_id)}

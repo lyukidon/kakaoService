@@ -5,42 +5,106 @@
     display: flex;
     flex-direction: row;
     padding: 10px 10px;
-    border-bottom: 2px solid #f4f4f4;
+    background-color: #533d40;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    > a {
+        color: white;
+        text-decoration: underline;
+    }
     .right {
         margin-left: auto;
     }
 }
 .contents {
     display: grid;
-    height: calc(100vh - 62px);
-    grid-template-columns: 160px 1fr;
+    height: calc(100vh - 65px);
+    grid-template-columns: 140px 1fr;
     grid-template-areas: "sideNav dashboard";
     .sideNav {
-        padding-left: 10px;
-        padding-top: 10px;
+        padding-left: 8px;
+        padding-top: 17px;
         grid-area: sideNav;
+        > ul > li {
+            margin-left: -8px;
+            margin-bottom: 5px;
+        }
     }
     .dashboard {
         overflow-y: scroll;
         height: 100%;
-        padding-top: 15px;
-        padding-left: 15px;
+        padding-top: 10px;
+        padding-left: 7px;
         grid-area: dashboard;
         display: grid;
-        grid-template-columns: repeat(2, minmax(400px, 700px));
+        grid-template-columns: repeat(2, 650px);
         grid-template-rows: 0.5fr 0.5fr;
         grid-template-areas:
             "graph dataStat"
             "editArticle showRequest";
-        column-gap: 10px;
+        column-gap: 12px;
         row-gap: 12px;
         .graph,
         .showRequest,
         .dataStat,
         .editArticle {
-            padding: 6px 8px;
+            padding-left: 10px;
+            padding-right: 10px;
             border-radius: 12px;
-            box-shadow: 0px 0px 5px 3px #f2f2f2;
+            box-shadow: 0px 0px 7px 3px #f2f2f2;
+            &:hover {
+                box-shadow: 0px 0px 7px 3px #dddddd;
+            }
+            // src/components/admin/Category.js
+            .categorySelectBox {
+                margin-bottom: 10px;
+                > select {
+                    width: 150px;
+                    border: 1px solid black;
+                    background-color: #ffffff;
+                }
+                > button {
+                    border: 1px solid black;
+                    background-color: #ffffff;
+                    &:hover{
+                        cursor: pointer;
+                        background-color: lightgrey;
+                    }
+                }
+            }
+            .addArticleBtn{
+                display: inline-block;
+                margin-left: 100px;
+                padding-left: 20px;
+                padding-right: 20px;
+                vertical-align: top;
+                height: 89px;
+                background-color: #fae100;
+                border: none;
+                &:hover{
+                    cursor: pointer;
+                    background-color: rgb(211,211,211);
+                }
+            }
+            .articleBox{
+                padding: 10px 0px;
+                border-top: 1px solid #dddddd;
+                .articleDiv{
+                    width: 450px
+                }
+                .buttonDiv{
+                    margin-left: 19px;
+                    vertical-align: top;
+                    > button{
+                        height: 30px;
+                        padding-left: 14px;
+                        padding-right: 14px;
+                        background-color: #ffffff;
+                        border: 1px solid black;
+                    }
+                }
+            }
         }
         .graph {
             grid-area: graph;
@@ -50,6 +114,9 @@
         }
         .dataStat {
             grid-area: dataStat;
+            > ul > li {
+                margin-bottom: 16px;
+            }
         }
         .editArticle {
             grid-area: editArticle;
