@@ -1,5 +1,27 @@
 {
-  "[javascript]": {
-    "tabWidth": 4
-  }
+  "tabWidth": 4,
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+      }
+    },
+    {
+      "files": "*.scss",
+      "options": {
+      }
+    },
+    {
+      "files": "*.js",
+      "options": {
+      }
+    },
+    {
+      "files": "*.md",
+      "options": {
+        "proseWrap": "never",
+        "tabWidth": 2
+      }
+    }
+  ]
 }
