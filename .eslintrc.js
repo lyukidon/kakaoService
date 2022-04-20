@@ -36,5 +36,7 @@ module.exports = {
         "no-return-assign": "warn",
         "no-param-reassign": [2, { props: false }],
         "no-unused-vars": "warn",
+        "react/function-component-definition": 1,
+        "react/jsx-no-useless-fragment":1,
     },
 };
