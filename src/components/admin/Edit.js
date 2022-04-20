@@ -2,8 +2,6 @@ import React, { forwardRef, useEffect, useState } from "react";
 
 import Option from "./Option";
 
-import "../../scss/admin/admin.scss";
-
 // 관리자 컴포넌트
 const Edit = forwardRef(({ faqData }, scrollRef) => {
     // 선택된 옵션 값
@@ -107,9 +105,9 @@ const Edit = forwardRef(({ faqData }, scrollRef) => {
     const [write, setWrite] = useState(false);
 
     return (
-        <div>
+        <>
             {/* 데이터 통계 */}
-            <div className="Box">
+            <div className="dataStat">
                 <h4
                     ref={(element) => {
                         scrollRef.current[1] = element;
@@ -127,7 +125,7 @@ const Edit = forwardRef(({ faqData }, scrollRef) => {
             </div>
 
             {/* 글 수정하기 */}
-            <div className="Box">
+            <div className="editArticle">
                 <h4
                     ref={(element) => {
                         const temp = element;
@@ -184,43 +182,9 @@ const Edit = forwardRef(({ faqData }, scrollRef) => {
                     ))}
                 </div>
             </div>
-        </div>
+        </>
     );
 });
 Edit.displayName = "Edit";
-// Edit.propTypes = {
-//     faqData: PropTypes.shape({
-//         service: PropTypes.StrayOf(
-//             PropTypes.shape({
-//                 service_id: PropTypes.number,
-//                 content: PropTypes.string,
-//             })
-//         ),
-//         category: PropTypes.StrayOf(
-//             PropTypes.shape({
-//                 service_id: PropTypes.number,
-//                 category_id: PropTypes.number,
-//                 content: PropTypes.string,
-//             })
-//         ),
-//         platform: PropTypes.StrayOf(
-//             PropTypes.shape({
-//                 service_id: PropTypes.number,
-//                 category_id: PropTypes.number,
-//                 platform_id: PropTypes.number,
-//                 content: PropTypes.string,
-//             })
-//         ),
-//         article: PropTypes.StrayOf(
-//             PropTypes.shape({
-//                 service_id: PropTypes.number,
-//                 category_id: PropTypes.number,
-//                 platform_id: PropTypes.number,
-//                 article_id: PropTypes.string,
-//                 content: PropTypes.string,
-//             })
-//         ).isRequired,
-//     }).isRequired,
-// };
 
 export default Edit;

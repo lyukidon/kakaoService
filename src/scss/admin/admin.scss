@@ -1,100 +1,58 @@
-.contents {
-    margin-top: 20px;
-    margin-left: 12vw;
-    top: 10px;
-    scroll-padding-top: 1000px;
+.adminHtml {
+    overflow: hidden;
 }
-button {
-    background-color: #ffffff;
-    border: 1px solid black;
-    border-radius: 5px;
-    &:hover {
-        background-color: lightgray;
-        cursor: pointer;
-    }
-}
-.Box {
-    padding: 10px;
-    border-bottom: 1px solid black;
-}
-
 .topNav {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 20px;
-    padding: 10px 0px;
-    background-color: #414042;
-    color: white;
-    .gohome {
-        margin-left: 15px;
-        color: white;
-        font-style: italic;
-        text-decoration: underline;
-    }
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10px;
+    border-bottom: 2px solid #f4f4f4;
     .right {
-        float: right;
-        margin-right: 15px;
+        margin-left: auto;
     }
 }
-.sideNav {
-    position: fixed;
-    top: 40px;
-    left: 0px;
-    padding-top: 1vh;
-    padding-left: 1vw;
-    width: 160px;
-    height: 99vh;
-    background-color: #58595b;
-    color: white;
-    ul {
-        margin: 0;
-        li {
-            margin: 5px 0px;
-            &:hover {
-                cursor: pointer;
-            }
+.contents {
+    display: grid;
+    height: calc(100vh - 62px);
+    grid-template-columns: 160px 1fr;
+    grid-template-areas: "sideNav dashboard";
+    .sideNav {
+        padding-left: 10px;
+        padding-top: 10px;
+        grid-area: sideNav;
+    }
+    .dashboard {
+        overflow-y: scroll;
+        height: 100%;
+        padding-top: 15px;
+        padding-left: 15px;
+        grid-area: dashboard;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(400px, 700px));
+        grid-template-rows: 0.5fr 0.5fr;
+        grid-template-areas:
+            "graph dataStat"
+            "editArticle showRequest";
+        column-gap: 10px;
+        row-gap: 12px;
+        .graph,
+        .showRequest,
+        .dataStat,
+        .editArticle {
+            padding: 6px 8px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 5px 3px #f2f2f2;
         }
-    }
-}
-.optionBox {
-    display: inline-block;
-    padding: 10px;
-    border: 1px solid #d3d3d3;
-    select {
-        background-color: #ffffff;
-        border: 1px solid black;
-        border-radius: 5px;
-    }
-    input {
-        border: none;
-    }
-}
-.addArticleBtn {
-    padding: 12px;
-    vertical-align: top;
-    float: right;
-}
-.articleBox {
-    margin: 10px 0px;
-    padding: 10px;
-    border-bottom: 1px solid #d3d3d3;
-    .articleIndex {
-        display: inline-block;
-        color: orange;
-        margin-right: 10px;
-        vertical-align: top;
-    }
-    .articleDiv {
-        display: inline-block;
-        width: 85%;
-    }
-    .buttonDiv {
-        display: flex;
-        float: right;
-        button {
-            margin-left: 5px;
+        .graph {
+            grid-area: graph;
+        }
+        .showRequest {
+            grid-area: showRequest;
+        }
+        .dataStat {
+            grid-area: dataStat;
+        }
+        .editArticle {
+            grid-area: editArticle;
         }
     }
 }

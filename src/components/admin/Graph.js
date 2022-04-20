@@ -1,10 +1,6 @@
 import React, { useEffect, useRef, forwardRef } from "react";
 import Chart from "chart.js/auto";
-import styled from "styled-components";
 
-const Canv = styled.div`
-    display: inline-block;
-`;
 const month = [
     "Jan",
     "Feb",
@@ -114,7 +110,7 @@ const Graph = forwardRef((props, scrollRef) => {
     }, []);
 
     return (
-        <div className="Box">
+        <div className="graph">
             <h4
                 ref={(element) => {
                     const temp = element;
@@ -123,18 +119,30 @@ const Graph = forwardRef((props, scrollRef) => {
             >
                 트래픽 통계
             </h4>
-            <Canv>
-                <canvas ref={(element) => (canvasDom.current[0] = element)} />
-            </Canv>
-            <Canv>
-                <canvas ref={(element) => (canvasDom.current[1] = element)} />
-            </Canv>
-            <Canv>
-                <canvas ref={(element) => (canvasDom.current[2] = element)} />
-            </Canv>
-            <Canv>
-                <canvas ref={(element) => (canvasDom.current[3] = element)} />
-            </Canv>
+            <div>
+                <div className="inlineBlock">
+                    <canvas
+                        ref={(element) => (canvasDom.current[0] = element)}
+                    />
+                </div>
+                <div className="inlineBlock">
+                    <canvas
+                        ref={(element) => (canvasDom.current[1] = element)}
+                    />
+                </div>
+            </div>
+            <div>
+                <div className="inlineBlock">
+                    <canvas
+                        ref={(element) => (canvasDom.current[2] = element)}
+                    />
+                </div>
+                <div className="inlineBlock">
+                    <canvas
+                        ref={(element) => (canvasDom.current[3] = element)}
+                    />
+                </div>
+            </div>
         </div>
     );
 });

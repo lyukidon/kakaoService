@@ -9,6 +9,9 @@ const TopNav = () => {
             <Link className="gohome" type="button" to="/">
                 고객센터 홈
             </Link>
+            <div className="right">
+                {window.localStorage.getItem("userId")} 님, 환영합니다
+            </div>
             <Link
                 to="/"
                 className="right"
@@ -16,9 +19,6 @@ const TopNav = () => {
             >
                 로그아웃
             </Link>
-            <div className="right inlineBlock">
-                {window.localStorage.getItem("userId")} 님, 환영합니다
-            </div>
         </div>
     );
 };
