@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
 
@@ -6,7 +6,7 @@ import Admin from "./Admin";
 import Login from "./Login";
 
 function PrivateRoute() {
-    const [username,setUsername] = useLocalStorage("userId", "");
+    const [username, setUsername] = useLocalStorage("userId", "");
     return (
         <Routes>
             <Route
@@ -19,7 +19,10 @@ function PrivateRoute() {
                     )
                 }
             />
-            <Route path="/login" element={<Login setUsername={setUsername} />} />
+            <Route
+                path="/login"
+                element={<Login setUsername={setUsername} />}
+            />
         </Routes>
     );
 }
