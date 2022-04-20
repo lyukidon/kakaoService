@@ -10,7 +10,7 @@ function PrivateRoute() {
     return (
         <Routes>
             <Route
-                path="/"
+                path="/*"
                 element={
                     username ? (
                         <Admin />
