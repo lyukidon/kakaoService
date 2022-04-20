@@ -1,7 +1,6 @@
 import React, { forwardRef } from "react";
 import { Link } from "react-router-dom";
 
-
 const array = ["트래픽 통계", "데이터 통계", "글 수정하기", "최근 문의 글"];
 
 const TopNav = () => {
@@ -10,10 +9,16 @@ const TopNav = () => {
             <Link className="gohome" type="button" to="/">
                 고객센터 홈
             </Link>
-            <Link to="/" className="right" onClick={window.localStorage.removeItem('userId')}>
+            <Link
+                to="/"
+                className="right"
+                onClick={() => window.localStorage.removeItem("userId")}
+            >
                 로그아웃
             </Link>
-            <div className="right inlineBlock">{window.localStorage.getItem('userId')} 님, 환영합니다</div>
+            <div className="right inlineBlock">
+                {window.localStorage.getItem("userId")} 님, 환영합니다
+            </div>
         </div>
     );
 };
