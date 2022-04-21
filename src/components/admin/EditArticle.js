@@ -1,9 +1,24 @@
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Category from "./Category";
 
+const DataStat = ({ service, category, platform, article, faqData }) => {
+    return (
+        <div className="dataStat">
+            <h4>데이터 통계</h4>
+            <ul>
+                <li>서비스 갯수: {service.length}</li>
+                <li>카테고리 갯수(상위 옵션 기준): {category.length}</li>
+                <li>OS 갯수(상위 옵션 기준): {platform.length}</li>
+                <li>글 갯수: {article.length}</li>
+                <li>전체 글 갯수: {faqData.article.length}</li>
+            </ul>
+        </div>
+    );
+};
+
 // 관리자 컴포넌트
-const Edit = forwardRef(({ faqData }, scrollRef) => {
+const EditArticle = ({ faqData }) => {
     // 선택된 옵션 값
     const [ids, setIds] = useState({
         service_id: 1,
@@ -107,33 +122,19 @@ const Edit = forwardRef(({ faqData }, scrollRef) => {
     return (
         <>
             {/* 데이터 통계 */}
-            <div className="dataStat">
-                <h4
-                    ref={(element) => {
-                        scrollRef.current[1] = element;
-                    }}
-                >
-                    데이터 통계
-                </h4>
-                <ul>
-                    <li>서비스 갯수: {service.length}</li>
-                    <li>카테고리 갯수(상위 옵션 기준): {category.length}</li>
-                    <li>OS 갯수(상위 옵션 기준): {platform.length}</li>
-                    <li>글 갯수: {article.length}</li>
-                    <li>전체 글 갯수: {faqData && faqData.article.length}</li>
-                </ul>
-            </div>
+            {faqData && (
+                <DataStat
+                    service={service}
+                    category={category}
+                    platform={platform}
+                    article={article}
+                    faqData={faqData}
+                />
+            )}
 
             {/* 글 수정하기 */}
             <div className="editArticle">
-                <h4
-                    ref={(element) => {
-                        const temp = element;
-                        scrollRef.current[2] = temp;
-                    }}
-                >
-                    글 수정하기
-                </h4>
+                <h4>글 수정하기</h4>
                 {/* 옵션 설정 */}
                 <div className="categorySelectAll inlineBlock">
                     {tempStr.map((c, i) => {
@@ -167,9 +168,11 @@ const Edit = forwardRef(({ faqData }, scrollRef) => {
                     </div>
                 )}
                 <div>
-                    {article.map((c, index) => (
+                    {article.map((c) => (
                         <div key={c.article_id} className="articleBox">
-                            <div className="articleDiv inlineBlock">{c.content}</div>
+                            <div className="articleDiv inlineBlock">
+                                {c.content}
+                            </div>
                             <div className="buttonDiv inlineBlock">
                                 <button
                                     type="button"
@@ -185,7 +188,7 @@ const Edit = forwardRef(({ faqData }, scrollRef) => {
             </div>
         </>
     );
-});
-Edit.displayName = "Edit";
+};
+EditArticle.displayName = "EditArticle";
 
-export default Edit;
+export default EditArticle;

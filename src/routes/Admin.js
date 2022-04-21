@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef } from "react";
+import React, { useEffect, useReducer } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -57,21 +57,18 @@ function Admin() {
     }, []);
     const { data } = state;
 
-    // Nav 누르면 스크롤
-    const scrollRef = useRef([]);
-
     return (
         <div className="admin">
             <Helmet>
                 <html lang="en" className="adminHtml" />
             </Helmet>
-            <TopNav params={params} ref={scrollRef} />
+            <TopNav params={params} />
             <div className="contents">
                 <SideNav />
                 <div className="dashboard">
-                    <Graph ref={scrollRef} />
-                    <ShowRequest ref={scrollRef} />
-                    <EditArticle faqData={data} ref={scrollRef} />
+                    <Graph />
+                    <EditArticle faqData={data} />
+                    <ShowRequest />
                 </div>
             </div>
         </div>

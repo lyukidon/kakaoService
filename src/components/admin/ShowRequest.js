@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const ContentBox = styled.div`
@@ -29,15 +29,9 @@ const requestTemp = [
     },
 ];
 
-const ShowRequest = forwardRef(({ props }, scrollRef) => (
+const ShowRequest = () => (
     <div className="showRequest">
-        <h4
-            ref={(element) => {
-                scrollRef.current[3] = element;
-            }}
-        >
-            최근 문의 글
-        </h4>
+        <h4>최근 문의 글</h4>
         {requestTemp.map((contents) => (
             <ContentBox key={contents.id}>
                 <ContentNumber>{contents.id}</ContentNumber>
@@ -50,7 +44,7 @@ const ShowRequest = forwardRef(({ props }, scrollRef) => (
             </ContentBox>
         ))}
     </div>
-));
+);
 ShowRequest.displayName = "ShowRequest";
 
 export default ShowRequest;

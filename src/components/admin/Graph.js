@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, forwardRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 
 const month = [
@@ -16,7 +16,7 @@ const month = [
     "Dec",
 ];
 
-const Graph = forwardRef((props, scrollRef) => {
+const Graph = () => {
     const canvasDom = useRef([]);
 
     useEffect(() => {
@@ -111,14 +111,7 @@ const Graph = forwardRef((props, scrollRef) => {
 
     return (
         <div className="graph">
-            <h4
-                ref={(element) => {
-                    const temp = element;
-                    scrollRef.current[0] = temp;
-                }}
-            >
-                트래픽 통계
-            </h4>
+            <h4>트래픽 통계</h4>
             <div>
                 <div className="inlineBlock">
                     <canvas
@@ -145,6 +138,6 @@ const Graph = forwardRef((props, scrollRef) => {
             </div>
         </div>
     );
-});
+};
 Graph.displayName = "Graph";
 export default Graph;
