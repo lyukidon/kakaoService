@@ -2,20 +2,18 @@ import React, { useEffect, useState } from "react";
 
 import Category from "./Category";
 
-const DataStat = ({ service, category, platform, article, faqData }) => {
-    return (
-        <div className="dataStat">
-            <h4>데이터 통계</h4>
-            <ul>
-                <li>서비스 갯수: {service.length}</li>
-                <li>카테고리 갯수(상위 옵션 기준): {category.length}</li>
-                <li>OS 갯수(상위 옵션 기준): {platform.length}</li>
-                <li>글 갯수: {article.length}</li>
-                <li>전체 글 갯수: {faqData.article.length}</li>
-            </ul>
-        </div>
-    );
-};
+const DataStat = ({ service, category, platform, article, faqData }) => (
+    <div className="dataStat">
+        <h4>데이터 통계</h4>
+        <ul>
+            <li>서비스 갯수: {service.length}</li>
+            <li>카테고리 갯수(상위 옵션 기준): {category.length}</li>
+            <li>OS 갯수(상위 옵션 기준): {platform.length}</li>
+            <li>글 갯수: {article.length}</li>
+            <li>전체 글 갯수: {faqData.article.length}</li>
+        </ul>
+    </div>
+);
 
 // 관리자 컴포넌트
 const EditArticle = ({ faqData }) => {
@@ -60,7 +58,7 @@ const EditArticle = ({ faqData }) => {
         }
     }, [faqData, ids]);
 
-    // 옵션 클릭 시 실행되는 함수
+    // 카테고리 클릭 시 실행되는 함수
     const changeOption = (event) => {
         const { id, value } = event.target;
         setIds({
@@ -68,7 +66,7 @@ const EditArticle = ({ faqData }) => {
             [id]: +value,
         });
     };
-    // 옵션 추가 하기
+    // 카테고리 추가 하기
     const [option, setOption] = useState({
         service: "",
         category: "",
@@ -103,7 +101,7 @@ const EditArticle = ({ faqData }) => {
             });
         }
     };
-    // 옵션 제거하기
+    // 카테고리 제거하기
     const removeOption = (event) => {
         const { name } = event.target;
         const index = tempStr.indexOf(name);
@@ -132,11 +130,11 @@ const EditArticle = ({ faqData }) => {
                 />
             )}
 
-            {/* 글 수정하기 */}
+            {/* 데이터 변경 */}
             <div className="editArticle">
-                <h4>글 수정하기</h4>
-                {/* 옵션 설정 */}
-                <div className="categorySelectAll inlineBlock">
+                <h4>데이터 변경</h4>
+                {/* 카테고리 설정 */}
+                <div className="categorySelectAll">
                     {tempStr.map((c, i) => {
                         const variable = eval(c);
                         return (
@@ -153,20 +151,21 @@ const EditArticle = ({ faqData }) => {
                             />
                         );
                     })}
+                    <button
+                        type="button"
+                        className="addArticleBtn"
+                        onClick={() => setWrite(!write)}
+                    >
+                        + 추가 작성
+                    </button>
+                    {write && (
+                        <div>
+                            <textarea />
+                            <button type="button">추가하기</button>
+                        </div>
+                    )}
                 </div>
-                <button
-                    type="button"
-                    className="addArticleBtn inlineBlock"
-                    onClick={() => setWrite(!write)}
-                >
-                    + 추가 작성
-                </button>
-                {write && (
-                    <div>
-                        <textarea />
-                        <button type="button">추가하기</button>
-                    </div>
-                )}
+
                 <div>
                     {article.map((c) => (
                         <div key={c.article_id} className="articleBox">

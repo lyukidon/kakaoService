@@ -1,9 +1,10 @@
 .adminHtml {
-    overflow: hidden;
+    // overflow: hidden;
 }
 .topNav {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     padding: 10px 10px;
     background-color: #533d40;
     color: white;
@@ -13,13 +14,9 @@
         color: white;
         text-decoration: underline;
     }
-    .right {
-        margin-left: auto;
-    }
 }
 .contents {
     display: grid;
-    height: calc(100vh - 65px);
     grid-template-columns: 140px 1fr;
     grid-template-areas: "sideNav dashboard";
     .sideNav {
@@ -32,20 +29,13 @@
         }
     }
     .dashboard {
-        overflow-y: scroll;
-        height: 100%;
-        padding-top: 10px;
-        padding-left: 7px;
+        padding: 10px 7px;
         grid-area: dashboard;
         display: grid;
-        grid-template-columns: repeat(2, 650px);
-        grid-template-rows: 0.5fr 0.5fr;
-        grid-template-areas:
-            "graph dataStat"
-            "editArticle showRequest";
+        grid-template-columns: repeat(auto-fill, minmax(640px, 1fr));
         column-gap: 12px;
         row-gap: 12px;
-        .graph,
+        .graph, // 그래프 통계, 최근 문의, 데이터 통계, 글 수정
         .showRequest,
         .dataStat,
         .editArticle {
@@ -57,69 +47,68 @@
                 box-shadow: 0px 0px 7px 3px #dddddd;
             }
             // src/components/admin/Category.js
-            .categorySelectBox {
-                margin-bottom: 10px;
-                > select {
-                    width: 150px;
-                    border: 1px solid black;
-                    background-color: #ffffff;
+            .categorySelectAll {
+                display: flex;
+                flex-direction: column;
+                .categorySelectBox {
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 10px;
+                    > div > select,
+                    input {
+                        width: 150px;
+                        border: 1px solid black;
+                        background-color: #ffffff;
+                    }
+
+                    > div > button {
+                        border: 1px solid black;
+                        background-color: #ffffff;
+                        &:hover {
+                            cursor: pointer;
+                            background-color: lightgrey;
+                        }
+                    }
                 }
-                > button {
-                    border: 1px solid black;
-                    background-color: #ffffff;
-                    &:hover{
+                .addArticleBtn {
+                    padding: 5px;
+                    background-color: #fae100;
+                    border: none;
+                    &:hover {
                         cursor: pointer;
-                        background-color: lightgrey;
+                        background-color: rgb(211, 211, 211);
                     }
                 }
             }
-            .addArticleBtn{
-                display: inline-block;
-                margin-left: 100px;
-                padding-left: 20px;
-                padding-right: 20px;
-                vertical-align: top;
-                height: 89px;
-                background-color: #fae100;
-                border: none;
-                &:hover{
-                    cursor: pointer;
-                    background-color: rgb(211,211,211);
-                }
-            }
-            .articleBox{
+            .articleBox {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
                 padding: 10px 0px;
                 border-top: 1px solid #dddddd;
-                .articleDiv{
-                    width: 450px
+                .articleDiv {
+                    width: 500px;
                 }
-                .buttonDiv{
-                    margin-left: 19px;
+                .buttonDiv {
                     vertical-align: top;
-                    > button{
+                    > button {
                         height: 30px;
                         padding-left: 14px;
                         padding-right: 14px;
                         background-color: #ffffff;
                         border: 1px solid black;
+                        &:hover {
+                            cursor: pointer;
+                            background-color: #dddddd;
+                        }
                     }
                 }
             }
         }
-        .graph {
-            grid-area: graph;
-        }
-        .showRequest {
-            grid-area: showRequest;
-        }
         .dataStat {
-            grid-area: dataStat;
             > ul > li {
                 margin-bottom: 16px;
             }
-        }
-        .editArticle {
-            grid-area: editArticle;
         }
     }
 }

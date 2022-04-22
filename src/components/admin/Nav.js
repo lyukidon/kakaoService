@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { Link } from "react-router-dom";
 
-const array = ["트래픽 통계", "데이터 통계", "글 수정하기", "최근 문의"];
+const array = ["트래픽 통계", "데이터 통계", "데이터 변경", "최근 문의"];
 
 const TopNav = () => (
     <div className="topNav">
