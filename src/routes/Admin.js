@@ -67,8 +67,8 @@ function Admin() {
                 <SideNav />
                 <div className="dashboard">
                     <Graph />
-                    <EditArticle faqData={data} />
                     <ShowRequest />
+                    <EditArticle faqData={data} />
                 </div>
             </div>
         </div>

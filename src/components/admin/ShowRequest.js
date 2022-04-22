@@ -31,7 +31,7 @@ const requestTemp = [
 
 const ShowRequest = () => (
     <div className="showRequest">
-        <h4>최근 문의 글</h4>
+        <h4>최근 문의</h4>
         {requestTemp.map((contents) => (
             <ContentBox key={contents.id}>
                 <ContentNumber>{contents.id}</ContentNumber>
