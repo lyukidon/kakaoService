@@ -32,7 +32,7 @@
         padding: 10px 7px;
         grid-area: dashboard;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(640px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(44vw, 1fr));
         column-gap: 12px;
         row-gap: 12px;
         .graph, // 그래프 통계, 최근 문의, 데이터 통계, 글 수정
