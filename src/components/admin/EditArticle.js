@@ -135,7 +135,7 @@ const EditArticle = ({ faqData }) => {
                 <h4>데이터 변경</h4>
                 {/* 카테고리 설정 */}
                 <div className="categorySelectAll">
-                    {tempStr.map((c, i) => {
+                    {tempStr.map((c) => {
                         const variable = eval(c);
                         return (
                             <Category
@@ -147,7 +147,6 @@ const EditArticle = ({ faqData }) => {
                                 addOption={addOption}
                                 option={option}
                                 removeOption={removeOption}
-                                index={i + 1}
                             />
                         );
                     })}
