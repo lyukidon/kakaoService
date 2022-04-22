@@ -105,6 +105,16 @@
                 }
             }
         }
+        .graph {
+            > div {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                > div {
+                    width: 90%;
+                }
+            }
+        }
         .dataStat {
             > ul > li {
                 margin-bottom: 16px;

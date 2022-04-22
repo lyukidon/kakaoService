@@ -26,10 +26,10 @@ const Graph = () => {
         const ctx3 = canvasDom.current[3].getContext("2d");
 
         new Chart(ctx0, {
+            type: "line",
             data: {
                 datasets: [
                     {
-                        type: "line",
                         label: "방문자 수",
                         data: [
                             30, 20, 80, 30, 100, 20, 40, 50, 60, 90, 10, 120,
@@ -41,12 +41,15 @@ const Graph = () => {
                 ],
                 labels: month,
             },
+            // options: {
+            //     maintainAspectRatio: false,
+            // },
         });
         new Chart(ctx1, {
+            type: "line",
             data: {
                 datasets: [
                     {
-                        type: "line",
                         label: "문의 수",
                         data: [2, 3, 4, 8, 10, 15, 30, 20, 45, 10, 15, 50],
                         borderColor: "#f9e01a",
@@ -64,12 +67,15 @@ const Graph = () => {
                 ],
                 labels: month,
             },
+            // options: {
+            //     maintainAspectRatio: false,
+            // },
         });
         new Chart(ctx2, {
+            type: "bar",
             data: {
                 datasets: [
                     {
-                        type: "bar",
                         label: "서비스 별 문의 수",
                         data: [2, 3, 4],
                         borderColor: "rgba(54, 162, 235)",
@@ -81,12 +87,15 @@ const Graph = () => {
                 ],
                 labels: ["카카오톡", "카카오계정", "카카오 이모티콘"],
             },
+            // options: {
+            //     maintainAspectRatio: false,
+            // },
         });
         new Chart(ctx3, {
+            type: "bar",
             data: {
                 datasets: [
                     {
-                        type: "bar",
                         label: "서비스 별 사용자 수",
                         data: [10000000, 9000000, 5000000],
                         borderColor: [
@@ -106,6 +115,9 @@ const Graph = () => {
                 ],
                 labels: ["카카오톡", "카카오계정", "카카오 이모티콘"],
             },
+            // options: {
+            //     maintainAspectRatio: false,
+            // },
         });
     }, []);
 
@@ -113,24 +125,22 @@ const Graph = () => {
         <div className="graph">
             <h4>트래픽 통계</h4>
             <div>
-                <div className="inlineBlock">
+                <div>
                     <canvas
                         ref={(element) => (canvasDom.current[0] = element)}
                     />
                 </div>
-                <div className="inlineBlock">
+                <div>
                     <canvas
                         ref={(element) => (canvasDom.current[1] = element)}
                     />
                 </div>
-            </div>
-            <div>
-                <div className="inlineBlock">
+                <div>
                     <canvas
                         ref={(element) => (canvasDom.current[2] = element)}
                     />
                 </div>
-                <div className="inlineBlock">
+                <div>
                     <canvas
                         ref={(element) => (canvasDom.current[3] = element)}
                     />
