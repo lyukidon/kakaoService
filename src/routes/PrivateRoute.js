@@ -19,10 +19,21 @@ function PrivateRoute() {
                     )
                 }
             />
-            <Route path="/dashboard" element={username ? <Admin /> : <Navigate replace to="/admin" />} />
+            <Route
+                path="/dashboard"
+                element={
+                    username ? <Admin /> : <Navigate replace to="/admin" />
+                }
+            />
             <Route
                 path="/login"
-                element={<Login setUsername={setUsername} />}
+                element={
+                    username ? (
+                        <Navigate replace to="/admin" />
+                    ) : (
+                        <Login setUsername={setUsername} />
+                    )
+                }
             />
         </Routes>
     );
