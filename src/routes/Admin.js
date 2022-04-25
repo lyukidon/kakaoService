@@ -60,7 +60,7 @@ function Admin() {
     return (
         <div className="admin">
             <Helmet>
-                <html lang="en" className="adminHtml" />
+                <body className="adminBody" />
             </Helmet>
             <TopNav params={params} />
             <div className="contents">
