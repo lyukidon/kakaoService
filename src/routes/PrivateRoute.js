@@ -13,12 +13,13 @@ function PrivateRoute() {
                 path="/*"
                 element={
                     username ? (
-                        <Admin />
+                        <Navigate replace to="/admin/dashboard" />
                     ) : (
                         <Navigate replace to="/admin/login" />
                     )
                 }
             />
+            <Route path="/dashboard" element={<Admin />} />
             <Route
                 path="/login"
                 element={<Login setUsername={setUsername} />}
