@@ -1,5 +1,5 @@
-.adminHtml {
-    // overflow: hidden;
+.adminBody {
+    margin: 0px;
 }
 .topNav {
     display: flex;
@@ -76,7 +76,7 @@
                     border: none;
                     &:hover {
                         cursor: pointer;
-                        background-color: rgb(211, 211, 211);
+                        background-color: #ead300;
                     }
                 }
             }
