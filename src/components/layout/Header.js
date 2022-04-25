@@ -31,7 +31,7 @@ function Header() {
                     type="text"
                     placeholder="궁금한 점이 있다면 도움말을 검색해보세요"
                 />
-                <input type="submit" className="searchIcon" />
+                <button type="submit" className="searchIcon" />
                 <div>
                     {headerData.map((headerdata) => (
                         <span key={headerdata.id}>
