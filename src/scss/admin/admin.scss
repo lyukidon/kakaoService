@@ -26,6 +26,10 @@
         > ul > li {
             margin-left: -8px;
             margin-bottom: 5px;
+            &:hover{
+                cursor: pointer;
+                text-decoration-line: underline;
+            }
         }
     }
     .dashboard {
