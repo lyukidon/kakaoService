@@ -15,13 +15,6 @@
       "files": "*.js",
       "options": {
       }
-    },
-    {
-      "files": "*.md",
-      "options": {
-        "proseWrap": "never",
-        "tabWidth": 2
-      }
     }
   ]
 }

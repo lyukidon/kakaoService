@@ -11,6 +11,9 @@ const Write = styled.div`
     background: url("/ico.png") no-repeat -80px -60px;
     width: 17px;
     height: 17px;
+    > a {
+        text-decoration: none;
+    }
 `;
 
 function RequestBtn({ query }) {
