@@ -1,7 +1,29 @@
-import React, { forwardRef } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-const array = ["트래픽 통계", "최근 문의", "데이터 통계", "데이터 변경"];
+const array = [
+    {
+        id:1,
+        title: "트래픽 통계",
+        url: "/admin/statics"
+    },
+    {
+        id:2,
+        title:"최근 문의",
+        url: "/admin/lastRequest"
+    },
+    {
+        id:3,
+        title: "데이터 통계",
+        url: '/admin'
+        
+    },
+    {
+        id:4,
+        title: "데이터 변경",
+        url: "/admin/edit"
+    },
+];
 
 const TopNav = () => (
     <div className="topNav">
@@ -21,8 +43,9 @@ const TopNav = () => (
     </div>
 );
 
-const SideNav = forwardRef((props, scrollRef) => (
-    <>
+function SideNav() {
+    const navigate = useNavigate();
+    return (
         <div className="sideNav">
             <div>바로가기</div>
             <ul>
@@ -30,21 +53,16 @@ const SideNav = forwardRef((props, scrollRef) => (
                     <li
                         role="none"
                         tabIndex={index}
-                        key={content}
-                        onClick={() =>
-                            scrollRef.current[index].scrollIntoView(true)
-                        }
-                        onKeyDown={() =>
-                            scrollRef.current[index].scrollIntoView()
-                        }
+                        key={content.id}
+                        onClick={() => navigate(content.url)}
                     >
-                        {content}
+                        {content.title}
                     </li>
                 ))}
             </ul>
         </div>
-    </>
-));
+    );
+}
 SideNav.displayName = "SideNav";
 
 export { TopNav, SideNav };
