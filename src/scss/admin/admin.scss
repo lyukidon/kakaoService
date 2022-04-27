@@ -10,9 +10,17 @@
     color: white;
     font-size: 16px;
     font-weight: bold;
-    > a {
+    .leftTopNav > a {
+        margin-right: 20px;
+    }
+    div > a {
         color: white;
-        text-decoration: underline;
+    }
+    .rightTopNav {
+        > span {
+            font-weight: 400;
+            margin-right: 15px;
+        }
     }
 }
 .contents {
@@ -26,7 +34,7 @@
         > ul > li {
             margin-left: -8px;
             margin-bottom: 5px;
-            &:hover{
+            &:hover {
                 cursor: pointer;
                 text-decoration-line: underline;
             }
