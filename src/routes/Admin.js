@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 import { TopNav, SideNav } from "../components/admin/Nav";
 import Graph from "../components/admin/Graph";
-import EditArticle from "../components/admin/EditArticle";
+import EditArticle from "../components/admin/Article";
 import ShowRequest from "../components/admin/ShowRequest";
 
 import "../scss/admin/admin.scss";

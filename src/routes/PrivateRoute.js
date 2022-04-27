@@ -5,7 +5,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 import Admin from "./Admin";
 import Login from "./Login";
-import Edit from "./Editor";
+import Editor from "./Editor";
 
 const adminPath = ["/admin/dashboard", "/admin/edit"];
 
@@ -93,7 +93,7 @@ function PrivateRoute() {
             />
             <Route
                 path="/edit"
-                element={username ? <Edit data={data} /> : <Navigate replace to="/admin" />}
+                element={username ? <Editor data={data} /> : <Navigate replace to="/admin" />}
             />
         </Routes>
     );
