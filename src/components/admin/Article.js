@@ -16,7 +16,7 @@ const DataStat = ({ service, category, platform, article, faqData }) => (
 );
 
 // 관리자 컴포넌트
-const EditArticle = ({ faqData }) => {
+function EditArticle({ faqData }){
     // 선택된 옵션 값
     const [ids, setIds] = useState({
         service_id: 1,
@@ -187,6 +187,5 @@ const EditArticle = ({ faqData }) => {
         </>
     );
 };
-EditArticle.displayName = "EditArticle";
 
 export default EditArticle;
