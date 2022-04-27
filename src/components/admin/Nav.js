@@ -3,43 +3,49 @@ import { Link, useNavigate } from "react-router-dom";
 
 const array = [
     {
-        id:1,
+        id: 1,
         title: "트래픽 통계",
-        url: "/admin/statics"
+        url: "/admin/statics",
     },
     {
-        id:2,
-        title:"최근 문의",
-        url: "/admin/lastRequest"
+        id: 2,
+        title: "최근 문의",
+        url: "/admin/lastRequest",
     },
     {
-        id:3,
+        id: 3,
         title: "데이터 통계",
-        url: '/admin'
-        
+        url: "/admin",
     },
     {
-        id:4,
+        id: 4,
         title: "데이터 변경",
-        url: "/admin/edit"
+        url: "/admin/edit",
     },
 ];
 
 const TopNav = () => (
     <div className="topNav">
-        <Link className="gohome" type="button" to="/">
-            {`< 고객센터 홈`}
-        </Link>
-        <div className="right">
-            {window.localStorage.getItem("userId")} 님, 환영합니다
+        <div className="leftTopNav">
+            <Link className="goMain" to="/">
+                👩‍🚀고객센터
+            </Link>
+            <Link className="goDash" to="/admin/dashboard">
+                🏠대시보드
+            </Link>
         </div>
-        <Link
-            to="/"
-            className="right"
-            onClick={() => window.localStorage.removeItem("userId")}
-        >
-            로그아웃
-        </Link>
+        <div>관리자 페이지</div>
+        <div className="rightTopNav">
+            <span>
+                <em>아이디: {window.localStorage.getItem("userId")}</em>
+            </span>
+            <Link
+                to="/"
+                onClick={() => window.localStorage.removeItem("userId")}
+            >
+                로그아웃🔒
+            </Link>
+        </div>
     </div>
 );
 
