@@ -1,21 +1,10 @@
-import React, { useEffect, useState } from "react";
+/* eslint react/self-closing-comp: 0 */
+import React, { useEffect, useState, useRef } from "react";
 
-import Category from "./Category";
+import Category from "../Category";
+import ContentEdit from "./Editor";
 
-function DataStat({ service, category, platform, article, articleLength }) {
-    return (
-        <div className="dataStat">
-            <h4>데이터 통계</h4>
-            <ul>
-                <li>서비스 갯수: {service.length}</li>
-                <li>카테고리 갯수(상위 옵션 기준): {category.length}</li>
-                <li>OS 갯수(상위 옵션 기준): {platform.length}</li>
-                <li>글 갯수: {article.length}</li>
-                <li>전체 글 갯수: {articleLength}</li>
-            </ul>
-        </div>
-    );
-}
+import "../../../scss/admin/EditArticle.scss";
 
 // 관리자 컴포넌트
 function WebEditor({ faqData }) {
@@ -115,22 +104,55 @@ function WebEditor({ faqData }) {
     const removeArticle = (id) => {
         setArticle(article.filter((c) => c.article_id !== id));
     };
+    // textarea에서 탭 사용하기
+    const onTab = (event) => {
+        if (event.keyCode === 9) {
+            event.preventDefault();
+            document.execCommand("insertText", false, "   ");
+        }
+    };
 
-    // 글 쓰기, 추가하기
+    // 글 추가하기
     const [write, setWrite] = useState(false);
-    const [Edit, setEdit] = useState(false);
+
+    // 글 수정하기
+    const [editBtn, setEditBtn] = useState(-1);
+    const [editData, setEditData] = useState({
+        content: "",
+        explain: "",
+    });
+    const onEditBtn = (id) => {
+        if (editBtn === id) {
+            setEditBtn(-1);
+            setEditData({
+                content: "",
+                explain: "",
+            });
+        } else {
+            setEditBtn(id);
+            const temp = article.filter((c) => c.article_id === id)[0];
+            const { content, explain } = temp;
+            setEditData({
+                content,
+                explain,
+            });
+        }
+    };
+    const onEditData = (id, explain) => {
+        setArticle([
+            ...article.filter((c) => c.article_id !== id),
+            {
+                ...ids,
+                article_id: id,
+                ...editData,
+                explain
+            },
+        ]);
+        setEditBtn(-1);
+    };
 
     return (
         <div className="editArticle">
-            {faqData && (
-                <DataStat
-                    service={service}
-                    category={category}
-                    platform={platform}
-                    article={article}
-                    articleLength={faqData.article.length}
-                />
-            )}
             <h4>데이터 변경</h4>
             {/* 카테고리 설정 */}
             <div className="categorySelectAll">
@@ -165,27 +187,59 @@ function WebEditor({ faqData }) {
             </div>
 
             <div>
-                {article.map((c) => (
-                    <div key={c.article_id} className="articleBox">
-                        <div className="articleDiv inlineBlock">
-                            {c.content}
-                        </div>
-                        <div className="buttonDiv inlineBlock">
-                            <button
-                                type="button"
-                                onClick={() => removeArticle(c.article_id)}
-                            >
-                                삭제
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => setEdit(!Edit)}
-                            >
-                                수정
-                            </button>
-                        </div>
-                    </div>
-                ))}
+                {article
+                    .sort((a, b) => a.article_id - b.article_id)
+                    .map((c) => (
+                        <>
+                            <div key={c.article_id} className="articleBox">
+                                <div className="articleDiv inlineBlock">
+                                    {c.content}
+                                </div>
+                                <div className="buttonDiv inlineBlock">
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            removeArticle(c.article_id);
+                                            setEditData({
+                                                content: "",
+                                                explain: "",
+                                            });
+                                        }}
+                                    >
+                                        삭제
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => onEditBtn(c.article_id)}
+                                    >
+                                        수정
+                                    </button>
+                                </div>
+                            </div>
+                            {editBtn === c.article_id && (
+                                <div className="editting">
+                                    <input
+                                        type="text"
+                                        name="content"
+                                        value={editData.content}
+                                        onChange={(event) => {
+                                            setEditData({
+                                                ...editData,
+                                                content: event.target.value,
+                                            });
+                                        }}
+                                    />
+                                    <ContentEdit
+                                        explain={editData.explain}
+                                        editData={editData}
+                                        setEditData={setEditData}
+                                        onEditData={onEditData}
+                                        articleId={c.article_id}
+                                    />
+                                </div>
+                            )}
+                        </>
+                    ))}
             </div>
         </div>
     );

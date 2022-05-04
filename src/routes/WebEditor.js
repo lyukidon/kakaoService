@@ -1,12 +1,12 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import WebEditor from '../components/admin/WebEditor';
+import EditArticle from '../components/admin/EditArticle/Index';
 import {TopNav, SideNav} from "../components/admin/Nav";
 
 function Editor({data}) {
     return (
-        <div className="admin">
+        <div>
             <Helmet>
                 <body className="adminBody" />
             </Helmet>
@@ -14,7 +14,7 @@ function Editor({data}) {
             <div className="contents">
                 <SideNav />
                 <div className="dashboard">
-                    <WebEditor faqData={data} />
+                    <EditArticle faqData={data} />
                 </div>
             </div>
         </div>

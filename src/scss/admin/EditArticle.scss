@@ -1,0 +1,19 @@
+.buttonGroup{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    button{
+        margin-right: 5px;
+        border: 1px solid black;
+        min-width: 25px;
+    }
+    .fontSizeChecker{
+        width: 15px;
+    }
+}
+.contentEditable{
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid black;
+    height: 300px;
+}
