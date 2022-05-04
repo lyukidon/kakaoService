@@ -5,6 +5,7 @@ import Header from "../components/layout/Header";
 import Notice from "../components/main/Notice";
 import Main from "../components/main/Main";
 import Sub from "../components/main/Sub";
+import Footer from "../components/layout/Footer";
 
 function RouteMain() {
     return (
@@ -20,6 +21,7 @@ function RouteMain() {
             />
             <Main />
             <Sub />
+            <Footer />
         </div>
     );
 }

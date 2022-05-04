@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Footer from "./components/layout/Footer";
 import Main from "./routes/Main";
 import Error from "./routes/Error";
 import Faq from "./routes/Faq";
@@ -21,7 +20,6 @@ function App() {
                 <Route path="/admin/*" element={<PrivateRoute />} />
                 <Route path="*" element={<Error />} />
             </Routes>
-            <Footer />
         </div>
     );
 }

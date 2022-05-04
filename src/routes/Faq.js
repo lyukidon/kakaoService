@@ -9,6 +9,7 @@ import Detail from "../components/faq/Detail";
 import SideMenu from "../components/layout/SideMenu";
 import BreadCrumbs from "../components/layout/BreadCrumbs";
 import RandomPick from "../components/faq/RandomPick";
+import Footer from '../components/layout/Footer';
 
 import "../scss/faq/faq.scss";
 
@@ -31,6 +32,7 @@ function RouteFaq() {
                 <SideMenu query={query} faqData={faqData} />
                 {query.category ? <Detail query={query} /> : <RandomPick />}
             </div>
+            <Footer />
         </div>
     );
 }

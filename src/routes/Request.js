@@ -7,6 +7,7 @@ import Header from "../components/layout/Header";
 import Request from "../components/request/Request";
 import BreadCrumbs from "../components/layout/BreadCrumbs";
 import SideMenu from "../components/layout/SideMenu";
+import Footer from "../components/layout/Footer";
 
 function RouteReq() {
     const query = qs.parse(useLocation().search, { ignoreQueryPrefix: true });
@@ -20,6 +21,7 @@ function RouteReq() {
                 <SideMenu query={query} />
                 <Request query={query} />
             </div>
+            <Footer />
         </div>
     );
 }
