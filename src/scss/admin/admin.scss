@@ -61,7 +61,7 @@
             // src/components/admin/Category.js
             .categorySelectAll {
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
                 .categorySelectBox {
                     display: flex;
                     flex-direction: row;
@@ -118,7 +118,7 @@
             }
         }
         .graph {
-            > div {
+            .graphTable {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 grid-template-rows: 1fr 1fr;
@@ -133,4 +133,9 @@
             }
         }
     }
+}
+.titleNlink{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
