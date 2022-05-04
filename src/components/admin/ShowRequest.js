@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const ContentBox = styled.div`
@@ -31,7 +32,12 @@ const requestTemp = [
 
 const ShowRequest = () => (
     <div className="showRequest">
-        <h4>최근 문의</h4>
+        <div className="titleNlink">
+            <h4>최근 문의</h4>
+            <Link to="/admin/edit">
+                <h4>더보기 &gt;</h4>
+            </Link>
+        </div>
         {requestTemp.map((contents) => (
             <ContentBox key={contents.id}>
                 <ContentNumber>{contents.id}</ContentNumber>

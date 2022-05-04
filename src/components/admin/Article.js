@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const DataStat = ({ service, category, platform, article, faqData }) => (
     <div className="dataStat">
-        <h4>데이터 통계</h4>
+        <div className="titleNlink">
+            <h4>데이터 통계</h4>
+            <Link to="/admin/datastat">
+                <h4>더보기 &gt;</h4>
+            </Link>
+        </div>
         <ul>
             <li>서비스 갯수: {service.length}</li>
             <li>카테고리 갯수(상위 옵션 기준): {category.length}</li>
@@ -64,8 +70,8 @@ function EditArticle({ faqData }) {
             [id]: +value,
         });
     };
-
     const tempStr = ["service", "category", "platform"];
+
     return (
         <>
             {/* 데이터 통계 */}
@@ -81,7 +87,12 @@ function EditArticle({ faqData }) {
 
             {/* 데이터 변경 */}
             <div className="editArticle">
-                <h4>데이터 변경</h4>
+                <div className="titleNlink">
+                    <h4>데이터 변경</h4>
+                    <Link to="/admin/edit">
+                        <h4>더보기 &gt;</h4>
+                    </Link>
+                </div>
                 {/* 카테고리 설정 */}
                 <div className="categorySelectAll">
                     {tempStr.map((dataName) => {

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import Chart from "chart.js/auto";
 
 const month = [
@@ -18,7 +19,6 @@ const month = [
 
 const Graph = () => {
     const canvasDom = useRef([]);
-
     useEffect(() => {
         const ctx0 = canvasDom.current[0].getContext("2d");
         const ctx1 = canvasDom.current[1].getContext("2d");
@@ -41,9 +41,6 @@ const Graph = () => {
                 ],
                 labels: month,
             },
-            // options: {
-            //     maintainAspectRatio: false,
-            // },
         });
         new Chart(ctx1, {
             type: "line",
@@ -67,9 +64,6 @@ const Graph = () => {
                 ],
                 labels: month,
             },
-            // options: {
-            //     maintainAspectRatio: false,
-            // },
         });
         new Chart(ctx2, {
             type: "bar",
@@ -87,9 +81,6 @@ const Graph = () => {
                 ],
                 labels: ["카카오톡", "카카오계정", "카카오 이모티콘"],
             },
-            // options: {
-            //     maintainAspectRatio: false,
-            // },
         });
         new Chart(ctx3, {
             type: "bar",
@@ -115,16 +106,18 @@ const Graph = () => {
                 ],
                 labels: ["카카오톡", "카카오계정", "카카오 이모티콘"],
             },
-            // options: {
-            //     maintainAspectRatio: false,
-            // },
         });
     }, []);
 
     return (
         <div className="graph">
-            <h4>트래픽 통계</h4>
-            <div>
+            <div className="titleNlink">
+                <h4>트래픽 통계</h4>
+                <Link to="/admin/statics">
+                    <h4>더보기 &gt;</h4>
+                </Link>
+            </div>
+            <div className="graphTable">
                 <div>
                     <canvas
                         ref={(element) => (canvasDom.current[0] = element)}
