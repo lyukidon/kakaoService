@@ -11,12 +11,12 @@ export default [
     },
     {
         id: 3,
-        title: "데이터 통계",
+        title: "도움말 통계",
         url: "/admin",
     },
     {
         id: 4,
-        title: "데이터 변경",
+        title: "도움말 목록",
         url: "/admin/faq",
     },
 ]

@@ -153,7 +153,7 @@ function WebEditor({ faqData }) {
 
     return (
         <div className="editArticle">
-            <h4>데이터 변경</h4>
+            <h4>도움말 목록</h4>
             {/* 카테고리 설정 */}
             <div className="categorySelectAll">
                 {tempStr.map((c) => {

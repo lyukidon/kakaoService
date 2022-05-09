@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const DataStat = ({ service, category, platform, article, faqData }) => (
     <div className="dataStat">
         <div className="titleNlink">
-            <h4>데이터 통계</h4>
+            <h4>도움말 통계</h4>
             <Link to="/admin/datastat">
                 <h4>더보기 &gt;</h4>
             </Link>
@@ -88,7 +88,7 @@ function EditArticle({ faqData }) {
             {/* 데이터 변경 */}
             <div className="editArticle">
                 <div className="titleNlink">
-                    <h4>데이터 변경</h4>
+                    <h4>도움말 목록</h4>
                     <Link to="/admin/faq">
                         <h4>더보기 &gt;</h4>
                     </Link>
