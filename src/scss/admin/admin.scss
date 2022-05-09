@@ -15,6 +15,9 @@
     }
     div > a {
         color: white;
+        > svg{
+            margin: 0px 5px;
+        }
     }
     .rightTopNav {
         > span {
