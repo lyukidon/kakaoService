@@ -31,15 +31,22 @@
     grid-template-columns: 140px 1fr;
     grid-template-areas: "sideNav dashboard";
     .sideNav {
-        padding-left: 8px;
-        padding-top: 17px;
+        padding: 10px 7px;
         grid-area: sideNav;
-        > ul > li {
-            margin-left: -8px;
-            margin-bottom: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        > div > div {
+            margin-bottom: 10px;
+            padding: 12px 8px;
+            text-align: left;
+            list-style: none;
+            border-radius: 12px;
+            box-shadow: 0px 0px 7px 2px #eaeaea;
             &:hover {
                 cursor: pointer;
                 text-decoration-line: underline;
+                box-shadow: 0px 0px 7px 3px #d1d1d1;
             }
         }
     }
@@ -50,7 +57,7 @@
         grid-template-columns: repeat(auto-fill, minmax(44vw, 1fr));
         column-gap: 12px;
         row-gap: 12px;
-        .graph, // 그래프 통계, 최근 문의, 데이터 통계, 글 수정
+        .graph, // 그래프 통계, 최근 문의, 도움말 통계, 도움말 수정
         .showRequest,
         .dataStat,
         .editArticle {
@@ -104,9 +111,6 @@
                 justify-content: space-between;
                 padding: 10px 0px;
                 border-top: 1px solid #dddddd;
-                .articleDiv {
-                    width: 80%;
-                }
                 .buttonDiv {
                     vertical-align: top;
                     > button {

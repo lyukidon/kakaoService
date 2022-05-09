@@ -7,23 +7,13 @@ import NavData from "./NavData";
 const TopNav = () => (
     <div className="topNav">
         <div className="leftTopNav">
-            <Link className="goMain" to="/">
-                <FontAwesomeIcon icon="fa-solid fa-headset" />
-                고객센터
-            </Link>
-            <Link className="goDash" to="/admin/dashboard">
-                <FontAwesomeIcon icon="fa-solid fa-chart-line" />
-                대시보드
-            </Link>
+            <span>
+                <FontAwesomeIcon icon="fa-solid fa-circle-user" size="lg" />{" "}
+                {window.localStorage.getItem("userId")}
+            </span>
         </div>
         <div>관리자 페이지</div>
         <div className="rightTopNav">
-            <span>
-                <em>
-                    <FontAwesomeIcon icon="fa-solid fa-circle-user" />{" "}
-                    {window.localStorage.getItem("userId")}
-                </em>
-            </span>
             <Link
                 to="/"
                 onClick={() => window.localStorage.removeItem("userId")}
@@ -39,19 +29,31 @@ function SideNav() {
     const navigate = useNavigate();
     return (
         <div className="sideNav">
-            <div>바로가기</div>
-            <ul>
+            <div>
                 {NavData.map((content, index) => (
-                    <li
+                    <div
                         role="none"
                         tabIndex={index}
                         key={content.id}
                         onClick={() => navigate(content.url)}
                     >
-                        {content.title}
-                    </li>
+                        <FontAwesomeIcon icon={content.icon} /> {content.title}
+                    </div>
                 ))}
-            </ul>
+            </div>
+            <div>
+                <div>
+                    <Link className="goMain" to="/">
+                        <FontAwesomeIcon icon="fa-solid fa-house-chimney" />{" "}
+                        고객센터
+                    </Link>
+                </div>
+                <div>
+                    <Link className="goDash" to="/admin/dashboard">
+                        <FontAwesomeIcon icon="fa-solid fa-table" /> 대쉬보드
+                    </Link>
+                </div>
+            </div>
         </div>
     );
 }
