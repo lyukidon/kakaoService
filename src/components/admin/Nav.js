@@ -20,7 +20,7 @@ const array = [
     {
         id: 4,
         title: "데이터 변경",
-        url: "/admin/edit",
+        url: "/admin/faq",
     },
 ];
 

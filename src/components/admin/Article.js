@@ -89,7 +89,7 @@ function EditArticle({ faqData }) {
             <div className="editArticle">
                 <div className="titleNlink">
                     <h4>데이터 변경</h4>
-                    <Link to="/admin/edit">
+                    <Link to="/admin/faq">
                         <h4>더보기 &gt;</h4>
                     </Link>
                 </div>

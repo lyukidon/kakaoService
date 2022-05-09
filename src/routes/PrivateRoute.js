@@ -92,7 +92,7 @@ function PrivateRoute() {
                 }
             />
             <Route
-                path="/edit"
+                path="/faq"
                 element={username ? <WebEditor data={data} /> : <Navigate replace to="/admin" />}
             />
         </Routes>
