@@ -9,7 +9,7 @@ export default [
         id: 2,
         title: "문의 관리",
         url: "/admin/qna",
-        icon: "fa-solid fa-q",
+        icon: "fa-solid fa-circle-question",
     },
     {
         id: 3,
