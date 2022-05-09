@@ -1,26 +1,20 @@
 export default [
     {
         id: 1,
-        title: "트래픽 통계",
-        url: "/admin/statics",
-        icon: "fa-solid fa-chart-line",
+        title: "대시보드",
+        url: "/admin/dashboard",
+        icon: "fa-solid fa-table-columns",
     },
     {
         id: 2,
-        title: "최근 문의",
-        url: "/admin/lastRequest",
+        title: "문의 관리",
+        url: "/admin/qna",
         icon: "fa-solid fa-q",
     },
     {
         id: 3,
-        title: "도움말 통계",
-        url: "/admin",
-        icon: "fa-solid fa-chart-bar",
-    },
-    {
-        id: 4,
-        title: "도움말 목록",
+        title: "도움말 관리",
         url: "/admin/faq",
-        icon: "fa-solid fa-list",
+        icon: "fa-solid fa-pen-to-square",
     },
 ];

@@ -54,18 +54,9 @@ function SideNav() {
                     <Link className="goMain" to="/">
                         <FontAwesomeIcon
                             className="sideNavIcon"
-                            icon="fa-solid fa-house-chimney"
+                            icon="fa-solid fa-arrow-right-from-bracket"
                         />
                         고객센터
-                    </Link>
-                </div>
-                <div>
-                    <Link className="goDash" to="/admin/dashboard">
-                        <FontAwesomeIcon
-                            className="sideNavIcon"
-                            icon="fa-solid fa-table"
-                        />
-                        대쉬보드
                     </Link>
                 </div>
             </div>
