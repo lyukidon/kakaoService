@@ -1,28 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-const array = [
-    {
-        id: 1,
-        title: "트래픽 통계",
-        url: "/admin/statics",
-    },
-    {
-        id: 2,
-        title: "최근 문의",
-        url: "/admin/lastRequest",
-    },
-    {
-        id: 3,
-        title: "데이터 통계",
-        url: "/admin",
-    },
-    {
-        id: 4,
-        title: "데이터 변경",
-        url: "/admin/faq",
-    },
-];
+import NavData from './NavData';
 
 const TopNav = () => (
     <div className="topNav">
@@ -55,7 +33,7 @@ function SideNav() {
         <div className="sideNav">
             <div>바로가기</div>
             <ul>
-                {array.map((content, index) => (
+                {NavData.map((content, index) => (
                     <li
                         role="none"
                         tabIndex={index}

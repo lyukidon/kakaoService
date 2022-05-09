@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import EditArticle from '../components/admin/EditArticle/Index';
-import {TopNav, SideNav} from "../components/admin/Nav";
+import {TopNav, SideNav} from "../components/admin/Nav/Index";
 
 function Editor({data}) {
     return (

@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 
-import { TopNav, SideNav } from "../components/admin/Nav";
+import { TopNav, SideNav } from "../components/admin/Nav/Index";
 import Graph from "../components/admin/Graph";
 import EditArticle from "../components/admin/Article";
 import ShowRequest from "../components/admin/ShowRequest";
