@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const DataStat = ({ service, category, platform, article, faqData }) => (
     <div className="dataStat">
@@ -95,7 +97,7 @@ function EditArticle({ faqData }) {
                 </div>
                 {/* 카테고리 설정 */}
                 <div className="categorySelectAll">
-                    {tempStr.map((dataName) => {
+                    {tempStr.map((dataName, index, arr) => {
                         const variable = eval(dataName);
                         return (
                             <div
@@ -116,6 +118,13 @@ function EditArticle({ faqData }) {
                                         ))}
                                     </select>
                                 </div>
+                                {index !== arr.length - 1 && (
+                                    <FontAwesomeIcon
+                                        className="rightArrow"
+                                        icon={faAngleRight}
+                                        size="xl"
+                                    />
+                                )}
                             </div>
                         );
                     })}

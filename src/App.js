@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-
 import Main from "./routes/Main";
 import Error from "./routes/Error";
 import Faq from "./routes/Faq";
@@ -10,7 +9,6 @@ import PrivateRoute from "./routes/PrivateRoute";
 import "./scss/common.scss";
 
 function App() {
-
     return (
         <div>
             <Routes>
