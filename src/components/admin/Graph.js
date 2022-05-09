@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Chart from "chart.js/auto";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const month = [
     "Jan",
@@ -114,7 +115,14 @@ const Graph = () => {
             <div className="titleNlink">
                 <h4>트래픽 통계</h4>
                 <Link to="/admin/statics">
-                    <h4>더보기 &gt;</h4>
+                    <h4>
+                        더보기
+                        <FontAwesomeIcon
+                            className="rightArrow"
+                            icon="fa-solid fa-angle-right"
+                            size="lg"
+                        />
+                    </h4>
                 </Link>
             </div>
             <div className="graphTable">

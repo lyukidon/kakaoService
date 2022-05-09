@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 
 const ContentBox = styled.div`
@@ -35,7 +36,14 @@ const ShowRequest = () => (
         <div className="titleNlink">
             <h4>최근 문의</h4>
             <Link to="/admin/edit">
-                <h4>더보기 &gt;</h4>
+                <h4>
+                    더보기
+                    <FontAwesomeIcon
+                        className="rightArrow"
+                        icon="fa-solid fa-angle-right"
+                        size="lg"
+                    />
+                </h4>
             </Link>
         </div>
         {requestTemp.map((contents) => (
