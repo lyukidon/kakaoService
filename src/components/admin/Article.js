@@ -94,7 +94,7 @@ function EditArticle({ faqData }) {
             )}
 
             {/* 데이터 변경 */}
-            <div className="editArticle">
+            <div className="article">
                 <div className="titleNlink">
                     <h4>도움말 목록</h4>
                     <Link to="/admin/faq">
@@ -144,12 +144,13 @@ function EditArticle({ faqData }) {
                 </div>
 
                 <div>
-                    {article.map((c) => (
+                    {article.map((c,i) => (
+                        i < 8 && ( 
                         <div key={c.article_id} className="articleBox">
                             <div className="articleDiv inlineBlock">
                                 {c.content}
                             </div>
-                        </div>
+                        </div>)
                     ))}
                 </div>
             </div>
