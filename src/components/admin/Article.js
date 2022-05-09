@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const DataStat = ({ service, category, platform, article, faqData }) => (
     <div className="dataStat">
@@ -121,7 +120,7 @@ function EditArticle({ faqData }) {
                                 {index !== arr.length - 1 && (
                                     <FontAwesomeIcon
                                         className="rightArrow"
-                                        icon={faAngleRight}
+                                        icon="fa-solid fa-angle-right"
                                         size="xl"
                                     />
                                 )}
