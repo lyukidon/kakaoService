@@ -28,7 +28,7 @@
 }
 .contents {
     display: grid;
-    grid-template-columns: 140px 1fr;
+    grid-template-columns: 145px 1fr;
     grid-template-areas: "sideNav dashboard";
     .sideNav {
         padding: 10px 7px;
@@ -45,10 +45,10 @@
             box-shadow: 0px 0px 7px 2px #eaeaea;
             &:hover {
                 cursor: pointer;
-                text-decoration-line: underline;
                 box-shadow: 0px 0px 7px 3px #d1d1d1;
             }
         }
+        
     }
     .dashboard {
         padding: 10px 7px;
@@ -155,4 +155,7 @@
 }
 .rightArrow{
     margin: 0px 5px;
+}
+.sideNavIcon {
+    margin-right: 10px;
 }

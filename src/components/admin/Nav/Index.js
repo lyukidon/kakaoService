@@ -7,10 +7,14 @@ import NavData from "./NavData";
 const TopNav = () => (
     <div className="topNav">
         <div className="leftTopNav">
-            <span>
-                <FontAwesomeIcon icon="fa-solid fa-circle-user" size="lg" />{" "}
+            <div>
+                <FontAwesomeIcon
+                    className="sideNavIcon"
+                    icon="fa-solid fa-circle-user"
+                    size="lg"
+                />
                 {window.localStorage.getItem("userId")}
-            </span>
+            </div>
         </div>
         <div>관리자 페이지</div>
         <div className="rightTopNav">
@@ -37,20 +41,31 @@ function SideNav() {
                         key={content.id}
                         onClick={() => navigate(content.url)}
                     >
-                        <FontAwesomeIcon icon={content.icon} /> {content.title}
+                        <FontAwesomeIcon
+                            className="sideNavIcon"
+                            icon={content.icon}
+                        />
+                        {content.title}
                     </div>
                 ))}
             </div>
             <div>
                 <div>
                     <Link className="goMain" to="/">
-                        <FontAwesomeIcon icon="fa-solid fa-house-chimney" />{" "}
+                        <FontAwesomeIcon
+                            className="sideNavIcon"
+                            icon="fa-solid fa-house-chimney"
+                        />
                         고객센터
                     </Link>
                 </div>
                 <div>
                     <Link className="goDash" to="/admin/dashboard">
-                        <FontAwesomeIcon icon="fa-solid fa-table" /> 대쉬보드
+                        <FontAwesomeIcon
+                            className="sideNavIcon"
+                            icon="fa-solid fa-table"
+                        />
+                        대쉬보드
                     </Link>
                 </div>
             </div>
