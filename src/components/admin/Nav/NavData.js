@@ -15,6 +15,6 @@ export default [
         id: 3,
         title: "도움말 관리",
         url: "/admin/faq",
-        icon: "fa-solid fa-pen-to-square",
+        icon: "fa-solid fa-square-pen",
     },
 ];
