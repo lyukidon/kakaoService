@@ -31,10 +31,10 @@ const DataStat = ({ service, category, platform, article, faqData }) => (
 function EditArticle({ faqData }) {
     // 선택된 옵션 값
     const [ids, setIds] = useState({
-        service_id: 1,
-        category_id: 1,
-        platform_id: 1,
-        article_id: 1,
+        service_id: 0,
+        category_id: 0,
+        platform_id: 0,
+        article_id: 0,
     });
 
     // 분류할 데이터 변수
