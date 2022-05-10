@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ContentEditable from "react-contenteditable";
 
 import buttonData from "./buttonData";
@@ -85,7 +86,8 @@ class ContentEdit extends React.Component {
                         onEditData(articleId, this.state.html);
                     }}
                 >
-                    수정하기
+                    <FontAwesomeIcon icon="fa-solid fa-floppy-disk" />
+                    저장하기
                 </button>
             </>
         );

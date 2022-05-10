@@ -12,7 +12,7 @@ function Category({
     return (
         <div className="categorySelectBox">
             <div>
-                <select name={dataName} id="">
+                <select name={dataName} id="" defaultValue="선택 안함">
                     {data.map((c) => (
                         <option
                             key={c.content}

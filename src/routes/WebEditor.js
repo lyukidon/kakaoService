@@ -13,7 +13,7 @@ function Editor({data}) {
             <TopNav />
             <div className="contents">
                 <SideNav />
-                <div className="dashboard">
+                <div>
                     <EditArticle faqData={data} />
                 </div>
             </div>

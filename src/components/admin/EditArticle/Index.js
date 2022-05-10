@@ -1,8 +1,9 @@
 /* eslint react/self-closing-comp: 0 */
 import React, { useEffect, useState, useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Category from "../Category";
-import ContentEdit from "./Editor";
+import Editor from "./Editor";
 
 import "../../../scss/admin/EditArticle.scss";
 
@@ -145,7 +146,7 @@ function WebEditor({ faqData }) {
                 ...ids,
                 article_id: id,
                 ...editData,
-                explain
+                explain,
             },
         ]);
         setEditBtn(-1);
@@ -153,93 +154,122 @@ function WebEditor({ faqData }) {
 
     return (
         <div className="editArticle">
-            <h4>도움말 목록</h4>
-            {/* 카테고리 설정 */}
-            <div className="categorySelectAll">
-                {tempStr.map((c) => {
-                    const variable = eval(c);
-                    return (
-                        <Category
-                            key={variable.content}
-                            data={variable}
-                            dataName={c}
-                            changeOption={changeOption}
-                            optionValue={optionValue}
-                            addOption={addOption}
-                            option={option}
-                            removeOption={removeOption}
-                        />
-                    );
-                })}
-                <button
-                    type="button"
-                    className="addArticleBtn"
-                    onClick={() => setWrite(!write)}
-                >
-                    + 추가 작성
-                </button>
+            <div className="articles">
+                <h4>도움말 목록</h4>
+                {/* 카테고리 설정 */}
+                <div className="categorySelectAll">
+                    {tempStr.map((c) => {
+                        const variable = eval(c);
+                        return (
+                            <Category
+                                key={variable.content}
+                                data={variable}
+                                dataName={c}
+                                changeOption={changeOption}
+                                optionValue={optionValue}
+                                addOption={addOption}
+                                option={option}
+                                removeOption={removeOption}
+                            />
+                        );
+                    })}
+                    <button
+                        type="button"
+                        className="addArticleBtn"
+                        onClick={() => setWrite(!write)}
+                    >
+                        + 추가 작성
+                    </button>
+                </div>
+
+                <div>
+                    {article
+                        .sort((a, b) => a.article_id - b.article_id)
+                        .map((c) => (
+                            <>
+                                <div key={c.article_id} className="articleBox">
+                                    <div className="articleDiv inlineBlock">
+                                        {c.content}
+                                    </div>
+                                    <div className="buttonDiv inlineBlock">
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                onEditBtn(c.article_id)
+                                            }
+                                        >
+                                            <FontAwesomeIcon
+                                                className="pencil"
+                                                icon="fa-solid fa-pen-to-square"
+                                                size="lg"
+                                            />
+                                        </button>
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                removeArticle(c.article_id);
+                                                setEditData({
+                                                    content: "",
+                                                    explain: "",
+                                                });
+                                            }}
+                                        >
+                                            <FontAwesomeIcon
+                                                className="trashCan"
+                                                icon="fa-solid fa-trash-can"
+                                                size="lg"
+                                            />
+                                        </button>
+                                    </div>
+                                </div>
+                            </>
+                        ))}
+                </div>
+            </div>
+            <div className="editting">
                 {write && (
                     <div>
-                        <textarea />
-                        <button type="button">추가하기</button>
+                        <input
+                            type="text"
+                            name="content"
+                            value={editData.content}
+                            onChange={(event) => {
+                                setEditData({
+                                    ...editData,
+                                    content: event.target.value,
+                                });
+                            }}
+                        />
+                        <Editor
+                            explain={editData.explain}
+                            setEditData={setEditData}
+                            onEditData={onEditData}
+                            articleId={editBtn}
+                        />
                     </div>
                 )}
-            </div>
-
-            <div>
-                {article
-                    .sort((a, b) => a.article_id - b.article_id)
-                    .map((c) => (
-                        <>
-                            <div key={c.article_id} className="articleBox">
-                                <div className="articleDiv inlineBlock">
-                                    {c.content}
-                                </div>
-                                <div className="buttonDiv inlineBlock">
-                                    <button
-                                        type="button"
-                                        onClick={() => {
-                                            removeArticle(c.article_id);
-                                            setEditData({
-                                                content: "",
-                                                explain: "",
-                                            });
-                                        }}
-                                    >
-                                        삭제
-                                    </button>
-                                    <button
-                                        type="button"
-                                        onClick={() => onEditBtn(c.article_id)}
-                                    >
-                                        수정
-                                    </button>
-                                </div>
-                            </div>
-                            {editBtn === c.article_id && (
-                                <div className="editting">
-                                    <input
-                                        type="text"
-                                        name="content"
-                                        value={editData.content}
-                                        onChange={(event) => {
-                                            setEditData({
-                                                ...editData,
-                                                content: event.target.value,
-                                            });
-                                        }}
-                                    />
-                                    <ContentEdit
-                                        explain={editData.explain}
-                                        editData={editData}
-                                        setEditData={setEditData}
-                                        onEditData={onEditData}
-                                        articleId={c.article_id}
-                                    />
-                                </div>
-                            )}
-                        </>
-                    ))}
+                {editBtn !== -1 && (
+                    <div>
+                        <input
+                            type="text"
+                            name="content"
+                            value={editData.content}
+                            onChange={(event) => {
+                                setEditData({
+                                    ...editData,
+                                    content: event.target.value,
+                                });
+                            }}
+                        />
+                        <Editor
+                            explain={editData.explain}
+                            editData={editData}
+                            setEditData={setEditData}
+                            onEditData={onEditData}
+                            articleId={editBtn}
+                        />
+                    </div>
+                )}
             </div>
         </div>
     );
