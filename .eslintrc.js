@@ -39,6 +39,7 @@ module.exports = {
         "react/function-component-definition": 1,
         "react/jsx-no-useless-fragment":1,
         "jsx-a11y/control-has-associated-label": 1,
-        "react/destructuring-assignment":1
+        "react/destructuring-assignment":1,
+        "no-console":1
     },
 };

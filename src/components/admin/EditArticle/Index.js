@@ -1,15 +1,16 @@
 /* eslint react/self-closing-comp: 0 */
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useAsync } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Category from "../Category";
 import Editor from "./Editor";
 
 import "../../../scss/admin/EditArticle.scss";
+import EditArticle from "../Article";
 
+const dataName = ["service", "category", "platform", "article"];
 // 관리자 컴포넌트
-function WebEditor({ faqData }) {
-    // 선택된 옵션 값
+function Index({ faqData }) {
     const [ids, setIds] = useState({
         service_id: 0,
         category_id: 0,
@@ -22,7 +23,10 @@ function WebEditor({ faqData }) {
     const [category, setCategory] = useState([]);
     const [platform, setPlatform] = useState([]);
     const [article, setArticle] = useState([]);
-
+    
+    useEffect(() => {
+        console.log(article);
+    }, [article]);
     // 데이터 분류하기
     useEffect(() => {
         if (faqData) {
@@ -50,7 +54,6 @@ function WebEditor({ faqData }) {
         }
     }, [faqData, ids]);
 
-    // 카테고리 클릭 시 실행되는 함수
     const changeOption = (event) => {
         const { id, value } = event.target;
         setIds({
@@ -59,221 +62,52 @@ function WebEditor({ faqData }) {
         });
     };
 
-    // 카테고리 추가 하기
-    const [option, setOption] = useState({
-        service: "",
-        category: "",
-        platform: "",
-    });
-    const optionValue = (event) => {
-        const { name, value } = event.target;
-        setOption({
-            ...option,
-            [name]: value,
-        });
-    };
-    const tempStr = ["service", "category", "platform"];
-    const tempVar = [service, category, platform];
-    const tempFunc = [setService, setCategory, setPlatform];
-    const addOption = (event) => {
-        const { name } = event.target;
-        if (tempStr.indexOf(name) !== -1) {
-            const optionData = option[name];
-            if (optionData.length) {
-                tempFunc[tempStr.indexOf(name)]([
-                    ...eval(name),
-                    { content: optionData },
-                ]);
-            } else {
-                alert("내용을 입력해주세요");
-            }
-            setOption({
-                service: "",
-                category: "",
-                platform: "",
-            });
-        }
-    };
-    // 카테고리 제거하기
-    const removeOption = (event) => {
-        const { name } = event.target;
-        const index = tempStr.indexOf(name);
-        const id = ids[`${name}_id`];
-        tempFunc[index](tempVar[index].filter((c) => c[`${name}_id`] !== id));
-    };
-
-    // 글 제거하기
-    const removeArticle = (id) => {
-        setArticle(article.filter((c) => c.article_id !== id));
-    };
-    // textarea에서 탭 사용하기
-    const onTab = (event) => {
-        if (event.keyCode === 9) {
-            event.preventDefault();
-            document.execCommand("insertText", false, "   ");
-        }
-    };
-
-    // 글 추가하기
-    const [write, setWrite] = useState(false);
-
-    // 글 수정하기
-    const [editBtn, setEditBtn] = useState(-1);
-    const [editData, setEditData] = useState({
-        content: "",
-        explain: "",
-    });
-    const onEditBtn = (id) => {
-        if (editBtn === id) {
-            setEditBtn(-1);
-            setEditData({
-                content: "",
-                explain: "",
-            });
-        } else {
-            setEditBtn(id);
-            const temp = article.filter((c) => c.article_id === id)[0];
-            const { content, explain } = temp;
-            setEditData({
-                content,
-                explain,
-            });
-        }
-    };
-    const onEditData = (id, explain) => {
-        setArticle([
-            ...article.filter((c) => c.article_id !== id),
-            {
-                ...ids,
-                article_id: id,
-                ...editData,
-                explain,
-            },
-        ]);
-        setEditBtn(-1);
-    };
-
     return (
-        <div className="editArticle">
-            <div className="articles">
-                <h4>도움말 목록</h4>
-                {/* 카테고리 설정 */}
-                <div className="categorySelectAll">
-                    {tempStr.map((c) => {
-                        const variable = eval(c);
-                        return (
-                            <Category
-                                key={variable.content}
-                                data={variable}
-                                dataName={c}
-                                changeOption={changeOption}
-                                optionValue={optionValue}
-                                addOption={addOption}
-                                option={option}
-                                removeOption={removeOption}
-                            />
-                        );
-                    })}
-                    <button
-                        type="button"
-                        className="addArticleBtn"
-                        onClick={() => setWrite(!write)}
+        <div>
+            <select name="service" id="">
+                <option value="">선택해주세요</option>
+                {service.map((c) => (
+                    <option
+                        key={c.content}
+                        id="service_id"
+                        value={c.service_id}
+                        onClick={(event) => changeOption(event)}
                     >
-                        <FontAwesomeIcon icon="fa-solid fa-pen-to-square" /> 추가 작성
-                    </button>
-                </div>
-
-                <div>
-                    {article
-                        .sort((a, b) => a.article_id - b.article_id)
-                        .map((c) => (
-                            <>
-                                <div key={c.article_id} className="articleBox">
-                                    <div className="articleDiv inlineBlock">
-                                        {c.content}
-                                    </div>
-                                    <div className="buttonDiv inlineBlock">
-                                        <button
-                                            type="button"
-                                            onClick={() =>
-                                                onEditBtn(c.article_id)
-                                            }
-                                        >
-                                            <FontAwesomeIcon
-                                                className="pencil"
-                                                icon="fa-solid fa-pen-to-square"
-                                                size="lg"
-                                            />
-                                        </button>
-                                        <button
-                                            type="button"
-                                            onClick={() => {
-                                                removeArticle(c.article_id);
-                                                setEditData({
-                                                    content: "",
-                                                    explain: "",
-                                                });
-                                            }}
-                                        >
-                                            <FontAwesomeIcon
-                                                className="trashCan"
-                                                icon="fa-solid fa-trash-can"
-                                                size="lg"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                            </>
-                        ))}
-                </div>
-            </div>
-            <div className="editting">
-                {write && (
-                    <div>
-                        <input
-                            type="text"
-                            name="content"
-                            value={editData.content}
-                            onChange={(event) => {
-                                setEditData({
-                                    ...editData,
-                                    content: event.target.value,
-                                });
-                            }}
-                        />
-                        <Editor
-                            explain={editData.explain}
-                            setEditData={setEditData}
-                            onEditData={onEditData}
-                            articleId={editBtn}
-                        />
-                    </div>
-                )}
-                {editBtn !== -1 && (
-                    <div>
-                        <input
-                            type="text"
-                            name="content"
-                            value={editData.content}
-                            onChange={(event) => {
-                                setEditData({
-                                    ...editData,
-                                    content: event.target.value,
-                                });
-                            }}
-                        />
-                        <Editor
-                            explain={editData.explain}
-                            editData={editData}
-                            setEditData={setEditData}
-                            onEditData={onEditData}
-                            articleId={editBtn}
-                        />
-                    </div>
-                )}
-            </div>
+                        {c.content}
+                    </option>
+                ))}
+            </select>
+            <select name="" id="">
+                <option value="">선택해주세요</option>
+                {category.map((c) => (
+                    <option
+                        key={c.content}
+                        id="category_id"
+                        value={c.category_id}
+                        onClick={(event) => changeOption(event)}
+                    >
+                        {c.content}
+                    </option>
+                ))}
+            </select>
+            <select name="" id="">
+                <option value="">선택해주세요</option>
+                {platform.map((c) => (
+                    <option
+                        key={c.content}
+                        id="platform_id"
+                        value={c.platform_id}
+                        onClick={(event) => changeOption(event)}
+                    >
+                        {c.content}
+                    </option>
+                ))}
+            </select>
+            {article.map((c) => (
+                <div key={c.article_id}>{c.content}</div>
+            ))}
         </div>
     );
 }
 
-export default WebEditor;
+export default Index;
