@@ -14,6 +14,7 @@ function Editor({data}) {
             <div className="contents">
                 <SideNav />
                 <div>
+                    
                     <EditArticle faqData={data} />
                 </div>
             </div>

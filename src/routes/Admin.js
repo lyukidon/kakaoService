@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 import { TopNav, SideNav } from "../components/admin/Nav/Index";
 import Graph from "../components/admin/Graph";
-import EditArticle from "../components/admin/Article";
+import Article from "../components/admin/Article";
 import ShowRequest from "../components/admin/ShowRequest";
 
 import "../scss/admin/admin.scss";
@@ -22,7 +22,7 @@ function Admin({ data }) {
                 <div className="dashboard">
                     <Graph />
                     <ShowRequest />
-                    <EditArticle faqData={data} />
+                    <Article faqData={data} />
                 </div>
             </div>
         </div>
