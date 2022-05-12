@@ -1,12 +1,41 @@
 .selectBox {
+    margin-bottom: 20px;
     display: flex;
-    > svg {
-        margin: 10px;
-        color: grey;
+    justify-content: space-between;
+    .title {
+        padding-bottom: 5px;
+        margin-bottom: 7px;
+        text-align: center;
+        border-bottom: 1px solid black;
     }
-    > div > div {
+    > div {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        > svg {
+            margin: 15px;
+            color: grey;
+        }
+        > div > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            > select {
+                width: 130px;
+                padding: 5px;
+                border: 1px solid black;
+                background-color: #ffffff;
+            }
+        }
+    }
+    > button {
+        margin-left: 10px;
+        width: 55px;
+        background-color: #ffffff;
+        border: 1px solid black;
+        border-radius: 4px;
+        > svg {
+            margin-right: 5px;
+        }
     }
 }
 .articleBox {
@@ -15,18 +44,20 @@
     justify-content: space-between;
     padding: 10px 0px;
     border-top: 1px solid #dddddd;
-    .buttonDiv {
-        vertical-align: top;
-        > button {
-            height: 30px;
-            padding-left: 14px;
-            padding-right: 14px;
-            background-color: #ffffff;
-            border: 1px solid black;
-            &:hover {
-                cursor: pointer;
-                background-color: #dddddd;
-            }
+    // 도움말
+    .if-editor-true {
+        width: calc(100% - 85px);
+    }
+    .edit {
+        margin-right: 10px;
+        background-color: #ffffff;
+        border: none;
+    }
+    .trash {
+        background-color: #ffffff;
+        border: none;
+        > svg {
+            color: red;
         }
     }
 }

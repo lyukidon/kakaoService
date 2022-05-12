@@ -72,102 +72,118 @@ function Article({ faqData, editor }) {
     return (
         <div className="article">
             <div className="selectBox">
-                <div className="serviceSelect">
-                    <div>서비스</div>
-                    <div>
-                        <select name="service" id="">
-                            <option
-                                value=""
-                                onClick={() => {
-                                    setIds({ ...ids, service_id: 0 });
-                                }}
-                            >
-                                전체
-                            </option>
-                            {service.map((c) => (
-                                <option
-                                    key={c.content}
-                                    id="service_id"
-                                    value={c.service_id}
-                                    onClick={(event) => changeOption(event)}
-                                >
-                                    {c.content}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                </div>
-                <FontAwesomeIcon icon="fa-solid fa-angle-right" size="xl" />
-                <div className="categorySelect">
-                    <div>카테고리</div>
-                    <div>
-                        <select name="" id="">
-                            {ids.service_id !== 0 && (
+                <div>
+                    <div className="serviceSelect">
+                        <div className="title">서비스</div>
+                        <div>
+                            <select name="service" id="">
                                 <option
                                     value=""
                                     onClick={() => {
-                                        setIds({ ...ids, category_id: 0 });
+                                        setIds({ ...ids, service_id: 0 });
                                     }}
                                 >
                                     전체
                                 </option>
-                            )}
-                            {category.map((c) => (
-                                <option
-                                    key={c.content}
-                                    id="category_id"
-                                    value={c.category_id}
-                                    onClick={(event) => changeOption(event)}
-                                >
-                                    {c.content}
-                                </option>
-                            ))}
-                        </select>
+                                {service.map((c) => (
+                                    <option
+                                        key={c.content}
+                                        id="service_id"
+                                        value={c.service_id}
+                                        onClick={(event) => changeOption(event)}
+                                    >
+                                        {c.content}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    <FontAwesomeIcon icon="fa-solid fa-angle-right" size="xl" />
+                    <div className="categorySelect">
+                        <div className="title">카테고리</div>
+                        <div>
+                            <select name="" id="">
+                                {ids.service_id !== 0 && (
+                                    <option
+                                        value=""
+                                        onClick={() => {
+                                            setIds({ ...ids, category_id: 0 });
+                                        }}
+                                    >
+                                        전체
+                                    </option>
+                                )}
+                                {category.map((c) => (
+                                    <option
+                                        key={c.content}
+                                        id="category_id"
+                                        value={c.category_id}
+                                        onClick={(event) => changeOption(event)}
+                                    >
+                                        {c.content}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    <FontAwesomeIcon icon="fa-solid fa-angle-right" size="xl" />
+                    <div className="platformSelect">
+                        <div className="title">플랫폼</div>
+                        <div>
+                            <select name="" id="">
+                                {ids.category_id !== 0 && (
+                                    <option
+                                        value=""
+                                        onClick={() => {
+                                            setIds({ ...ids, platform_id: 0 });
+                                        }}
+                                    >
+                                        전체
+                                    </option>
+                                )}
+                                {platform.map((c) => (
+                                    <option
+                                        key={c.content}
+                                        id="platform_id"
+                                        value={c.platform_id}
+                                        onClick={(event) => changeOption(event)}
+                                    >
+                                        {c.content}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <FontAwesomeIcon icon="fa-solid fa-angle-right" size="xl" />
-                <div className="platformSelect">
-                    <div>플랫폼</div>
-                    <div>
-                        <select name="" id="">
-                            {ids.category_id !== 0 && (
-                                <option
-                                    value=""
-                                    onClick={() => {
-                                        setIds({ ...ids, platform_id: 0 });
-                                    }}
-                                >
-                                    전체
-                                </option>
-                            )}
-                            {platform.map((c) => (
-                                <option
-                                    key={c.content}
-                                    id="platform_id"
-                                    value={c.platform_id}
-                                    onClick={(event) => changeOption(event)}
-                                >
-                                    {c.content}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                </div>
+                <button type="button">
+                    <FontAwesomeIcon icon="fa-solid fa-plus" />
+                    추가
+                </button>
             </div>
             <div>
                 {article.map(
                     (c, i) =>
                         i < 9 && (
                             <div key={c.article_id} className="articleBox">
-                                <div>{c.content}</div>
-                                <div>
-                                    <button type="button">
-                                        <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
-                                    </button>
-                                    <button type="button">
-                                        <FontAwesomeIcon icon="fa-solid fa-trash" />
-                                    </button>
+                                <div className={editor && "if-editor-true"}>
+                                    {c.content}
                                 </div>
+                                {editor && (
+                                    <div>
+                                        <button type="button" className="edit">
+                                            <FontAwesomeIcon
+                                                icon="fa-solid fa-pen-to-square"
+                                                size="lg"
+                                            />
+                                        </button>
+                                        <button type="button" className="trash">
+                                            <FontAwesomeIcon
+                                                icon="fa-solid fa-trash"
+                                                size="lg"
+                                            />
+                                        </button>
+                                    </div>
+                                )}
                             </div>
                         )
                 )}
