@@ -112,9 +112,9 @@ function Index({ faqData }) {
                 </select>
             </div>
             <div>
-                {article.map((c) => (
-                    <div key={c.article_id}>{c.content}</div>
-                ))}
+                {article.map(
+                    (c, i) => i < 10 && <div key={c.article_id}>{c.content}</div>
+                )}
             </div>
         </div>
     );

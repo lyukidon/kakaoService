@@ -40,6 +40,7 @@ module.exports = {
         "react/jsx-no-useless-fragment":1,
         "jsx-a11y/control-has-associated-label": 1,
         "react/destructuring-assignment":1,
-        "no-console":1
+        "no-console":1,
+        "no-else-return":1
     },
 };
