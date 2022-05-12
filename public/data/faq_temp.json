@@ -27,12 +27,6 @@
     ],
     "platform": [
         {
-            "service_id":0,
-            "category_id":0,
-            "platform_id":0,
-            "content": "선택해주세요"
-        },
-        {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 1,

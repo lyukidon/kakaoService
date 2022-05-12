@@ -19,9 +19,6 @@ function Index({ faqData }) {
     const [platform, setPlatform] = useState([]);
     const [article, setArticle] = useState([]);
 
-    useEffect(() => {
-        console.log(article);
-    }, [article]);
     // 데이터 분류하기
     useEffect(() => {
         if (faqData) {
@@ -38,12 +35,24 @@ function Index({ faqData }) {
             );
             setArticle(
                 faqData.article
-                    .filter(
-                        (c) =>
-                            c.service_id === ids.service_id &&
-                            c.category_id === ids.category_id &&
-                            c.platform_id === ids.platform_id
-                    )
+                    .filter((c) => {
+                        if (ids.service_id === 0) {
+                            return c;
+                        } else if (ids.category_id === 0) {
+                            return c.service_id === ids.service_id;
+                        } else if (ids.platform_id === 0) {
+                            return (
+                                c.service_id === ids.service_id &&
+                                c.category_id === ids.category_id
+                            );
+                        } else {
+                            return (
+                                c.service_id === ids.service_id &&
+                                c.category_id === ids.category_id &&
+                                c.platform_id === ids.platform_id
+                            );
+                        }
+                    })
                     .sort((a, b) => a.article_id - b.article_id)
             );
         }
@@ -61,7 +70,7 @@ function Index({ faqData }) {
         <div className="editArticle">
             <div className="categorySelectAll">
                 <select name="service" id="">
-                    <option value="">선택해주세요</option>
+                    <option value="">전체</option>
                     {service.map((c) => (
                         <option
                             key={c.content}
@@ -75,7 +84,7 @@ function Index({ faqData }) {
                 </select>
                 <FontAwesomeIcon icon="fa-solid fa-angle-right" size="xl" />
                 <select name="" id="">
-                    <option value="">선택해주세요</option>
+                    {ids.service_id !== 0 && <option value="">전체</option>}
                     {category.map((c) => (
                         <option
                             key={c.content}
@@ -87,9 +96,9 @@ function Index({ faqData }) {
                         </option>
                     ))}
                 </select>
-                <FontAwesomeIcon icon="fa-solid fa-angle-right" size="xl"/>
+                <FontAwesomeIcon icon="fa-solid fa-angle-right" size="xl" />
                 <select name="" id="">
-                    <option value="">선택해주세요</option>
+                    {ids.category_id !== 0 && <option value="">전체</option>}
                     {platform.map((c) => (
                         <option
                             key={c.content}
