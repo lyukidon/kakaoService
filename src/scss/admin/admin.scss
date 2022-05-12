@@ -51,10 +51,12 @@
         
     }
     .dashboard {
+        height: calc(100vh - 55px);
         padding: 10px 7px;
         grid-area: dashboard;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(44vw, 1fr));
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
         column-gap: 12px;
         row-gap: 12px;
         .graph, // 그래프 통계, 최근 문의, 도움말 통계, 도움말 수정

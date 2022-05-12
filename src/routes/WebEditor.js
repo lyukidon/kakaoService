@@ -1,10 +1,13 @@
-import React from 'react';
-import Helmet from 'react-helmet';
+import React from "react";
+import Helmet from "react-helmet";
 
-import EditArticle from '../components/admin/EditArticle/Index';
-import {TopNav, SideNav} from "../components/admin/Nav/Index";
+import { TopNav, SideNav } from "../components/admin/Nav/Index";
+import Editor from "../components/admin/Editor/Index";
+import Article from "../components/admin/Article";
 
-function Editor({data}) {
+import "../scss/admin/webEditor.scss";
+
+function WebEditor({ data }) {
     return (
         <div>
             <Helmet>
@@ -13,13 +16,13 @@ function Editor({data}) {
             <TopNav />
             <div className="contents">
                 <SideNav />
-                <div>
-                    
-                    <EditArticle faqData={data} />
+                <div className="editorPage">
+                    <Article faqData={data} editor />
+                    <Editor />
                 </div>
             </div>
         </div>
     );
 }
 
-export default Editor;
+export default WebEditor;

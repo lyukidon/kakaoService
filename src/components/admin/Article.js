@@ -5,7 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../scss/admin/article.scss";
 
 // 관리자 컴포넌트
-function Index({ faqData }) {
+function Article({ faqData, editor }) {
+    useEffect(() => {
+        console.log(editor);
+    });
     const [ids, setIds] = useState({
         service_id: 0,
         category_id: 0,
@@ -67,15 +70,20 @@ function Index({ faqData }) {
     };
 
     return (
-        <div className="editArticle">
+        <div className="article">
             <div className="selectBox">
                 <div className="serviceSelect">
                     <div>서비스</div>
                     <div>
                         <select name="service" id="">
-                            <option value="" onClick={()=>{
-                                    setIds({...ids, service_id:0})
-                                }}>전체</option>
+                            <option
+                                value=""
+                                onClick={() => {
+                                    setIds({ ...ids, service_id: 0 });
+                                }}
+                            >
+                                전체
+                            </option>
                             {service.map((c) => (
                                 <option
                                     key={c.content}
@@ -95,9 +103,14 @@ function Index({ faqData }) {
                     <div>
                         <select name="" id="">
                             {ids.service_id !== 0 && (
-                                <option value="" onClick={()=>{
-                                    setIds({...ids, category_id:0})
-                                }}>전체</option>
+                                <option
+                                    value=""
+                                    onClick={() => {
+                                        setIds({ ...ids, category_id: 0 });
+                                    }}
+                                >
+                                    전체
+                                </option>
                             )}
                             {category.map((c) => (
                                 <option
@@ -118,9 +131,14 @@ function Index({ faqData }) {
                     <div>
                         <select name="" id="">
                             {ids.category_id !== 0 && (
-                                <option value=""onClick={()=>{
-                                    setIds({...ids, platform_id:0})
-                                }}>전체</option>
+                                <option
+                                    value=""
+                                    onClick={() => {
+                                        setIds({ ...ids, platform_id: 0 });
+                                    }}
+                                >
+                                    전체
+                                </option>
                             )}
                             {platform.map((c) => (
                                 <option
@@ -139,11 +157,23 @@ function Index({ faqData }) {
             <div>
                 {article.map(
                     (c, i) =>
-                        i < 10 && <div key={c.article_id}>{c.content}</div>
+                        i < 9 && (
+                            <div key={c.article_id} className="articleBox">
+                                <div>{c.content}</div>
+                                <div>
+                                    <button type="button">
+                                        <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
+                                    </button>
+                                    <button type="button">
+                                        <FontAwesomeIcon icon="fa-solid fa-trash" />
+                                    </button>
+                                </div>
+                            </div>
+                        )
                 )}
             </div>
         </div>
     );
 }
 
-export default Index;
+export default Article;

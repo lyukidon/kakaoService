@@ -1,0 +1,20 @@
+.editorPage{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-areas: 'list editor';
+    .article,.editor{
+        height: calc(100vh - 105px);
+        margin: 10px;
+        padding: 20px;
+        box-shadow: 0px 0px 7px 3px #f2f2f2;
+        &:hover {
+            box-shadow: 0px 0px 7px 3px #dddddd;
+        }
+    }
+    .article{
+        grid-area: list;
+    }
+    .editor{
+        grid-area: editor;
+    }
+}

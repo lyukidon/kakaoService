@@ -12,7 +12,7 @@ import "../scss/admin/admin.scss";
 function Admin({ data }) {
     const params = useParams();
     return (
-        <div className="admin">
+        <div>
             <Helmet>
                 <body className="adminBody" />
             </Helmet>

@@ -1,12 +1,32 @@
-.selectBox{
+.selectBox {
     display: flex;
-
     > svg {
         margin: 10px;
         color: grey;
     }
-    >div >div{
+    > div > div {
         display: flex;
         flex-direction: column;
+    }
+}
+.articleBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 0px;
+    border-top: 1px solid #dddddd;
+    .buttonDiv {
+        vertical-align: top;
+        > button {
+            height: 30px;
+            padding-left: 14px;
+            padding-right: 14px;
+            background-color: #ffffff;
+            border: 1px solid black;
+            &:hover {
+                cursor: pointer;
+                background-color: #dddddd;
+            }
+        }
     }
 }
