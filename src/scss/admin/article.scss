@@ -1,7 +1,12 @@
-.categorySelectAll{
+.selectBox{
     display: flex;
+
     > svg {
-        margin: 0px 10px;
+        margin: 10px;
         color: grey;
+    }
+    >div >div{
+        display: flex;
+        flex-direction: column;
     }
 }

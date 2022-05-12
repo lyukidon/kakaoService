@@ -68,52 +68,78 @@ function Index({ faqData }) {
 
     return (
         <div className="editArticle">
-            <div className="categorySelectAll">
-                <select name="service" id="">
-                    <option value="">전체</option>
-                    {service.map((c) => (
-                        <option
-                            key={c.content}
-                            id="service_id"
-                            value={c.service_id}
-                            onClick={(event) => changeOption(event)}
-                        >
-                            {c.content}
-                        </option>
-                    ))}
-                </select>
+            <div className="selectBox">
+                <div className="serviceSelect">
+                    <div>서비스</div>
+                    <div>
+                        <select name="service" id="">
+                            <option value="" onClick={()=>{
+                                    setIds({...ids, service_id:0})
+                                }}>전체</option>
+                            {service.map((c) => (
+                                <option
+                                    key={c.content}
+                                    id="service_id"
+                                    value={c.service_id}
+                                    onClick={(event) => changeOption(event)}
+                                >
+                                    {c.content}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
                 <FontAwesomeIcon icon="fa-solid fa-angle-right" size="xl" />
-                <select name="" id="">
-                    {ids.service_id !== 0 && <option value="">전체</option>}
-                    {category.map((c) => (
-                        <option
-                            key={c.content}
-                            id="category_id"
-                            value={c.category_id}
-                            onClick={(event) => changeOption(event)}
-                        >
-                            {c.content}
-                        </option>
-                    ))}
-                </select>
+                <div className="categorySelect">
+                    <div>카테고리</div>
+                    <div>
+                        <select name="" id="">
+                            {ids.service_id !== 0 && (
+                                <option value="" onClick={()=>{
+                                    setIds({...ids, category_id:0})
+                                }}>전체</option>
+                            )}
+                            {category.map((c) => (
+                                <option
+                                    key={c.content}
+                                    id="category_id"
+                                    value={c.category_id}
+                                    onClick={(event) => changeOption(event)}
+                                >
+                                    {c.content}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
                 <FontAwesomeIcon icon="fa-solid fa-angle-right" size="xl" />
-                <select name="" id="">
-                    {ids.category_id !== 0 && <option value="">전체</option>}
-                    {platform.map((c) => (
-                        <option
-                            key={c.content}
-                            id="platform_id"
-                            value={c.platform_id}
-                            onClick={(event) => changeOption(event)}
-                        >
-                            {c.content}
-                        </option>
-                    ))}
-                </select>
+                <div className="platformSelect">
+                    <div>플랫폼</div>
+                    <div>
+                        <select name="" id="">
+                            {ids.category_id !== 0 && (
+                                <option value=""onClick={()=>{
+                                    setIds({...ids, platform_id:0})
+                                }}>전체</option>
+                            )}
+                            {platform.map((c) => (
+                                <option
+                                    key={c.content}
+                                    id="platform_id"
+                                    value={c.platform_id}
+                                    onClick={(event) => changeOption(event)}
+                                >
+                                    {c.content}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
             </div>
             <div>
                 {article.map(
-                    (c, i) => i < 10 && <div key={c.article_id}>{c.content}</div>
+                    (c, i) =>
+                        i < 10 && <div key={c.article_id}>{c.content}</div>
                 )}
             </div>
         </div>
