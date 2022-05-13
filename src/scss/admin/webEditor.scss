@@ -34,12 +34,15 @@
             }
         }
         > button {
-            width: 100px;
+            width: 120px;
             margin-top: 10px;
             margin-left: auto;
-            
+            padding: 8px 12px;
+            background-color: #ffffff;
+            border: 1px solid black;
             > svg {
                 margin-right: 10px;
+                color: #385a9e;
             }
         }
     }
