@@ -14,7 +14,7 @@ function Index({ activateEditor, setActivateEdtior }) {
     return (
         <div className={activateEditor ? "editor" : "editor center"}>
             {!activateEditor && (
-                <div className="request">도움말을 선택해주세요</div>
+                <div className="request"><strong>도움말을 선택해주세요</strong></div>
             )}
             {activateEditor && (
                 <>
