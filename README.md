@@ -101,26 +101,40 @@ react-router-dom 이용해 SPA로 제작
 ```
 </details>
 
-<details>
+<!-- <details> -->
 <summary>관리자 페이지</summary>
 
 ```
 컴포넌트:
 /src/admin/
   ├─admin.js
+  ├─Article
+  │ ├─Index.js
+  │ └─Cateogry.js
+  ├─Editor
+  │ └─Index.js
+  ├─Nav
+  │ └─Index.js
+  ├─ShowRequest.js
+  ├─Graph.js
   └─Login.js
 데이터: /public/data/faq_temp.json
 ```
 - 접속방법
   1. 메인 페이지에서 로그인 클릭
-  2. 로그인 페이지에서 관리자 계정 로그인 (test: admin/admin)
+  2. 로그인 페이지에서 관리자 계정 로그인 (test: admin1/1234)
+- 구현 페이지
+  - dashboard
+    - 트래픽 통계 (Chart.js 라이브러리)
+    - 최근 문의
+    - 도움말 목록
+  - faq
 - 구현 기능 
   - [x] 로그인
   - [x] 로그아웃
   - [x] 카테고리 설정
   - [x] 카테고리 추가
   - [x] 카테고리 제거
-  - [x] 카테고리 별 데이터 상태 설명
   - [x] 도움말 제거
-  - [x] 에디터 추가
-</details>
+  - [x] 에디터 추가 (TinyMCE 라이브러리)
+<!-- </details> -->

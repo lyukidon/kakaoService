@@ -68,6 +68,8 @@ function Article({ faqData, editor, activateEditor, setActivateEditor }) {
 
     return (
         <div className="article">
+            {!editor ? <div>도움말 목록</div> : <div>도움말 관리</div>}
+            
             <div className="selectBox">
                 <div>
                     <div className="serviceSelect">
