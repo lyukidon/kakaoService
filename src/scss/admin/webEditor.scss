@@ -1,8 +1,9 @@
-.editorPage{
+.editorPage {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-template-areas: 'list editor';
-    .article,.editor{
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "list editor";
+    .article,
+    .editor {
         height: calc(100vh - 105px);
         margin: 10px;
         padding: 20px;
@@ -11,10 +12,13 @@
             box-shadow: 0px 0px 7px 3px #dddddd;
         }
     }
-    .article{
+    .article {
         grid-area: list;
     }
-    .editor{
+    .editor {
         grid-area: editor;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
