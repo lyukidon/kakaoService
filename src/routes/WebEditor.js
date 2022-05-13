@@ -3,7 +3,7 @@ import Helmet from "react-helmet";
 
 import { TopNav, SideNav } from "../components/admin/Nav/Index";
 import Editor from "../components/admin/Editor/Index";
-import Article from "../components/admin/Article";
+import Article from "../components/admin/Article/Index";
 
 import "../scss/admin/webEditor.scss";
 

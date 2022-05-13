@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import "../../scss/admin/article.scss";
+import "../../../scss/admin/article.scss";
 
 // 관리자 컴포넌트
 function Article({ faqData, editor }) {
