@@ -18,13 +18,14 @@ function Index({ activateEditor, setActivateEdtior }) {
             )}
             {activateEditor && (
                 <>
-                    <input type="text" placeholder="제목을 입력해주세요!" ref={titleRef} />
+                    <input type="text" placeholder="제목" ref={titleRef} />
                     <Editor
                         apiKey="hfwmexaein3epohgzx9107h3evusuan35khip2qzgwwo0n1m"
                         onInit={(evt, editor) => (editorRef.current = editor)}
                         initialValue=""
                         init={{
-                            placeholder: '내용을 입력해주세요',
+                            selector:'textarea',
+                            placeholder: '내용',
                             resize: "both",
                             plugins: [
                                 "advlist",
