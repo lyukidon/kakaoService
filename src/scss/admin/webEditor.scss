@@ -18,8 +18,32 @@
     .editor {
         grid-area: editor;
         display: flex;
+        flex-direction: column;
+        .request {
+            border: 3px double lightgrey;
+            border-radius: 20px;
+            padding: 18px 20px;
+        }
+        > input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+            &:focus{
+                outline: none;
+            }
+        }
+        > button {
+            width: 100px;
+            margin-top: 10px;
+            margin-left: auto;
+            
+            > svg {
+                margin-right: 10px;
+            }
+        }
     }
-    .center{
+    .center {
         justify-content: center;
         align-items: center;
     }

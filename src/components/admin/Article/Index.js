@@ -5,10 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../../scss/admin/article.scss";
 
 // 관리자 컴포넌트
-function Article({ faqData, editor }) {
-    useEffect(() => {
-        console.log(editor);
-    });
+function Article({ faqData, editor, activateEditor, setActivateEditor }) {
     const [ids, setIds] = useState({
         service_id: 0,
         category_id: 0,
@@ -155,7 +152,7 @@ function Article({ faqData, editor }) {
                         </div>
                     </div>
                 </div>
-                <button type="button">
+                <button type="button" onClick={()=>setActivateEditor(!activateEditor)}>
                     <FontAwesomeIcon icon="fa-solid fa-plus" />
                     추가
                 </button>
@@ -170,7 +167,9 @@ function Article({ faqData, editor }) {
                                 </div>
                                 {editor && (
                                     <div>
-                                        <button type="button" className="edit">
+                                        <button type="button" className="edit" onClick={()=>{
+                                            console.log(activateEditor)
+                                            setActivateEditor(!activateEditor)}}>
                                             <FontAwesomeIcon
                                                 icon="fa-solid fa-pen-to-square"
                                                 size="lg"
