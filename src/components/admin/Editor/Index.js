@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Index({ activateEditor, setActivateEdtior }) {
+function Index({ articleId, setArticleId, singleArti }) {
     const  titleRef = useRef(null)
     const editorRef = useRef(null);
     const log = () => {
@@ -12,17 +12,17 @@ function Index({ activateEditor, setActivateEdtior }) {
         }
     };
     return (
-        <div className={activateEditor ? "editor" : "editor center"}>
-            {!activateEditor && (
+        <div className={articleId !== -1 ? "editor" : "editor center"}>
+            {articleId === -1 && (
                 <div className="request"><strong>도움말을 선택해주세요</strong></div>
             )}
-            {activateEditor && (
+            {articleId !== -1 && (
                 <>
-                    <input type="text" placeholder="제목" ref={titleRef} />
+                    <input type="text" placeholder="제목" ref={titleRef} defaultValue={singleArti.content} />
                     <Editor
                         apiKey="hfwmexaein3epohgzx9107h3evusuan35khip2qzgwwo0n1m"
                         onInit={(evt, editor) => (editorRef.current = editor)}
-                        initialValue=""
+                        initialValue={singleArti.explain}
                         init={{
                             selector:'textarea',
                             placeholder: '내용',

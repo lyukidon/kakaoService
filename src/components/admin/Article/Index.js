@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../../scss/admin/article.scss";
 
 // 관리자 컴포넌트
-function Article({ faqData, editor, activateEditor, setActivateEditor }) {
+function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
     const [ids, setIds] = useState({
         service_id: 0,
         category_id: 0,
@@ -66,10 +66,21 @@ function Article({ faqData, editor, activateEditor, setActivateEditor }) {
         });
     };
 
+    // 수정 클릭 시
+    const onClickEditBtn = (data) => {
+        if (articleId === -1) {
+            setArticleId(data.article_id);
+            setSingleArti({ ...data });
+        } else {
+            setArticleId(-1);
+        }
+    };
     return (
         <div className="article">
-            {!editor ? <div>도움말 목록</div> : <div>도움말 관리</div>}
-            
+            {/* 제목 */}
+            {!editor ? <h4>도움말 목록</h4> : <h4>도움말 관리</h4>}
+
+            {/* 카테고리 선택 */}
             <div className="selectBox">
                 <div>
                     <div className="serviceSelect">
@@ -154,12 +165,18 @@ function Article({ faqData, editor, activateEditor, setActivateEditor }) {
                         </div>
                     </div>
                 </div>
-                <button type="button" onClick={()=>setActivateEditor(!activateEditor)}>
-                    <FontAwesomeIcon icon="fa-solid fa-plus" />
-                    추가
-                </button>
+                {editor && (
+                    <button
+                        type="button"
+                        onClick={() => setArticleId(article.length)}
+                    >
+                        <FontAwesomeIcon icon="fa-solid fa-plus" />
+                        추가
+                    </button>
+                )}
             </div>
             <div>
+                {/* 도움말 목록 */}
                 {article.map(
                     (c, i) =>
                         i < 9 && (
@@ -169,9 +186,11 @@ function Article({ faqData, editor, activateEditor, setActivateEditor }) {
                                 </div>
                                 {editor && (
                                     <div>
-                                        <button type="button" className="edit" onClick={()=>{
-                                            console.log(activateEditor)
-                                            setActivateEditor(!activateEditor)}}>
+                                        <button
+                                            type="button"
+                                            className="edit"
+                                            onClick={() => onClickEditBtn(c)}
+                                        >
                                             <FontAwesomeIcon
                                                 icon="fa-solid fa-pen-to-square"
                                                 size="lg"
