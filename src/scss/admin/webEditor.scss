@@ -25,25 +25,34 @@
             padding: 18px 20px;
             font-size: 17px;
         }
-        > input {
-            margin-bottom: 10px;
-            padding: 10px 16px;
-            border: 1px solid #dddddd;
-            border-radius: 8px;
-            &:focus{
-                outline: none;
+        .content {
+            display: flex;
+            flex-direction: column;
+            > input {
+                width: auto;
+                margin-bottom: 10px;
+                padding: 10px 16px;
+                border: 1px solid #dddddd;
+                border-radius: 8px;
+                &:focus {
+                    outline: none;
+                }
             }
         }
-        > button {
-            width: 120px;
-            margin-top: 10px;
-            margin-left: auto;
-            padding: 8px 12px;
-            background-color: #ffffff;
-            border: 1px solid black;
-            > svg {
-                margin-right: 10px;
-                color: #385a9e;
+        .explain {
+            display: flex;
+            flex-direction: column;
+            > button {
+                width: 120px;
+                margin-top: 10px;
+                margin-left: auto;
+                padding: 8px 12px;
+                background-color: #ffffff;
+                border: 1px solid black;
+                > svg {
+                    margin-right: 10px;
+                    color: #385a9e;
+                }
             }
         }
     }
