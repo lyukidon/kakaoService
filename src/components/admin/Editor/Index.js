@@ -18,7 +18,7 @@ function Index({ articleId, setArticleId, singleArti }) {
             )}
             {articleId !== -1 && (
                 <>
-                    <input type="text" placeholder="제목" ref={titleRef} defaultValue={singleArti.content} />
+                    <input type="text" placeholder="제목" ref={titleRef} value={singleArti.content} />
                     <Editor
                         apiKey="hfwmexaein3epohgzx9107h3evusuan35khip2qzgwwo0n1m"
                         onInit={(evt, editor) => (editorRef.current = editor)}
