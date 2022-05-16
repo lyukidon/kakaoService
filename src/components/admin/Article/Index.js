@@ -68,11 +68,11 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
 
     // 수정 클릭 시
     const onClickEditBtn = (data) => {
-        if (articleId === -1) {
+        if (data.article_id === articleId) {
+            setArticleId(-1);
+        } else {
             setArticleId(data.article_id);
             setSingleArti({ ...data });
-        } else {
-            setArticleId(-1);
         }
     };
     return (
@@ -186,6 +186,7 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                                 </div>
                                 {editor && (
                                     <div>
+                                        {/* 수정버튼 */}
                                         <button
                                             type="button"
                                             className="edit"
@@ -196,6 +197,7 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                                                 size="lg"
                                             />
                                         </button>
+                                        {/* 삭제버튼 */}
                                         <button type="button" className="trash">
                                             <FontAwesomeIcon
                                                 icon="fa-solid fa-trash"
