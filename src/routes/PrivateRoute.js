@@ -5,7 +5,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 import Admin from "./Admin";
 import Login from "./Login";
-import WebEditor from "./WebEditor";
+import AdminFaq from "./AdminFaq";
 
 const adminPath = ["/admin/dashboard", "/admin/edit"];
 
@@ -93,7 +93,7 @@ function PrivateRoute() {
             />
             <Route
                 path="/faq"
-                element={username ? <WebEditor data={data} /> : <Navigate replace to="/admin" />}
+                element={username ? <AdminFaq data={data} /> : <Navigate replace to="/admin" />}
             />
         </Routes>
     );
