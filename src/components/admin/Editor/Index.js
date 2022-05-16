@@ -21,7 +21,7 @@ function Index({ articleId, setArticleId, singleArti }) {
             {articleId !== -1 && (
                 <>
                     <div className="content">
-                        <div>제목</div>
+                        <div>제목: </div>
                         <input
                             type="text"
                             placeholder="제목을 입력해주세요"
@@ -30,7 +30,6 @@ function Index({ articleId, setArticleId, singleArti }) {
                         />
                     </div>
                     <div className="explain">
-                        <div>내용</div>
                         <Editor
                             apiKey="hfwmexaein3epohgzx9107h3evusuan35khip2qzgwwo0n1m"
                             onInit={(evt, editor) =>
