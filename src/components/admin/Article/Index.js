@@ -62,8 +62,6 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
 
     const changeOption = (event) => {
         const { name, value } = event.target;
-        console.log(name);
-        console.log(ids);
         switch (name) {
             case "service_id":
                 setIds({
