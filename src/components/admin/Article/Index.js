@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import List from './List'
+
 import "../../../scss/admin/article.scss";
 
 // 관리자 컴포넌트
@@ -185,38 +187,7 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
             </div>
             <div>
                 {/* 도움말 목록 */}
-                {article.map(
-                    (c, i) =>
-                        i < 9 && (
-                            <div key={c.article_id} className="articleBox">
-                                <div className={editor && "if-editor-true"}>
-                                    {c.content}
-                                </div>
-                                {editor && (
-                                    <div>
-                                        {/* 수정버튼 */}
-                                        <button
-                                            type="button"
-                                            className="edit"
-                                            onClick={() => onClickEditBtn(c)}
-                                        >
-                                            <FontAwesomeIcon
-                                                icon="fa-solid fa-pen-to-square"
-                                                size="lg"
-                                            />
-                                        </button>
-                                        {/* 삭제버튼 */}
-                                        <button type="button" className="trash">
-                                            <FontAwesomeIcon
-                                                icon="fa-solid fa-trash"
-                                                size="lg"
-                                            />
-                                        </button>
-                                    </div>
-                                )}
-                            </div>
-                        )
-                )}
+                <List editor={editor} article={article} onClickEditBtn={onClickEditBtn}/>
             </div>
         </div>
     );
