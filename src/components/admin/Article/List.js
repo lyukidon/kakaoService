@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default ({editor, article, onClickEditBtn}) => {
+export default function List({editor, article, onClickEditBtn}) {
     return (
         <>
             {article.map(

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import List from './List'
+import List from "./List";
 
 import "../../../scss/admin/article.scss";
 
@@ -61,10 +61,10 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
     }, [faqData, ids]);
 
     const changeOption = (event) => {
-        console.log(event)
+        console.log(event);
         const { name, value } = event.target;
-        console.log('name', name)
-        console.log('value', value)
+        console.log("name", name);
+        console.log("value", value);
         setIds({
             ...ids,
             [name]: +value,
@@ -89,7 +89,6 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
             <div className="selectBox">
                 <div>
                     <div className="serviceSelect">
-                        <div className="title">서비스</div>
                         <div>
                             <select
                                 name="service_id"
@@ -115,60 +114,88 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                             </select>
                         </div>
                     </div>
-                    <FontAwesomeIcon icon="fa-solid fa-angle-right" size="xl" />
-                    <div className="categorySelect">
-                        <div className="title">카테고리</div>
-                        <div>
-                            <select name="category_id" onChange={(event) => changeOption(event)}>
-                                {ids.service_id !== 0 && (
-                                    <option
-                                        value=""
-                                        onClick={() => {
-                                            setIds({ ...ids, category_id: 0 });
-                                        }}
+                    {ids.service_id !== 0 && (
+                        <>
+                            <FontAwesomeIcon
+                                icon="fa-solid fa-angle-right"
+                                size="xl"
+                            />
+                            <div className="categorySelect">
+                                <div>
+                                    <select
+                                        name="category_id"
+                                        onChange={(event) =>
+                                            changeOption(event)
+                                        }
                                     >
-                                        전체
-                                    </option>
-                                )}
-                                {category.map((c) => (
-                                    <option
-                                        key={c.content}
-                                        id="category_id"
-                                        value={c.category_id}
+                                        {ids.service_id !== 0 && (
+                                            <option
+                                                value=""
+                                                onClick={() => {
+                                                    setIds({
+                                                        ...ids,
+                                                        category_id: 0,
+                                                    });
+                                                }}
+                                            >
+                                                전체
+                                            </option>
+                                        )}
+                                        {category.map((c) => (
+                                            <option
+                                                key={c.content}
+                                                id="category_id"
+                                                value={c.category_id}
+                                            >
+                                                {c.content}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
+                        </>
+                    )}
+                    {ids.category_id !== 0 && (
+                        <>
+                            <FontAwesomeIcon
+                                icon="fa-solid fa-angle-right"
+                                size="xl"
+                            />
+                            <div className="platformSelect">
+                                <div>
+                                    <select
+                                        name="platform_id"
+                                        onChange={(event) =>
+                                            changeOption(event)
+                                        }
                                     >
-                                        {c.content}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-                    <FontAwesomeIcon icon="fa-solid fa-angle-right" size="xl" />
-                    <div className="platformSelect">
-                        <div className="title">플랫폼</div>
-                        <div>
-                            <select name="platform_id" onChange={(event) => changeOption(event)}>
-                                {ids.category_id !== 0 && (
-                                    <option
-                                        value=""
-                                        onClick={() => {
-                                            setIds({ ...ids, platform_id: 0 });
-                                        }}
-                                    >
-                                        전체
-                                    </option>
-                                )}
-                                {platform.map((c) => (
-                                    <option
-                                        key={c.content}
-                                        id="platform_id"
-                                        value={c.platform_id}
-                                    >
-                                        {c.content}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
+                                        {ids.category_id !== 0 && (
+                                            <option
+                                                value=""
+                                                onClick={() => {
+                                                    setIds({
+                                                        ...ids,
+                                                        platform_id: 0,
+                                                    });
+                                                }}
+                                            >
+                                                전체
+                                            </option>
+                                        )}
+                                        {platform.map((c) => (
+                                            <option
+                                                key={c.content}
+                                                id="platform_id"
+                                                value={c.platform_id}
+                                            >
+                                                {c.content}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
+                        </>
+                    )}
                 </div>
                 {editor && (
                     <button
@@ -181,13 +208,17 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                         }}
                     >
                         <FontAwesomeIcon icon="fa-solid fa-plus" />
-                        추가
+                        도움말 추가
                     </button>
                 )}
             </div>
             <div>
                 {/* 도움말 목록 */}
-                <List editor={editor} article={article} onClickEditBtn={onClickEditBtn}/>
+                <List
+                    editor={editor}
+                    article={article}
+                    onClickEditBtn={onClickEditBtn}
+                />
             </div>
         </div>
     );
