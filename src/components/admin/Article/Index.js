@@ -59,10 +59,13 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
     }, [faqData, ids]);
 
     const changeOption = (event) => {
-        const { id, value } = event.target;
+        console.log(event)
+        const { name, value } = event.target;
+        console.log('name', name)
+        console.log('value', value)
         setIds({
             ...ids,
-            [id]: +value,
+            [name]: +value,
         });
     };
 
@@ -86,7 +89,10 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                     <div className="serviceSelect">
                         <div className="title">서비스</div>
                         <div>
-                            <select name="service" id="">
+                            <select
+                                name="service_id"
+                                onChange={(event) => changeOption(event)}
+                            >
                                 <option
                                     value=""
                                     onClick={() => {
@@ -100,7 +106,6 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                                         key={c.content}
                                         id="service_id"
                                         value={c.service_id}
-                                        onClick={(event) => changeOption(event)}
                                     >
                                         {c.content}
                                     </option>
@@ -112,7 +117,7 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                     <div className="categorySelect">
                         <div className="title">카테고리</div>
                         <div>
-                            <select name="" id="">
+                            <select name="category_id" onChange={(event) => changeOption(event)}>
                                 {ids.service_id !== 0 && (
                                     <option
                                         value=""
@@ -128,7 +133,6 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                                         key={c.content}
                                         id="category_id"
                                         value={c.category_id}
-                                        onClick={(event) => changeOption(event)}
                                     >
                                         {c.content}
                                     </option>
@@ -140,7 +144,7 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                     <div className="platformSelect">
                         <div className="title">플랫폼</div>
                         <div>
-                            <select name="" id="">
+                            <select name="platform_id" onChange={(event) => changeOption(event)}>
                                 {ids.category_id !== 0 && (
                                     <option
                                         value=""
@@ -156,7 +160,6 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                                         key={c.content}
                                         id="platform_id"
                                         value={c.platform_id}
-                                        onClick={(event) => changeOption(event)}
                                     >
                                         {c.content}
                                     </option>
@@ -168,7 +171,12 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                 {editor && (
                     <button
                         type="button"
-                        onClick={() => setArticleId(article.length)}
+                        onClick={() => {
+                            console.log(article);
+                            // article === null
+                            //     ? alert("카테고리를 선택해주세요")
+                            //     : setArticleId(article.length);
+                        }}
                     >
                         <FontAwesomeIcon icon="fa-solid fa-plus" />
                         추가
