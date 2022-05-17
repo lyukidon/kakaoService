@@ -1,7 +1,23 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function List({editor, article, onClickEditBtn}) {
+function Warning() {
+    return (
+        <div>
+            <div>정말 삭제하겠습니까?</div>
+            <div>
+                <button type="button">
+                    취소
+                </button>
+                <button type="button">
+                    삭제
+                </button>
+            </div>
+        </div>
+    );
+}
+
+export default function List({ editor, article, onClickEditBtn }) {
     return (
         <>
             {article.map(
@@ -38,4 +54,4 @@ export default function List({editor, article, onClickEditBtn}) {
             )}
         </>
     );
-};
+}

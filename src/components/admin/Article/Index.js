@@ -61,14 +61,24 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
     }, [faqData, ids]);
 
     const changeOption = (event) => {
-        console.log(event);
         const { name, value } = event.target;
-        console.log("name", name);
-        console.log("value", value);
-        setIds({
-            ...ids,
-            [name]: +value,
-        });
+        console.log(name)
+        console.log(ids)
+        switch (name) {
+            case "service_id":
+                setIds({
+                    ...ids,
+                    [name]: +value,
+                    category_id: 0,
+                    platform_id: 0,
+                });
+                break;
+            case "category_id":
+                setIds({ ...ids, [name]: +value, platform_id: 0 });
+                break;
+            default:
+                return null;
+        }
     };
 
     // 수정 클릭 시
@@ -94,14 +104,7 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                                 name="service_id"
                                 onChange={(event) => changeOption(event)}
                             >
-                                <option
-                                    value=""
-                                    onClick={() => {
-                                        setIds({ ...ids, service_id: 0 });
-                                    }}
-                                >
-                                    전체
-                                </option>
+                                <option value={0}>전체</option>
                                 {service.map((c) => (
                                     <option
                                         key={c.content}
@@ -129,17 +132,7 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                                         }
                                     >
                                         {ids.service_id !== 0 && (
-                                            <option
-                                                value=""
-                                                onClick={() => {
-                                                    setIds({
-                                                        ...ids,
-                                                        category_id: 0,
-                                                    });
-                                                }}
-                                            >
-                                                전체
-                                            </option>
+                                            <option value={0}>전체</option>
                                         )}
                                         {category.map((c) => (
                                             <option
@@ -170,17 +163,7 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                                         }
                                     >
                                         {ids.category_id !== 0 && (
-                                            <option
-                                                value=""
-                                                onClick={() => {
-                                                    setIds({
-                                                        ...ids,
-                                                        platform_id: 0,
-                                                    });
-                                                }}
-                                            >
-                                                전체
-                                            </option>
+                                            <option value={0}>전체</option>
                                         )}
                                         {platform.map((c) => (
                                             <option
