@@ -101,7 +101,7 @@ react-router-dom 이용해 SPA로 제작
 ```
 </details>
 
-<!-- <details> -->
+<details>
 <summary>관리자 페이지</summary>
 
 ```
@@ -137,4 +137,4 @@ react-router-dom 이용해 SPA로 제작
   - [x] 카테고리 제거
   - [x] 도움말 제거
   - [x] 에디터 추가 (TinyMCE 라이브러리)
-<!-- </details> -->
+</details>
