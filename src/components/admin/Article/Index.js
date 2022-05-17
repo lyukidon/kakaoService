@@ -62,8 +62,8 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
 
     const changeOption = (event) => {
         const { name, value } = event.target;
-        console.log(name)
-        console.log(ids)
+        console.log(name);
+        console.log(ids);
         switch (name) {
             case "service_id":
                 setIds({
@@ -75,6 +75,9 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                 break;
             case "category_id":
                 setIds({ ...ids, [name]: +value, platform_id: 0 });
+                break;
+            case "platform_id":
+                setIds({ ...ids, [name]: +value });
                 break;
             default:
                 return null;
