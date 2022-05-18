@@ -70,13 +70,22 @@ function Index({ articleId, setArticleId, singleArti }) {
                                     "body { font-family:Helvetica,Arial,sans-serif; font-size:14px;}",
                             }}
                         />
-                        <button type="button" onClick={log}>
-                            <FontAwesomeIcon
-                                icon="fa-solid fa-floppy-disk"
-                                size="lg"
-                            />
-                            저장하기
-                        </button>
+                        <div className="buttonBox">
+                            <button type="button">
+                                <FontAwesomeIcon
+                                    icon="fa-solid fa-x"
+                                    size="lg"
+                                />
+                                취소하기
+                            </button>
+                            <button type="button" onClick={log}>
+                                <FontAwesomeIcon
+                                    icon="fa-solid fa-floppy-disk"
+                                    size="lg"
+                                />
+                                저장하기
+                            </button>
+                        </div>
                     </div>
                 </>
             )}

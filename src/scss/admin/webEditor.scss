@@ -48,16 +48,21 @@
         .explain {
             display: flex;
             flex-direction: column;
-            > button {
-                width: 120px;
-                margin-top: 10px;
+            .buttonBox {
+                display: flex;
+                flex-direction: row;
                 margin-left: auto;
-                padding: 8px 12px;
-                background-color: #ffffff;
-                border: 1px solid black;
-                > svg {
-                    margin-right: 10px;
-                    color: #385a9e;
+                > button {
+                    width: 110px;
+                    margin-top: 10px;
+                    margin-left: auto;
+                    padding: 7px 10px;
+                    background-color: #ffffff;
+                    border: 1px solid black;
+                    > svg {
+                        margin-right: 10px;
+                        color: #385a9e;
+                    }
                 }
             }
         }
