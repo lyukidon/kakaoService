@@ -1,23 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Warning() {
+function Warning({ chkTrash, setChkTrash }) {
     return (
-        <div>
-            <div>정말 삭제하겠습니까?</div>
+        <div className="warning">
+            <div>삭제하시겠습니까?</div>
             <div>
-                <button type="button">
+                <button type="button" onClick={() => setChkTrash(!chkTrash)}>
                     취소
                 </button>
-                <button type="button">
-                    삭제
-                </button>
+                <button type="button">삭제</button>
             </div>
         </div>
     );
 }
 
-export default function List({ editor, article, onClickEditBtn }) {
+export default function List({
+    editor,
+    article,
+    articleId,
+    setArticleId,
+    onClickEditBtn,
+}) {
+    const [chkTrash, setChkTrash] = useState(false);
     return (
         <>
             {article.map(
@@ -41,12 +46,24 @@ export default function List({ editor, article, onClickEditBtn }) {
                                         />
                                     </button>
                                     {/* 삭제버튼 */}
-                                    <button type="button" className="trash">
+                                    <button
+                                        type="button"
+                                        className="trash"
+                                        onClick={() => {
+                                            setChkTrash(!chkTrash);
+                                        }}
+                                    >
                                         <FontAwesomeIcon
                                             icon="fa-solid fa-trash"
                                             size="lg"
                                         />
                                     </button>
+                                    {i === articleId && chkTrash && (
+                                        <Warning
+                                            chkTrash={chkTrash}
+                                            setChkTrash={setChkTrash}
+                                        />
+                                    )}
                                 </div>
                             )}
                         </div>

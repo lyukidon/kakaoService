@@ -1,5 +1,6 @@
 .article {
     padding: 10px;
+    border-radius: 10px;
 }
 .selectBox {
     margin-bottom: 20px;
@@ -57,4 +58,11 @@
             color: red;
         }
     }
+}
+.warning {
+    z-index: 1;
+    padding: 20px;
+    position: absolute;
+    border: 1px solid;
+    background-color: #ffffff;
 }

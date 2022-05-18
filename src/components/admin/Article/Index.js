@@ -201,6 +201,8 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                 <List
                     editor={editor}
                     article={article}
+                    articleId={articleId}
+                    setArticleId={setArticleId}
                     onClickEditBtn={onClickEditBtn}
                 />
             </div>
