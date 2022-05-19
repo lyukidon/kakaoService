@@ -1,7 +1,31 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+function Warning({ setCancel, setActivateEditor }) {
+    return (
+        <div className="warning">
+            <div>변경을 취소 하시겠습니까?</div>
+            <div>
+                <button type="button" onClick={() => {
+                    setActivateEditor(false);
+                    setCancel(false)
+                }}>
+                    예
+                </button>
+                <button
+                    type="button"
+                    onClick={() => {
+                        setCancel(false);
+                    }}
+                >
+                    아니오
+                </button>
+            </div>
+        </div>
+    );
+}
 
 function Index({
     activateEditor,
@@ -10,7 +34,8 @@ function Index({
     setArticleId,
     singleArti,
 }) {
-    const [data, setData] = React.useState("");
+    const [data, setData] = useState("");
+    const [cancel, setCancel] = useState(false);
 
     return (
         <div className={activateEditor ? "editor" : "editor center"}>
@@ -54,7 +79,8 @@ function Index({
                             <button
                                 type="button"
                                 onClick={() => {
-                                    setActivateEditor(false);
+                                    // setActivateEditor(false);
+                                    setCancel(true)
                                 }}
                             >
                                 <FontAwesomeIcon
@@ -65,7 +91,11 @@ function Index({
                             </button>
                             <button
                                 type="button"
-                                onClick={() => data ? console.log(data) : alert('내용을 수정해주세요')}
+                                onClick={() =>
+                                    data
+                                        ? console.log(data)
+                                        : alert("내용을 수정해주세요")
+                                }
                             >
                                 <FontAwesomeIcon
                                     icon="fa-solid fa-floppy-disk"
@@ -73,6 +103,12 @@ function Index({
                                 />
                                 저장하기
                             </button>
+                            {cancel && (
+                                <Warning
+                                    setActivateEditor={setActivateEditor}
+                                    setCancel={setCancel}
+                                />
+                            )}
                         </div>
                     </div>
                 </>
