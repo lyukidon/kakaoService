@@ -8,10 +8,13 @@ function Warning({ setCancel, setActivateEditor }) {
         <div className="warning">
             <div>변경을 취소 하시겠습니까?</div>
             <div>
-                <button type="button" onClick={() => {
-                    setActivateEditor(false);
-                    setCancel(false)
-                }}>
+                <button
+                    type="button"
+                    onClick={() => {
+                        setActivateEditor(false);
+                        setCancel(false);
+                    }}
+                >
                     예
                 </button>
                 <button
@@ -30,8 +33,6 @@ function Warning({ setCancel, setActivateEditor }) {
 function Index({
     activateEditor,
     setActivateEditor,
-    articleId,
-    setArticleId,
     singleArti,
 }) {
     const [data, setData] = useState("");
@@ -58,20 +59,8 @@ function Index({
                         <CKEditor
                             editor={ClassicEditor}
                             data={singleArti ? singleArti.explain : data}
-                            onReady={(editor) => {
-                                // You can store the "editor" and use when it is needed.
-                                // console.log("Editor is ready to use!", editor);
-                            }}
                             onChange={(event, editor) => {
                                 setData(editor.getData());
-
-                                // console.log({ event, editor, data });
-                            }}
-                            onBlur={(event, editor) => {
-                                // console.log("Blur.", editor);
-                            }}
-                            onFocus={(event, editor) => {
-                                // console.log("Focus.", editor);
                             }}
                         />
 
@@ -79,8 +68,7 @@ function Index({
                             <button
                                 type="button"
                                 onClick={() => {
-                                    // setActivateEditor(false);
-                                    setCancel(true)
+                                    setCancel(true);
                                 }}
                             >
                                 <FontAwesomeIcon

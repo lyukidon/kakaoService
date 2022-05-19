@@ -17,8 +17,10 @@ function Warning({ setChkTrash, article, setArticle, articleId }) {
                 <button
                     type="button"
                     onClick={() => {
-                        setChkTrash(false)
-                        setArticle(article.filter(c=> c.article_id !== articleId))
+                        setChkTrash(false);
+                        setArticle(
+                            article.filter((c) => c.article_id !== articleId)
+                        );
                     }}
                 >
                     삭제
@@ -43,7 +45,7 @@ export default function List({
             {article.map(
                 (c, i) =>
                     i < 8 && (
-                        <div key={c.article_id} className="articleBox">
+                        <div key={c.article_id} className={c.article_id === articleId ? "articleBox if-article-chosen" : "articleBox"}>
                             <div className={editor && "if-editor-true"}>
                                 {c.content}
                             </div>

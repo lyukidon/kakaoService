@@ -1,6 +1,6 @@
 .article {
     padding: 10px;
-    border-radius: 10px;
+
 }
 .selectBox {
     margin-bottom: 20px;
@@ -35,6 +35,12 @@
             margin-right: 5px;
         }
     }
+}
+
+.if-article-chosen{
+    // background-color: lightgray;
+    text-decoration: underline;
+    font-weight: bold;
 }
 .articleBox {
     display: flex;
