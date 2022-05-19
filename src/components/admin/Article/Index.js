@@ -1,6 +1,7 @@
 /* eslint react/self-closing-comp: 0 */
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 import List from "./List";
 
@@ -109,7 +110,23 @@ function Article({
     return (
         <div className="article">
             {/* 제목 */}
-            {!editor ? <h4>도움말 목록</h4> : <h4>도움말 관리</h4>}
+            {!editor ? (
+                <div className="titleNlink">
+                    <h4>도움말 목록</h4>
+                    <Link to="/admin/faq">
+                        <h4>
+                            더보기
+                            <FontAwesomeIcon
+                                className="rightArrow"
+                                icon="fa-solid fa-angle-right"
+                                size="lg"
+                            />
+                        </h4>
+                    </Link>
+                </div>
+            ) : (
+                <h4>도움말 관리</h4>
+            )}
 
             {/* 카테고리 선택 */}
             <div className="selectBox">
