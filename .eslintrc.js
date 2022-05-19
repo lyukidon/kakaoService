@@ -37,10 +37,11 @@ module.exports = {
         "no-param-reassign": [2, { props: false }],
         "no-unused-vars": "warn",
         "react/function-component-definition": 1,
-        "react/jsx-no-useless-fragment":1,
+        "react/jsx-no-useless-fragment": 1,
         "jsx-a11y/control-has-associated-label": 1,
-        "react/destructuring-assignment":1,
-        "no-console":1,
-        "no-else-return":1
+        "react/destructuring-assignment": 1,
+        "no-console": 1,
+        "no-else-return": 1,
+        "no-lonely-if": 0,
     },
 };

@@ -7,7 +7,15 @@ import List from "./List";
 import "../../../scss/admin/article.scss";
 
 // 관리자 컴포넌트
-function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
+function Article({
+    faqData,
+    editor,
+    activateEditor,
+    setActivateEditor,
+    articleId,
+    setArticleId,
+    setSingleArti,
+}) {
     const [ids, setIds] = useState({
         service_id: 0,
         category_id: 0,
@@ -83,12 +91,19 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
     };
 
     // 수정 클릭 시
-    const onClickEditBtn = (data) => {
-        if (data.article_id === articleId) {
-            setArticleId(-1);
-        } else {
+    const handleEdit = (data) => {
+        if (!activateEditor) {
+            setActivateEditor(true);
             setArticleId(data.article_id);
             setSingleArti({ ...data });
+        } else {
+            if (articleId === data.article_id) {
+                setActivateEditor(false);
+                setArticleId(-1);
+            } else {
+                setArticleId(data.article_id);
+                setSingleArti({ ...data });
+            }
         }
     };
     return (
@@ -182,15 +197,7 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
                     )}
                 </div>
                 {editor && (
-                    <button
-                        type="button"
-                        onClick={() => {
-                            console.log(article);
-                            // article === null
-                            //     ? alert("카테고리를 선택해주세요")
-                            //     : setArticleId(article.length);
-                        }}
-                    >
+                    <button type="button">
                         <FontAwesomeIcon icon="fa-solid fa-plus" />
                         도움말 추가
                     </button>
@@ -199,11 +206,14 @@ function Article({ faqData, editor, articleId, setArticleId, setSingleArti }) {
             <div>
                 {/* 도움말 목록 */}
                 <List
+                    handleEdit={handleEdit}
                     editor={editor}
+                    activateEditor={activateEditor}
+                    setActivateEditor={setActivateEditor}
                     article={article}
+                    setArticle={setArticle}
                     articleId={articleId}
                     setArticleId={setArticleId}
-                    onClickEditBtn={onClickEditBtn}
                 />
             </div>
         </div>

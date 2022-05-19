@@ -13,7 +13,7 @@ function Index({
     const [data, setData] = React.useState("");
 
     return (
-        <div className={articleId !== -1 ? "editor" : "editor center"}>
+        <div className={activateEditor ? "editor" : "editor center"}>
             {!activateEditor && (
                 <div className="request">
                     <strong>도움말을 선택해주세요</strong>
@@ -26,7 +26,7 @@ function Index({
                         <input
                             type="text"
                             placeholder="제목을 입력해주세요"
-                            value={singleArti.content}
+                            value={singleArti && singleArti.content}
                         />
                     </div>
                     <div className="explain">
@@ -54,8 +54,7 @@ function Index({
                             <button
                                 type="button"
                                 onClick={() => {
-                                    console.log(singleArti.explain)
-                                    // setActivateEditor(false);
+                                    setActivateEditor(false);
                                 }}
                             >
                                 <FontAwesomeIcon
@@ -64,7 +63,10 @@ function Index({
                                 />
                                 취소하기
                             </button>
-                            <button type="button" onClick={()=>console.log(data)}>
+                            <button
+                                type="button"
+                                onClick={() => console.log(data)}
+                            >
                                 <FontAwesomeIcon
                                     icon="fa-solid fa-floppy-disk"
                                     size="lg"

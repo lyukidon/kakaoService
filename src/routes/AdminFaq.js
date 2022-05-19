@@ -23,14 +23,18 @@ function WebEditor({ data }) {
                 <SideNav />
                 <div className="editorPage">
                     <Article
-                        faqData={data}
                         editor
+                        faqData={data}
+                        activateEditor={activateEditor}
+                        setActivateEditor={setActivateEditor}
                         articleId={articleId}
                         setArticleId={setArticleId}
                         singleArti={singleArti}
                         setSingleArti={setSingleArti}
                     />
                     <Editor
+                        activateEditor={activateEditor}
+                        setActivateEditor={setActivateEditor}
                         articleId={articleId}
                         setArticleId={setArticleId}
                         singleArti={singleArti}

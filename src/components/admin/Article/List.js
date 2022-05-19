@@ -1,33 +1,49 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Warning({ chkTrash, setChkTrash }) {
+function Warning({ setChkTrash, article, setArticle, articleId }) {
     return (
         <div className="warning">
             <div>삭제하시겠습니까?</div>
             <div>
-                <button type="button" onClick={() => setChkTrash(!chkTrash)}>
+                <button
+                    type="button"
+                    onClick={() => {
+                        setChkTrash(false);
+                    }}
+                >
                     취소
                 </button>
-                <button type="button">삭제</button>
+                <button
+                    type="button"
+                    onClick={() => {
+                        console.log('click')
+                        setChkTrash(false)
+                        setArticle(article.filter(c=> c.article_id !== articleId))
+                    }}
+                >
+                    삭제
+                </button>
             </div>
         </div>
     );
 }
 
 export default function List({
+    handleEdit,
     editor,
+    setActivateEditor,
     article,
+    setArticle,
     articleId,
     setArticleId,
-    onClickEditBtn,
 }) {
     const [chkTrash, setChkTrash] = useState(false);
     return (
         <>
             {article.map(
                 (c, i) =>
-                    i < 9 && (
+                    i < 8 && (
                         <div key={c.article_id} className="articleBox">
                             <div className={editor && "if-editor-true"}>
                                 {c.content}
@@ -38,7 +54,10 @@ export default function List({
                                     <button
                                         type="button"
                                         className="edit"
-                                        onClick={() => onClickEditBtn(c)}
+                                        onClick={() => {
+                                            setChkTrash(false);
+                                            handleEdit(c);
+                                        }}
                                     >
                                         <FontAwesomeIcon
                                             icon="fa-solid fa-pen-to-square"
@@ -50,7 +69,9 @@ export default function List({
                                         type="button"
                                         className="trash"
                                         onClick={() => {
+                                            setActivateEditor(false);
                                             setChkTrash(!chkTrash);
+                                            setArticleId(c.article_id);
                                         }}
                                     >
                                         <FontAwesomeIcon
@@ -58,10 +79,12 @@ export default function List({
                                             size="lg"
                                         />
                                     </button>
-                                    {i === articleId && chkTrash && (
+                                    {c.article_id === articleId && chkTrash && (
                                         <Warning
-                                            chkTrash={chkTrash}
                                             setChkTrash={setChkTrash}
+                                            article={article}
+                                            setArticle={setArticle}
+                                            articleId={articleId}
                                         />
                                     )}
                                 </div>
