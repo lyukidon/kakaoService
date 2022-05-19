@@ -1,84 +1,70 @@
-import React, { useRef } from "react";
-import { Editor } from "@tinymce/tinymce-react";
+import React, { Component } from "react";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Index({ articleId, setArticleId, singleArti }) {
-    const titleRef = useRef(null);
-    const editorRef = useRef(null);
-    const log = () => {
-        if (editorRef.current && titleRef.current) {
-            console.log(titleRef.current.value);
-            console.log(editorRef.current.getContent());
-        }
-    };
+function Index({
+    activateEditor,
+    setActivateEditor,
+    articleId,
+    setArticleId,
+    singleArti,
+}) {
+    const [data, setData] = React.useState("");
+
     return (
         <div className={articleId !== -1 ? "editor" : "editor center"}>
-            {articleId === -1 && (
+            {!activateEditor && (
                 <div className="request">
                     <strong>도움말을 선택해주세요</strong>
                 </div>
             )}
-            {articleId !== -1 && (
+            {activateEditor && (
                 <>
                     <div className="content">
                         <div>제목: </div>
                         <input
                             type="text"
                             placeholder="제목을 입력해주세요"
-                            ref={titleRef}
                             value={singleArti.content}
                         />
                     </div>
                     <div className="explain">
-                        <Editor
-                            apiKey="hfwmexaein3epohgzx9107h3evusuan35khip2qzgwwo0n1m"
-                            onInit={(evt, editor) =>
-                                (editorRef.current = editor)
-                            }
-                            initialValue={singleArti.explain}
-                            init={{
-                                selector: "textarea",
-                                placeholder: "내용",
-                                resize: "both",
-                                plugins: [
-                                    "advlist",
-                                    "autolink",
-                                    "autoresize",
-                                    "lists",
-                                    "link",
-                                    "image",
-                                    "charmap",
-                                    "anchor",
-                                    "searchreplace",
-                                    "visualblocks",
-                                    "code",
-                                    "fullscreen",
-                                    "insertdatetime",
-                                    "media",
-                                    "table",
-                                    "preview",
-                                    "help",
-                                    "wordcount",
-                                ],
-                                min_height: 500,
-                                toolbar:
-                                    "undo redo | blocks | " +
-                                    "bold italic forecolor | alignleft aligncenter " +
-                                    "alignright alignjustify | bullist numlist outdent indent | " +
-                                    "removeformat | help",
-                                content_style:
-                                    "body { font-family:Helvetica,Arial,sans-serif; font-size:14px;}",
+                        <CKEditor
+                            editor={ClassicEditor}
+                            data={singleArti ? singleArti.explain : data}
+                            onReady={(editor) => {
+                                // You can store the "editor" and use when it is needed.
+                                // console.log("Editor is ready to use!", editor);
+                            }}
+                            onChange={(event, editor) => {
+                                setData(editor.getData());
+
+                                // console.log({ event, editor, data });
+                            }}
+                            onBlur={(event, editor) => {
+                                // console.log("Blur.", editor);
+                            }}
+                            onFocus={(event, editor) => {
+                                // console.log("Focus.", editor);
                             }}
                         />
+
                         <div className="buttonBox">
-                            <button type="button">
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    console.log(singleArti.explain)
+                                    // setActivateEditor(false);
+                                }}
+                            >
                                 <FontAwesomeIcon
                                     icon="fa-solid fa-x"
                                     size="lg"
                                 />
                                 취소하기
                             </button>
-                            <button type="button" onClick={log}>
+                            <button type="button" onClick={()=>console.log(data)}>
                                 <FontAwesomeIcon
                                     icon="fa-solid fa-floppy-disk"
                                     size="lg"
