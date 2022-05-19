@@ -33,6 +33,7 @@ function Warning({ setChkTrash, article, setArticle, articleId }) {
 export default function List({
     handleEdit,
     editor,
+    activateEditor,
     setActivateEditor,
     article,
     setArticle,
@@ -45,7 +46,7 @@ export default function List({
             {article.map(
                 (c, i) =>
                     i < 8 && (
-                        <div key={c.article_id} className={c.article_id === articleId ? "articleBox if-article-chosen" : "articleBox"}>
+                        <div key={c.article_id} className={c.article_id === articleId && activateEditor  ? "articleBox if-article-chosen" : "articleBox"}>
                             <div className={editor && "if-editor-true"}>
                                 {c.content}
                             </div>

@@ -37,11 +37,6 @@
     }
 }
 
-.if-article-chosen{
-    // background-color: lightgray;
-    text-decoration: underline;
-    font-weight: bold;
-}
 .articleBox {
     display: flex;
     flex-direction: row;
@@ -64,6 +59,12 @@
             color: red;
         }
     }
+}
+.if-article-chosen{
+    // background-color: lightgray;
+    padding: 20px 0px;
+    text-decoration: underline;
+    font-weight: bold;
 }
 .warning {
     z-index: 1;
