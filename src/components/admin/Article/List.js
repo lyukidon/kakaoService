@@ -17,7 +17,6 @@ function Warning({ setChkTrash, article, setArticle, articleId }) {
                 <button
                     type="button"
                     onClick={() => {
-                        console.log('click')
                         setChkTrash(false)
                         setArticle(article.filter(c=> c.article_id !== articleId))
                     }}
