@@ -65,7 +65,7 @@ function Index({
                             </button>
                             <button
                                 type="button"
-                                onClick={() => console.log(data)}
+                                onClick={() => data ? console.log(data) : alert('내용을 수정해주세요')}
                             >
                                 <FontAwesomeIcon
                                     icon="fa-solid fa-floppy-disk"
