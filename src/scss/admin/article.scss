@@ -40,9 +40,9 @@
 .articleBox {
     display: flex;
     flex-direction: row;
-    // justify-content: space-between;
     padding: 10px 0px;
     border-top: 1px solid #dddddd;
+    user-select: none;
     // 도움말
     > .badge{
         width: 100px;
