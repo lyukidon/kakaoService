@@ -42,7 +42,7 @@ function Index({
     const [cancel, setCancel] = useState(false);
 
     return (
-        <div className={activateEditor ? "editor" : "editor center"}>
+        <div className={activateEditor || preview ? "editor" : "editor center"}>
             {!activateEditor && !preview && (
                 <div className="request">
                     <strong>도움말을 선택해주세요</strong>

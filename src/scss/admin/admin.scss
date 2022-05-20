@@ -61,7 +61,8 @@
         .graph, // 그래프 통계, 최근 문의, 도움말 통계, 도움말 수정
         .showRequest,
         .dataStat,
-        .article {
+        .article,
+        .statistic {
             padding-left: 10px;
             padding-right: 10px;
             border-radius: 12px;
@@ -80,7 +81,7 @@
                 }
             }
         }
-        .dataStat {
+        .statistic {
             > ul > li {
                 margin-bottom: 16px;
             }

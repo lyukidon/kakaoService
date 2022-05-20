@@ -11,13 +11,14 @@ import "../../../scss/admin/article.scss";
 function Article({
     editor,
     faqData,
+    setStatistic,
     activateEditor,
     setActivateEditor,
     articleId,
     setArticleId,
     setSingleArti,
     preview,
-    setPreview
+    setPreview,
 }) {
     const [ids, setIds] = useState({
         service_id: 0,
@@ -32,6 +33,16 @@ function Article({
     const [platform, setPlatform] = useState([]);
     const [article, setArticle] = useState([]);
 
+    const changeStatistic = () => {
+        if (setStatistic) {
+            setStatistic({
+                service: service.length,
+                category: category.length,
+                platform: platform.length,
+                article: article.length,
+            });
+        }
+    };
     // 데이터 분류하기
     useEffect(() => {
         if (faqData) {
@@ -68,9 +79,10 @@ function Article({
                     })
                     .sort((a, b) => a.article_id - b.article_id)
             );
+            changeStatistic()
         }
     }, [faqData, ids]);
-
+    
     const changeOption = (event) => {
         const { name, value } = event.target;
         switch (name) {
@@ -91,27 +103,12 @@ function Article({
             default:
                 return null;
         }
+        changeStatistic();
     };
-    // 삭제 관련 
+    // 삭제 관련
     const [chkTrash, setChkTrash] = useState(false);
     // 도움말 버튼 클릭 시
-    const handleEdit = (data) => {
-        if (!activateEditor) {
-            setActivateEditor(true);
-            setArticleId(data.article_id);
-            setSingleArti({ ...data });
-        } else {
-            if (articleId === data.article_id) {
-                setActivateEditor(false);
-                setArticleId(-1);
-            } else {
-                setArticleId(data.article_id);
-                setSingleArti({ ...data });
-            }
-        }
-    };
-
-    const handleFunc=(data, bool, setfunc)=>{
+    const handleFunc = (data, bool, setfunc) => {
         if (!bool) {
             setfunc(true);
             setArticleId(data.article_id);

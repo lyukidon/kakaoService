@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 
@@ -8,9 +8,16 @@ import Article from "../components/admin/Article/Index";
 import ShowRequest from "../components/admin/ShowRequest";
 
 import "../scss/admin/admin.scss";
+import ArticleStatics from "../components/admin/ArticleStatics";
 
 function Admin({ data }) {
     const params = useParams();
+    const [statistic, setStatistic] = useState({
+        service: 0,
+        category: 0,
+        platform: 0,
+        article: 0,
+    });
     return (
         <div>
             <Helmet>
@@ -22,10 +29,12 @@ function Admin({ data }) {
                 <div className="dashboard">
                     <Graph />
                     <ShowRequest />
-                    <Article faqData={data} />
+                    <ArticleStatics statistic={statistic} />
+                    <Article faqData={data} setStatistic={setStatistic} />
                 </div>
             </div>
         </div>
     );
 }
+
 export default Admin;
