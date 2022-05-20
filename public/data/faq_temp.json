@@ -70,7 +70,7 @@
             "platform_id": 1,
             "article_id": 0,
             "content": "안드로이드 기기에서 메시지 도착알림이 오지 않아요. 어떻게 하나요?",
-            "explain": "1. 휴대폰 설정에서"
+            "explain": "<i><strong>1. 휴대폰 설정에서</strong></i>"
         },
         {
             "service_id": 1,

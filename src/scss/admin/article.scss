@@ -40,15 +40,20 @@
 .articleBox {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    // justify-content: space-between;
     padding: 10px 0px;
     border-top: 1px solid #dddddd;
     // 도움말
+    > .badge{
+        width: 100px;
+    }
+    > .articlebutton{
+        width: 65px;
+    }
     .if-editor-true {
         width: calc(100% - 85px);
     }
     .edit {
-        margin-right: 10px;
         background-color: #ffffff;
         border: none;
     }

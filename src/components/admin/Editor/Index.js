@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Preview from "./Preview";
 
 function Warning({ setCancel, setActivateEditor }) {
     return (
@@ -34,13 +35,15 @@ function Index({
     activateEditor,
     setActivateEditor,
     singleArti,
+    preview,
+    setPreview,
 }) {
     const [data, setData] = useState("");
     const [cancel, setCancel] = useState(false);
 
     return (
         <div className={activateEditor ? "editor" : "editor center"}>
-            {!activateEditor && (
+            {!activateEditor && !preview && (
                 <div className="request">
                     <strong>도움말을 선택해주세요</strong>
                 </div>
@@ -101,6 +104,7 @@ function Index({
                     </div>
                 </>
             )}
+            {preview && <Preview singleArti={singleArti} />}
         </div>
     );
 }

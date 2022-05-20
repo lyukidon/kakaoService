@@ -13,6 +13,8 @@ function WebEditor({ data }) {
     // 수정 버튼 클릭 시 확인 및 데이터
     const [articleId, setArticleId] = useState(-1);
     const [singleArti, setSingleArti] = useState(null);
+    // 미리보기
+    const [preview, setPreview] = useState(false);
     return (
         <div>
             <Helmet>
@@ -31,14 +33,15 @@ function WebEditor({ data }) {
                         setArticleId={setArticleId}
                         singleArti={singleArti}
                         setSingleArti={setSingleArti}
+                        preview={preview}
+                        setPreview={setPreview}
                     />
                     <Editor
                         activateEditor={activateEditor}
                         setActivateEditor={setActivateEditor}
-                        articleId={articleId}
-                        setArticleId={setArticleId}
                         singleArti={singleArti}
-                        setSingleArti={setSingleArti}
+                        preview={preview}
+                        setPreview={setPreview}
                     />
                 </div>
             </div>

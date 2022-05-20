@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Warning({ setChkTrash, article, setArticle, articleId }) {
+function Warning({
+    data,
+    handleFunc,
+    chkTrash,
+    setChkTrash,
+    article,
+    setArticle,
+    articleId,
+}) {
     return (
         <div className="warning">
             <div>삭제하시겠습니까?</div>
@@ -9,6 +17,7 @@ function Warning({ setChkTrash, article, setArticle, articleId }) {
                 <button
                     type="button"
                     onClick={() => {
+                        handleFunc(data, chkTrash, setChkTrash);
                         setChkTrash(false);
                     }}
                 >
@@ -31,34 +40,65 @@ function Warning({ setChkTrash, article, setArticle, articleId }) {
 }
 
 export default function List({
-    handleEdit,
+    handleFunc,
     editor,
+    service,
     activateEditor,
     setActivateEditor,
     article,
     setArticle,
     articleId,
     setArticleId,
+    chkTrash,
+    setChkTrash,
+    preview,
+    setPreview,
 }) {
-    const [chkTrash, setChkTrash] = useState(false);
     return (
         <>
             {article.map(
                 (c, i) =>
                     i < 8 && (
-                        <div key={c.article_id} className={c.article_id === articleId && activateEditor  ? "articleBox if-article-chosen" : "articleBox"}>
-                            <div className={editor && "if-editor-true"}>
+                        <div
+                            key={c.article_id}
+                            className={
+                                c.article_id === articleId
+                                    ? "articleBox if-article-chosen"
+                                    : "articleBox"
+                            }
+                        >
+                            <div className="badge">
+                                {service[c.service_id - 1].content}
+                            </div>
+                            <div
+                                role="button"
+                                tabIndex={0}
+                                className={
+                                    editor
+                                        ? "content if-editor-true"
+                                        : "content"
+                                }
+                                onClick={() => {
+                                    setPreview(!preview);
+                                    handleFunc(c, preview, setPreview);
+                                }}
+                                // onKeyDown={() => setPreview(!preview)}
+                            >
                                 {c.content}
                             </div>
                             {editor && (
-                                <div>
+                                <div className="articlebutton">
                                     {/* 수정버튼 */}
                                     <button
                                         type="button"
                                         className="edit"
                                         onClick={() => {
                                             setChkTrash(false);
-                                            handleEdit(c);
+                                            handleFunc(
+                                                c,
+                                                activateEditor,
+                                                setActivateEditor
+                                            );
                                         }}
                                     >
                                         <FontAwesomeIcon
@@ -73,7 +113,11 @@ export default function List({
                                         onClick={() => {
                                             setActivateEditor(false);
                                             setChkTrash(!chkTrash);
-                                            setArticleId(c.article_id);
+                                            handleFunc(
+                                                c,
+                                                chkTrash,
+                                                setChkTrash
+                                            );
                                         }}
                                     >
                                         <FontAwesomeIcon
@@ -83,10 +127,13 @@ export default function List({
                                     </button>
                                     {c.article_id === articleId && chkTrash && (
                                         <Warning
+                                            data={c}
+                                            chkTrash={chkTrash}
                                             setChkTrash={setChkTrash}
                                             article={article}
                                             setArticle={setArticle}
                                             articleId={articleId}
+                                            handleFunc={handleFunc}
                                         />
                                     )}
                                 </div>

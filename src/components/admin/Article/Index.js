@@ -9,13 +9,15 @@ import "../../../scss/admin/article.scss";
 
 // 관리자 컴포넌트
 function Article({
-    faqData,
     editor,
+    faqData,
     activateEditor,
     setActivateEditor,
     articleId,
     setArticleId,
     setSingleArti,
+    preview,
+    setPreview
 }) {
     const [ids, setIds] = useState({
         service_id: 0,
@@ -90,8 +92,9 @@ function Article({
                 return null;
         }
     };
-
-    // 수정 클릭 시
+    // 삭제 관련 
+    const [chkTrash, setChkTrash] = useState(false);
+    // 도움말 버튼 클릭 시
     const handleEdit = (data) => {
         if (!activateEditor) {
             setActivateEditor(true);
@@ -100,6 +103,22 @@ function Article({
         } else {
             if (articleId === data.article_id) {
                 setActivateEditor(false);
+                setArticleId(-1);
+            } else {
+                setArticleId(data.article_id);
+                setSingleArti({ ...data });
+            }
+        }
+    };
+
+    const handleFunc=(data, bool, setfunc)=>{
+        if (!bool) {
+            setfunc(true);
+            setArticleId(data.article_id);
+            setSingleArti({ ...data });
+        } else {
+            if (articleId === data.article_id) {
+                setfunc(false);
                 setArticleId(-1);
             } else {
                 setArticleId(data.article_id);
@@ -223,14 +242,19 @@ function Article({
             <div>
                 {/* 도움말 목록 */}
                 <List
-                    handleEdit={handleEdit}
+                    handleFunc={handleFunc}
                     editor={editor}
+                    service={service && service}
                     activateEditor={activateEditor}
                     setActivateEditor={setActivateEditor}
                     article={article}
                     setArticle={setArticle}
                     articleId={articleId}
                     setArticleId={setArticleId}
+                    chkTrash={chkTrash}
+                    setChkTrash={setChkTrash}
+                    preview={preview}
+                    setPreview={setPreview}
                 />
             </div>
         </div>
