@@ -94,6 +94,7 @@ export default function List({
                                         className="edit"
                                         onClick={() => {
                                             setChkTrash(false);
+                                            setPreview(false)
                                             handleFunc(
                                                 c,
                                                 activateEditor,
