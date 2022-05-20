@@ -21,7 +21,6 @@ function Header() {
         axios
             .get("/data/header.json")
             .then((res) => setHeaderData(res.data))
-            .catch((err) => console.error(err));
     }, []);
     return (
         <header className="common-width">

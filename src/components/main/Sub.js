@@ -44,7 +44,6 @@ function Sub() {
         axios
             .get("/data/sub.json")
             .then((res) => setSub(res.data))
-            .catch((err) => console.error(err));
     }, []);
     return (
         <div className="Sub common-width">

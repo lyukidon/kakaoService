@@ -8,7 +8,6 @@ function MainAll() {
         axios
             .get("/data/mainAll.json")
             .then((res) => setMainAllData(res.data))
-            .catch((err) => console.error(err));
     }, []);
     return (
         <div>
