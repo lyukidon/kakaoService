@@ -20,7 +20,8 @@
         grid-area: editor;
         display: flex;
         flex-direction: column;
-        .request {
+        overflow-y: auto;
+         .request {
             border: 3px double lightgrey;
             border-radius: 20px;
             padding: 18px 20px;
@@ -56,16 +57,26 @@
                     width: 110px;
                     margin-top: 10px;
                     margin-left: auto;
+                    margin-left: 7px;
                     padding: 7px 10px;
                     background-color: #ffffff;
-                    border: 1px solid black;
-                    > svg {
+                    border: 1px solid #C4C4C4;
+                    border-radius: 9px;
+                    &:hover{
+                        background-color: #dddddd;
+                    }
+                    .x-icon, .floppy-disk-icon{
                         margin-right: 10px;
-                        color: #385a9e;
+                    }
+                    .x-icon{
+                        color: #F32735;
+                    }
+                    .floppy-disk-icon{
+                        color: #0187e0;
                     }
                 }
             }
-            .previewExplain{
+            .previewExplain {
                 overflow-y: auto;
                 // padding: 15px;
                 // border: 1px solid black;
@@ -77,4 +88,7 @@
         justify-content: center;
         align-items: center;
     }
+}
+.document-editor__editable-container, .ck-editor__editable{
+    min-height: 400px;
 }

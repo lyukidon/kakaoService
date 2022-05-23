@@ -75,8 +75,10 @@ function Index({
                                 }}
                             >
                                 <FontAwesomeIcon
+                                    className="x-icon"
                                     icon="fa-solid fa-x"
                                     size="lg"
+                                    color="red"
                                 />
                                 취소하기
                             </button>
@@ -89,8 +91,10 @@ function Index({
                                 }
                             >
                                 <FontAwesomeIcon
+                                    className="floppy-disk-icon"
                                     icon="fa-solid fa-floppy-disk"
                                     size="lg"
+                                    color="#0096F8"
                                 />
                                 저장하기
                             </button>

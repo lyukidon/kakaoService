@@ -1,6 +1,5 @@
 .article {
     padding: 10px;
-
 }
 .selectBox {
     margin-bottom: 20px;
@@ -43,19 +42,27 @@
     padding: 10px 0px;
     border-top: 1px solid #dddddd;
     user-select: none;
-    &:hover{
+    &:hover {
         cursor: pointer;
         text-decoration: underline;
     }
     // 도움말
-    > .badge{
+    > .badge {
         width: 100px;
     }
-    > .articlebutton{
+    > .articlebutton {
         width: 65px;
     }
     .if-editor-true {
         width: calc(100% - 85px);
+    }
+    .edit,
+    .trash {
+        padding: 3px 5px;
+        border-radius: 10px;
+        &:hover{
+            background-color: lightgrey;
+        }
     }
     .edit {
         background-color: #ffffff;
@@ -69,7 +76,7 @@
         }
     }
 }
-.if-article-chosen{
+.if-article-chosen {
     text-decoration: underline;
     font-weight: bold;
 }
