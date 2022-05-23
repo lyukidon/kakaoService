@@ -21,7 +21,7 @@
         display: flex;
         flex-direction: column;
         overflow-y: auto;
-         .request {
+        .request {
             border: 3px double lightgrey;
             border-radius: 20px;
             padding: 18px 20px;
@@ -60,18 +60,19 @@
                     margin-left: 7px;
                     padding: 7px 10px;
                     background-color: #ffffff;
-                    border: 1px solid #C4C4C4;
+                    border: 1px solid #c4c4c4;
                     border-radius: 9px;
-                    &:hover{
+                    &:hover {
                         background-color: #dddddd;
                     }
-                    .x-icon, .floppy-disk-icon{
+                    .x-icon,
+                    .floppy-disk-icon {
                         margin-right: 10px;
                     }
-                    .x-icon{
-                        color: #F32735;
+                    .x-icon {
+                        color: #f32735;
                     }
-                    .floppy-disk-icon{
+                    .floppy-disk-icon {
                         color: #0187e0;
                     }
                 }
@@ -89,9 +90,11 @@
         align-items: center;
     }
 }
-.document-editor__editable-container, .ck-editor__editable{
-    min-height: 400px;
+// 에디터 라이브러리 수정
+:root {
+    --ck-border-radius: 8px !important;
 }
-:root{
-    --ck-border-radius: 8px
+.document-editor__editable-container,
+.ck-editor__editable {
+    min-height: 400px;
 }
