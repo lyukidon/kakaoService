@@ -37,6 +37,7 @@ function Index({
     singleArti,
     preview,
     setPreview,
+    setArticleId,
 }) {
     const [data, setData] = useState("");
     const [cancel, setCancel] = useState(false);
@@ -108,7 +109,13 @@ function Index({
                     </div>
                 </>
             )}
-            {preview && <Preview singleArti={singleArti} />}
+            {preview && (
+                <Preview
+                    setPreview={setPreview}
+                    setArticleId={setArticleId}
+                    singleArti={singleArti}
+                />
+            )}
         </div>
     );
 }

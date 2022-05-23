@@ -42,6 +42,7 @@ function WebEditor({ data }) {
                         singleArti={singleArti}
                         preview={preview}
                         setPreview={setPreview}
+                        setArticleId={setArticleId}
                     />
                 </div>
             </div>
