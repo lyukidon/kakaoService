@@ -122,6 +122,9 @@ function Article({
                 setSingleArti({ ...data });
             }
         }
+        console.log(articleId)
+        console.log(data.article_id)
+        console.log(bool)
     };
     return (
         <div className="article">

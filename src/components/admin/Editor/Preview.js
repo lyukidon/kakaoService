@@ -4,7 +4,7 @@ function Preview({ singleArti }) {
     const explainRef = useRef(null);
     useEffect(() => {
         explainRef.current.innerHTML = singleArti.explain;
-    }, []);
+    }, [singleArti]);
     return (
         <div>
             <div>

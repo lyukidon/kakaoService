@@ -80,7 +80,6 @@ export default function List({
                                 }
                                 onClick={() => {
                                     setActivateEditor(false)
-                                    setPreview(!preview);
                                     handleFunc(c, preview, setPreview);
                                 }}
                                 // onKeyDown={() => setPreview(!preview)}
