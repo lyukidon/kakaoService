@@ -79,6 +79,7 @@ export default function List({
                                         : "content"
                                 }
                                 onClick={() => {
+                                    setActivateEditor(false)
                                     setPreview(!preview);
                                     handleFunc(c, preview, setPreview);
                                 }}
@@ -91,7 +92,7 @@ export default function List({
                                     {/* 수정버튼 */}
                                     <button
                                         type="button"
-                                        className="edit"
+                                        className={activateEditor && c.article_id === articleId ? "edit activateEditor" : "edit"}
                                         onClick={() => {
                                             setChkTrash(false);
                                             setPreview(false)
