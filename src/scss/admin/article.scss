@@ -43,6 +43,10 @@
     padding: 10px 0px;
     border-top: 1px solid #dddddd;
     user-select: none;
+    &:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
     // 도움말
     > .badge{
         width: 100px;
