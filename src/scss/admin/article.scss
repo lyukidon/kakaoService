@@ -26,7 +26,7 @@
                 &:focus {
                     outline: none;
                 }
-                &:hover{
+                &:hover {
                     background-color: #dddddd;
                     > option {
                         background-color: #ffffff;
@@ -42,7 +42,7 @@
         > svg {
             margin-right: 5px;
         }
-        &:hover{
+        &:hover {
             background-color: #dddddd;
         }
     }
@@ -72,7 +72,7 @@
     .trash {
         padding: 3px 5px;
         border-radius: 10px;
-        &:hover{
+        &:hover {
             background-color: lightgrey;
         }
     }
@@ -80,7 +80,7 @@
         background-color: #ffffff;
         border: none;
     }
-    .activateEditor{
+    .activateEditor {
         background-color: #dddddd;
     }
     .trash {
@@ -99,7 +99,22 @@
     z-index: 1;
     padding: 20px;
     position: absolute;
-    border: 1px solid;
+    border: 1px solid #909090;
+    border-radius: 8px;
     background-color: #ffffff;
-    opacity: 1;
+    > div {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 5px;
+        justify-content: space-evenly;
+        > button {
+            min-width: 50px;
+            background-color: #ffffff;
+            border: 1px solid #909090;
+            border-radius: 7px;
+            &:hover{
+                background-color: #dddddd;
+            }
+        }
+    }
 }
