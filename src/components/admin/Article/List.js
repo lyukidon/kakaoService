@@ -113,7 +113,6 @@ export default function List({
                                 className="trash"
                                 onClick={() => {
                                     setActivateEditor(false);
-                                    setChkTrash(!chkTrash);
                                     handleFunc(c, chkTrash, setChkTrash);
                                 }}
                             >
