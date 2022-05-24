@@ -43,6 +43,7 @@ module.exports = {
         "no-console": 1,
         "no-else-return": 1,
         "no-lonely-if": 0,
-        "jsx-a11y/click-events-have-key-events":1
+        "jsx-a11y/click-events-have-key-events":1,
+        "no-nested-ternary":1
     },
 };

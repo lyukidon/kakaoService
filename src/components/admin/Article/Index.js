@@ -79,11 +79,12 @@ function Article({
                     })
                     .sort((a, b) => a.article_id - b.article_id)
             );
-            
         }
     }, [faqData, ids]);
-    useEffect(()=>{changeStatistic()},[service,category,platform,article])
-    
+    useEffect(() => {
+        changeStatistic();
+    }, [service, category, platform, article]);
+
     const changeOption = (event) => {
         const { name, value } = event.target;
         switch (name) {
@@ -231,14 +232,17 @@ function Article({
                     )}
                 </div>
                 {editor && (
-                    <button type="button" onClick={()=>{
-                        setArticleId(faqData.article.length)
-                        setActivateEditor(!activateEditor)
-                        setSingleArti({
-                            content:"",
-                            explain:"",
-                        })
-                    }}>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setArticleId(faqData.article.length);
+                            setActivateEditor(!activateEditor);
+                            setSingleArti({
+                                content: "",
+                                explain: "",
+                            });
+                        }}
+                    >
                         <FontAwesomeIcon icon="fa-solid fa-plus" />
                         도움말 추가
                     </button>
@@ -246,10 +250,13 @@ function Article({
             </div>
             <div>
                 {/* 도움말 목록 */}
+
                 <List
                     handleFunc={handleFunc}
                     editor={editor}
                     service={service && service}
+                    category={category && category}
+                    platform={platform && platform}
                     activateEditor={activateEditor}
                     setActivateEditor={setActivateEditor}
                     article={article}

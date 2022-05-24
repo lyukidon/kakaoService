@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Warning({
@@ -43,6 +43,8 @@ export default function List({
     handleFunc,
     editor,
     service,
+    category,
+    platform,
     activateEditor,
     setActivateEditor,
     article,
@@ -66,7 +68,13 @@ export default function List({
                     }
                 >
                     <div className="badge">
-                        {service[c.service_id - 1].content}
+                        {
+                            category.length === 0
+                            ? service[c.service_id - 1].content
+                            : platform.length === 0
+                            ? category[c.category_id - 1].content
+                            : platform[c.platform_id - 1].content
+                        }
                     </div>
                     <div
                         role="button"
