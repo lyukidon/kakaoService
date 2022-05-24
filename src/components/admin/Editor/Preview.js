@@ -7,20 +7,16 @@ const Title = styled.div`
     flex-direction: row;
     justify-content: space-between;
 `;
-const Cancel = styled.button`
-    padding: 0px 7px;
+const Close = styled.button`
+    width: 30px;
     background-color: #ffffff;
-    border: 1px solid #909090;
+    border: none;
     border-radius: 7px;
-    &:hover{
+    color: red;
+    &:hover {
         background-color: #dddddd;
     }
-    > svg {
-        margin-right: 5px;
-        color: red;
-    }
-    
-`
+`;
 
 function Preview({ setPreview, setArticleId, singleArti }) {
     const explainRef = useRef(null);
@@ -31,17 +27,16 @@ function Preview({ setPreview, setArticleId, singleArti }) {
         <div>
             <Title>
                 <b>{singleArti.content}</b>
-                <Cancel
+                <Close
                     type="button"
                     onClick={() => {
                         setPreview(false);
-                        setArticleId(-1)
-                        console.log(setArticleId)
+                        setArticleId(-1);
+                        console.log(setArticleId);
                     }}
                 >
-                    <FontAwesomeIcon icon="fa-solid fa-x" />
-                    닫기
-                </Cancel>
+                    <FontAwesomeIcon icon="fa-solid fa-x" size="lg" />
+                </Close>
             </Title>
             <hr />
             <div className="previewExplain" ref={explainRef} />
