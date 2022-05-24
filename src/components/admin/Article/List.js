@@ -17,15 +17,6 @@ function Warning({
                 <button
                     type="button"
                     onClick={() => {
-                        handleFunc(data, chkTrash, setChkTrash);
-                        setChkTrash(false);
-                    }}
-                >
-                    취소
-                </button>
-                <button
-                    type="button"
-                    onClick={() => {
                         setChkTrash(false);
                         setArticle(
                             article.filter((c) => c.article_id !== articleId)
@@ -33,6 +24,15 @@ function Warning({
                     }}
                 >
                     삭제
+                </button>
+                <button
+                    type="button"
+                    onClick={() => {
+                        handleFunc(data, chkTrash, setChkTrash);
+                        setChkTrash(false);
+                    }}
+                >
+                    취소
                 </button>
             </div>
         </div>
