@@ -231,7 +231,14 @@ function Article({
                     )}
                 </div>
                 {editor && (
-                    <button type="button">
+                    <button type="button" onClick={()=>{
+                        setArticleId(faqData.article.length)
+                        setActivateEditor(!activateEditor)
+                        setSingleArti({
+                            content:"",
+                            explain:"",
+                        })
+                    }}>
                         <FontAwesomeIcon icon="fa-solid fa-plus" />
                         도움말 추가
                     </button>
