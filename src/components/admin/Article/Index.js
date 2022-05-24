@@ -79,9 +79,10 @@ function Article({
                     })
                     .sort((a, b) => a.article_id - b.article_id)
             );
-            changeStatistic()
+            
         }
     }, [faqData, ids]);
+    useEffect(()=>{changeStatistic()},[service,category,platform,article])
     
     const changeOption = (event) => {
         const { name, value } = event.target;
