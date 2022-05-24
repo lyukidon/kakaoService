@@ -10,7 +10,7 @@
         display: flex;
         flex-direction: row;
         > svg {
-            margin: 1px 13px;
+            margin: 2px 13px;
             color: grey;
         }
         > div > div {
@@ -20,19 +20,30 @@
             > select {
                 width: 130px;
                 padding: 5px;
-                border: 1px solid black;
+                border: 1px solid #909090;
+                border-radius: 8px;
                 background-color: #ffffff;
                 &:focus {
                     outline: none;
+                }
+                &:hover{
+                    background-color: #dddddd;
+                    > option {
+                        background-color: #ffffff;
+                    }
                 }
             }
         }
     }
     > button {
         background-color: #ffffff;
-        border: 1px solid black;
+        border: 1px solid #909090;
+        border-radius: 7px;
         > svg {
             margin-right: 5px;
+        }
+        &:hover{
+            background-color: #dddddd;
         }
     }
 }
