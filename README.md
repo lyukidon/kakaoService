@@ -124,17 +124,25 @@ react-router-dom 이용해 SPA로 제작
   1. 메인 페이지에서 로그인 클릭
   2. 로그인 페이지에서 관리자 계정 로그인 (test: admin1/1234)
 - 구현 페이지
+  - login
+    - localStorage에 로그인 데이터 저장
   - dashboard
-    - 트래픽 통계 (Chart.js 라이브러리)
+    - 트래픽 통계 (사용 라이브러리: Chart.js)
     - 최근 문의
     - 도움말 목록
+      - 카테고리 변경
+      - 카테고리 설정 별 배지
   - faq
-- 구현 기능 
-  - [x] 로그인
-  - [x] 로그아웃
-  - [x] 카테고리 설정
-  - [x] 카테고리 추가
-  - [x] 카테고리 제거
-  - [x] 도움말 제거
-  - [x] 에디터 추가 (TinyMCE 라이브러리)
+    - 도움말 관리
+      - 도움말 추가
+      - 도움말 수정
+      - 도움말 제거
+    - 에디터
+      - 사용 라이브러리: CKEditor 5
+        - [github](https://github.com/ckeditor/ckeditor5)
+        - [demo](https://ckeditor.com/ckeditor-5/demo/)
+      - 저장하기 버튼
+        - 클릭 시, 콘솔에 변화된 데이터 확인
+    - 미리보기
+      - 데이터(제목, 내용) 미리보기 (innerHTML 사용)
 </details>
