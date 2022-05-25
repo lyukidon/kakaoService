@@ -7,7 +7,7 @@ import Admin from "./Admin";
 import Login from "./Login";
 import AdminFaq from "./AdminFaq";
 
-const adminPath = ["/admin/dashboard", "/admin/edit"];
+const adminPath = ["/admin/dashboard", "/admin/faq"];
 
 function reducer(state, action) {
     switch (action.type) {
@@ -52,9 +52,7 @@ function PrivateRoute() {
             dispatch({ type: "ERROR", error: err });
         }
     };
-    useEffect(() => {
-        getfaq();
-    }, []);
+    useEffect(() => getfaq(), []);
     const { data } = state;
     return (
         <Routes>
@@ -78,7 +76,11 @@ function PrivateRoute() {
             <Route
                 path="/dashboard"
                 element={
-                    username ? <Admin data={data} /> : <Navigate replace to="/admin" />
+                    username ? (
+                        <Admin data={data} />
+                    ) : (
+                        <Navigate replace to="/admin" />
+                    )
                 }
             />
             <Route
@@ -93,7 +95,13 @@ function PrivateRoute() {
             />
             <Route
                 path="/faq"
-                element={username ? <AdminFaq data={data} /> : <Navigate replace to="/admin" />}
+                element={
+                    username ? (
+                        <AdminFaq data={data} />
+                    ) : (
+                        <Navigate replace to="/admin" />
+                    )
+                }
             />
         </Routes>
     );
