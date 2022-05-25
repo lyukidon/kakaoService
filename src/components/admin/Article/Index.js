@@ -172,7 +172,7 @@ function Article({
                         <>
                             <FontAwesomeIcon
                                 icon="fa-solid fa-angle-right"
-                                size="xl"
+                                // size="lg"
                             />
                             <div className="categorySelect">
                                 <div>
@@ -203,7 +203,7 @@ function Article({
                         <>
                             <FontAwesomeIcon
                                 icon="fa-solid fa-angle-right"
-                                size="xl"
+                                // size="lg"
                             />
                             <div className="platformSelect">
                                 <div>
