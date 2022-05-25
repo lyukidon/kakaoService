@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Warning({
@@ -56,6 +56,15 @@ export default function List({
     preview,
     setPreview,
 }) {
+    // pagination
+    const [page, setPage] = useState([]);
+    useEffect(() => {
+        let tmparr = [];
+        for (let i = 1; i <= Math.ceil(article.length / 20); i++) {
+            tmparr = [...tmparr, i];
+        }
+        setPage([...tmparr]);
+    }, [article]);
     return (
         <>
             {/* 헤더 */}
@@ -65,11 +74,7 @@ export default function List({
             </div>
             {/* 도움말 목록 */}
             {article.map((c) => (
-                <div
-                    key={c.article_id}
-                    className="articleBox"
-                    
-                >
+                <div key={c.article_id} className="articleBox">
                     <div className="badge">
                         <div>
                             {category.length === 0
@@ -82,11 +87,13 @@ export default function List({
                     <div
                         role="button"
                         tabIndex={0}
-                        className={
-                            `${editor ? "content if-editor-true" : "content"} ${ c.article_id === articleId
+                        className={`${
+                            editor ? "content if-editor-true" : "content"
+                        } ${
+                            c.article_id === articleId
                                 ? "if-article-chosen"
-                                : null}`
-                        }
+                                : null
+                        }`}
                         onClick={() => {
                             setActivateEditor(false);
                             handleFunc(c, preview, setPreview);
@@ -150,7 +157,15 @@ export default function List({
                 </div>
             ))}
             {/* Pagination */}
-            {Math.ceil(article.length / 20)}
+            <div className="page">
+                <div>
+                    {page.map((c) => (
+                        <button key={c} type="button">
+                            {c}
+                        </button>
+                    ))}
+                </div>
+            </div>
         </>
     );
 }
