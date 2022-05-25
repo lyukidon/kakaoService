@@ -6,8 +6,9 @@ import NavData from "./NavData";
 
 const TopNav = () => (
     <div className="topNav">
-        <div className="leftTopNav">
-            <div>
+        <Link to="/admin/dashboard">관리자 페이지</Link>
+        <div>
+            <div className="user">
                 <FontAwesomeIcon
                     className="sideNavIcon"
                     icon="fa-solid fa-circle-user"
@@ -15,16 +16,14 @@ const TopNav = () => (
                 />
                 {window.localStorage.getItem("userId")}
             </div>
-        </div>
-        <div>관리자 페이지</div>
-        <div className="rightTopNav">
-            <Link
-                to="/"
-                onClick={() => window.localStorage.removeItem("userId")}
-            >
-                로그아웃
-                <FontAwesomeIcon icon="fa-solid fa-lock" />
-            </Link>
+            <div className="logout">
+                <Link
+                    to="/"
+                    onClick={() => window.localStorage.removeItem("userId")}
+                >
+                    로그아웃
+                </Link>
+            </div>
         </div>
     </div>
 );

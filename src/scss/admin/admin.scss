@@ -7,23 +7,33 @@
     justify-content: space-between;
     padding: 10px 10px;
     background-color: #533d40;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    .leftTopNav > a {
-        margin-right: 20px;
-    }
-    div > a {
+    color: #ffffff;
+    > a {
         color: white;
         > svg {
             margin: 0px 5px;
         }
     }
-    .rightTopNav {
-        > span {
-            font-weight: 400;
-            margin-right: 15px;
+    > button {
+        background-color: transparent;
+        color: #ffffff;
+        font-size: 14px;
+    }
+    .logout {
+        display: none;
+        position: absolute;
+        right: 5px;
+        background-color: #f9f9f9;
+        border-radius: 7px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        padding: 12px 16px;
+        z-index: 1;
+        &:hover{
+            display: block;
         }
+    }
+    .user:hover~ .logout{
+        display: block;
     }
 }
 .contents {
@@ -50,7 +60,7 @@
         }
     }
     .dashboard {
-        height: calc(100vh - 55px);
+        height: calc(100vh - 64px);
         padding: 10px 7px;
         grid-area: dashboard;
         display: grid;
