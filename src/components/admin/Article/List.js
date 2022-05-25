@@ -58,6 +58,10 @@ export default function List({
 }) {
     return (
         <>
+            <div className="listHeader">
+                <div className="listCategory">카테고리</div>
+                <div className="listTitle">제목</div>
+            </div>
             {article.map((c) => (
                 <div
                     key={c.article_id}
@@ -68,13 +72,11 @@ export default function List({
                     }
                 >
                     <div className="badge">
-                        {
-                            category.length === 0
+                        {category.length === 0
                             ? service[c.service_id - 1].content
                             : platform.length === 0
                             ? category[c.category_id - 1].content
-                            : platform[c.platform_id - 1].content
-                        }
+                            : platform[c.platform_id - 1].content}
                     </div>
                     <div
                         role="button"

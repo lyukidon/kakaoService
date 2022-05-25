@@ -47,20 +47,32 @@
         }
     }
 }
-
+.listHeader{
+    margin-bottom: 7px;
+    font-size: small;
+    display: flex;
+    flex-direction: row;
+    .listCategory{
+        width:110px;
+    }
+}
 .articleBox {
     display: flex;
     flex-direction: row;
     padding: 10px 0px;
     border-top: 1px solid #dddddd;
     user-select: none;
-    &:hover {
-        cursor: pointer;
-        text-decoration: underline;
-    }
     // 도움말
     > .badge {
-        width: 100px;
+        width: 110px;
+        font-size: 15px;
+        border: 1px solid black;
+    }
+    > .content{
+        &:hover{
+            cursor: pointer;
+            text-decoration: underline;
+        }
     }
     > .articlebutton {
         width: 65px;
