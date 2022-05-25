@@ -60,7 +60,10 @@ export default function List({
     const [page, setPage] = useState([]);
     useEffect(() => {
         let tmparr = [];
-        for (let i = 1; i <= Math.ceil(article.length / 20); i++) {
+        const num = editor
+            ? Math.ceil(article.length / 20)
+            : Math.ceil(article.length / 8);
+        for (let i = 1; i <= num; i++) {
             tmparr = [...tmparr, i];
         }
         setPage([...tmparr]);
