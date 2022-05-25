@@ -64,11 +64,13 @@ export default function List({
     // 페이지에 렌더링할 도움말 번호
     const [low, setLow] = useState(0);
     const [high, setHigh] = useState(0);
+    const editorRender = 16
+    const nonEditorRender = 7
     useEffect(() => {
         let tmparr = [];
         const num = editor
-            ? Math.ceil(article.length / 20)
-            : Math.ceil(article.length / 8);
+            ? Math.ceil(article.length / editorRender)
+            : Math.ceil(article.length / nonEditorRender);
         for (let i = 1; i <= num; i++) {
             tmparr = [...tmparr, i];
         }
@@ -77,11 +79,11 @@ export default function List({
     }, [article]);
     useEffect(() => {
         if (editor) {
-            setLow((pageSelect - 1) * 18);
-            setHigh(pageSelect * 18);
+            setLow((pageSelect - 1) * editorRender);
+            setHigh(pageSelect * editorRender);
         } else {
-            setLow((pageSelect - 1) * 8);
-            setHigh(pageSelect * 8);
+            setLow((pageSelect - 1) * nonEditorRender);
+            setHigh(pageSelect * nonEditorRender);
         }
     }, [pageSelect]);
 
