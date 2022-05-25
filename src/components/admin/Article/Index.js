@@ -106,6 +106,14 @@ function Article({
                 return null;
         }
         changeStatistic();
+        // 우측 정리하기
+        setArticleId(-1);
+        setActivateEditor(false)
+        setPreview(false)
+        setSingleArti({
+            content:"",
+            explain:"",
+        })
     };
     // 삭제 관련
     const [chkTrash, setChkTrash] = useState(false);
