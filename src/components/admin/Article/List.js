@@ -65,24 +65,25 @@ export default function List({
             {article.map((c) => (
                 <div
                     key={c.article_id}
-                    className={
-                        c.article_id === articleId
-                            ? "articleBox if-article-chosen"
-                            : "articleBox"
-                    }
+                    className="articleBox"
+                    
                 >
                     <div className="badge">
-                        {category.length === 0
-                            ? service[c.service_id - 1].content
-                            : platform.length === 0
-                            ? category[c.category_id - 1].content
-                            : platform[c.platform_id - 1].content}
+                        <div>
+                            {category.length === 0
+                                ? service[c.service_id - 1].content
+                                : platform.length === 0
+                                ? category[c.category_id - 1].content
+                                : platform[c.platform_id - 1].content}
+                        </div>
                     </div>
                     <div
                         role="button"
                         tabIndex={0}
                         className={
-                            editor ? "content if-editor-true" : "content"
+                            `${editor ? "content if-editor-true" : "content"} ${ c.article_id === articleId
+                                ? "if-article-chosen"
+                                : null}`
                         }
                         onClick={() => {
                             setActivateEditor(false);

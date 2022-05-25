@@ -53,7 +53,7 @@
     display: flex;
     flex-direction: row;
     .listCategory{
-        width:110px;
+        min-width: 110px;
     }
 }
 .articleBox {
@@ -64,11 +64,18 @@
     user-select: none;
     // 도움말
     > .badge {
-        width: 110px;
-        font-size: 15px;
-        border: 1px solid black;
+        min-width: 110px;
+        > div {
+            font-size: small;
+            border: 1px solid black;
+
+        }
     }
     > .content{
+        width: 500px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
         &:hover{
             cursor: pointer;
             text-decoration: underline;
