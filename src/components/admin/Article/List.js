@@ -12,7 +12,7 @@ function Warning({
 }) {
     return (
         <div className="warning">
-            <div>삭제하시겠습니까?</div>
+            <div className="question">삭제하시겠습니까?</div>
             <div>
                 <button
                     type="button"

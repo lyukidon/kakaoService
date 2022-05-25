@@ -7,7 +7,7 @@ import Preview from "./Preview";
 function Warning({ setCancel, setActivateEditor }) {
     return (
         <div className="warning">
-            <div>변경을 취소 하시겠습니까?</div>
+            <div className="question">변경을 취소 하시겠습니까?</div>
             <div>
                 <button
                     type="button"

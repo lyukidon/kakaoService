@@ -124,15 +124,17 @@
 }
 .warning {
     z-index: 1;
-    padding: 20px;
+    padding: 16px 20px;
     position: absolute;
     border: 1px solid #909090;
     border-radius: 8px;
     background-color: #ffffff;
+    > .question {
+        margin-bottom: 15px;
+    }
     > div {
         display: flex;
         flex-direction: row;
-        margin-bottom: 5px;
         justify-content: space-evenly;
         > button {
             min-width: 50px;
