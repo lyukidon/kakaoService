@@ -91,7 +91,7 @@ export default function List({
             {/* 도움말 목록 */}
             {article.map(
                 (c, i) =>
-                    i > low &&
+                    i >= low &&
                     i < high && (
                         <div key={c.article_id} className="articleBox">
                             <div className="badge">
