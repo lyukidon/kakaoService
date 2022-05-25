@@ -57,7 +57,13 @@ export default function List({
     setPreview,
 }) {
     // pagination
+    // page 갯수
     const [page, setPage] = useState([]);
+    // 선택된 페이지
+    const [pageSelect, setPageSelect] = useState(1);
+    // 페이지에 렌더링할 도움말 번호
+    const [low, setLow] = useState(0);
+    const [high, setHigh] = useState(0);
     useEffect(() => {
         let tmparr = [];
         const num = editor
@@ -67,10 +73,8 @@ export default function List({
             tmparr = [...tmparr, i];
         }
         setPage([...tmparr]);
+        setPageSelect(1);
     }, [article]);
-    const [pageSelect, setPageSelect] = useState(1);
-    const [low, setLow] = useState(0);
-    const [high, setHigh] = useState(0);
     useEffect(() => {
         if (editor) {
             setLow((pageSelect - 1) * 18);
@@ -186,11 +190,13 @@ export default function List({
             {/* Pagination */}
             <div className="page">
                 <div>
-                    {page.map((c,i) => (
+                    {page.map((c, i) => (
                         <button
                             key={c}
                             type="button"
-                            className={`pageBtn ${pageSelect === i+1 && "if-page-selected"}`}
+                            className={`pageBtn ${
+                                pageSelect === i + 1 && "if-page-selected"
+                            }`}
                             onClick={() => setPageSelect(c)}
                         >
                             {c}
