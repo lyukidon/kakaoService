@@ -186,10 +186,11 @@ export default function List({
             {/* Pagination */}
             <div className="page">
                 <div>
-                    {page.map((c) => (
+                    {page.map((c,i) => (
                         <button
                             key={c}
                             type="button"
+                            className={`pageBtn ${pageSelect === i+1 && "if-page-selected"}`}
                             onClick={() => setPageSelect(c)}
                         >
                             {c}
