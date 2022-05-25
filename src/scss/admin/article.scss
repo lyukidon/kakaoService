@@ -1,6 +1,14 @@
 .article {
     padding: 10px;
     overflow-y: auto;
+    &::-webkit-scrollbar{
+        width: 8px;
+    }
+    &::-webkit-scrollbar-thumb{
+        border: 2px solid #adadad;
+        border-radius: 10px;
+        background-color: none;
+    }
 }
 .selectBox {
     margin-bottom: 20px;

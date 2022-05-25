@@ -58,10 +58,12 @@ export default function List({
 }) {
     return (
         <>
+            {/* 헤더 */}
             <div className="listHeader">
                 <div className="listCategory">카테고리</div>
                 <div className="listTitle">제목</div>
             </div>
+            {/* 도움말 목록 */}
             {article.map((c) => (
                 <div
                     key={c.article_id}
@@ -147,6 +149,8 @@ export default function List({
                     )}
                 </div>
             ))}
+            {/* Pagination */}
+            {Math.ceil(article.length / 20)}
         </>
     );
 }
