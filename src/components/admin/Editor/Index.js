@@ -38,7 +38,7 @@ function Index({
     preview,
     setPreview,
     setArticleId,
-    handleFunc
+    handleFunc,
 }) {
     const [data, setData] = useState("");
     const [cancel, setCancel] = useState(false);
@@ -86,12 +86,13 @@ function Index({
                             </button>
                             <button
                                 type="button"
+                                className={!data && "not-allowed"}
                                 onClick={() =>
                                     data
                                         ? console.log(data)
                                         : alert("내용을 수정해주세요")
                                 }
-                                disabled
+                                disabled={data ? false : true}
                             >
                                 <FontAwesomeIcon
                                     className="floppy-disk-icon"

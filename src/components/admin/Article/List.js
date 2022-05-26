@@ -86,7 +86,6 @@ export default function List({
             setHigh(pageSelect * nonEditorRender);
         }
     }, [pageSelect]);
-
     return (
         <>
             {/* 헤더 */}
