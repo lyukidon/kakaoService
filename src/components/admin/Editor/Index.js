@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -43,7 +43,9 @@ function Index({
 }) {
     const [data, setData] = useState("");
     const [cancel, setCancel] = useState(false);
-
+    useEffect(() => {
+        setData("");
+    }, [activateEditor]);
     return (
         <div className={activateEditor || preview ? "editor" : "editor center"}>
             {!activateEditor && !preview && (
@@ -88,11 +90,7 @@ function Index({
                             <button
                                 type="button"
                                 className={!data && "not-allowed"}
-                                onClick={() =>
-                                    data
-                                        ? console.log(data)
-                                        : alert("내용을 수정해주세요")
-                                }
+                                onClick={() => console.log(data)}
                                 disabled={!data ? true : false}
                             >
                                 <FontAwesomeIcon
