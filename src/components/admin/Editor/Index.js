@@ -4,7 +4,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Preview from "./Preview";
 
-function Warning({ setCancel, setActivateEditor }) {
+function Warning({ setPreview, setCancel, setActivateEditor }) {
     return (
         <div className="warning">
             <div className="question">변경을 취소 하시겠습니까?</div>
@@ -12,6 +12,7 @@ function Warning({ setCancel, setActivateEditor }) {
                 <button
                     type="button"
                     onClick={() => {
+                        setPreview(true);
                         setActivateEditor(false);
                         setCancel(false);
                     }}
@@ -104,6 +105,7 @@ function Index({
                             </button>
                             {cancel && (
                                 <Warning
+                                    setPreview={setPreview}
                                     setActivateEditor={setActivateEditor}
                                     setCancel={setCancel}
                                 />
