@@ -43,9 +43,10 @@ module.exports = {
         "no-console": 1,
         "no-else-return": 1,
         "no-lonely-if": 0,
-        "jsx-a11y/click-events-have-key-events":1,
-        "no-nested-ternary":1,
-        "react/display-name":0,
-        "arrow-body-style":0
+        "jsx-a11y/click-events-have-key-events": 1,
+        "no-nested-ternary": 1,
+        "react/display-name": 0,
+        "arrow-body-style": 0,
+        "no-unneeded-ternary": 0,
     },
 };
