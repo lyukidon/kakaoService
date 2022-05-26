@@ -65,21 +65,24 @@
     }
 }
 .articleBox {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 100px auto 60px;
     padding: 10px 0px;
     border-top: 1px solid #dddddd;
     user-select: none;
     // 도움말
     > .badge {
-        min-width: 110px;
-        > div {
+        > span{
+            padding: 0px 6px;
             font-size: small;
             border: 1px solid black;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
         }
     }
     > .content {
-        width: 500px;
+        width: auto;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
@@ -91,9 +94,7 @@
     > .articlebutton {
         width: 65px;
     }
-    .if-editor-true {
-        width: calc(100% - 85px);
-    }
+
     .edit,
     .trash {
         padding: 3px 5px;
@@ -113,7 +114,7 @@
         background-color: #ffffff;
         border: none;
         > svg {
-            color: red;
+            color: rgb(255, 103, 103);
         }
     }
 }

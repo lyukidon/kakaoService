@@ -101,13 +101,13 @@ export default function List({
                     i < high && (
                         <div key={c.article_id} className="articleBox">
                             <div className="badge">
-                                <div>
+                                <span>
                                     {category.length === 0
                                         ? service[c.service_id - 1].content
                                         : platform.length === 0
                                         ? category[c.category_id - 1].content
                                         : platform[c.platform_id - 1].content}
-                                </div>
+                                </span>
                             </div>
                             <div
                                 role="button"
@@ -125,7 +125,6 @@ export default function List({
                                     setActivateEditor(false);
                                     handleFunc(c, preview, setPreview);
                                 }}
-                                // onKeyDown={() => setPreview(!preview)}
                             >
                                 {c.content}
                             </div>
