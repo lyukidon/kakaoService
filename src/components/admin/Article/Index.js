@@ -226,6 +226,7 @@ function Article({
                     <button
                         type="button"
                         onClick={() => {
+                            setPreview(false);
                             setArticleId(faqData.article.length);
                             setActivateEditor(!activateEditor);
                             setSingleArti({
