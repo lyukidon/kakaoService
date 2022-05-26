@@ -1,14 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled from "styled-components";
 
 import Warning from "./Warning";
 
-const Title = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-`;
+import '../../../scss/admin/preview.scss'
 
 function Preview({
     handleFunc,
@@ -25,12 +20,13 @@ function Preview({
     const [warn, setWarn] = useState(false);
     return (
         <div>
-            <Title>
+            <div className="previewTitle">
                 <b>{singleArti.content}</b>
-                <div>
+                <div className="previewBtn">
                     {/* 에디터 버튼 */}
                     <button
                         type="button"
+                        className="edit"
                         onClick={() => {
                             setActivateEditor(true);
                             setPreview(false);
@@ -44,6 +40,7 @@ function Preview({
                     {/* 삭제 버튼 */}
                     <button
                         type="button"
+                        className="trash"
                         onClick={() => {
                             setWarn(!warn);
                         }}
@@ -52,7 +49,7 @@ function Preview({
                     </button>
                     {warn && <Warning setWarn={setWarn} />}
                 </div>
-            </Title>
+            </div>
             <hr />
             <div className="previewExplain" ref={explainRef} />
         </div>

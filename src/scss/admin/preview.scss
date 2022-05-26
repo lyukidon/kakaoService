@@ -1,0 +1,26 @@
+.previewTitle{
+    display: grid;
+    grid-template-columns: auto 52px;
+    .edit,
+    .trash {
+        padding: 3px 5px;
+        border-radius: 10px;
+        &:hover {
+            background-color: lightgrey;
+        }
+    }
+    .edit {
+        background-color: #ffffff;
+        border: none;
+    }
+    .activateEditor {
+        background-color: #dddddd;
+    }
+    .trash {
+        background-color: #ffffff;
+        border: none;
+        > svg {
+            color: rgb(255, 103, 103);
+        }
+    }
+}
