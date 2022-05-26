@@ -92,7 +92,7 @@ function Index({
                                         ? console.log(data)
                                         : alert("내용을 수정해주세요")
                                 }
-                                disabled={data ? false : true}
+                                disabled={data}
                             >
                                 <FontAwesomeIcon
                                     className="floppy-disk-icon"
