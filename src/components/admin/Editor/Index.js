@@ -38,6 +38,7 @@ function Index({
     preview,
     setPreview,
     setArticleId,
+    handleFunc
 }) {
     const [data, setData] = useState("");
     const [cancel, setCancel] = useState(false);
@@ -90,6 +91,7 @@ function Index({
                                         ? console.log(data)
                                         : alert("내용을 수정해주세요")
                                 }
+                                disabled
                             >
                                 <FontAwesomeIcon
                                     className="floppy-disk-icon"
@@ -111,7 +113,9 @@ function Index({
             )}
             {preview && (
                 <Preview
+                    handleFunc={handleFunc}
                     setPreview={setPreview}
+                    setActivateEditor={setActivateEditor}
                     setArticleId={setArticleId}
                     singleArti={singleArti}
                 />

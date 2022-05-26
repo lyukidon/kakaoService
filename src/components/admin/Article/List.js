@@ -64,8 +64,8 @@ export default function List({
     // 페이지에 렌더링할 도움말 번호
     const [low, setLow] = useState(0);
     const [high, setHigh] = useState(0);
-    const editorRender = 16
-    const nonEditorRender = 7
+    const editorRender = 18;
+    const nonEditorRender = 7;
     useEffect(() => {
         let tmparr = [];
         const num = editor
@@ -128,63 +128,6 @@ export default function List({
                             >
                                 {c.content}
                             </div>
-                            {editor && (
-                                <div className="articlebutton">
-                                    {/* 수정버튼 */}
-                                    <button
-                                        type="button"
-                                        className={
-                                            activateEditor &&
-                                            c.article_id === articleId
-                                                ? "edit activateEditor"
-                                                : "edit"
-                                        }
-                                        onClick={() => {
-                                            setChkTrash(false);
-                                            setPreview(false);
-                                            handleFunc(
-                                                c,
-                                                activateEditor,
-                                                setActivateEditor
-                                            );
-                                        }}
-                                    >
-                                        <FontAwesomeIcon
-                                            icon="fa-solid fa-pen-to-square"
-                                            size="lg"
-                                        />
-                                    </button>
-                                    {/* 삭제버튼 */}
-                                    <button
-                                        type="button"
-                                        className="trash"
-                                        onClick={() => {
-                                            setActivateEditor(false);
-                                            handleFunc(
-                                                c,
-                                                chkTrash,
-                                                setChkTrash
-                                            );
-                                        }}
-                                    >
-                                        <FontAwesomeIcon
-                                            icon="fa-solid fa-trash"
-                                            size="lg"
-                                        />
-                                    </button>
-                                    {c.article_id === articleId && chkTrash && (
-                                        <Warning
-                                            data={c}
-                                            chkTrash={chkTrash}
-                                            setChkTrash={setChkTrash}
-                                            article={article}
-                                            setArticle={setArticle}
-                                            articleId={articleId}
-                                            handleFunc={handleFunc}
-                                        />
-                                    )}
-                                </div>
-                            )}
                         </div>
                     )
             )}

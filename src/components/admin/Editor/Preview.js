@@ -10,7 +10,14 @@ const Title = styled.div`
     justify-content: space-between;
 `;
 
-function Preview({ handleFunc, setPreview, setActivateEditor, setArticleId, singleArti, setSingleArti }) {
+function Preview({
+    handleFunc,
+    setPreview,
+    setActivateEditor,
+    setArticleId,
+    singleArti,
+    setSingleArti,
+}) {
     const explainRef = useRef(null);
     useEffect(() => {
         explainRef.current.innerHTML = singleArti.explain;
@@ -22,7 +29,13 @@ function Preview({ handleFunc, setPreview, setActivateEditor, setArticleId, sing
                 <b>{singleArti.content}</b>
                 <div>
                     {/* 에디터 버튼 */}
-                    <button type="button" onClick={()=>{console.log("click")}}>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setActivateEditor(true);
+                            setPreview(false);
+                        }}
+                    >
                         <FontAwesomeIcon
                             icon="fa-solid fa-pen-to-square"
                             size="lg"
@@ -37,7 +50,7 @@ function Preview({ handleFunc, setPreview, setActivateEditor, setArticleId, sing
                     >
                         <FontAwesomeIcon icon="fa-solid fa-trash" size="lg" />
                     </button>
-                {warn && <Warning setWarn={setWarn}/>}
+                    {warn && <Warning setWarn={setWarn} />}
                 </div>
             </Title>
             <hr />

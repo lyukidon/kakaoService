@@ -15,6 +15,21 @@ function WebEditor({ data }) {
     const [singleArti, setSingleArti] = useState(null);
     // 미리보기
     const [preview, setPreview] = useState(false);
+    const handleFunc = (dataTmp, bool, setfunc) => {
+        if (!bool) {
+            setfunc(true);
+            setArticleId(dataTmp.article_id);
+            setSingleArti({ ...dataTmp });
+        } else {
+            if (articleId === dataTmp.article_id) {
+                setfunc(false);
+                setArticleId(-1);
+            } else {
+                setArticleId(dataTmp.article_id);
+                setSingleArti({ ...dataTmp });
+            }
+        }
+    };
     return (
         <div>
             <Helmet>
@@ -35,6 +50,7 @@ function WebEditor({ data }) {
                         setSingleArti={setSingleArti}
                         preview={preview}
                         setPreview={setPreview}
+                        handleFunc={handleFunc}
                     />
                     <Editor
                         activateEditor={activateEditor}

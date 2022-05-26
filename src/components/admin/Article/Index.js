@@ -19,6 +19,7 @@ function Article({
     setSingleArti,
     preview,
     setPreview,
+    handleFunc
 }) {
     const [ids, setIds] = useState({
         service_id: 0,
@@ -116,23 +117,7 @@ function Article({
         })
     };
     // 삭제 관련
-    const [chkTrash, setChkTrash] = useState(false);
-    // 도움말 버튼 클릭 시
-    const handleFunc = (data, bool, setfunc) => {
-        if (!bool) {
-            setfunc(true);
-            setArticleId(data.article_id);
-            setSingleArti({ ...data });
-        } else {
-            if (articleId === data.article_id) {
-                setfunc(false);
-                setArticleId(-1);
-            } else {
-                setArticleId(data.article_id);
-                setSingleArti({ ...data });
-            }
-        }
-    };
+    const [chkTrash, setChkTrash] = useState(false);    
     return (
         <div className="article">
             {/* 제목 */}
@@ -180,7 +165,6 @@ function Article({
                         <>
                             <FontAwesomeIcon
                                 icon="fa-solid fa-angle-right"
-                                // size="lg"
                             />
                             <div className="categorySelect">
                                 <div>
@@ -211,7 +195,6 @@ function Article({
                         <>
                             <FontAwesomeIcon
                                 icon="fa-solid fa-angle-right"
-                                // size="lg"
                             />
                             <div className="platformSelect">
                                 <div>
@@ -258,7 +241,6 @@ function Article({
             </div>
             <div>
                 {/* 도움말 목록 */}
-
                 <List
                     handleFunc={handleFunc}
                     editor={editor}
