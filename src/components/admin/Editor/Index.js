@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import Preview from "./Preview";
 
 function Warning({ setPreview, setCancel, setActivateEditor }) {
@@ -58,11 +59,6 @@ function Index({
     useEffect(() => {
         setEditorData("");
     }, [activateEditor]);
-    // useEffect(()=>{
-    //     if (singleArti){
-    //         setTitleData(singleArti.content)
-    //     }
-    // }, [singleArti])
     return (
         <div className={activateEditor || preview ? "editor" : "editor center"}>
             {!activateEditor && !preview && (
@@ -78,10 +74,10 @@ function Index({
                             type="text"
                             placeholder="제목을 입력해주세요"
                             defaultValue={singleArti && singleArti.content}
-                            onChange={(event) =>{
-                                console.log(titleData)
-                                setTitleData(event.target.value)}
-                            }
+                            onChange={(event) => {
+                                console.log(titleData);
+                                setTitleData(event.target.value);
+                            }}
                         />
                     </div>
                     <div className="explain">
@@ -111,11 +107,41 @@ function Index({
                             <button
                                 type="button"
                                 className={!editorData && "not-allowed"}
+                                disabled={
+                                    !editorData && !titleData ? true : false
+                                }
                                 onClick={() => {
-                                    console.log(editorData);
-                                    console.log(titleData);
+                                    if (titleData !== "" && editorData === "") {
+                                        const tmp = article.map((c) => {
+                                            if (c.article_id === articleId) {
+                                                c.content = titleData
+                                            }
+                                            return c;
+                                        })
+                                        setArticle([...tmp])
+                                        
+                                    } else if (
+                                        titleData === "" &&
+                                        editorData !== ""
+                                    ) {
+                                        const tmp = article.map((c) => {
+                                            if (c.article_id === articleId) {
+                                                c.explain = editorData
+                                            }
+                                            return c;
+                                        })
+                                        setArticle([...tmp])
+                                    } else {
+                                        const tmp = article.map((c) => {
+                                            if (c.article_id === articleId) {
+                                                c.content = titleData
+                                                c.explain = editorData
+                                            }
+                                            return c;
+                                        })
+                                        setArticle([...tmp])
+                                    }
                                 }}
-                                disabled={!editorData && !titleData ? true : false}
                             >
                                 <FontAwesomeIcon
                                     className="floppy-disk-icon"
