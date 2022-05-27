@@ -97,7 +97,7 @@ function PrivateRoute() {
                 path="/faq"
                 element={
                     username ? (
-                        <AdminFaq data={data} />
+                        <AdminFaq faqData={data} />
                     ) : (
                         <Navigate replace to="/admin" />
                     )

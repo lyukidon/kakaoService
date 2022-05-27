@@ -3,12 +3,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Warning from "./Warning";
 
-import '../../../scss/admin/preview.scss'
+import "../../../scss/admin/preview.scss";
 
 function Preview({
+    ids,
+    setIds,
+    service,
+    category,
+    platform,
+    article,
+    setService,
+    setCategory,
+    setPlatform,
+    setArticle,
     handleFunc,
     setPreview,
     setActivateEditor,
+    articleId,
     setArticleId,
     singleArti,
     setSingleArti,
@@ -47,7 +58,16 @@ function Preview({
                     >
                         <FontAwesomeIcon icon="fa-solid fa-trash" size="lg" />
                     </button>
-                    {warn && <Warning setWarn={setWarn} />}
+                    {warn && (
+                        <Warning
+                            article={article}
+                            setArticle={setArticle}
+                            articleId={articleId}
+                            setArticleId={setArticleId}
+                            setPreview={setPreview}
+                            setWarn={setWarn}
+                        />
+                    )}
                 </div>
             </div>
             <hr />

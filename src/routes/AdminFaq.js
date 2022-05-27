@@ -7,7 +7,7 @@ import Article from "../components/admin/Article/Index";
 
 import "../scss/admin/webEditor.scss";
 
-function WebEditor({ data }) {
+function AdminFaq({ faqData }) {
     // 에디터인지 아닌지 확인하기
     const [activateEditor, setActivateEditor] = useState(false);
     // 수정 버튼 클릭 시 확인 및 데이터
@@ -30,6 +30,55 @@ function WebEditor({ data }) {
             }
         }
     };
+    const [ids, setIds] = useState({
+        service_id: 0,
+        category_id: 0,
+        platform_id: 0,
+        article_id: 0,
+    });
+
+    // 분류할 데이터 변수
+    const [service, setService] = useState([]);
+    const [category, setCategory] = useState([]);
+    const [platform, setPlatform] = useState([]);
+    const [article, setArticle] = useState([]);
+    useEffect(() => {
+        if (faqData) {
+            setService(faqData.service);
+            setCategory(
+                faqData.category.filter((c) => c.service_id === ids.service_id)
+            );
+            setPlatform(
+                faqData.platform.filter(
+                    (c) =>
+                        c.service_id === ids.service_id &&
+                        c.category_id === ids.category_id
+                )
+            );
+            setArticle(
+                faqData.article
+                    .filter((c) => {
+                        if (ids.service_id === 0) {
+                            return c;
+                        } else if (ids.category_id === 0) {
+                            return c.service_id === ids.service_id;
+                        } else if (ids.platform_id === 0) {
+                            return (
+                                c.service_id === ids.service_id &&
+                                c.category_id === ids.category_id
+                            );
+                        } else {
+                            return (
+                                c.service_id === ids.service_id &&
+                                c.category_id === ids.category_id &&
+                                c.platform_id === ids.platform_id
+                            );
+                        }
+                    })
+                    .sort((a, b) => a.article_id - b.article_id)
+            );
+        }
+    }, [faqData]);
     return (
         <div>
             <Helmet>
@@ -41,7 +90,17 @@ function WebEditor({ data }) {
                 <div className="editorPage">
                     <Article
                         editor
-                        faqData={data}
+                        faqData={faqData}
+                        ids={ids}
+                        setIds={setIds}
+                        service={service}
+                        setService={setService}
+                        category={category}
+                        setCategory={setCategory}
+                        platform={platform}
+                        setPlatform={setPlatform}
+                        article={article}
+                        setArticle={setArticle}
                         activateEditor={activateEditor}
                         setActivateEditor={setActivateEditor}
                         articleId={articleId}
@@ -53,11 +112,21 @@ function WebEditor({ data }) {
                         handleFunc={handleFunc}
                     />
                     <Editor
+                        setIds={setIds}
+                        service={service}
+                        setService={setService}
+                        category={category}
+                        setCategory={setCategory}
+                        platform={platform}
+                        setPlatform={setPlatform}
+                        article={article}
+                        setArticle={setArticle}
                         activateEditor={activateEditor}
                         setActivateEditor={setActivateEditor}
                         singleArti={singleArti}
                         preview={preview}
                         setPreview={setPreview}
+                        articleId={articleId}
                         setArticleId={setArticleId}
                     />
                 </div>
@@ -66,4 +135,4 @@ function WebEditor({ data }) {
     );
 }
 
-export default WebEditor;
+export default AdminFaq;

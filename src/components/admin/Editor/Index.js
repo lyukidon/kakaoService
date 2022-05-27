@@ -33,11 +33,22 @@ function Warning({ setPreview, setCancel, setActivateEditor }) {
 }
 
 function Index({
+    ids,
+    setIds,
+    service,
+    category,
+    platform,
+    article,
+    setService,
+    setCategory,
+    setPlatform,
+    setArticle,
     activateEditor,
     setActivateEditor,
     singleArti,
     preview,
     setPreview,
+    articleId,
     setArticleId,
     handleFunc,
 }) {
@@ -114,9 +125,19 @@ function Index({
             )}
             {preview && (
                 <Preview
+                    setIds={setIds}
+                    service={service}
+                    setService={setService}
+                    category={category}
+                    setCategory={setCategory}
+                    platform={platform}
+                    setPlatform={setPlatform}
+                    article={article}
+                    setArticle={setArticle}
                     handleFunc={handleFunc}
                     setPreview={setPreview}
                     setActivateEditor={setActivateEditor}
+                    articleId={articleId}
                     setArticleId={setArticleId}
                     singleArti={singleArti}
                 />
