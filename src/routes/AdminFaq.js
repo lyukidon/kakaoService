@@ -88,6 +88,7 @@ function AdminFaq({ faqData }) {
                         activateEditor={activateEditor}
                         setActivateEditor={setActivateEditor}
                         singleArti={singleArti}
+                        setSingleArti={setSingleArti}
                         preview={preview}
                         setPreview={setPreview}
                         articleId={articleId}

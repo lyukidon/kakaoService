@@ -47,6 +47,7 @@ function Index({
     activateEditor,
     setActivateEditor,
     singleArti,
+    setSingleArti,
     preview,
     setPreview,
     articleId,
@@ -59,6 +60,49 @@ function Index({
     useEffect(() => {
         setEditorData("");
     }, [activateEditor]);
+
+    const onEdit = () => {
+        if (titleData !== "" && editorData === "") {
+            const tmp = article.map((c) => {
+                if (c.article_id === articleId) {
+                    c.content = titleData;
+                }
+                return c;
+            });
+            setArticle([...tmp]);
+            setSingleArti({ ...singleArti, content: titleData });
+        } else if (titleData === "" && editorData !== "") {
+            const tmp = article.map((c) => {
+                if (c.article_id === articleId) {
+                    c.explain = editorData;
+                }
+                return c;
+            });
+            setArticle([...tmp]);
+            setSingleArti({ ...singleArti, explain: editorData });
+        } else {
+            const tmp = article.map((c) => {
+                if (c.article_id === articleId) {
+                    c.content = titleData;
+                    c.explain = editorData;
+                }
+                return c;
+            });
+            setArticle([...tmp]);
+            setSingleArti({
+                ...singleArti,
+                content: titleData,
+                explain: editorData,
+            });
+        }
+        console.log(titleData);
+        console.log(editorData);
+        setActivateEditor(false);
+        setPreview(true);
+        setEditorData("");
+        setTitleData("");
+    };
+
     return (
         <div className={activateEditor || preview ? "editor" : "editor center"}>
             {!activateEditor && !preview && (
@@ -106,42 +150,11 @@ function Index({
                             </button>
                             <button
                                 type="button"
-                                className={!editorData && "not-allowed"}
+                                className={!editorData && !titleData && "not-allowed"}
                                 disabled={
                                     !editorData && !titleData ? true : false
                                 }
-                                onClick={() => {
-                                    if (titleData !== "" && editorData === "") {
-                                        const tmp = article.map((c) => {
-                                            if (c.article_id === articleId) {
-                                                c.content = titleData
-                                            }
-                                            return c;
-                                        })
-                                        setArticle([...tmp])
-                                        
-                                    } else if (
-                                        titleData === "" &&
-                                        editorData !== ""
-                                    ) {
-                                        const tmp = article.map((c) => {
-                                            if (c.article_id === articleId) {
-                                                c.explain = editorData
-                                            }
-                                            return c;
-                                        })
-                                        setArticle([...tmp])
-                                    } else {
-                                        const tmp = article.map((c) => {
-                                            if (c.article_id === articleId) {
-                                                c.content = titleData
-                                                c.explain = editorData
-                                            }
-                                            return c;
-                                        })
-                                        setArticle([...tmp])
-                                    }
-                                }}
+                                onClick={() => onEdit()}
                             >
                                 <FontAwesomeIcon
                                     className="floppy-disk-icon"
