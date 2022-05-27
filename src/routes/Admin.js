@@ -10,7 +10,7 @@ import ShowRequest from "../components/admin/ShowRequest";
 import "../scss/admin/admin.scss";
 import ArticleStatics from "../components/admin/ArticleStatics";
 
-function Admin({ data }) {
+function Admin({ faqData }) {
     const params = useParams();
     const [statistic, setStatistic] = useState({
         service: 0,
@@ -18,6 +18,18 @@ function Admin({ data }) {
         platform: 0,
         article: 0,
     });
+    const [ids, setIds] = useState({
+        service_id: 0,
+        category_id: 0,
+        platform_id: 0,
+        article_id: 0,
+    });
+
+    // 분류할 데이터 변수
+    const [service, setService] = useState([]);
+    const [category, setCategory] = useState([]);
+    const [platform, setPlatform] = useState([]);
+    const [article, setArticle] = useState([]);
     return (
         <div>
             <Helmet>
@@ -30,7 +42,20 @@ function Admin({ data }) {
                     <Graph />
                     <ShowRequest />
                     <ArticleStatics statistic={statistic} />
-                    <Article faqData={data} setStatistic={setStatistic} />
+                    <Article
+                        faqData={faqData}
+                        ids={ids}
+                        setIds={setIds}
+                        service={service}
+                        setService={setService}
+                        category={category}
+                        setCategory={setCategory}
+                        platform={platform}
+                        setPlatform={setPlatform}
+                        article={article}
+                        setArticle={setArticle}
+                        setStatistic={setStatistic}
+                    />
                 </div>
             </div>
         </div>

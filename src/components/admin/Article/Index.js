@@ -35,7 +35,43 @@ function Article({
         }
     };
     // 데이터 분류하기
-    
+    useEffect(() => {
+        if (faqData) {
+            setService(faqData.service);
+            setCategory(
+                faqData.category.filter((c) => c.service_id === ids.service_id)
+            );
+            setPlatform(
+                faqData.platform.filter(
+                    (c) =>
+                        c.service_id === ids.service_id &&
+                        c.category_id === ids.category_id
+                )
+            );
+            setArticle(
+                faqData.article
+                    .filter((c) => {
+                        if (ids.service_id === 0) {
+                            return c;
+                        } else if (ids.category_id === 0) {
+                            return c.service_id === ids.service_id;
+                        } else if (ids.platform_id === 0) {
+                            return (
+                                c.service_id === ids.service_id &&
+                                c.category_id === ids.category_id
+                            );
+                        } else {
+                            return (
+                                c.service_id === ids.service_id &&
+                                c.category_id === ids.category_id &&
+                                c.platform_id === ids.platform_id
+                            );
+                        }
+                    })
+                    .sort((a, b) => a.article_id - b.article_id)
+            );
+        }
+    }, [faqData,ids]);
     useEffect(() => {
         changeStatistic();
     }, [service, category, platform, article]);
@@ -103,7 +139,7 @@ function Article({
                                 onChange={(event) => changeOption(event)}
                             >
                                 <option value={0}>전체</option>
-                                {service.map((c) => (
+                                {service && service.map((c) => (
                                     <option
                                         key={c.content}
                                         id="service_id"

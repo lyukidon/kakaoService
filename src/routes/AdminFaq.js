@@ -42,43 +42,7 @@ function AdminFaq({ faqData }) {
     const [category, setCategory] = useState([]);
     const [platform, setPlatform] = useState([]);
     const [article, setArticle] = useState([]);
-    useEffect(() => {
-        if (faqData) {
-            setService(faqData.service);
-            setCategory(
-                faqData.category.filter((c) => c.service_id === ids.service_id)
-            );
-            setPlatform(
-                faqData.platform.filter(
-                    (c) =>
-                        c.service_id === ids.service_id &&
-                        c.category_id === ids.category_id
-                )
-            );
-            setArticle(
-                faqData.article
-                    .filter((c) => {
-                        if (ids.service_id === 0) {
-                            return c;
-                        } else if (ids.category_id === 0) {
-                            return c.service_id === ids.service_id;
-                        } else if (ids.platform_id === 0) {
-                            return (
-                                c.service_id === ids.service_id &&
-                                c.category_id === ids.category_id
-                            );
-                        } else {
-                            return (
-                                c.service_id === ids.service_id &&
-                                c.category_id === ids.category_id &&
-                                c.platform_id === ids.platform_id
-                            );
-                        }
-                    })
-                    .sort((a, b) => a.article_id - b.article_id)
-            );
-        }
-    }, [faqData]);
+    
     return (
         <div>
             <Helmet>
