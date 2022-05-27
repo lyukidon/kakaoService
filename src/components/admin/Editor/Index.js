@@ -58,11 +58,11 @@ function Index({
     useEffect(() => {
         setEditorData("");
     }, [activateEditor]);
-    useEffect(()=>{
-        if (singleArti){
-            setTitleData(singleArti.content)
-        }
-    }, [singleArti])
+    // useEffect(()=>{
+    //     if (singleArti){
+    //         setTitleData(singleArti.content)
+    //     }
+    // }, [singleArti])
     return (
         <div className={activateEditor || preview ? "editor" : "editor center"}>
             {!activateEditor && !preview && (
@@ -77,9 +77,10 @@ function Index({
                         <input
                             type="text"
                             placeholder="제목을 입력해주세요"
-                            value={titleData}
-                            onChange={(event) =>
-                                setTitleData(event.target.value)
+                            defaultValue={singleArti && singleArti.content}
+                            onChange={(event) =>{
+                                console.log(titleData)
+                                setTitleData(event.target.value)}
                             }
                         />
                     </div>
@@ -114,7 +115,7 @@ function Index({
                                     console.log(editorData);
                                     console.log(titleData);
                                 }}
-                                disabled={!editorData ? true : false}
+                                disabled={!editorData && !titleData ? true : false}
                             >
                                 <FontAwesomeIcon
                                     className="floppy-disk-icon"
@@ -156,12 +157,6 @@ function Index({
             )}
         </div>
     );
-}
-Index.defaultProps = {
-    singleArti: {
-        content: "",
-        explain:""
-    }
 }
 
 export default Index;
