@@ -52,11 +52,17 @@ function Index({
     setArticleId,
     handleFunc,
 }) {
-    const [data, setData] = useState("");
+    const [titleData, setTitleData] = useState("");
+    const [editorData, setEditorData] = useState("");
     const [cancel, setCancel] = useState(false);
     useEffect(() => {
-        setData("");
+        setEditorData("");
     }, [activateEditor]);
+    useEffect(()=>{
+        if (singleArti){
+            setTitleData(singleArti.content)
+        }
+    }, [singleArti])
     return (
         <div className={activateEditor || preview ? "editor" : "editor center"}>
             {!activateEditor && !preview && (
@@ -71,15 +77,18 @@ function Index({
                         <input
                             type="text"
                             placeholder="제목을 입력해주세요"
-                            value={singleArti && singleArti.content}
+                            value={titleData}
+                            onChange={(event) =>
+                                setTitleData(event.target.value)
+                            }
                         />
                     </div>
                     <div className="explain">
                         <CKEditor
                             editor={ClassicEditor}
-                            data={singleArti ? singleArti.explain : data}
+                            data={singleArti ? singleArti.explain : editorData}
                             onChange={(event, editor) => {
-                                setData(editor.getData());
+                                setEditorData(editor.getData());
                             }}
                         />
 
@@ -100,9 +109,12 @@ function Index({
                             </button>
                             <button
                                 type="button"
-                                className={!data && "not-allowed"}
-                                onClick={() => console.log(data)}
-                                disabled={!data ? true : false}
+                                className={!editorData && "not-allowed"}
+                                onClick={() => {
+                                    console.log(editorData);
+                                    console.log(titleData);
+                                }}
+                                disabled={!editorData ? true : false}
                             >
                                 <FontAwesomeIcon
                                     className="floppy-disk-icon"
@@ -144,6 +156,12 @@ function Index({
             )}
         </div>
     );
+}
+Index.defaultProps = {
+    singleArti: {
+        content: "",
+        explain:""
+    }
 }
 
 export default Index;

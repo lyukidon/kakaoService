@@ -12,7 +12,7 @@ function AdminFaq({ faqData }) {
     const [activateEditor, setActivateEditor] = useState(false);
     // 수정 버튼 클릭 시 확인 및 데이터
     const [articleId, setArticleId] = useState(-1);
-    const [singleArti, setSingleArti] = useState(null);
+    const [singleArti, setSingleArti] = useState();
     // 미리보기
     const [preview, setPreview] = useState(false);
     const handleFunc = (dataTmp, bool, setfunc) => {
