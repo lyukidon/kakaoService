@@ -86,6 +86,18 @@ export default function List({
             setHigh(pageSelect * nonEditorRender);
         }
     }, [pageSelect]);
+
+    const onBadge = (c) => {
+        if (category.length === 0) {
+            return (<span style={service[c.service_id - 1].color && {'background-color': service[c.service_id - 1].color,}}>{service[c.service_id - 1].content}</span>);
+        } else if (platform.length === 0) {
+            return (<span style={category[c.category_id - 1].color && {'background-color': category[c.category_id - 1].color,}}>{category[c.category_id - 1].content}</span>);
+        } else {
+            return (<span style={platform[c.platform_id - 1].color && {'background-color': platform[c.platform_id - 1].color,}}>{platform[c.platform_id - 1].content}</span>);
+        }
+    };
+
+
     return (
         <>
             {/* 헤더 */}
@@ -100,13 +112,7 @@ export default function List({
                     i < high && (
                         <div key={c.article_id} className="articleBox">
                             <div className="badge">
-                                <span>
-                                    {category.length === 0
-                                        ? service[c.service_id - 1].content
-                                        : platform.length === 0
-                                        ? category[c.category_id - 1].content
-                                        : platform[c.platform_id - 1].content}
-                                </span>
+                                {onBadge(c)}
                             </div>
                             <div
                                 role="button"

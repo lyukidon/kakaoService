@@ -3,39 +3,43 @@
         {
             "service_id": 1,
             "content": "카카오톡",
-            "color":"yellow"
+            "color":"#FEE35F"
         },
         {
             "service_id": 2,
             "content": "카카오계정",
-            "color":"orange"
+            "color":"#D2FC85"
         },
         {
             "service_id": 3,
             "content": "카카오이모티콘",
-            "color":"skyblue"
+            "color":"#7AE9F4"
         }
     ],
     "category": [
         {
             "service_id": 1,
             "category_id": 1,
-            "content": "일반"
+            "content": "일반",
+            "color":"#FEF575"
         },
         {
             "service_id": 1,
             "category_id": 2,
-            "content": "가입/변경/탈퇴"
+            "content": "가입/변경/탈퇴",
+            "color" : "#FEC48E"
         },
         {
             "service_id": 2,
             "category_id": 1,
-            "content": "로그인"
+            "content": "로그인",
+            "color":"#FEF575"
         },
         {
             "service_id": 2,
             "category_id": 2,
-            "content": "이메일/비밀번호 찾기"
+            "content": "이메일/비밀번호 찾기",
+            "color" : "#FEC48E"
         }
     ],
     "platform": [
@@ -43,37 +47,43 @@
             "service_id": 1,
             "category_id": 1,
             "platform_id": 1,
-            "content": "안드로이드"
+            "content": "안드로이드",
+            "color":"#ACFFB0"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 2,
-            "content": "iOS"
+            "content": "iOS",
+            "color":"#B8C2FB"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 3,
-            "content": "Windows"
+            "content": "Windows",
+            "color":"#93CFF8"
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 1,
-            "content": "안드로이드"
+            "content": "안드로이드",
+            "color":"#ACFFB0"
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 2,
-            "content": "iOS"
+            "content": "iOS",
+            "color":"#B8C2FB"
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 3,
-            "content": "안드로이드(원스토어)"
+            "content": "안드로이드(원스토어)",
+            "color":"#FFAFAC"
         },
         {
             "service_id": 2,
