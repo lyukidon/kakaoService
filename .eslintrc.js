@@ -48,5 +48,7 @@ module.exports = {
         "react/display-name": 0,
         "arrow-body-style": 0,
         "no-unneeded-ternary": 0,
+        "import/no-named-as-default":0,
+        "import/no-named-as-default-member":0,
     },
 };

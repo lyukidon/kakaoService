@@ -72,7 +72,10 @@
     user-select: none;
     // 도움말
     > .badge {
+        display: flex;
+        flex-direction: row;
         > span{
+            display: inline-block;
             padding: 0px 6px;
             font-size: small;
             border: 1px solid black;

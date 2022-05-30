@@ -33,7 +33,7 @@ function Warning({ setPreview, setCancel, setActivateEditor }) {
     );
 }
 
-function Index({
+function Article({
     ids,
     setIds,
     service,
@@ -198,4 +198,4 @@ function Index({
     );
 }
 
-export default Index;
+export default Article;
