@@ -2,15 +2,18 @@
     "service": [
         {
             "service_id": 1,
-            "content": "카카오톡"
+            "content": "카카오톡",
+            "color":"yellow"
         },
         {
             "service_id": 2,
-            "content": "카카오계정"
+            "content": "카카오계정",
+            "color":"orange"
         },
         {
             "service_id": 3,
-            "content": "카카오이모티콘"
+            "content": "카카오이모티콘",
+            "color":"skyblue"
         }
     ],
     "category": [
