@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -102,6 +102,7 @@ function Article({
         setEditorData("");
         setTitleData("");
     };
+    const titleRef = useRef();
 
     return (
         <div className={activateEditor || preview ? "editor" : "editor center"}>
@@ -118,8 +119,8 @@ function Article({
                             type="text"
                             placeholder="제목을 입력해주세요"
                             defaultValue={singleArti && singleArti.content}
+                            ref={titleRef}
                             onChange={(event) => {
-                                console.log(titleData);
                                 setTitleData(event.target.value);
                             }}
                         />
@@ -150,9 +151,11 @@ function Article({
                             </button>
                             <button
                                 type="button"
-                                className={!editorData && !titleData && "not-allowed"}
+                                className={
+                                    !editorData && !titleData && "not-allowed"
+                                }
                                 disabled={
-                                    !editorData && !titleData ? true : false
+                                    !editorData && !titleData || titleRef.current.value === "" ? true : false
                                 }
                                 onClick={() => onEdit()}
                             >
