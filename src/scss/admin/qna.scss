@@ -1,0 +1,33 @@
+.qna {
+    height: calc(100vh - 65px);
+    padding: 10px 7px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "list preview"
+        "list editor";
+    column-gap: 12px;
+    row-gap: 12px;
+    > .listComponent,
+    > .previewComponent,
+    > .editorComponent {
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 12px;
+        box-shadow: 0px 0px 7px 3px #f2f2f2;
+    }
+    > .listComponent {
+        grid-area: list;
+        > div > .list{
+            display: grid;
+            grid-template-columns: 40px 1fr;
+        }
+    }
+    > .previewComponent {
+        grid-area: preview;
+    }
+    > .editorComponent {
+        grid-area: editor;
+    }
+}

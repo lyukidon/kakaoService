@@ -6,6 +6,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 import Admin from "./Admin";
 import Login from "./Login";
 import AdminFaq from "./AdminFaq";
+import AdminQna from "./AdminQna"
 
 const adminPath = ["/admin/dashboard", "/admin/faq"];
 
@@ -100,6 +101,16 @@ function PrivateRoute() {
                 element={
                     username ? (
                         <AdminFaq faqData={data} />
+                    ) : (
+                        <Navigate replace to="/admin" />
+                    )
+                }
+            />
+            <Route
+                path="/qna"
+                element={
+                    username ? (
+                        <AdminQna />
                     ) : (
                         <Navigate replace to="/admin" />
                     )
