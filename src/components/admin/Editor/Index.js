@@ -104,6 +104,19 @@ function Article({
     };
     const titleRef = useRef();
 
+    // 저장하기 버튼 마우스 오버
+    const [mouseOver, setMouseOver] = useState("");
+    useEffect(() => {
+        if (!titleData) {
+            setMouseOver("제목을 입력해주세요");
+        } else if (!titleRef.current.value) {
+            setMouseOver("제목을 입력해주세요");
+        } else if (!editorData) {
+            setMouseOver("내용을 입력(수정)해주세요");
+        } else {
+            setMouseOver("저장 가능")
+        }
+    }, [editorData, titleData, titleRef]);
     return (
         <div className={activateEditor || preview ? "editor" : "editor center"}>
             {!activateEditor && !preview && (
@@ -155,9 +168,13 @@ function Article({
                                     !editorData && !titleData && "not-allowed"
                                 }
                                 disabled={
-                                    !editorData && !titleData || titleRef.current.value === "" ? true : false
+                                    (!editorData && !titleData) ||
+                                    titleRef.current.value === ""
+                                        ? true
+                                        : false
                                 }
                                 onClick={() => onEdit()}
+                                title={mouseOver}
                             >
                                 <FontAwesomeIcon
                                     className="floppy-disk-icon"

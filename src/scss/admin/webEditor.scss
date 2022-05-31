@@ -21,10 +21,10 @@
         display: flex;
         flex-direction: column;
         overflow-y: auto;
-        &::-webkit-scrollbar{
+        &::-webkit-scrollbar {
             width: 8px;
         }
-        &::-webkit-scrollbar-thumb{
+        &::-webkit-scrollbar-thumb {
             border: 2px solid #adadad;
             border-radius: 10px;
             background-color: none;
@@ -84,11 +84,10 @@
                         color: #0187e0;
                     }
                 }
-                .not-allowed{
-                    cursor:not-allowed
+                .not-allowed {
+                    cursor: not-allowed;
                 }
             }
-
         }
     }
     .center {
