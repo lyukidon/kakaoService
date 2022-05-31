@@ -23,7 +23,7 @@ function List(props) {
                                     : { "background-color": "red" }
                             }
                         >
-                            {c.status ? "완료" : "요청"}
+                            {c.status ? "완료" : "대기"}
                         </div>
                         <div>{c.title}</div>
                     </div>
