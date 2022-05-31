@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Editor(props) {
+function Editor({ toggleList, setToggleList, toggleData, setToggleData }) {
     return (
         <div className='editorComponent'>
             에디터

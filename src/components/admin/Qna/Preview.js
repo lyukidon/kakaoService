@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Preview(props) {
+function Preview({ toggleList, setToggleList, toggleData, setToggleData }) {
     return (
         <div className='previewComponent'>
             프리퓨
