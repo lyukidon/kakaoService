@@ -27,7 +27,7 @@ function List({ toggleId, setToggleId, toggleData, setToggleData }) {
     }, []);
     return (
         <div className="listComponent">
-            리스트
+            문의 목록
             <div>
                 <select name="" id="" onChange={(evt) => setOption(evt)}>
                     <option value="all">전체</option>
@@ -52,7 +52,11 @@ function List({ toggleId, setToggleId, toggleData, setToggleData }) {
                         <div
                             role="button"
                             tabIndex={0}
-                            className={`${toggleId !== -1 && c.id === toggleId &&  'activate'}`}
+                            className={`title ${
+                                toggleId !== -1 &&
+                                c.id === toggleId &&
+                                "activate"
+                            }`}
                             onClick={() => {
                                 if (c.id === toggleId) {
                                     setToggleId(-1);
@@ -60,15 +64,19 @@ function List({ toggleId, setToggleId, toggleData, setToggleData }) {
                                         id: 0,
                                         title: "",
                                         content: "",
+                                        status:false,
+                                        answer:""
                                     });
                                 } else {
-                                    const { id, title, content } = c;
+                                    const { id, title, content,status, answer } = c;
                                     setToggleId(c.id);
                                     setToggleData({
                                         ...toggleData,
                                         id,
                                         title,
                                         content,
+                                        status,
+                                        answer
                                     });
                                 }
                             }}
