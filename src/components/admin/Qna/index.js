@@ -7,7 +7,7 @@ import Editor from "./Editor";
 import "../../../scss/admin/qna.scss";
 
 function Qna() {
-    const [toggleList, setToggleList] = useState(false);
+    const [toggleId, setToggleId] = useState(-1);
     const [toggleData, setToggleData] = useState({
         id: 0,
         title: "",
@@ -16,20 +16,20 @@ function Qna() {
     return (
         <div className="qna">
             <List
-                toggleList={toggleList}
-                setToggleList={setToggleList}
+                toggleId={toggleId}
+                setToggleId={setToggleId}
                 toggleData={toggleData}
                 setToggleData={setToggleData}
             />
             <Preview
-                toggleList={toggleList}
-                setToggleList={setToggleList}
+                toggleId={toggleId}
+                setToggleId={setToggleId}
                 toggleData={toggleData}
                 setToggleData={setToggleData}
             />
             <Editor
-                toggleList={toggleList}
-                setToggleList={setToggleList}
+                toggleId={toggleId}
+                setToggleId={setToggleId}
                 toggleData={toggleData}
                 setToggleData={setToggleData}
             />

@@ -22,6 +22,8 @@
         > div > .list{
             display: grid;
             grid-template-columns: 40px 1fr;
+            padding: 10px;
+            border-top: 1px solid black;
         }
     }
     > .previewComponent {
@@ -29,5 +31,8 @@
     }
     > .editorComponent {
         grid-area: editor;
+    }
+    .activate{
+        font-weight: bold;
     }
 }

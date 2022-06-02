@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function List({ toggleList, setToggleList, toggleData, setToggleData }) {
+function List({ toggleId, setToggleId, toggleData, setToggleData }) {
     const [qnaData, setQnaData] = useState([]);
     const [filter, setFilter] = useState([]);
     const setOption = (evt) => {
@@ -30,30 +30,51 @@ function List({ toggleList, setToggleList, toggleData, setToggleData }) {
             리스트
             <div>
                 <select name="" id="" onChange={(evt) => setOption(evt)}>
-                    <option value="all">
-                        전체
-                    </option>
-                    <option value="false">
-                        대기
-                    </option>
-                    <option value="true">
-                        완료
-                    </option>
+                    <option value="all">전체</option>
+                    <option value="false">대기</option>
+                    <option value="true">완료</option>
                 </select>
             </div>
             <div>
-                {filter.map((c) => (
+                {filter.map((c, i) => (
                     <div key={c.id} className="list">
-                        <div
-                            style={
-                                c.status
-                                    ? { "background-color": "yellow" }
-                                    : { "background-color": "red" }
-                            }
-                        >
-                            {c.status ? "완료" : "대기"}
+                        <div>
+                            <span
+                                style={
+                                    c.status
+                                        ? { backgroundColor: "yellow" }
+                                        : { backgroundColor: "red" }
+                                }
+                            >
+                                {c.status ? "완료" : "대기"}
+                            </span>
                         </div>
-                        <div>{c.title}</div>
+                        <div
+                            role="button"
+                            tabIndex={0}
+                            className={`${toggleId !== -1 && c.id === toggleId &&  'activate'}`}
+                            onClick={() => {
+                                if (c.id === toggleId) {
+                                    setToggleId(-1);
+                                    setToggleData({
+                                        id: 0,
+                                        title: "",
+                                        content: "",
+                                    });
+                                } else {
+                                    const { id, title, content } = c;
+                                    setToggleId(c.id);
+                                    setToggleData({
+                                        ...toggleData,
+                                        id,
+                                        title,
+                                        content,
+                                    });
+                                }
+                            }}
+                        >
+                            {c.title}
+                        </div>
                     </div>
                 ))}
             </div>
