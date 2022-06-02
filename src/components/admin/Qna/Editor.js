@@ -21,7 +21,19 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                     ref={titleRef}
                 />
                 <div>
-                    <button type="button">
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setToggleId(-1);
+                            setToggleData({
+                                id: 0,
+                                title: "",
+                                content: "",
+                                status: false,
+                                answer: "",
+                            });
+                        }}
+                    >
                         <FontAwesomeIcon icon="fa-solid fa-x" />
                         취소하기
                     </button>
@@ -30,7 +42,10 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                         disabled={editorData === "" ? true : false}
                         onClick={() => {
                             console.log(editorData);
-                            setToggleData({...toggleData, answer: editorData})
+                            setToggleData({
+                                ...toggleData,
+                                answer: editorData,
+                            });
                         }}
                     >
                         <FontAwesomeIcon icon="fa-solid fa-paper-plane" />
