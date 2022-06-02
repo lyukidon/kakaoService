@@ -9,14 +9,12 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                 <>
                     <div className="titleBox">
                         <div>제목:</div>
-                        
-                            <input type="text" />
-                        
+                        <input type="text" placeholder="제목을 입력해주세요" defaultValue={`답변: [ ${toggleData.title} ]`}/>
                     </div>
                     <CKEditor
                         editor={ClassicEditor}
                         config={{ placeholder: "답변을 입력해주세요" }}
-                        data={toggleData.content}
+                        data=""
                     />
                 </>
             )}
