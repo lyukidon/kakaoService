@@ -30,6 +30,7 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                         disabled={editorData === "" ? true : false}
                         onClick={() => {
                             console.log(editorData);
+                            setToggleData({...toggleData, answer: editorData})
                         }}
                     >
                         <FontAwesomeIcon icon="fa-solid fa-paper-plane" />
