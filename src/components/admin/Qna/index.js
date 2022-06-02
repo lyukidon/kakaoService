@@ -12,6 +12,8 @@ function Qna() {
         id: 0,
         title: "",
         content: "",
+        status: false,
+        answer: "",
     });
     return (
         <div className="qna">
@@ -21,18 +23,22 @@ function Qna() {
                 toggleData={toggleData}
                 setToggleData={setToggleData}
             />
-            <Preview
-                toggleId={toggleId}
-                setToggleId={setToggleId}
-                toggleData={toggleData}
-                setToggleData={setToggleData}
-            />
-            <Editor
-                toggleId={toggleId}
-                setToggleId={setToggleId}
-                toggleData={toggleData}
-                setToggleData={setToggleData}
-            />
+            {toggleId !== -1 && (
+                <>
+                    <Preview
+                        toggleId={toggleId}
+                        setToggleId={setToggleId}
+                        toggleData={toggleData}
+                        setToggleData={setToggleData}
+                    />
+                    <Editor
+                        toggleId={toggleId}
+                        setToggleId={setToggleId}
+                        toggleData={toggleData}
+                        setToggleData={setToggleData}
+                    />
+                </>
+            )}
         </div>
     );
 }
