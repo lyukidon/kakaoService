@@ -12,10 +12,17 @@
     > .listComponent,
     > .previewComponent,
     > .editorComponent {
-        padding-left: 10px;
-        padding-right: 10px;
+        padding: 20px;
         border-radius: 12px;
         box-shadow: 0px 0px 7px 3px #f2f2f2;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            width: 7px;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: #bbbbbb;
+        }
     }
     > .listComponent {
         grid-area: list;
@@ -24,13 +31,18 @@
             grid-template-columns: 40px 1fr;
             padding: 10px;
             border-top: 1px solid black;
+            cursor: pointer;
+            > .title {
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
     > .previewComponent {
         grid-area: preview;
     }
     > .editorComponent {
-        padding: 20px;
         grid-area: editor;
         > .titleBox {
             display: flex;
