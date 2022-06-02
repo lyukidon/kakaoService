@@ -3,49 +3,56 @@
         "id": 1,
         "title": "카카오톡이 안보내져요",
         "content": "인터넷에 연결되어 있는데, 카카오톡이 보내지지 않아요",
-        "status": true
-
+        "status": true,
+        "answer": "<ol><li>카카오톡의 서버</li><li>기기 인터넷에 문제</li><li>기기 성능 상의 문제</li><ol><p>문제가 있을 수 있습니다. 잠시 후에 다시 시도해주세요.</p>"
     },
     {
         "id": 2,
         "title": "이모티콘 플러스를 환불받고 싶어요",
         "content": "결제 후 2주가 지났는데 환불받고 싶어요. 기간 별로 환불을 받을 수 있나요?",
-        "status": false
+        "status": false,
+        "answer": ""
     },
     {
         "id": 3,
         "title": "카카오톡 탈퇴 시, 데이터는 어떻게 되나요?",
         "content": "카카오톡을 탈퇴하게 되면, 친구 목록, 구매한 이모티콘과 같은 경우는 삭제되는 건가요?",
-        "status": false
+        "status": false,
+        "answer": ""
     },
     {
         "id": 4,
         "title": "상담톡이 무엇입니까?",
         "content": "상담톡을 이용하려면 어떻게 해야합니까?",
-        "status": true
+        "status": true,
+        "answer": "<ol><li>카카오톡의 서버</li><li>기기 인터넷에 문제</li><li>기기 성능 상의 문제</li><ol><p>문제가 있을 수 있습니다. 잠시 후에 다시 시도해주세요.</p>"
     },
     {
         "id": 5,
         "title": "본인인증 관련 문의",
         "content": "본인인증을 하려고 하는데 휴대폰 번호 입력란밖에 안 떠요.",
-        "status": false
+        "status": false,
+        "answer": ""
     },
     {
         "id": 6,
         "title": "인증서 관련 문의",
         "content": "인증서를 발급받을 수 없다는 메시지가 뜹니다.",
-        "status": false
+        "status": false,
+        "answer": ""
     },
     {
         "id": 7,
         "title": "ABCD",
         "content": "EFGHIJKLMNOPQRSTUVWXYZ",
-        "status": false
+        "status": false,
+        "answer": ""
     },
     {
         "id": 8,
         "title": "정기결제를 해지하고 싶어요",
         "content": "카카오톡을 탈퇴했는데 정기결제를 해지 하고 싶어요",
-        "status": false
+        "status": false,
+        "answer": ""
     }
 ]
