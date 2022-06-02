@@ -19,7 +19,7 @@
     }
     > .listComponent {
         grid-area: list;
-        > div > .list{
+        > div > .list {
             display: grid;
             grid-template-columns: 40px 1fr;
             padding: 10px;
@@ -30,9 +30,29 @@
         grid-area: preview;
     }
     > .editorComponent {
+        padding: 20px;
         grid-area: editor;
+        > .titleBox {
+            display: flex;
+            flex-direction: row;
+            > div {
+                margin: 7px 0px;
+            }
+            > input {
+                flex-grow: 1;
+                margin-left: 10px;
+                width: auto;
+                margin-bottom: 10px;
+                padding: 10px 16px;
+                border: 1px solid #dddddd;
+                border-radius: 8px;
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
     }
-    .activate{
+    .activate {
         font-weight: bold;
     }
 }
