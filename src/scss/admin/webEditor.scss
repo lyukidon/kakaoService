@@ -22,12 +22,11 @@
         flex-direction: column;
         overflow-y: auto;
         &::-webkit-scrollbar {
-            width: 8px;
+            width: 7px;
         }
         &::-webkit-scrollbar-thumb {
-            border: 2px solid #adadad;
             border-radius: 10px;
-            background-color: none;
+            background-color: #bbbbbb;
         }
         .request {
             border: 3px double lightgrey;
