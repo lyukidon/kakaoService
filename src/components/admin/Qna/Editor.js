@@ -3,7 +3,42 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+function Warning({ setWarn, setToggleId, setToggleData }) {
+    return (
+        <div>
+            <div className="title">취소 하시겠습니까</div>
+            <div>
+                <button
+                    type="button"
+                    onClick={() => {
+                        setWarn(false);
+                        setToggleId(-1);
+                        setToggleData({
+                            id: 0,
+                            title: "",
+                            content: "",
+                            status: false,
+                            answer: "",
+                        });
+                    }}
+                >
+                    예
+                </button>
+                <button
+                    type="button"
+                    onClick={() => {
+                        setWarn(false);
+                    }}
+                >
+                    아니오
+                </button>
+            </div>
+        </div>
+    );
+}
+
 function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
+    const [warn, setWarn] = useState(false);
     const [editorData, setEditorData] = useState("");
     const titleRef = useRef(null);
     useEffect(() => {
@@ -21,19 +56,7 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                     ref={titleRef}
                 />
                 <div>
-                    <button
-                        type="button"
-                        onClick={() => {
-                            setToggleId(-1);
-                            setToggleData({
-                                id: 0,
-                                title: "",
-                                content: "",
-                                status: false,
-                                answer: "",
-                            });
-                        }}
-                    >
+                    <button type="button" onClick={() => {setWarn(true)}}>
                         <FontAwesomeIcon icon="fa-solid fa-x" />
                         취소하기
                     </button>
@@ -51,6 +74,13 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                         <FontAwesomeIcon icon="fa-solid fa-paper-plane" />
                         답변하기
                     </button>
+                    {warn && (
+                        <Warning
+                            setWarn={setWarn}
+                            setToggleId={setToggleId}
+                            setToggleData={setToggleData}
+                        />
+                    )}
                 </div>
             </div>
             <CKEditor
