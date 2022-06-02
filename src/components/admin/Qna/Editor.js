@@ -19,12 +19,6 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                             placeholder="제목을 입력해주세요"
                             ref={titleRef}
                         />
-                    </div>
-                    <CKEditor
-                        editor={ClassicEditor}
-                        config={{ placeholder: "답변을 입력해주세요" }}
-                        data={toggleData.answer ? toggleData.answer : ""}
-                    />
                     <div>
                         <button type="button">
                             <FontAwesomeIcon icon="fa-solid fa-x" />
@@ -35,6 +29,12 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                             답변하기
                         </button>
                     </div>
+                    </div>
+                    <CKEditor
+                        editor={ClassicEditor}
+                        config={{ placeholder: "답변을 입력해주세요" }}
+                        data={toggleData.answer ? toggleData.answer : ""}
+                    />
                 </div>
     );
 }
