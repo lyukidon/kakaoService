@@ -5,10 +5,10 @@ import { useParams } from "react-router-dom";
 import { TopNav, SideNav } from "../components/admin/Nav/Index";
 import Graph from "../components/admin/Graph";
 import Article from "../components/admin/Article/Index";
-import ShowRequest from "../components/admin/ShowRequest";
+import QnaList from '../components/admin/Qna/List'
+import ArticleStatics from "../components/admin/ArticleStatics";
 
 import "../scss/admin/admin.scss";
-import ArticleStatics from "../components/admin/ArticleStatics";
 
 function Admin({ faqData }) {
     const params = useParams();
@@ -40,7 +40,7 @@ function Admin({ faqData }) {
                 <SideNav />
                 <div className="dashboard">
                     <Graph />
-                    <ShowRequest />
+                    <QnaList />
                     <ArticleStatics statistic={statistic} />
                     <Article
                         faqData={faqData}

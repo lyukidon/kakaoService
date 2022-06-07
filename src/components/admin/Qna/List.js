@@ -27,7 +27,7 @@ function List({ toggleId, setToggleId, toggleData, setToggleData }) {
     }, []);
     return (
         <div className="listComponent">
-            <h4 style={{ "margin-top": "5px" }}>문의 목록</h4>
+            <h4>문의 목록</h4>
             <div>
                 <select name="" id="" onChange={(evt) => setOption(evt)}>
                     <option value="all">전체</option>

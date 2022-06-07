@@ -69,7 +69,7 @@
         column-gap: 12px;
         row-gap: 12px;
         .graph, // 그래프 통계, 최근 문의, 도움말 통계, 도움말 수정
-        .showRequest,
+        .listComponent,
         .dataStat,
         .article,
         .statistic {
@@ -94,6 +94,42 @@
         .statistic {
             > ul > li {
                 margin-bottom: 16px;
+            }
+        }
+        > .listComponent {
+            > div {
+                > select {
+                    margin-bottom: 15px;
+                    padding: 5px;
+                    border: 1px solid #909090;
+                    border-radius: 8px;
+                    background-color: #ffffff;
+                }
+                > .list {
+                    display: grid;
+                    grid-template-columns: 50px 1fr;
+                    padding: 10px;
+                    border-top: 1px solid #dddddd;
+                    cursor: pointer;
+                    > .title {
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                    .wait, .complete{
+                        font-size: 13px;
+                        border-radius: 5px;
+                        border: 1px solid black;
+                        padding: 0px 5px;
+                    }
+                    .wait{
+                        background-color: #ee0000;
+                        color: white;
+                    }
+                    .complete{
+                        background-color: yellow;
+                    }
+                }
             }
         }
     }
