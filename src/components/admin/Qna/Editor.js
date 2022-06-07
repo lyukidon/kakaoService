@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Warning({ setWarn, setToggleId, setToggleData }) {
     return (
         <div className="warning">
-            <div className="title">취소 하시겠습니까</div>
+            <div className="title">에디터를 닫으시겠습니까</div>
             <div>
                 <button
                     type="button"
@@ -59,15 +59,17 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                 <div>
                     <button
                         type="button"
+                        className="cancel"
                         onClick={() => {
                             setWarn(!warn);
                         }}
                     >
-                        <FontAwesomeIcon icon="fa-solid fa-x" />
-                        취소하기
+                        <FontAwesomeIcon icon="fa-solid fa-x" />{" "}
+                        닫기
                     </button>
                     <button
                         type="button"
+                        className="answer"
                         disabled={editorData === "" ? true : false}
                         onClick={() => {
                             setToggleData({
@@ -76,7 +78,7 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                             });
                         }}
                     >
-                        <FontAwesomeIcon icon="fa-solid fa-paper-plane" />
+                        <FontAwesomeIcon icon="fa-solid fa-paper-plane" />{" "}
                         답변하기
                     </button>
                     {warn && (

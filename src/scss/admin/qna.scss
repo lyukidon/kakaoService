@@ -46,17 +46,18 @@
                         text-decoration: underline;
                     }
                 }
-                .wait, .complete{
+                .wait,
+                .complete {
                     font-size: 13px;
                     border-radius: 5px;
                     border: 1px solid black;
                     padding: 0px 5px;
                 }
-                .wait{
+                .wait {
                     background-color: #ee0000;
                     color: white;
                 }
-                .complete{
+                .complete {
                     background-color: yellow;
                 }
             }
@@ -79,6 +80,17 @@
             flex-direction: row;
             > div {
                 margin: 7px 0px;
+                > .cancel,
+                > .answer {
+                    background-color: #ffffff;
+                    border: none;
+                }
+                > .cancel {
+                    color: red;
+                }
+                > .answer {
+                    color: skyblue
+                }
             }
             > input {
                 flex-grow: 1;
