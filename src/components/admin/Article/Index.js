@@ -239,7 +239,7 @@ function Article({
                         <button
                             type="button"
                             onClick={() => {
-                                onToggleSetting(!toggleSetting);
+                                onToggleSetting(true);
                             }}
                         >
                             <FontAwesomeIcon icon="fa-solid fa-gear" />
@@ -249,7 +249,6 @@ function Article({
             </div>
             {toggleSetting && (
                 <Category
-                    toggleSetting={toggleSetting}
                     onToggleSetting={onToggleSetting}
                 />
             )}

@@ -58,7 +58,7 @@ const data = {
     ]
 };
 
-export default ({ toggleSetting, onToggleSetting }) => {
+export default ({ onToggleSetting }) => {
     return (
         <div
             className="settingCategory"
