@@ -98,6 +98,7 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                     setEditorData(editor.getData());
                 }}
             />
+            {console.log(toggleData.answer)}
         </div>
     );
 }

@@ -53,7 +53,7 @@
                     padding: 0px 5px;
                 }
                 .wait{
-                    background-color: red;
+                    background-color: #ee0000;
                     color: white;
                 }
                 .complete{
@@ -64,6 +64,13 @@
     }
     > .previewComponent {
         grid-area: preview;
+        > .questionPrev,
+        > .answerPrev {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 4px 4px #eaeaea;
+        }
     }
     > .editorComponent {
         grid-area: editor;

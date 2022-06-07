@@ -9,11 +9,15 @@ function Preview({ toggleList, setToggleList, toggleData, setToggleData }) {
     }, [toggleData]);
     return (
         <div className="previewComponent">
-            <div>{toggleData.title}</div>
-            <hr />
-            <div ref={previewRef} />
-            <div>답변:</div>
-            <div ref={answerRef} />
+            <div className="questionPrev">
+                <div>{toggleData.title}</div>
+                <hr />
+                <div ref={previewRef} />
+            </div>
+            <div className="answerPrev">
+                <div>답변:</div>
+                <div ref={answerRef} />
+            </div>
         </div>
     );
 }
