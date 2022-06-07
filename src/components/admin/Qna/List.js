@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function List({ toggleId, setToggleId, toggleData, setToggleData }) {
+function List({editor, toggleId, setToggleId, toggleData, setToggleData }) {
     const [qnaData, setQnaData] = useState([]);
     const [filter, setFilter] = useState([]);
     const setOption = (evt) => {
@@ -27,7 +27,7 @@ function List({ toggleId, setToggleId, toggleData, setToggleData }) {
     }, []);
     return (
         <div className="listComponent">
-            <h4>문의 목록</h4>
+            <h4 style={editor && {"margin-top":"5px"}}>문의 목록</h4>
             <div>
                 <select name="" id="" onChange={(evt) => setOption(evt)}>
                     <option value="all">전체</option>

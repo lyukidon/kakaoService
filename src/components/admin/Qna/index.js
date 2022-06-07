@@ -18,6 +18,7 @@ function Qna() {
     return (
         <div className="qna">
             <List
+                editor
                 toggleId={toggleId}
                 setToggleId={setToggleId}
                 toggleData={toggleData}
