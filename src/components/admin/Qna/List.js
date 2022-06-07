@@ -27,7 +27,7 @@ function List({ toggleId, setToggleId, toggleData, setToggleData }) {
     }, []);
     return (
         <div className="listComponent">
-            문의 목록
+            <h4 style={{ "margin-top": "5px" }}>문의 목록</h4>
             <div>
                 <select name="" id="" onChange={(evt) => setOption(evt)}>
                     <option value="all">전체</option>
@@ -36,16 +36,14 @@ function List({ toggleId, setToggleId, toggleData, setToggleData }) {
                 </select>
             </div>
             <div>
+                <div className="list" style={{"border":"none"}}>
+                    <div>상태</div>
+                    <div>제목</div>
+                </div>
                 {filter.map((c, i) => (
                     <div key={c.id} className="list">
                         <div>
-                            <span
-                                style={
-                                    c.status
-                                        ? { backgroundColor: "yellow" }
-                                        : { backgroundColor: "red" }
-                                }
-                            >
+                            <span className={c.status ? "complete" : "wait"}>
                                 {c.status ? "완료" : "대기"}
                             </span>
                         </div>
@@ -64,11 +62,17 @@ function List({ toggleId, setToggleId, toggleData, setToggleData }) {
                                         id: 0,
                                         title: "",
                                         content: "",
-                                        status:false,
-                                        answer:""
+                                        status: false,
+                                        answer: "",
                                     });
                                 } else {
-                                    const { id, title, content,status, answer } = c;
+                                    const {
+                                        id,
+                                        title,
+                                        content,
+                                        status,
+                                        answer,
+                                    } = c;
                                     setToggleId(c.id);
                                     setToggleData({
                                         ...toggleData,
@@ -76,7 +80,7 @@ function List({ toggleId, setToggleId, toggleData, setToggleData }) {
                                         title,
                                         content,
                                         status,
-                                        answer
+                                        answer,
                                     });
                                 }
                             }}

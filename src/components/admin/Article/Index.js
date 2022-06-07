@@ -136,7 +136,7 @@ function Article({
                     </Link>
                 </div>
             ) : (
-                <h4>도움말 관리</h4>
+                <h4 style={{"margin-top":"5px"}}>도움말 관리</h4>
             )}
 
             {/* 카테고리 선택 */}

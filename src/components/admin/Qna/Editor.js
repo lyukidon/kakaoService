@@ -70,7 +70,6 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                         type="button"
                         disabled={editorData === "" ? true : false}
                         onClick={() => {
-                            console.log(editorData);
                             setToggleData({
                                 ...toggleData,
                                 answer: editorData,

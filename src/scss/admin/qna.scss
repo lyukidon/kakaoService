@@ -26,15 +26,38 @@
     }
     > .listComponent {
         grid-area: list;
-        > div > .list {
-            display: grid;
-            grid-template-columns: 40px 1fr;
-            padding: 10px;
-            border-top: 1px solid black;
-            cursor: pointer;
-            > .title {
-                &:hover {
-                    text-decoration: underline;
+        > div {
+            > select {
+                margin-bottom: 15px;
+                width: 130px;
+                padding: 5px;
+                border: 1px solid #909090;
+                border-radius: 8px;
+                background-color: #ffffff;
+            }
+            > .list {
+                display: grid;
+                grid-template-columns: 50px 1fr;
+                padding: 10px;
+                border-top: 1px solid #dddddd;
+                cursor: pointer;
+                > .title {
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+                .wait, .complete{
+                    font-size: 13px;
+                    border-radius: 5px;
+                    border: 1px solid black;
+                    padding: 0px 5px;
+                }
+                .wait{
+                    background-color: red;
+                    color: white;
+                }
+                .complete{
+                    background-color: yellow;
                 }
             }
         }
