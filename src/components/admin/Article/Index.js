@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
 import List from "./List";
+import Category from "./Category";
 
 import "../../../scss/admin/article.scss";
 
@@ -11,9 +12,16 @@ import "../../../scss/admin/article.scss";
 function Article({
     editor,
     faqData,
-    ids,setIds,
-    service,category,platform,article,
-    setService, setCategory, setPlatform, setArticle,
+    ids,
+    setIds,
+    service,
+    category,
+    platform,
+    article,
+    setService,
+    setCategory,
+    setPlatform,
+    setArticle,
     setStatistic,
     activateEditor,
     setActivateEditor,
@@ -22,9 +30,9 @@ function Article({
     setSingleArti,
     preview,
     setPreview,
-    handleFunc
+    handleFunc,
 }) {
-   const changeStatistic = () => {
+    const changeStatistic = () => {
         if (setStatistic) {
             setStatistic({
                 service: service.length,
@@ -71,7 +79,7 @@ function Article({
                     .sort((a, b) => a.article_id - b.article_id)
             );
         }
-    }, [faqData,ids]);
+    }, [faqData, ids]);
     useEffect(() => {
         changeStatistic();
     }, [service, category, platform, article]);
@@ -99,15 +107,17 @@ function Article({
         changeStatistic();
         // 우측 정리하기
         setArticleId(-1);
-        setActivateEditor(false)
-        setPreview(false)
+        setActivateEditor(false);
+        setPreview(false);
         setSingleArti({
-            content:"",
-            explain:"",
-        })
+            content: "",
+            explain: "",
+        });
     };
     // 삭제 관련
-    const [chkTrash, setChkTrash] = useState(false);    
+    const [chkTrash, setChkTrash] = useState(false);
+    // 카테고리 설정 관련
+    const [toggleSetting, onToggleSetting] = useState(false);
     return (
         <div className="article">
             {/* 제목 */}
@@ -139,23 +149,22 @@ function Article({
                                 onChange={(event) => changeOption(event)}
                             >
                                 <option value={0}>전체</option>
-                                {service && service.map((c) => (
-                                    <option
-                                        key={c.content}
-                                        id="service_id"
-                                        value={c.service_id}
-                                    >
-                                        {c.content}
-                                    </option>
-                                ))}
+                                {service &&
+                                    service.map((c) => (
+                                        <option
+                                            key={c.content}
+                                            id="service_id"
+                                            value={c.service_id}
+                                        >
+                                            {c.content}
+                                        </option>
+                                    ))}
                             </select>
                         </div>
                     </div>
                     {ids.service_id !== 0 && (
                         <>
-                            <FontAwesomeIcon
-                                icon="fa-solid fa-angle-right"
-                            />
+                            <FontAwesomeIcon icon="fa-solid fa-angle-right" />
                             <div className="categorySelect">
                                 <div>
                                     <select
@@ -183,9 +192,7 @@ function Article({
                     )}
                     {ids.category_id !== 0 && (
                         <>
-                            <FontAwesomeIcon
-                                icon="fa-solid fa-angle-right"
-                            />
+                            <FontAwesomeIcon icon="fa-solid fa-angle-right" />
                             <div className="platformSelect">
                                 <div>
                                     <select
@@ -213,23 +220,39 @@ function Article({
                     )}
                 </div>
                 {editor && (
-                    <button
-                        type="button"
-                        onClick={() => {
-                            setPreview(false);
-                            setArticleId(faqData.article.length);
-                            setActivateEditor(!activateEditor);
-                            setSingleArti({
-                                content: "",
-                                explain: "",
-                            });
-                        }}
-                    >
-                        <FontAwesomeIcon icon="fa-solid fa-plus" />
-                        도움말 추가
-                    </button>
+                    <div>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setPreview(false);
+                                setArticleId(faqData.article.length);
+                                setActivateEditor(!activateEditor);
+                                setSingleArti({
+                                    content: "",
+                                    explain: "",
+                                });
+                            }}
+                        >
+                            <FontAwesomeIcon icon="fa-solid fa-plus" />
+                            도움말 추가
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                onToggleSetting(!toggleSetting);
+                            }}
+                        >
+                            <FontAwesomeIcon icon="fa-solid fa-gear" />
+                        </button>
+                    </div>
                 )}
             </div>
+            {toggleSetting && (
+                <Category
+                    toggleSetting={toggleSetting}
+                    onToggleSetting={onToggleSetting}
+                />
+            )}
             <div>
                 {/* 도움말 목록 */}
                 <List

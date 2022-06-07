@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+// import WordCount from "@ckeditor/ckeditor5-word-count/src/wordcount";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Warning({ setWarn, setToggleId, setToggleData }) {
@@ -56,7 +57,12 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                     ref={titleRef}
                 />
                 <div>
-                    <button type="button" onClick={() => {setWarn(true)}}>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setWarn(true);
+                        }}
+                    >
                         <FontAwesomeIcon icon="fa-solid fa-x" />
                         취소하기
                     </button>
@@ -85,7 +91,9 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
             </div>
             <CKEditor
                 editor={ClassicEditor}
-                config={{ placeholder: "답변을 입력해주세요" }}
+                config={{
+                    placeholder: "답변을 입력해주세요",
+                }}
                 data={toggleData.answer ? toggleData.answer : ""}
                 onChange={(evt, editor) => {
                     setEditorData(editor.getData());
