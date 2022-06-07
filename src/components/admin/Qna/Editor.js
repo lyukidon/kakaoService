@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Warning({ setWarn, setToggleId, setToggleData }) {
     return (
-        <div>
+        <div className="warning">
             <div className="title">취소 하시겠습니까</div>
             <div>
                 <button
@@ -60,7 +60,7 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                     <button
                         type="button"
                         onClick={() => {
-                            setWarn(true);
+                            setWarn(!warn);
                         }}
                     >
                         <FontAwesomeIcon icon="fa-solid fa-x" />
