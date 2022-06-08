@@ -92,7 +92,11 @@
             }
         }
         .statistic {
-            > ul > li {
+            > div {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+            > div > div > ul > li {
                 margin-bottom: 16px;
             }
         }

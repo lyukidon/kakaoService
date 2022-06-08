@@ -41,7 +41,7 @@ function Admin({ faqData }) {
                 <div className="dashboard">
                     <Graph />
                     <QnaList />
-                    <ArticleStatics statistic={statistic} />
+                    <ArticleStatics statistic={statistic} faqData={faqData} />
                     <Article
                         faqData={faqData}
                         ids={ids}
