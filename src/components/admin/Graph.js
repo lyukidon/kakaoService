@@ -114,16 +114,6 @@ const Graph = () => {
         <div className="graph">
             <div className="titleNlink">
                 <h4>트래픽 통계</h4>
-                <Link to="/admin/statics">
-                    <h4>
-                        더보기
-                        <FontAwesomeIcon
-                            className="rightArrow"
-                            icon="fa-solid fa-angle-right"
-                            size="lg"
-                        />
-                    </h4>
-                </Link>
             </div>
             <div className="graphTable">
                 <div>
