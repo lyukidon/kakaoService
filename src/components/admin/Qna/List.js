@@ -31,8 +31,8 @@ function List({editor, toggleId, setToggleId, toggleData, setToggleData }) {
             <div>
                 <select name="" id="" onChange={(evt) => setOption(evt)}>
                     <option value="all">전체</option>
-                    <option value="false">대기</option>
-                    <option value="true">완료</option>
+                    <option value="false">답변 대기</option>
+                    <option value="true">답변 완료</option>
                 </select>
             </div>
             <div>
@@ -44,7 +44,7 @@ function List({editor, toggleId, setToggleId, toggleData, setToggleData }) {
                     <div key={c.id} className="list">
                         <div>
                             <span className={c.status ? "complete" : "wait"}>
-                                {c.status ? "완료" : "대기"}
+                                {c.status ? "답변완료" : "답변대기"}
                             </span>
                         </div>
                         <div
