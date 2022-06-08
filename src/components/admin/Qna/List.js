@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function List({ editor, toggleId, setToggleId, toggleData, setToggleData }) {
     const [qnaData, setQnaData] = useState([]);
@@ -26,14 +28,29 @@ function List({ editor, toggleId, setToggleId, toggleData, setToggleData }) {
         getData();
     }, []);
     // pagination
-    const pageArr = new Array(Math.ceil(filterData.length / 7))
+    const renderNumbers = editor ? 10 : 7;
+    const pageArr = new Array(Math.ceil(filterData.length / renderNumbers))
         .fill(1)
         .map((c, i) => c + i);
     const [countPage, setCountPage] = useState(1);
 
     return (
         <div className="listComponent">
-            <h4 style={editor && { "margin-top": "5px" }}>문의 목록</h4>
+            <div className="title">
+                <h4 style={editor && { "margin-top": "5px" }}>문의 목록</h4>
+                {!editor && (
+                    <Link to="/admin/qna">
+                        <h4>
+                            더보기
+                            <FontAwesomeIcon
+                                className="rightArrow"
+                                icon="fa-solid fa-angle-right"
+                                size="lg"
+                            />
+                        </h4>
+                    </Link>
+                )}
+            </div>
             <div>
                 <select name="" id="" onChange={(evt) => setOption(evt)}>
                     <option value="all">전체</option>
@@ -46,9 +63,10 @@ function List({ editor, toggleId, setToggleId, toggleData, setToggleData }) {
                     <div>상태</div>
                     <div>제목</div>
                 </div>
-                {filterData.map((c, i) => {
-                    if (i < countPage * 7 && i >= (countPage - 1) * 7) {
-                        return (
+                {filterData.map(
+                    (c, i) =>
+                        i >= (countPage - 1) * renderNumbers &&
+                        i < countPage * renderNumbers && (
                             <div key={c.id} className="list">
                                 <div>
                                     <span
@@ -100,9 +118,8 @@ function List({ editor, toggleId, setToggleId, toggleData, setToggleData }) {
                                     {c.title}
                                 </div>
                             </div>
-                        );
-                    }
-                })}
+                        )
+                )}
 
                 <div className="page">
                     <div>
@@ -111,7 +128,9 @@ function List({ editor, toggleId, setToggleId, toggleData, setToggleData }) {
                                 key={c}
                                 type="button"
                                 onClick={() => setCountPage(c)}
-                                className={`pageBtn ${countPage === c && "if-page-selected"}`}
+                                className={`pageBtn ${
+                                    countPage === c && "if-page-selected"
+                                }`}
                             >
                                 {c}
                             </button>

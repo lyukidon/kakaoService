@@ -97,6 +97,11 @@
             }
         }
         > .listComponent {
+            > .title {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
             > div {
                 > select {
                     margin-bottom: 15px;
