@@ -27,6 +27,7 @@ function Article({
     setActivateEditor,
     articleId,
     setArticleId,
+    singleArti,
     setSingleArti,
     preview,
     setPreview,
@@ -227,7 +228,7 @@ function Article({
                                 setPreview(false);
                                 setArticleId(faqData.article.length);
                                 setActivateEditor(!activateEditor);
-                                setSingleArti({
+                                setSingleArti({...singleArti,
                                     content: "",
                                     explain: "",
                                 });
@@ -270,6 +271,8 @@ function Article({
                     setChkTrash={setChkTrash}
                     preview={preview}
                     setPreview={setPreview}
+                    singleArti={singleArti && singleArti}
+                    setSingleArti={setSingleArti}
                 />
             </div>
         </div>

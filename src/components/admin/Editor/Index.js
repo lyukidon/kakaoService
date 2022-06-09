@@ -54,11 +54,15 @@ function Article({
     setArticleId,
     handleFunc,
 }) {
+    const titleRef = useRef();
     const [titleData, setTitleData] = useState("");
     const [editorData, setEditorData] = useState("");
     const [cancel, setCancel] = useState(false);
     useEffect(() => {
         setEditorData("");
+        if (titleRef.current){
+            setTitleData(titleRef.current.value)
+        }
     }, [activateEditor]);
 
     const onEdit = () => {
@@ -95,28 +99,26 @@ function Article({
                 explain: editorData,
             });
         }
-        console.log(titleData);
-        console.log(editorData);
         setActivateEditor(false);
         setPreview(true);
         setEditorData("");
         setTitleData("");
     };
-    const titleRef = useRef();
+
 
     // 저장하기 버튼 마우스 오버
     const [mouseOver, setMouseOver] = useState("");
     useEffect(() => {
-        if (!titleData) {
-            setMouseOver("제목을 입력해주세요");
-        } else if (!titleRef.current.value) {
-            setMouseOver("제목을 입력해주세요");
-        } else if (!editorData) {
-            setMouseOver("내용을 입력(수정)해주세요");
-        } else {
-            setMouseOver("저장 가능")
+        if (singleArti) {
+            if (titleData === "" ) {
+                setMouseOver("제목을 입력해주세요");
+            } else if (!editorData) {
+                setMouseOver("내용을 변경(입력)해주세요");
+            } else {
+                setMouseOver("저장 가능");
+            }
         }
-    }, [editorData, titleData, titleRef]);
+    }, [editorData, titleData, singleArti]);
     return (
         <div className={activateEditor || preview ? "editor" : "editor center"}>
             {!activateEditor && !preview && (
@@ -126,6 +128,9 @@ function Article({
             )}
             {activateEditor && (
                 <>
+                    {console.log(titleData)}
+                    {console.log(singleArti)}
+                    {console.log(titleRef.current && titleRef.current.value)}
                     <div className="content">
                         <div>제목: </div>
                         <input
@@ -168,12 +173,11 @@ function Article({
                                     !editorData && !titleData && "not-allowed"
                                 }
                                 disabled={
-                                    (!editorData && !titleData) ||
-                                    titleRef.current.value === ""
-                                        ? true
-                                        : false
+                                    !editorData || !titleData ? true : false
                                 }
-                                onClick={() => onEdit()}
+                                onClick={() => {
+                                    onEdit();
+                                }}
                                 title={mouseOver}
                             >
                                 <FontAwesomeIcon

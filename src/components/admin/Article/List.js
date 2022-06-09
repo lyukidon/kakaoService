@@ -55,6 +55,8 @@ export default function List({
     setChkTrash,
     preview,
     setPreview,
+    singleArti,
+    setSingleArti,
 }) {
     // pagination
     // page 갯수
@@ -89,14 +91,45 @@ export default function List({
 
     const onBadge = (c) => {
         if (category.length === 0) {
-            return (<span style={service[c.service_id - 1].color && {'background-color': service[c.service_id - 1].color,}}>{service[c.service_id - 1].content}</span>);
+            return (
+                <span
+                    style={
+                        service[c.service_id - 1].color && {
+                            "background-color": service[c.service_id - 1].color,
+                        }
+                    }
+                >
+                    {service[c.service_id - 1].content}
+                </span>
+            );
         } else if (platform.length === 0) {
-            return (<span style={category[c.category_id - 1].color && {'background-color': category[c.category_id - 1].color,}}>{category[c.category_id - 1].content}</span>);
+            return (
+                <span
+                    style={
+                        category[c.category_id - 1].color && {
+                            "background-color":
+                                category[c.category_id - 1].color,
+                        }
+                    }
+                >
+                    {category[c.category_id - 1].content}
+                </span>
+            );
         } else {
-            return (<span style={platform[c.platform_id - 1].color && {'background-color': platform[c.platform_id - 1].color,}}>{platform[c.platform_id - 1].content}</span>);
+            return (
+                <span
+                    style={
+                        platform[c.platform_id - 1].color && {
+                            "background-color":
+                                platform[c.platform_id - 1].color,
+                        }
+                    }
+                >
+                    {platform[c.platform_id - 1].content}
+                </span>
+            );
         }
     };
-
 
     return (
         <>
@@ -111,9 +144,7 @@ export default function List({
                     i >= low &&
                     i < high && (
                         <div key={c.article_id} className="articleBox">
-                            <div className="badge">
-                                {onBadge(c)}
-                            </div>
+                            <div className="badge">{onBadge(c)}</div>
                             <div
                                 role="button"
                                 tabIndex={0}
@@ -129,6 +160,7 @@ export default function List({
                                 onClick={() => {
                                     setActivateEditor(false);
                                     handleFunc(c, preview, setPreview);
+                                    
                                 }}
                             >
                                 {c.content}
