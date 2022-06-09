@@ -37,7 +37,7 @@ function List({ editor, toggleId, setToggleId, toggleData, setToggleData }) {
     return (
         <div className="listComponent">
             <div className="title">
-                <h4 style={editor && { "margin-top": "5px" }}>문의 목록</h4>
+                <h4 style={editor && { "marginTop": "5px" }}>문의 목록</h4>
                 {!editor && (
                     <Link to="/admin/qna">
                         <h4>

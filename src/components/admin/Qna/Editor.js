@@ -91,13 +91,15 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                             </button>
                             <button
                                 type="button"
-                                className="answer"
+                                className={`answer ${editorData === "" && "disabled"}`}
                                 disabled={editorData === "" ? true : false}
+                                title={editorData === "" ? "답변을 입력해주세요" : ""}
                                 onClick={() => {
                                     setToggleData({
                                         ...toggleData,
                                         answer: editorData,
                                     });
+                                    setChkEditor(false);
                                 }}
                             >
                                 <FontAwesomeIcon icon="fa-solid fa-paper-plane" />{" "}

@@ -81,10 +81,14 @@
                     border: none;
                 }
                 > .cancel {
-                    color: red;
+                    color: #D90000;
                 }
                 > .answer {
-                    color: skyblue;
+                    color: #146EBE;
+                }
+                > .disabled {
+                    cursor: not-allowed;
+                    opacity: 0.3
                 }
             }
             > input {
