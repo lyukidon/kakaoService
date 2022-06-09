@@ -60,8 +60,8 @@ function Article({
     const [cancel, setCancel] = useState(false);
     useEffect(() => {
         setEditorData("");
-        if (titleRef.current){
-            setTitleData(titleRef.current.value)
+        if (titleRef.current) {
+            setTitleData(titleRef.current.value);
         }
     }, [activateEditor]);
 
@@ -105,12 +105,11 @@ function Article({
         setTitleData("");
     };
 
-
     // 저장하기 버튼 마우스 오버
     const [mouseOver, setMouseOver] = useState("");
     useEffect(() => {
         if (singleArti) {
-            if (titleData === "" ) {
+            if (titleData === "") {
                 setMouseOver("제목을 입력해주세요");
             } else if (!editorData) {
                 setMouseOver("내용을 변경(입력)해주세요");
@@ -128,9 +127,6 @@ function Article({
             )}
             {activateEditor && (
                 <>
-                    {console.log(titleData)}
-                    {console.log(singleArti)}
-                    {console.log(titleRef.current && titleRef.current.value)}
                     <div className="content">
                         <div>제목: </div>
                         <input
@@ -170,7 +166,7 @@ function Article({
                             <button
                                 type="button"
                                 className={
-                                    !editorData && !titleData && "not-allowed"
+                                    (!editorData || !titleData) && "not-allowed"
                                 }
                                 disabled={
                                     !editorData || !titleData ? true : false
