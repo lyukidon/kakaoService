@@ -42,6 +42,7 @@ function Preview({
                             setActivateEditor(true);
                             setPreview(false);
                         }}
+                        title="변경"
                     >
                         <FontAwesomeIcon
                             icon="fa-solid fa-pen-to-square"
@@ -55,6 +56,7 @@ function Preview({
                         onClick={() => {
                             setWarn(!warn);
                         }}
+                        title="삭제"
                     >
                         <FontAwesomeIcon icon="fa-solid fa-trash" size="lg" />
                     </button>

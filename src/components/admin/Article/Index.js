@@ -242,6 +242,7 @@ function Article({
                             onClick={() => {
                                 onToggleSetting(true);
                             }}
+                            title="카테고리 설정"
                         >
                             <FontAwesomeIcon icon="fa-solid fa-gear" />
                         </button>
