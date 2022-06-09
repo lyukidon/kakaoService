@@ -8,7 +8,7 @@ const ErrMessage = styled.div`
 `;
 
 function RouteError() {
-    return <ErrMessage>404 Error</ErrMessage>;
+    return <ErrMessage>Error</ErrMessage>;
 }
 
 export default RouteError;
