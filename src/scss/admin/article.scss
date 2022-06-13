@@ -44,6 +44,13 @@
             > .treeBox {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
+                .searchInput{
+                    margin-right: 10px;
+                }
+                button {
+                    margin-right: 10px;
+
+                }
             }
         }
     }

@@ -16,6 +16,8 @@ class Tree extends React.Component {
 
         this.state = {
             searchString: "",
+            currentNode: {},
+            selectCheck: false,
             treeData: [
                 {
                     title: "카카오톡",
@@ -85,85 +87,99 @@ class Tree extends React.Component {
         }));
     };
 
+    selectThis = (node, path) => {
+        this.setState((prev) => ({
+            currentNode: node,
+            path,
+        }));
+    };
+
+    selectCheck = (node, path, state) => {
+        console.log(node, path, state);
+        if (node.title === state.currentNode.title) {
+            for (let i = 0; i < path.length; i++) {
+                if (path[i] === state.path[i]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    };
+
     render() {
         const getNodeKey = ({ treeIndex }) => treeIndex;
         return (
-            <div style={{ height: 800 }}>
-                <button
-                    type="button"
-                    onClick={() => {
-                        this.expandAndCollapse(true);
-                    }}
-                >
-                    열기
-                </button>
-                <button
-                    type="button"
-                    onClick={() => {
-                        this.expandAndCollapse(false);
-                    }}
-                >
-                    닫기
-                </button>
-                <input
-                    type="text"
-                    placeholder="Search"
-                    value={this.state.searchString}
-                    onChange={(event) => {
-                        this.setState({ searchString: event.target.value });
-                    }}
-                />
-                <button
-                    type="button"
-                    onClick={(evt) => {
-                        evt.preventDefault();
-                        evt.stopPropagation();
-                        this.insertNewNode();
-                    }}
-                >
-                    <FontAwesomeIcon icon="fa-solid fa-plus" />
-                    추가
-                </button>
-                <SortableTree
-                    treeData={this.state.treeData}
-                    searchQuery={this.state.searchString}
-                    onChange={(treeData) => this.setState({ treeData })}
-                    theme={FileExplorerTheme}
-                    generateNodeProps={({ node, path }) => ({
-                        title: (
-                            <form>
-                                <input
-                                    type="text"
-                                    value={node.title}
-                                    onChange={(evt) => {
-                                        this.setState((prev) => ({
-                                            treeData: changeNodeAtPath({
-                                                treeData: prev.treeData,
-                                                path,
-                                                getNodeKey,
-                                                newNode: {
-                                                    ...node,
-                                                    title: evt.target.value,
-                                                },
-                                            }),
-                                        }));
-                                    }}
-                                />
-                                <button
-                                    type="button"
-                                    onClick={(evt) => {
-                                        evt.preventDefault();
-                                        evt.stopPropagation();
-                                        this.removeNode(path);
-                                    }}
+            <>
+                <div style={{ height: 800 }}>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            this.expandAndCollapse(true);
+                        }}
+                    >
+                        펼치기
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            this.expandAndCollapse(false);
+                        }}
+                    >
+                        접기
+                    </button>
+                    <input
+                        type="text"
+                        placeholder="Search"
+                        value={this.state.searchString}
+                        onChange={(event) => {
+                            this.setState({ searchString: event.target.value });
+                        }}
+                    />
+                    <button
+                        type="button"
+                        onClick={(evt) => {
+                            evt.preventDefault();
+                            evt.stopPropagation();
+                            this.insertNewNode();
+                        }}
+                    >
+                        <FontAwesomeIcon icon="fa-solid fa-plus" />
+                        추가
+                    </button>
+                    <SortableTree
+                        treeData={this.state.treeData}
+                        searchQuery={this.state.searchString}
+                        onChange={(treeData) => this.setState({ treeData })}
+                        theme={FileExplorerTheme}
+                        canDrag={false}
+                        generateNodeProps={({ node, path }) => ({
+                            title: (
+                                <form
+                                    onClick={() => this.selectThis(node, path)}
+                                    style={
+                                        this.selectCheck(node, path, this.state)
+                                            ? { border: "1px solid #111111" }
+                                            : { border: "none" }
+                                    }
                                 >
-                                    <FontAwesomeIcon icon="fa-solid fa-x" />
-                                </button>
-                            </form>
-                        ),
-                    })}
-                />
-            </div>
+                                    {node.title}
+                                    <button
+                                        type="button"
+                                        onClick={(evt) => {
+                                            evt.preventDefault();
+                                            evt.stopPropagation();
+                                            this.removeNode(path);
+                                        }}
+                                    >
+                                        <FontAwesomeIcon icon="fa-solid fa-x" />
+                                    </button>
+                                </form>
+                            ),
+                        })}
+                    />
+                </div>
+                <div>안녕</div>
+            </>
         );
     }
 }
