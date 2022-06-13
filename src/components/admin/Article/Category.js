@@ -4,11 +4,10 @@ import "@nosferatu500/react-sortable-tree/style.css";
 import FileExplorerTheme from "@nosferatu500/theme-file-explorer";
 import SortableTree, {
     toggleExpandedForAll,
-    addNodeUnderParent,
     getNodeAtPath,
     removeNodeAtPath,
-    TextField,
     changeNodeAtPath,
+    insertNode,
 } from "@nosferatu500/react-sortable-tree";
 
 class Tree extends React.Component {
@@ -74,6 +73,18 @@ class Tree extends React.Component {
         }));
     };
 
+    insertNewNode = () => {
+        this.setState((prev) => ({
+            treeData: insertNode({
+                treeData: prev.treeData,
+                depth: 0,
+                // minimumTreeIndex: prev.treeData.length,
+                newNode: { title: "", children: [] },
+                getNodeKey: ({ treeData }) => this.state.treeData,
+            }).treeData,
+        }));
+    };
+
     render() {
         const getNodeKey = ({ treeIndex }) => treeIndex;
         return (
@@ -102,6 +113,17 @@ class Tree extends React.Component {
                         this.setState({ searchString: event.target.value });
                     }}
                 />
+                <button
+                    type="button"
+                    onClick={(evt) => {
+                        evt.preventDefault();
+                        evt.stopPropagation();
+                        this.insertNewNode();
+                    }}
+                >
+                    <FontAwesomeIcon icon="fa-solid fa-plus" />
+                    추가
+                </button>
                 <SortableTree
                     treeData={this.state.treeData}
                     searchQuery={this.state.searchString}
@@ -126,6 +148,7 @@ class Tree extends React.Component {
                                         }));
                                     }}
                                 />
+
                                 <button
                                     onClick={(evt) => {
                                         evt.preventDefault();
