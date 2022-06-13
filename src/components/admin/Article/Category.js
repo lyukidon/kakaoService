@@ -80,7 +80,6 @@ class Tree extends React.Component {
             treeData: insertNode({
                 treeData: prev.treeData,
                 depth: 0,
-                // minimumTreeIndex: prev.treeData.length,
                 newNode: { title: "", children: [] },
                 getNodeKey: ({ treeData }) => prev.treeData,
             }).treeData,
@@ -94,11 +93,10 @@ class Tree extends React.Component {
         }));
     };
 
-    selectCheck = (node, path, state) => {
-        console.log(node, path, state);
-        if (node.title === state.currentNode.title) {
+    selectCheck = (node, path) => {
+        if (node.title === this.state.currentNode.title) {
             for (let i = 0; i < path.length; i++) {
-                if (path[i] === state.path[i]) {
+                if (path[i] === this.state.path[i]) {
                     return true;
                 }
             }
@@ -157,7 +155,7 @@ class Tree extends React.Component {
                                 <form
                                     onClick={() => this.selectThis(node, path)}
                                     style={
-                                        this.selectCheck(node, path, this.state)
+                                        this.selectCheck(node, path)
                                             ? { border: "1px solid #111111" }
                                             : { border: "none" }
                                     }
