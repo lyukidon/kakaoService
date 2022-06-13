@@ -14,7 +14,7 @@
         left: 0;
         top: 40px;
         z-index: 5;
-        background-color: rgba(100,100,100, 0.5);
+        background-color: rgba(100, 100, 100, 0.5);
         width: 100vw;
         height: 100vh;
         > .settingModal {
@@ -23,9 +23,28 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: #ffffff;
-            width: 500px;
-            height: 500px;
+            width: 800px;
+            height: 600px;
             opacity: 1;
+            padding: 15px;
+            > .modalBtn {
+                margin-bottom: 20px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                > div {
+                    font-size: 18px;
+                }
+                > button {
+                    font-size: 18px;
+                    border: none;
+                    background-color: #ffffff;
+                }
+            }
+            > .treeBox {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
         }
     }
 }
