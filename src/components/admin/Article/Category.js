@@ -57,7 +57,7 @@ class Tree extends React.Component {
         this.setState((prev) => ({
             ...prev,
             treeData: toggleExpandedForAll({
-                treeData: this.state.treeData,
+                treeData: prev.treeData,
                 expanded,
             }),
         }));
@@ -80,7 +80,7 @@ class Tree extends React.Component {
                 depth: 0,
                 // minimumTreeIndex: prev.treeData.length,
                 newNode: { title: "", children: [] },
-                getNodeKey: ({ treeData }) => this.state.treeData,
+                getNodeKey: ({ treeData }) => prev.treeData,
             }).treeData,
         }));
     };
@@ -128,6 +128,7 @@ class Tree extends React.Component {
                     treeData={this.state.treeData}
                     searchQuery={this.state.searchString}
                     onChange={(treeData) => this.setState({ treeData })}
+                    theme={FileExplorerTheme}
                     generateNodeProps={({ node, path }) => ({
                         title: (
                             <form>
@@ -148,8 +149,8 @@ class Tree extends React.Component {
                                         }));
                                     }}
                                 />
-
                                 <button
+                                    type="button"
                                     onClick={(evt) => {
                                         evt.preventDefault();
                                         evt.stopPropagation();
@@ -184,8 +185,6 @@ export default ({ onToggleSetting }) => {
                 </div>
                 <div className="treeBox">
                     <Tree />
-                    <div>배지 색상</div>
-                    <div></div>
                 </div>
             </div>
         </div>
