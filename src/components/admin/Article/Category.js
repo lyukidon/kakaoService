@@ -8,6 +8,7 @@ import SortableTree, {
     getNodeAtPath,
     removeNodeAtPath,
     TextField,
+    changeNodeAtPath,
 } from "@nosferatu500/react-sortable-tree";
 
 class Tree extends React.Component {
@@ -63,12 +64,18 @@ class Tree extends React.Component {
         }));
     };
 
-    updateState = () => {
-        this.setState((prev) => ({ ...prev, treeData: this.state.treeData }));
-        console.log("update");
+    removeNode = (path) => {
+        this.setState((prev) => ({
+            treeData: removeNodeAtPath({
+                treeData: prev.treeData,
+                path,
+                getNodeKey: ({ treeIndex }) => treeIndex,
+            }),
+        }));
     };
 
     render() {
+        const getNodeKey = ({ treeIndex }) => treeIndex;
         return (
             <div style={{ height: 800 }}>
                 <button
@@ -96,12 +103,40 @@ class Tree extends React.Component {
                     }}
                 />
                 <SortableTree
-                    onChange={() => this.updateState()}
                     treeData={this.state.treeData}
                     searchQuery={this.state.searchString}
                     onChange={(treeData) => this.setState({ treeData })}
-                    generateNodeProps={(rowInfo) => ({
-                        buttons: [<button onClick={() => {}}>X</button>],
+                    generateNodeProps={({ node, path }) => ({
+                        title: (
+                            <form>
+                                <input
+                                    type="text"
+                                    value={node.title}
+                                    onChange={(evt) => {
+                                        this.setState((prev) => ({
+                                            treeData: changeNodeAtPath({
+                                                treeData: prev.treeData,
+                                                path,
+                                                getNodeKey,
+                                                newNode: {
+                                                    ...node,
+                                                    title: evt.target.value,
+                                                },
+                                            }),
+                                        }));
+                                    }}
+                                />
+                                <button
+                                    onClick={(evt) => {
+                                        evt.preventDefault();
+                                        evt.stopPropagation();
+                                        this.removeNode(path);
+                                    }}
+                                >
+                                    <FontAwesomeIcon icon="fa-solid fa-x" />
+                                </button>
+                            </form>
+                        ),
                     })}
                 />
             </div>
