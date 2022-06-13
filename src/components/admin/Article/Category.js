@@ -54,13 +54,18 @@ class Tree extends React.Component {
     }
 
     expandAndCollapse = (expanded) => {
-        this.setState(prev =>({
+        this.setState((prev) => ({
             ...prev,
             treeData: toggleExpandedForAll({
                 treeData: this.state.treeData,
                 expanded,
             }),
         }));
+    };
+
+    updateState = () => {
+        this.setState((prev) => ({ ...prev, treeData: this.state.treeData }));
+        console.log("update");
     };
 
     render() {
@@ -85,11 +90,13 @@ class Tree extends React.Component {
                 <input
                     type="text"
                     placeholder="Search"
-                    onClick={(event) => {
+                    value={this.state.searchString}
+                    onChange={(event) => {
                         this.setState({ searchString: event.target.value });
                     }}
                 />
                 <SortableTree
+                    onChange={() => this.updateState()}
                     treeData={this.state.treeData}
                     searchQuery={this.state.searchString}
                     onChange={(treeData) => this.setState({ treeData })}
