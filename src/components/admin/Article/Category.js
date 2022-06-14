@@ -67,7 +67,7 @@ class Tree extends React.Component {
     }
 
     componentDidUpdate() {
-        console.log(this.state.treeData);
+        console.log(this.state.path);
     }
 
     expandAndCollapse = (expanded) => {
@@ -93,15 +93,15 @@ class Tree extends React.Component {
     addNewNode = (path) => {
         this.setState((prev) => ({
             treeData: addNodeUnderParent({
-              treeData: prev.treeData,
-              parentKey: path[path.length - 1],
-              expandParent: true,
-              getNodeKey: ({treeIndex}) => treeIndex,
-              newNode: {
-                title: "안녕",
-              },
-            }).treeData
-          }))
+                treeData: prev.treeData,
+                parentKey: path[path.length - 1],
+                expandParent: true,
+                getNodeKey: ({ treeIndex }) => treeIndex,
+                newNode: {
+                    title: "안녕",
+                },
+            }).treeData,
+        }));
     };
 
     selectThis = (node, path) => {
@@ -112,6 +112,7 @@ class Tree extends React.Component {
     };
 
     selectCheck = (node, path) => {
+        console.log("selectCheck");
         if (this.state.path) {
             if (path.length === this.state.path.length) {
                 for (let i = 0; i < path.length; i++) {
@@ -126,6 +127,8 @@ class Tree extends React.Component {
         }
         return false;
     };
+
+    upNode = () => {};
 
     render() {
         const getNodeKey = ({ treeIndex }) => treeIndex;
@@ -172,13 +175,15 @@ class Tree extends React.Component {
                         searchQuery={this.state.searchString}
                         onChange={(treeData) => this.setState({ treeData })}
                         theme={FileExplorerTheme}
-                        // canDrag={false}
+                        canDrag={false}
                         generateNodeProps={({ node, path }) => ({
                             title: (
                                 <form
                                     role="button"
                                     onClick={() => this.selectThis(node, path)}
-                                    onKeyPress={() => this.selectThis(node, path)}
+                                    onKeyPress={() =>
+                                        this.selectThis(node, path)
+                                    }
                                     tabIndex={0}
                                     style={
                                         this.selectCheck(node, path)
@@ -218,20 +223,74 @@ class Tree extends React.Component {
                     <div>
                         <select name="" id="">
                             <option value="">선택해주세요</option>
-                            {/* {
-                                this.state.treeData.map( c => {
-                                    let checkChild = true;
-                                    while (checkChild){
-                                        if (c.children){
-
-                                        }
-                                    }
-                                    return(
-                                        <option value="">{c.title}</option>
-                                    )
-                                })
-                            } */}
                         </select>
+                    </div>
+                    <div>
+                        <div>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    this.setState((prev) => {
+                                        console.log(prev.currentNode.children)
+                                        if (prev.currentNode.children === undefined) {
+                                            return {
+                                                treeData: addNodeUnderParent({
+                                                    treeData: prev.treeData,
+                                                    parentKey:
+                                                        prev.path[
+                                                            prev.path.length - 3
+                                                        ],
+                                                    expandParent: true,
+                                                    getNodeKey: ({
+                                                        treeIndex,
+                                                    }) => treeIndex,
+                                                    newNode: {
+                                                        title: prev.currentNode
+                                                            .title,
+                                                    },
+                                                }).treeData,
+                                            };
+                                        } else {
+                                            return ({
+                                                treeData: addNodeUnderParent({
+                                                    treeData: prev.treeData,
+                                                    parentKey:
+                                                        prev.path[
+                                                            prev.path.length - 3
+                                                        ],
+                                                    expandParent: true,
+                                                    getNodeKey: ({
+                                                        treeIndex,
+                                                    }) => treeIndex,
+                                                    newNode: {
+                                                        title: prev.currentNode
+                                                            .title,
+                                                        children:
+                                                            prev.currentNode
+                                                                .children,
+                                                    },
+                                                }).treeData,
+                                            });
+                                        }
+                                    });
+                                    this.setState((prev) => ({
+                                        treeData: removeNodeAtPath({
+                                            treeData: prev.treeData,
+                                            path: prev.path,
+                                            getNodeKey: ({ treeIndex }) =>
+                                                treeIndex,
+                                        }),
+                                    }));
+                                }}
+                            >
+                                위로
+                            </button>
+                        </div>
+                        <div>
+                            <button type="button" onClick={() => {}}>
+                                아래로
+                            </button>
+                        </div>
                     </div>
                 </div>
             </>
