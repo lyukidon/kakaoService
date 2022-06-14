@@ -10,6 +10,12 @@ import SortableTree, {
     insertNode,
 } from "@nosferatu500/react-sortable-tree";
 
+// function CategoryOption({treeData}){
+//     return(
+
+//     )
+// }
+
 class Tree extends React.Component {
     constructor(props) {
         super(props);
@@ -55,6 +61,13 @@ class Tree extends React.Component {
         };
     }
 
+    componentDidMount() {
+        this.expandAndCollapse(true);
+    }
+    componentDidUpdate() {
+        console.log(this.state.treeData);
+    }
+
     expandAndCollapse = (expanded) => {
         this.setState((prev) => ({
             ...prev,
@@ -75,11 +88,12 @@ class Tree extends React.Component {
         }));
     };
 
-    insertNewNode = () => {
+    insertNewNode = (pathLength) => {
         this.setState((prev) => ({
             treeData: insertNode({
                 treeData: prev.treeData,
-                depth: 0,
+                depth: pathLength,
+                
                 newNode: { title: "", children: [] },
                 getNodeKey: ({ treeData }) => prev.treeData,
             }).treeData,
@@ -98,7 +112,7 @@ class Tree extends React.Component {
             if (path.length === this.state.path.length) {
                 for (let i = 0; i < path.length; i++) {
                     if (path[i] !== this.state.path[i]) {
-                        return false
+                        return false;
                     }
                 }
             } else {
@@ -106,12 +120,8 @@ class Tree extends React.Component {
             }
             return true;
         }
-        return false
+        return false;
     };
-
-    componentDidMount() {
-        this.expandAndCollapse(true)
-    }
 
     render() {
         const getNodeKey = ({ treeIndex }) => treeIndex;
@@ -148,21 +158,21 @@ class Tree extends React.Component {
                         onClick={(evt) => {
                             evt.preventDefault();
                             evt.stopPropagation();
-                            this.insertNewNode();
+                            this.insertNewNode(0);
                         }}
                     >
                         <FontAwesomeIcon icon="fa-solid fa-plus" />
-                        추가
                     </button>
                     <SortableTree
                         treeData={this.state.treeData}
                         searchQuery={this.state.searchString}
                         onChange={(treeData) => this.setState({ treeData })}
                         theme={FileExplorerTheme}
-                        canDrag={false}
+                        // canDrag={false}
                         generateNodeProps={({ node, path }) => ({
                             title: (
                                 <form
+                                    role="button"
                                     onClick={() => this.selectThis(node, path)}
                                     style={
                                         this.selectCheck(node, path)
@@ -170,8 +180,17 @@ class Tree extends React.Component {
                                             : { border: "none" }
                                     }
                                 >
-                                    { this.selectCheck(node,path) && console.log(path, this.state.path) }
                                     {node.title}
+                                    <button
+                                        type="button"
+                                        onClick={(evt) => {
+                                            evt.preventDefault();
+                                            evt.stopPropagation();
+                                            this.insertNewNode(path.length);
+                                        }}
+                                    >
+                                        <FontAwesomeIcon icon="fa-solid fa-plus" />
+                                    </button>
                                     <button
                                         type="button"
                                         onClick={(evt) => {
@@ -188,10 +207,26 @@ class Tree extends React.Component {
                     />
                 </div>
                 <div>
-                    {/* {console.log(this.state.currentNode)} */}
                     <div>카테고리 명: {title && title}</div>
                     <div>뎁스: {this.state.path && this.state.path.length}</div>
-                    <div></div>
+                    <div>
+                        <select name="" id="">
+                            <option value="">선택해주세요</option>
+                            {/* {
+                                this.state.treeData.map( c => {
+                                    let checkChild = true;
+                                    while (checkChild){
+                                        if (c.children){
+
+                                        }
+                                    }
+                                    return(
+                                        <option value="">{c.title}</option>
+                                    )
+                                })
+                            } */}
+                        </select>
+                    </div>
                     <div></div>
                 </div>
             </>
