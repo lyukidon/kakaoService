@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@nosferatu500/react-sortable-tree/style.css";
 import FileExplorerTheme from "@nosferatu500/theme-file-explorer";
 import SortableTree, {
+    addNodeUnderParent,
     toggleExpandedForAll,
     getNodeAtPath,
     removeNodeAtPath,
@@ -64,6 +65,7 @@ class Tree extends React.Component {
     componentDidMount() {
         this.expandAndCollapse(true);
     }
+
     componentDidUpdate() {
         console.log(this.state.treeData);
     }
@@ -88,16 +90,18 @@ class Tree extends React.Component {
         }));
     };
 
-    insertNewNode = (pathLength) => {
+    addNewNode = (path) => {
         this.setState((prev) => ({
-            treeData: insertNode({
-                treeData: prev.treeData,
-                depth: pathLength,
-                
-                newNode: { title: "", children: [] },
-                getNodeKey: ({ treeData }) => prev.treeData,
-            }).treeData,
-        }));
+            treeData: addNodeUnderParent({
+              treeData: prev.treeData,
+              parentKey: path[path.length - 1],
+              expandParent: true,
+              getNodeKey: ({treeIndex}) => treeIndex,
+              newNode: {
+                title: "안녕",
+              },
+            }).treeData
+          }))
     };
 
     selectThis = (node, path) => {
@@ -174,6 +178,8 @@ class Tree extends React.Component {
                                 <form
                                     role="button"
                                     onClick={() => this.selectThis(node, path)}
+                                    onKeyPress={() => this.selectThis(node, path)}
+                                    tabIndex={0}
                                     style={
                                         this.selectCheck(node, path)
                                             ? { border: "1px solid #111111" }
@@ -186,7 +192,7 @@ class Tree extends React.Component {
                                         onClick={(evt) => {
                                             evt.preventDefault();
                                             evt.stopPropagation();
-                                            this.insertNewNode(path.length);
+                                            this.addNewNode(path);
                                         }}
                                     >
                                         <FontAwesomeIcon icon="fa-solid fa-plus" />
@@ -227,7 +233,6 @@ class Tree extends React.Component {
                             } */}
                         </select>
                     </div>
-                    <div></div>
                 </div>
             </>
         );
