@@ -94,18 +94,24 @@ class Tree extends React.Component {
     };
 
     selectCheck = (node, path) => {
-        if (node.title === this.state.currentNode.title) {
-            for (let i = 0; i < path.length; i++) {
-                if (path[i] === this.state.path[i]) {
-                    return true;
+        if (this.state.path) {
+            if (path.length === this.state.path.length) {
+                for (let i = 0; i < path.length; i++) {
+                    if (path[i] !== this.state.path[i]) {
+                        return false
+                    }
                 }
+            } else {
+                return false;
             }
+            return true;
         }
-        return false;
+        return false
     };
 
     render() {
         const getNodeKey = ({ treeIndex }) => treeIndex;
+        const { title, children } = this.state.currentNode;
         return (
             <>
                 <div style={{ height: 800 }}>
@@ -160,6 +166,7 @@ class Tree extends React.Component {
                                             : { border: "none" }
                                     }
                                 >
+                                    { this.selectCheck(node,path) && console.log(path, this.state.path) }
                                     {node.title}
                                     <button
                                         type="button"
@@ -176,7 +183,13 @@ class Tree extends React.Component {
                         })}
                     />
                 </div>
-                <div>안녕</div>
+                <div>
+                    {/* {console.log(this.state.currentNode)} */}
+                    <div>카테고리 명: {title && title}</div>
+                    <div>뎁스: {this.state.path && this.state.path.length}</div>
+                    <div></div>
+                    <div></div>
+                </div>
             </>
         );
     }
