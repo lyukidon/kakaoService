@@ -109,6 +109,10 @@ class Tree extends React.Component {
         return false
     };
 
+    componentDidMount() {
+        this.expandAndCollapse(true)
+    }
+
     render() {
         const getNodeKey = ({ treeIndex }) => treeIndex;
         const { title, children } = this.state.currentNode;
