@@ -11,12 +11,6 @@ import SortableTree, {
     insertNode,
 } from "@nosferatu500/react-sortable-tree";
 
-// function CategoryOption({treeData}){
-//     return(
-
-//     )
-// }
-
 class Tree extends React.Component {
     constructor(props) {
         super(props);
@@ -95,7 +89,7 @@ class Tree extends React.Component {
                 expandParent: true,
                 getNodeKey: ({ treeIndex }) => treeIndex,
                 newNode: {
-                    title: "안녕",
+                    title: "새 카테고리",
                 },
             }).treeData,
         }));
@@ -198,7 +192,7 @@ class Tree extends React.Component {
                         onClick={(evt) => {
                             evt.preventDefault();
                             evt.stopPropagation();
-                            this.insertNewNode(0);
+                            this.addNewNode([]);
                         }}
                     >
                         <FontAwesomeIcon icon="fa-solid fa-plus" />
