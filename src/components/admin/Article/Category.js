@@ -258,7 +258,6 @@ class Tree extends React.Component {
                             value={this.state.titleInput}
                             onChange={(evt) => {
                                 this.setState({ titleInput: evt.target.value });
-                                console.log(this.state.titleInput)
                             }}
                         />
                         <button type="button" onClick={()=> {
@@ -268,7 +267,8 @@ class Tree extends React.Component {
                                     path: prev.path,
                                     getNodeKey,
                                     newNode: {...prev.currentNode, title: prev.titleInput}
-                                })
+                                }),
+                                currentNode: {...prev.currentNode, title: prev.titleInput}
                             }))
                         }}>바꾸기</button>
                     </div>
