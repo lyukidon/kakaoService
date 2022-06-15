@@ -9,7 +9,10 @@ import SortableTree, {
     removeNodeAtPath,
     changeNodeAtPath,
     insertNode,
+    getTreeFromFlatData,
+    getFlatDataFromTree,
 } from "@nosferatu500/react-sortable-tree";
+import { resolvePath } from "react-router-dom";
 
 class Tree extends React.Component {
     constructor(props) {
@@ -17,6 +20,8 @@ class Tree extends React.Component {
 
         this.state = {
             titleInput: "",
+            categoryData: [],
+            selectedPath: [],
             searchString: "",
             currentNode: {},
             selectCheck: false,
@@ -45,7 +50,10 @@ class Tree extends React.Component {
                 {
                     title: "카카오계정",
                     children: [
-                        { title: "로그인", children: [{ title: "공통" }] },
+                        {
+                            title: "로그인",
+                            children: [{ title: "공통" }],
+                        },
                         {
                             title: "이메일/비밀번호 찾기",
                             children: [{ title: "공통" }],
@@ -157,12 +165,71 @@ class Tree extends React.Component {
         }));
     };
 
+    downNode = () => {
+        const { selectedPath, path, currentNode } = this.state;
+        console.log(currentNode);
+        console.log(path);
+        console.log(selectedPath);
+        this.setState((prev) => ({
+            treeData: removeNodeAtPath({
+                treeData: prev.treeData,
+                path: prev.path,
+                getNodeKey: ({ treeIndex }) => treeIndex,
+            }),
+        }));
+        this.setState((prev) => {
+            if (prev.currentNode.children === undefined) {
+                return {
+                    treeData: addNodeUnderParent({
+                        treeData: prev.treeData,
+                        parentKey:
+                            prev.selectedPath[prev.selectedPath.length - 1],
+                        expandParent: true,
+                        getNodeKey: ({ treeIndex }) => treeIndex,
+                        newNode: {
+                            title: prev.currentNode.title,
+                            children: [],
+                        },
+                    }).treeData,
+                };
+            } else {
+                return {
+                    treeData: addNodeUnderParent({
+                        treeDatreeData: prev.treeData,
+                        parentKey:
+                            prev.selectedPath[prev.selectedPath.length - 1],
+                        expandParent: true,
+                        getNodeKey: ({ treeIndex }) => treeIndex,
+                        newNode: {
+                            title: prev.currentNode.title,
+                            children: prev.currentNode.children,
+                        },
+                    }).treeData,
+                };
+            }
+        });
+        
+    };
+
+    pathLength = (path) => {
+        const length = path.length;
+        let branch = "";
+        if (length > 1) {
+            branch = "+ ";
+        }
+        if (length > 2) {
+            branch = `+ `.repeat(length - 2) + branch;
+        }
+        return branch;
+    };
+
     render() {
         const getNodeKey = ({ treeIndex }) => treeIndex;
         const { title, children } = this.state.currentNode;
+        let nodes = [];
         return (
             <>
-                <div style={{ height: 800 }}>
+                <div style={{ height: 500 }}>
                     <button
                         type="button"
                         onClick={() => {
@@ -203,45 +270,59 @@ class Tree extends React.Component {
                         onChange={(treeData) => this.setState({ treeData })}
                         theme={FileExplorerTheme}
                         canDrag={false}
-                        generateNodeProps={({ node, path }) => ({
-                            title: (
-                                <div
-                                    role="button"
-                                    onClick={() => this.selectThis(node, path)}
-                                    onKeyPress={() =>
-                                        this.selectThis(node, path)
-                                    }
-                                    tabIndex={0}
-                                    style={
-                                        this.selectCheck(node, path)
-                                            ? { border: "1px solid #111111" }
-                                            : { border: "none" }
-                                    }
-                                >
-                                    {node.title}
-                                    <button
-                                        type="button"
-                                        onClick={(evt) => {
-                                            evt.preventDefault();
-                                            evt.stopPropagation();
-                                            this.addNewNode(path);
+                        generateNodeProps={({ node, path }) => {
+                            nodes = [...nodes, { ...node, path }];
+                            return {
+                                title: (
+                                    <div
+                                        role="button"
+                                        onClick={() => {
+                                            this.selectThis(node, path);
+                                            this.setState({
+                                                categoryData: nodes,
+                                            });
                                         }}
-                                    >
-                                        <FontAwesomeIcon icon="fa-solid fa-plus" />
-                                    </button>
-                                    <button
-                                        type="button"
-                                        onClick={(evt) => {
-                                            evt.preventDefault();
-                                            evt.stopPropagation();
-                                            this.removeNode(path);
+                                        onKeyPress={() => {
+                                            this.selectThis(node, path);
+                                            this.setState({
+                                                categoryData: nodes,
+                                            });
                                         }}
+                                        tabIndex={0}
+                                        style={
+                                            this.selectCheck(node, path)
+                                                ? {
+                                                      border: "1px solid #111111",
+                                                  }
+                                                : { border: "none" }
+                                        }
+                                        className="treeNodes"
                                     >
-                                        <FontAwesomeIcon icon="fa-solid fa-x" />
-                                    </button>
-                                </div>
-                            ),
-                        })}
+                                        {node.title}
+                                        <button
+                                            type="button"
+                                            onClick={(evt) => {
+                                                evt.preventDefault();
+                                                evt.stopPropagation();
+                                                this.addNewNode(path);
+                                            }}
+                                        >
+                                            <FontAwesomeIcon icon="fa-solid fa-plus" />
+                                        </button>
+                                        <button
+                                            type="button"
+                                            onClick={(evt) => {
+                                                evt.preventDefault();
+                                                evt.stopPropagation();
+                                                this.removeNode(path);
+                                            }}
+                                        >
+                                            <FontAwesomeIcon icon="fa-solid fa-x" />
+                                        </button>
+                                    </div>
+                                ),
+                            };
+                        }}
                     />
                 </div>
                 <div>
@@ -254,30 +335,83 @@ class Tree extends React.Component {
                                 this.setState({ titleInput: evt.target.value });
                             }}
                         />
-                        <button type="button" onClick={()=> {
-                            this.setState(prev => ({
-                                treeData: changeNodeAtPath( {
-                                    treeData: prev.treeData,
-                                    path: prev.path,
-                                    getNodeKey,
-                                    newNode: {...prev.currentNode, title: prev.titleInput}
-                                }),
-                                currentNode: {...prev.currentNode, title: prev.titleInput}
-                            }))
-                        }}>바꾸기</button>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                this.setState((prev) => ({
+                                    treeData: changeNodeAtPath({
+                                        treeData: prev.treeData,
+                                        path: prev.path,
+                                        getNodeKey,
+                                        newNode: {
+                                            ...prev.currentNode,
+                                            title: prev.titleInput,
+                                        },
+                                    }),
+                                    currentNode: {
+                                        ...prev.currentNode,
+                                        title: prev.titleInput,
+                                    },
+                                }));
+                            }}
+                        >
+                            바꾸기
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                this.nodesArr();
+                            }}
+                        >
+                            예시
+                        </button>
                     </div>
                     <div>뎁스: {this.state.path && this.state.path.length}</div>
                     <div>
+                        <div>이동하기</div>
                         <div>
                             <button type="button" onClick={() => this.upNode()}>
                                 밖으로
                             </button>
                         </div>
                         <div>
-                            <select name="" id="">
+                            <select
+                                name=""
+                                id=""
+                                onChange={(evt) => {
+                                    this.setState((prev) => ({
+                                        selectedPath:
+                                            prev.categoryData[evt.target.value]
+                                                .path,
+                                    }));
+                                }}
+                            >
                                 <option value="">선택해주세요</option>
+                                {this.state.categoryData.map((c, i, a) => (
+                                    <option value={i}>
+                                        {`${this.pathLength(c.path)} ${
+                                            c.title
+                                        }`}
+                                    </option>
+                                ))}
                             </select>
-                            <button type="button">안으로</button>
+                            <button
+                                type="button"
+                                onClick={() => this.downNode()}
+                            >
+                                안으로
+                            </button>
+                        </div>
+                        <div>
+                            {console.log(this.state)}
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    console.log(this.state.treeData);
+                                }}
+                            >
+                                저장
+                            </button>
                         </div>
                     </div>
                 </div>
