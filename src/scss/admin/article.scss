@@ -44,25 +44,7 @@
             > .treeBox {
                 display: grid;
                 grid-template-columns: 400px 1fr;
-                overflow-y: auto;
-                &::-webkit-scrollbar {
-                    width: 7px;
-                }
-                &::-webkit-scrollbar-thumb {
-                    background-color: #bbbbbb;
-                    border-radius: 10px;
-                    background-color: none;
-                }
                 > .tree {
-                    overflow-y: auto;
-                    &::-webkit-scrollbar {
-                        width: 7px;
-                    }
-                    &::-webkit-scrollbar-thumb {
-                        background-color: #bbbbbb;
-                        border-radius: 10px;
-                        background-color: none;
-                    }
                     > .treeButton {
                         margin-bottom: 7px;
                         display: flex;
