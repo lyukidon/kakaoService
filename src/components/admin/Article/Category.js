@@ -179,8 +179,10 @@ function Tree() {
                                 style={
                                     selectCheck(node, path)
                                         ? {
-                                              borderBottom: "2px solid #ff0000",
-                                              borderRight: "2px solid #ff0000",
+                                              borderBottom: "3px solid #ff0000",
+                                              borderRight: "3px solid #ff0000",
+                                              borderLeft: "1px solid #ff0000",
+                                              borderTop: "1px solid #ff0000",
                                               paddingBottom: "5px",
                                           }
                                         : {}
