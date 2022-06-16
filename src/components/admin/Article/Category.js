@@ -59,7 +59,7 @@ function Tree() {
                 getNodeKey: ({ treeIndex }) => treeIndex,
                 newNode: {
                     title: "새 카테고리",
-                    expanded:true
+                    expanded: true,
                 },
             }).treeData,
         }));
@@ -88,22 +88,43 @@ function Tree() {
             path,
         });
     };
+    // 카테고리 선택 스타일
+    const selectCheck = (node, path) => {
+        if (selectedCategory.path) {
+            if (path.length === selectedCategory.path.length) {
+                for (let i = 0; i < path.length; i++) {
+                    if (path[i] !== selectedCategory.path[i]) {
+                        return false;
+                    }
+                }
+            } else {
+                return false;
+            }
+            return true;
+        }
+        return false;
+    };
+
     // 트리 외부 버튼 함수
     // 카테고리 이름 변경
     const [titleInput, setTitleInput] = useState("");
     const changeTitle = () => {
-        setState((prev) => ({
-            treeData: changeNodeAtPath({
-                treeData: prev.treeData,
-                path: selectedCategory.path,
-                newNode: {
-                    title: titleInput,
-                    children: selectedCategory.children,
-                    expanded: selectedCategory.expanded,
-                },
-                getNodeKey: ({ treeIndex }) => treeIndex,
-            }),
-        }));
+        if (titleInput.length === 0) {
+            alert("내용을 입력하세요");
+        } else {
+            setState((prev) => ({
+                treeData: changeNodeAtPath({
+                    treeData: prev.treeData,
+                    path: selectedCategory.path,
+                    newNode: {
+                        title: titleInput,
+                        children: selectedCategory.children,
+                        expanded: selectedCategory.expanded,
+                    },
+                    getNodeKey: ({ treeIndex }) => treeIndex,
+                }),
+            }));
+        }
     };
     // 이동하기
     // select 태그 값 확인
@@ -129,13 +150,23 @@ function Tree() {
 
     return (
         <>
-            <div style={{ height: 500 }}>
+            <div className="tree" style={{ height: 630 }}>
+                <button type="button" onClick={() => expandStatus(true)}>
+                    펼치기
+                </button>
+                <button type="button" onClick={() => expandStatus(false)}>
+                    접기
+                </button>
+                <button type="button" onClick={() => addNode([])}>
+                    추가하기
+                </button>
                 <SortableTree
-                theme={FileExplorerTheme}
+                    theme={FileExplorerTheme}
                     treeData={state.treeData}
                     onChange={(treeData) => {
                         setState({ treeData });
                     }}
+                    canDrag={false}
                     generateNodeProps={({ node, path }) => ({
                         title: (
                             <div
@@ -145,20 +176,34 @@ function Tree() {
                                     selectCategory(node, path);
                                     getFlat();
                                 }}
+                                style={
+                                    selectCheck(node, path)
+                                        ? {
+                                              borderBottom: "2px solid #ff0000",
+                                              borderRight: "2px solid #ff0000",
+                                              paddingBottom: "5px",
+                                          }
+                                        : {}
+                                }
+                                className="treeNodes"
                             >
-                                <div>{node.title}</div>
-                                <button
-                                    type="button"
-                                    onClick={() => addNode(path)}
-                                >
-                                    추가
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => removeNode(path)}
-                                >
-                                    제거
-                                </button>
+                                <div className="nodeTitle">{node.title}</div>
+                                <div className="nodeButtons">
+                                    <button
+                                        type="button"
+                                        onClick={() => addNode(path)}
+                                        title="추가하기"
+                                    >
+                                        <FontAwesomeIcon icon="fa-solid fa-plus" />
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => removeNode(path)}
+                                        title="삭제하기"
+                                    >
+                                        <FontAwesomeIcon icon="fa-solid fa-trash-can" />
+                                    </button>
+                                </div>
                             </div>
                         ),
                     })}
@@ -200,13 +245,24 @@ function Tree() {
                             </option>
                         ))}
                     </select>
-                    {console.log(flat)}
-                    <button type="button" onClick={() => {move()}}>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            move();
+                        }}
+                    >
                         이동하기
                     </button>
                 </div>
                 <div>
-                    <button type="button" onClick={() => {console.log(state.treeData)}}>저장하기</button>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            console.log(state.treeData);
+                        }}
+                    >
+                        저장하기
+                    </button>
                 </div>
             </div>
         </>
