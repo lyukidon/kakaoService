@@ -59,6 +59,7 @@ function Tree() {
                 getNodeKey: ({ treeIndex }) => treeIndex,
                 newNode: {
                     title: "새 카테고리",
+                    expanded:true
                 },
             }).treeData,
         }));
@@ -130,6 +131,7 @@ function Tree() {
         <>
             <div style={{ height: 500 }}>
                 <SortableTree
+                theme={FileExplorerTheme}
                     treeData={state.treeData}
                     onChange={(treeData) => {
                         setState({ treeData });
@@ -203,10 +205,9 @@ function Tree() {
                         이동하기
                     </button>
                 </div>
-                {/* <button type="button" onClick={() => {}}></button>
-                <button type="button" onClick={() => {}}></button>
-                <button type="button" onClick={() => {}}></button>
-                <button type="button" onClick={() => {}}></button> */}
+                <div>
+                    <button type="button" onClick={() => {console.log(state.treeData)}}>저장하기</button>
+                </div>
             </div>
         </>
     );
