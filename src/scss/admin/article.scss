@@ -63,6 +63,26 @@
                         border-radius: 10px;
                         background-color: none;
                     }
+                    > .treeButton {
+                        margin-bottom: 7px;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        > div > button {
+                            border: 1px solid black;
+                            border-radius: 6px;
+                            background-color: #ffffff;
+                            &:hover {
+                                background-color: #dddddd;
+                            }
+                        }
+                        > .expanded > button {
+                            margin-right: 6px;
+                        }
+                        > .addTopNodeBtn > button {
+                            margin-right: 6px;
+                        }
+                    }
                 }
                 .treeNodes {
                     display: grid;
@@ -80,7 +100,7 @@
                         border-radius: 7px;
                         border: 1px solid #000000;
                         &:hover {
-                            background-color: #cccccc;
+                            background-color: #dddddd;
                         }
                     }
                 }

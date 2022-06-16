@@ -152,15 +152,33 @@ function Tree() {
     return (
         <>
             <div className="tree" style={{ height: 630 }}>
-                <button type="button" onClick={() => expandStatus(true)}>
-                    펼치기
-                </button>
-                <button type="button" onClick={() => expandStatus(false)}>
-                    접기
-                </button>
-                <button type="button" onClick={() => addNode([])}>
-                    추가하기
-                </button>
+                <div className="treeButton">
+                    <div className="expanded">
+                        <button
+                            type="button"
+                            onClick={() => expandStatus(true)}
+                        >
+                            <FontAwesomeIcon icon="fa-solid fa-arrow-down-wide-short" />{" "}
+                            펼치기
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => expandStatus(false)}
+                        >
+                            <FontAwesomeIcon icon="fa-solid fa-arrow-up-short-wide" />{" "}
+                            접기
+                        </button>
+                    </div>
+                    <div className="addTopNodeBtn">
+                        <button
+                            type="button"
+                            onClick={() => addNode([])}
+                            title="추가하기"
+                        >
+                            <FontAwesomeIcon icon="fa-solid fa-plus" /> 추가하기
+                        </button>
+                    </div>
+                </div>
                 <SortableTree
                     theme={FileExplorerTheme}
                     treeData={state.treeData}
@@ -220,7 +238,8 @@ function Tree() {
                     </div>
                     <div>
                         뎁스 -{" "}
-                        {selectedCategory.path.length !== 0 && selectedCategory.path.length}
+                        {selectedCategory.path.length !== 0 &&
+                            selectedCategory.path.length}
                     </div>
                     <div>
                         하위 태그
