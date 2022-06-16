@@ -108,7 +108,7 @@ function Tree() {
     // 트리 외부 버튼 함수
     // 카테고리 이름 변경
     const [titleInput, setTitleInput] = useState("");
-    useEffect(()=>setTitleInput(selectedCategory.title),[selectedCategory])
+    useEffect(() => setTitleInput(selectedCategory.title), [selectedCategory]);
     const changeTitle = () => {
         if (titleInput.length === 0) {
             alert("내용을 입력하세요");
@@ -214,12 +214,31 @@ function Tree() {
             </div>
             <div>
                 <div>
+                    선택된 카테고리
+                    <div>
+                        이름 - {selectedCategory && selectedCategory.title}
+                    </div>
+                    <div>
+                        뎁스 -{" "}
+                        {selectedCategory.path.length !== 0 && selectedCategory.path.length}
+                    </div>
+                    <div>
+                        하위 태그
+                        <ul>
+                            {selectedCategory && selectedCategory.children
+                                ? selectedCategory.children.map((c) => (
+                                      <li key={c.title}>{c.title}</li>
+                                  ))
+                                : "없음"}
+                        </ul>
+                    </div>
+                </div>
+                <div>
                     <input
                         type="text"
                         value={titleInput}
-                        
                         onChange={(evt) => {
-                            console.log(selectedCategory)
+                            console.log(selectedCategory);
                             setTitleInput(evt.target.value);
                         }}
                     />
