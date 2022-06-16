@@ -11,90 +11,51 @@ import SortableTree, {
     insertNode,
     getTreeFromFlatData,
     getFlatDataFromTree,
+    getVisibleNodeInfoAtIndex,
+    map,
+    walk,
 } from "@nosferatu500/react-sortable-tree";
-import { resolvePath } from "react-router-dom";
 
-class Tree extends React.Component {
-    constructor(props) {
-        super(props);
+import categoryData from "./categoryData";
 
-        this.state = {
-            titleInput: "",
-            categoryData: [],
-            selectedPath: [],
-            searchString: "",
-            currentNode: {},
-            selectCheck: false,
-            treeData: [
-                {
-                    title: "카카오톡",
-                    children: [
-                        {
-                            title: "일반",
-                            children: [
-                                { title: "안드로이드" },
-                                { title: "iOS" },
-                                { title: "Windows" },
-                            ],
-                        },
-                        {
-                            title: "가입/변경/탈퇴",
-                            children: [
-                                { title: "안드로이드" },
-                                { title: "iOS" },
-                                { title: "안드로이드(원스토어)" },
-                            ],
-                        },
-                    ],
-                },
-                {
-                    title: "카카오계정",
-                    children: [
-                        {
-                            title: "로그인",
-                            children: [{ title: "공통" }],
-                        },
-                        {
-                            title: "이메일/비밀번호 찾기",
-                            children: [{ title: "공통" }],
-                        },
-                    ],
-                },
-                { title: "카카오 이모티콘" },
-            ],
-        };
-    }
-
-    componentDidMount() {
-        this.expandAndCollapse(true);
-    }
-
-    expandAndCollapse = (expanded) => {
-        this.setState((prev) => ({
-            ...prev,
+function Tree() {
+    // 기본 데이터
+    const [state, setState] = useState(categoryData);
+    // 렌더링마다 작동
+    // 펼치기
+    const expandStatus = (bool) => {
+        setState((prev) => ({
             treeData: toggleExpandedForAll({
                 treeData: prev.treeData,
-                expanded,
+                expanded: bool,
             }),
         }));
     };
-
-    removeNode = (path) => {
-        this.setState((prev) => ({
-            treeData: removeNodeAtPath({
-                treeData: prev.treeData,
-                path,
-                getNodeKey: ({ treeIndex }) => treeIndex,
-            }),
-        }));
+    useEffect(() => {
+        expandStatus(true);
+    }, []);
+    // 1차원 데이터
+    const [flat, setFlat] = useState([]);
+    const getFlat = () => {
+        setFlat([]);
+        // walk: forEach랑 비슷한 것
+        walk({
+            treeData: state.treeData,
+            callback: ({ node, path }) =>
+                setFlat((prev) => [...prev, { ...node, path }]),
+            getNodeKey: ({ treeIndex }) => treeIndex,
+        });
     };
-
-    addNewNode = (path) => {
-        this.setState((prev) => ({
+    useEffect(() => {
+        getFlat();
+    }, [state]);
+    // 트리 내부 버튼 함수
+    // 카테고리 추가
+    const addNode = (path) => {
+        setState((prev) => ({
             treeData: addNodeUnderParent({
                 treeData: prev.treeData,
                 parentKey: path[path.length - 1],
-                expandParent: true,
                 getNodeKey: ({ treeIndex }) => treeIndex,
                 newNode: {
                     title: "새 카테고리",
@@ -102,322 +63,153 @@ class Tree extends React.Component {
             }).treeData,
         }));
     };
-
-    selectThis = (node, path) => {
-        this.setState((prev) => ({
-            currentNode: node,
+    // 카테고리 제거
+    const removeNode = (path) => {
+        setState((prev) => ({
+            treeData: removeNodeAtPath({
+                treeData: prev.treeData,
+                path,
+                getNodeKey: ({ treeIndex }) => treeIndex,
+            }),
+        }));
+    };
+    // 카테고리 선택
+    const [selectedCategory, setSelectedCategory] = useState({
+        title: "",
+        children: "",
+        path: [],
+    });
+    const selectCategory = (node, path) => {
+        setSelectedCategory({
+            title: node.title,
+            children: node.children,
+            expanded: node.expanded,
             path,
-            titleInput: node.title,
-        }));
-    };
-
-    selectCheck = (node, path) => {
-        if (this.state.path) {
-            if (path.length === this.state.path.length) {
-                for (let i = 0; i < path.length; i++) {
-                    if (path[i] !== this.state.path[i]) {
-                        return false;
-                    }
-                }
-            } else {
-                return false;
-            }
-            return true;
-        }
-        return false;
-    };
-
-    upNode = () => {
-        this.setState((prev) => {
-            if (prev.currentNode.children === undefined) {
-                return {
-                    treeData: addNodeUnderParent({
-                        treeData: prev.treeData,
-                        parentKey: prev.path[prev.path.length - 3],
-                        expandParent: true,
-                        getNodeKey: ({ treeIndex }) => treeIndex,
-                        newNode: {
-                            title: prev.currentNode.title,
-                        },
-                    }).treeData,
-                };
-            } else {
-                return {
-                    treeData: addNodeUnderParent({
-                        treeData: prev.treeData,
-                        parentKey: prev.path[prev.path.length - 3],
-                        expandParent: true,
-                        getNodeKey: ({ treeIndex }) => treeIndex,
-                        newNode: {
-                            title: prev.currentNode.title,
-                            children: prev.currentNode.children,
-                        },
-                    }).treeData,
-                };
-            }
         });
-        this.setState((prev) => ({
-            treeData: removeNodeAtPath({
+    };
+    // 트리 외부 버튼 함수
+    // 카테고리 이름 변경
+    const [titleInput, setTitleInput] = useState("");
+    const changeTitle = () => {
+        setState((prev) => ({
+            treeData: changeNodeAtPath({
                 treeData: prev.treeData,
-                path: prev.path,
+                path: selectedCategory.path,
+                newNode: {
+                    title: titleInput,
+                    children: selectedCategory.children,
+                    expanded: selectedCategory.expanded,
+                },
                 getNodeKey: ({ treeIndex }) => treeIndex,
             }),
         }));
     };
-
-    downNode = () => {
-        const { selectedPath, path, currentNode } = this.state;
-        console.log(currentNode);
-        console.log(path);
-        console.log(selectedPath);
-        this.setState((prev) => ({
-            treeData: removeNodeAtPath({
+    // 이동하기
+    // select 태그 값 확인
+    const [pathForMove, setPathForMove] = useState([]);
+    const selectPath = (number) => {
+        setPathForMove(flat[number].path);
+    };
+    // 이동하기 버튼
+    // 데이터: pathForMove,selectedCategory
+    const move = () => {
+        setState((prev) => ({
+            treeData: addNodeUnderParent({
                 treeData: prev.treeData,
-                path: prev.path,
+                parentKey: pathForMove[pathForMove.length - 1],
+                newNode: {
+                    title: selectedCategory.title,
+                    expanded: selectedCategory.expanded,
+                },
                 getNodeKey: ({ treeIndex }) => treeIndex,
-            }),
+            }).treeData,
         }));
-        this.setState((prev) => {
-            if (prev.currentNode.children === undefined) {
-                return {
-                    treeData: addNodeUnderParent({
-                        treeData: prev.treeData,
-                        parentKey:
-                            prev.selectedPath[prev.selectedPath.length - 1],
-                        expandParent: true,
-                        getNodeKey: ({ treeIndex }) => treeIndex,
-                        newNode: {
-                            title: prev.currentNode.title,
-                            children: [],
-                        },
-                    }).treeData,
-                };
-            } else {
-                return {
-                    treeData: addNodeUnderParent({
-                        treeDatreeData: prev.treeData,
-                        parentKey:
-                            prev.selectedPath[prev.selectedPath.length - 1],
-                        expandParent: true,
-                        getNodeKey: ({ treeIndex }) => treeIndex,
-                        newNode: {
-                            title: prev.currentNode.title,
-                            children: prev.currentNode.children,
-                        },
-                    }).treeData,
-                };
-            }
-        });
-        
     };
 
-    pathLength = (path) => {
-        const length = path.length;
-        let branch = "";
-        if (length > 1) {
-            branch = "+ ";
-        }
-        if (length > 2) {
-            branch = `+ `.repeat(length - 2) + branch;
-        }
-        return branch;
-    };
-
-    render() {
-        const getNodeKey = ({ treeIndex }) => treeIndex;
-        const { title, children } = this.state.currentNode;
-        let nodes = [];
-        return (
-            <>
-                <div style={{ height: 500 }}>
-                    <button
-                        type="button"
-                        onClick={() => {
-                            this.expandAndCollapse(true);
-                        }}
-                    >
-                        펼치기
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => {
-                            this.expandAndCollapse(false);
-                        }}
-                    >
-                        접기
-                    </button>
+    return (
+        <>
+            <div style={{ height: 500 }}>
+                <SortableTree
+                    treeData={state.treeData}
+                    onChange={(treeData) => {
+                        setState({ treeData });
+                    }}
+                    generateNodeProps={({ node, path }) => ({
+                        title: (
+                            <div
+                                role="button"
+                                tabIndex={0}
+                                onClick={() => {
+                                    selectCategory(node, path);
+                                    getFlat();
+                                }}
+                            >
+                                <div>{node.title}</div>
+                                <button
+                                    type="button"
+                                    onClick={() => addNode(path)}
+                                >
+                                    추가
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => removeNode(path)}
+                                >
+                                    제거
+                                </button>
+                            </div>
+                        ),
+                    })}
+                />
+            </div>
+            <div>
+                <div>
                     <input
                         type="text"
-                        placeholder="Search"
-                        value={this.state.searchString}
-                        onChange={(event) => {
-                            this.setState({ searchString: event.target.value });
+                        value={titleInput}
+                        onChange={(evt) => {
+                            setTitleInput(evt.target.value);
                         }}
                     />
                     <button
                         type="button"
-                        onClick={(evt) => {
-                            evt.preventDefault();
-                            evt.stopPropagation();
-                            this.addNewNode([]);
+                        onClick={() => {
+                            changeTitle();
                         }}
                     >
-                        <FontAwesomeIcon icon="fa-solid fa-plus" />
+                        이름 바꾸기
                     </button>
-                    <SortableTree
-                        treeData={this.state.treeData}
-                        searchQuery={this.state.searchString}
-                        onChange={(treeData) => this.setState({ treeData })}
-                        theme={FileExplorerTheme}
-                        canDrag={false}
-                        generateNodeProps={({ node, path }) => {
-                            nodes = [...nodes, { ...node, path }];
-                            return {
-                                title: (
-                                    <div
-                                        role="button"
-                                        onClick={() => {
-                                            this.selectThis(node, path);
-                                            this.setState({
-                                                categoryData: nodes,
-                                            });
-                                        }}
-                                        onKeyPress={() => {
-                                            this.selectThis(node, path);
-                                            this.setState({
-                                                categoryData: nodes,
-                                            });
-                                        }}
-                                        tabIndex={0}
-                                        style={
-                                            this.selectCheck(node, path)
-                                                ? {
-                                                      border: "1px solid #111111",
-                                                  }
-                                                : { border: "none" }
-                                        }
-                                        className="treeNodes"
-                                    >
-                                        {node.title}
-                                        <button
-                                            type="button"
-                                            onClick={(evt) => {
-                                                evt.preventDefault();
-                                                evt.stopPropagation();
-                                                this.addNewNode(path);
-                                            }}
-                                        >
-                                            <FontAwesomeIcon icon="fa-solid fa-plus" />
-                                        </button>
-                                        <button
-                                            type="button"
-                                            onClick={(evt) => {
-                                                evt.preventDefault();
-                                                evt.stopPropagation();
-                                                this.removeNode(path);
-                                            }}
-                                        >
-                                            <FontAwesomeIcon icon="fa-solid fa-x" />
-                                        </button>
-                                    </div>
-                                ),
-                            };
-                        }}
-                    />
                 </div>
                 <div>
-                    <div>
-                        카테고리 명:
-                        <input
-                            type="text"
-                            value={this.state.titleInput}
-                            onChange={(evt) => {
-                                this.setState({ titleInput: evt.target.value });
-                            }}
-                        />
-                        <button
-                            type="button"
-                            onClick={() => {
-                                this.setState((prev) => ({
-                                    treeData: changeNodeAtPath({
-                                        treeData: prev.treeData,
-                                        path: prev.path,
-                                        getNodeKey,
-                                        newNode: {
-                                            ...prev.currentNode,
-                                            title: prev.titleInput,
-                                        },
-                                    }),
-                                    currentNode: {
-                                        ...prev.currentNode,
-                                        title: prev.titleInput,
-                                    },
-                                }));
-                            }}
-                        >
-                            바꾸기
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => {
-                                this.nodesArr();
-                            }}
-                        >
-                            예시
-                        </button>
-                    </div>
-                    <div>뎁스: {this.state.path && this.state.path.length}</div>
-                    <div>
-                        <div>이동하기</div>
-                        <div>
-                            <button type="button" onClick={() => this.upNode()}>
-                                밖으로
-                            </button>
-                        </div>
-                        <div>
-                            <select
-                                name=""
-                                id=""
-                                onChange={(evt) => {
-                                    this.setState((prev) => ({
-                                        selectedPath:
-                                            prev.categoryData[evt.target.value]
-                                                .path,
-                                    }));
-                                }}
+                    <select
+                        name=""
+                        id=""
+                        onChange={(evt) => {
+                            selectPath(evt.target.value);
+                        }}
+                    >
+                        <option value={-1}>선택해주세요</option>
+                        {flat.map((c) => (
+                            <option
+                                key={c.path[c.path.length - 1]}
+                                value={c.path[c.path.length - 1]}
                             >
-                                <option value="">선택해주세요</option>
-                                {this.state.categoryData.map((c, i, a) => (
-                                    <option value={i}>
-                                        {`${this.pathLength(c.path)} ${
-                                            c.title
-                                        }`}
-                                    </option>
-                                ))}
-                            </select>
-                            <button
-                                type="button"
-                                onClick={() => this.downNode()}
-                            >
-                                안으로
-                            </button>
-                        </div>
-                        <div>
-                            {console.log(this.state)}
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    console.log(this.state.treeData);
-                                }}
-                            >
-                                저장
-                            </button>
-                        </div>
-                    </div>
+                                {c.title}
+                            </option>
+                        ))}
+                    </select>
+                    {console.log(flat)}
+                    <button type="button" onClick={() => {move()}}>
+                        이동하기
+                    </button>
                 </div>
-            </>
-        );
-    }
+                {/* <button type="button" onClick={() => {}}></button>
+                <button type="button" onClick={() => {}}></button>
+                <button type="button" onClick={() => {}}></button>
+                <button type="button" onClick={() => {}}></button> */}
+            </div>
+        </>
+    );
 }
 
 export default ({ onToggleSetting }) => {
