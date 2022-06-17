@@ -155,12 +155,18 @@
                     }
                     > .treeSaveBtn {
                         > button {
+                            padding: 5px 20px;
                             vertical-align: top;
                             background-color: #ffffff;
                             border-radius: 7px;
                             border: 1px solid #000000;
                             &:hover {
                                 background-color: #dddddd;
+                            }
+                            font-size: 14px;
+                            > svg {
+                                color: #1c9fe5;
+                                margin-right: 5px;
                             }
                         }
                     }
