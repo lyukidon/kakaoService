@@ -95,8 +95,21 @@
                         }
                     }
                 }
+                > .treeController {
+                    margin-left: 30px;
+                }
             }
         }
+    }
+}
+.rst__virtualScrollOverride{
+    &::-webkit-scrollbar {
+        width: 7px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #bbbbbb;
+        border-radius: 10px;
+        background-color: none;
     }
 }
 .selectBox {
