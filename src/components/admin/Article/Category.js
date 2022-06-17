@@ -314,7 +314,6 @@ function Tree() {
                             ))}
                         </select>
                         <button
-                            
                             type="button"
                             onClick={() => {
                                 const { title, path } = selectedCategory;
@@ -334,20 +333,20 @@ function Tree() {
                 <div className="treeInfo">
                     <div className="treeInfoTitle">선택된 카테고리</div>
                     <div>
-                        이름 - {selectedCategory && selectedCategory.title}
+                        이름{selectedCategory.title !== "" && ` - ${selectedCategory.title}`}
                     </div>
                     <div>
-                        뎁스 -{" "}
+                        뎁스
                         {selectedCategory.path.length !== 0 &&
-                            selectedCategory.path.length}
+                            ` - ${selectedCategory.path.length}`}
                     </div>
                     <div>
-                        상위 카테고리 -{" "}
+                        상위 카테고리
                         {selectedCategory.parentNode !== undefined &&
-                            selectedCategory.parentNode.title}
+                            ` - ${selectedCategory.parentNode.title}`}
                     </div>
                     <div>
-                        하위 태그
+                        하위 카테고리
                         <ul>
                             {selectedCategory && selectedCategory.children
                                 ? selectedCategory.children.map((c) => (
