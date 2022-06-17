@@ -64,6 +64,14 @@
                         > .addTopNodeBtn > button {
                             margin-right: 6px;
                         }
+                        > .searchInput > input {
+                            width: 100px;
+                            margin-left: 3px;
+                            padding: 2.5px 6px;
+                            border: 1px solid #000000;
+                            border-radius: 7px;
+                            vertical-align: top;
+                        }
                     }
                 }
                 .treeNodes {
@@ -73,6 +81,7 @@
                     padding: 2px;
                     border-radius: 7px;
                     box-shadow: 0px 0px 5px 2px #e1e1e1;
+                    cursor: pointer;
                     > .nodeTitle {
                         margin-right: 5px;
                     }

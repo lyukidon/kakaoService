@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@nosferatu500/react-sortable-tree/style.css";
 import FileExplorerTheme from "@nosferatu500/theme-file-explorer";
-// import FileExplorerTheme from 'react-sortable-tree-theme-minimal';
 import SortableTree, {
     addNodeUnderParent,
     toggleExpandedForAll,
@@ -81,7 +80,7 @@ function Tree() {
     // 카테고리 선택
     const [selectedCategory, setSelectedCategory] = useState({
         title: "",
-        children: "",
+        children: [],
         path: [],
     });
     const selectCategory = (node, path) => {
@@ -139,6 +138,7 @@ function Tree() {
     };
     // 이동하기 버튼
     // 데이터: pathForMove,selectedCategory
+    const deleteRef = useRef([]);
     const move = () => {
         if (selectedCategory.children) {
             setState((prev) => ({
@@ -166,11 +166,15 @@ function Tree() {
                 }).treeData,
             }));
         }
+        // setSelectedCategory({
+        //     title:"",
+        //     children:[],
+        // });
     };
 
     return (
         <>
-            <div className="tree" style={{ height: 630 }}>
+            <div className="tree" style={{ height: 600 }}>
                 <div className="treeButton">
                     <div className="expanded">
                         <button
@@ -188,10 +192,12 @@ function Tree() {
                             접기
                         </button>
                     </div>
-                    <div>
+                    <div className="searchInput">
+                        <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
                         <input
                             type="text"
                             value={searchNode}
+                            placeholder="검색하기"
                             onChange={(evt) => setSearchNode(evt.target.value)}
                         />
                     </div>
@@ -249,6 +255,11 @@ function Tree() {
                                         type="button"
                                         onClick={() => removeNode(path)}
                                         title="삭제하기"
+                                        ref={(el) =>
+                                            (deleteRef.current[
+                                                path[path.length - 1]
+                                            ] = el)
+                                        }
                                     >
                                         <FontAwesomeIcon icon="fa-solid fa-trash-can" />
                                     </button>
@@ -284,6 +295,7 @@ function Tree() {
                     <input
                         type="text"
                         value={titleInput}
+                        placeholder="카테고리 이름"
                         onChange={(evt) => {
                             console.log(selectedCategory);
                             setTitleInput(evt.target.value);
@@ -319,10 +331,16 @@ function Tree() {
                     <button
                         type="button"
                         onClick={() => {
-                            move();
+                            const { title, path } = selectedCategory;
+                            if (title !== "") {
+                                // deleteRef.current[path[path.length - 1]].click();
+                                move();
+                            } else {
+                                alert("카테고리를 선택해주세요");
+                            }
                         }}
                     >
-                        이동하기
+                        위치에 복사하기
                     </button>
                 </div>
                 <div>
