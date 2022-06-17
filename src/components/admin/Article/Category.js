@@ -81,12 +81,14 @@ function Tree() {
     const [selectedCategory, setSelectedCategory] = useState({
         title: "",
         children: [],
+        parentNode: undefined,
         path: [],
     });
-    const selectCategory = (node, path) => {
+    const selectCategory = (node, path, parentNode) => {
         setSelectedCategory({
             title: node.title,
             children: node.children,
+            parentNode,
             expanded: node.expanded,
             path,
         });
@@ -220,13 +222,16 @@ function Tree() {
                     canDrag={false}
                     searchQuery={searchNode}
                     scaffoldBlockPxWidth={30}
-                    generateNodeProps={({ node, path }) => ({
+                    // generateNodeProps={(param) => {
+                    //     console.log(param)
+                    // }}
+                    generateNodeProps={({ node, path, parentNode }) => ({
                         title: (
                             <div
                                 role="button"
                                 tabIndex={0}
                                 onClick={() => {
-                                    selectCategory(node, path);
+                                    selectCategory(node, path, parentNode);
                                     getFlat();
                                 }}
                                 style={
@@ -279,6 +284,11 @@ function Tree() {
                         뎁스 -{" "}
                         {selectedCategory.path.length !== 0 &&
                             selectedCategory.path.length}
+                    </div>
+                    <div>
+                        상위 카테고리 -{" "}
+                        {selectedCategory.parentNode !== undefined &&
+                            selectedCategory.parentNode.title}
                     </div>
                     <div>
                         하위 태그
