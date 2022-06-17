@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@nosferatu500/react-sortable-tree/style.css";
 import FileExplorerTheme from "@nosferatu500/theme-file-explorer";
+// import FileExplorerTheme from 'react-sortable-tree-theme-minimal';
 import SortableTree, {
     addNodeUnderParent,
     toggleExpandedForAll,
@@ -49,6 +50,9 @@ function Tree() {
     useEffect(() => {
         getFlat();
     }, [state]);
+    // 트리 상단 버튼 함수
+    // 검색하기
+    const [searchNode, setSearchNode] = useState("");
     // 트리 내부 버튼 함수
     // 카테고리 추가
     const addNode = (path) => {
@@ -136,17 +140,32 @@ function Tree() {
     // 이동하기 버튼
     // 데이터: pathForMove,selectedCategory
     const move = () => {
-        setState((prev) => ({
-            treeData: addNodeUnderParent({
-                treeData: prev.treeData,
-                parentKey: pathForMove[pathForMove.length - 1],
-                newNode: {
-                    title: selectedCategory.title,
-                    expanded: selectedCategory.expanded,
-                },
-                getNodeKey: ({ treeIndex }) => treeIndex,
-            }).treeData,
-        }));
+        if (selectedCategory.children) {
+            setState((prev) => ({
+                treeData: addNodeUnderParent({
+                    treeData: prev.treeData,
+                    parentKey: pathForMove[pathForMove.length - 1],
+                    newNode: {
+                        title: selectedCategory.title,
+                        children: selectedCategory.children,
+                        expanded: false,
+                    },
+                    getNodeKey: ({ treeIndex }) => treeIndex,
+                }).treeData,
+            }));
+        } else {
+            setState((prev) => ({
+                treeData: addNodeUnderParent({
+                    treeData: prev.treeData,
+                    parentKey: pathForMove[pathForMove.length - 1],
+                    newNode: {
+                        title: selectedCategory.title,
+                        expanded: selectedCategory.expanded,
+                    },
+                    getNodeKey: ({ treeIndex }) => treeIndex,
+                }).treeData,
+            }));
+        }
     };
 
     return (
@@ -169,6 +188,13 @@ function Tree() {
                             접기
                         </button>
                     </div>
+                    <div>
+                        <input
+                            type="text"
+                            value={searchNode}
+                            onChange={(evt) => setSearchNode(evt.target.value)}
+                        />
+                    </div>
                     <div className="addTopNodeBtn">
                         <button
                             type="button"
@@ -186,6 +212,8 @@ function Tree() {
                         setState({ treeData });
                     }}
                     canDrag={false}
+                    searchQuery={searchNode}
+                    scaffoldBlockPxWidth={30}
                     generateNodeProps={({ node, path }) => ({
                         title: (
                             <div
