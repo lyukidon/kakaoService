@@ -274,9 +274,65 @@ function Tree() {
                     })}
                 />
             </div>
-            <div>
-                <div>
-                    선택된 카테고리
+            <div className="treeManage">
+                <div className="treeController">
+                    <div className="treeChangeTitle">
+                        <input
+                            type="text"
+                            value={titleInput}
+                            placeholder="카테고리 이름"
+                            onChange={(evt) => {
+                                console.log(selectedCategory);
+                                setTitleInput(evt.target.value);
+                            }}
+                        />
+                        <button
+                            type="button"
+                            onClick={() => {
+                                changeTitle();
+                            }}
+                        >
+                            이름 바꾸기
+                        </button>
+                    </div>
+                    <div className="treeMoveNode">
+                        <select
+                            name=""
+                            id=""
+                            onChange={(evt) => {
+                                selectPath(evt.target.value);
+                            }}
+                        >
+                            <option value={-1}>선택해주세요</option>
+                            {flat.map((c) => (
+                                <option
+                                    key={c.path[c.path.length - 1]}
+                                    value={c.path[c.path.length - 1]}
+                                >
+                                    {c.title}
+                                </option>
+                            ))}
+                        </select>
+                        <button
+                            
+                            type="button"
+                            onClick={() => {
+                                const { title, path } = selectedCategory;
+                                if (title !== "") {
+                                    // deleteRef.current[path[path.length - 1]].click();
+                                    move();
+                                } else {
+                                    alert("카테고리를 선택해주세요");
+                                }
+                            }}
+                        >
+                            위치에 복사하기
+                        </button>
+                    </div>
+                </div>
+
+                <div className="treeInfo">
+                    <div className="treeInfoTitle">선택된 카테고리</div>
                     <div>
                         이름 - {selectedCategory && selectedCategory.title}
                     </div>
@@ -301,65 +357,14 @@ function Tree() {
                         </ul>
                     </div>
                 </div>
-                <div>
-                    <input
-                        type="text"
-                        value={titleInput}
-                        placeholder="카테고리 이름"
-                        onChange={(evt) => {
-                            console.log(selectedCategory);
-                            setTitleInput(evt.target.value);
-                        }}
-                    />
-                    <button
-                        type="button"
-                        onClick={() => {
-                            changeTitle();
-                        }}
-                    >
-                        이름 바꾸기
-                    </button>
-                </div>
-                <div>
-                    <select
-                        name=""
-                        id=""
-                        onChange={(evt) => {
-                            selectPath(evt.target.value);
-                        }}
-                    >
-                        <option value={-1}>선택해주세요</option>
-                        {flat.map((c) => (
-                            <option
-                                key={c.path[c.path.length - 1]}
-                                value={c.path[c.path.length - 1]}
-                            >
-                                {c.title}
-                            </option>
-                        ))}
-                    </select>
-                    <button
-                        type="button"
-                        onClick={() => {
-                            const { title, path } = selectedCategory;
-                            if (title !== "") {
-                                // deleteRef.current[path[path.length - 1]].click();
-                                move();
-                            } else {
-                                alert("카테고리를 선택해주세요");
-                            }
-                        }}
-                    >
-                        위치에 복사하기
-                    </button>
-                </div>
-                <div>
+                <div className="treeSaveBtn">
                     <button
                         type="button"
                         onClick={() => {
                             console.log(state.treeData);
                         }}
                     >
+                        <FontAwesomeIcon icon="fa-solid fa-floppy-disk" />
                         저장하기
                     </button>
                 </div>
