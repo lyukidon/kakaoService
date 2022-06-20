@@ -189,7 +189,7 @@ function Tree() {
     };
 
     const pathLength = (path) => {
-        const length = path.length;
+        const { length } = path;
         let branch = "";
         if (length > 1) {
             branch = "+ ";
