@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import { TopNav, SideNav } from "../components/admin/Nav/Index"
-import Qna from '../components/admin/Qna/index'
+import Qna from '../components/admin/Qna/Index'
 
 function AdminQna() {
     return (
