@@ -136,7 +136,16 @@ function Tree() {
     // select 태그 값 확인
     const [pathForMove, setPathForMove] = useState([]);
     const selectPath = (number) => {
-        setPathForMove(flat[number].path);
+        switch (number) {
+            case -2:
+                break;
+            case -1:
+                setPathForMove([]);
+                break;
+            default:
+                setPathForMove(flat[number].path);
+                break;
+        }
     };
     // 이동하기 버튼
     // 데이터: pathForMove,selectedCategory
@@ -329,7 +338,12 @@ function Tree() {
                                 selectPath(evt.target.value);
                             }}
                         >
-                            <option value={-1}>선택해주세요</option>
+                            {selectedCategory.title.length === 0 && (
+                                <option value={-2}>선택해주세요</option>
+                            )}
+                            {selectedCategory.title.length !== 0 && (
+                                <option value={-1}>최상단</option>
+                            )}
                             {flat
                                 .filter(
                                     (c) =>
