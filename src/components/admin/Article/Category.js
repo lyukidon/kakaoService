@@ -5,14 +5,8 @@ import FileExplorerTheme from "@nosferatu500/theme-file-explorer";
 import SortableTree, {
     addNodeUnderParent,
     toggleExpandedForAll,
-    getNodeAtPath,
     removeNodeAtPath,
     changeNodeAtPath,
-    insertNode,
-    getTreeFromFlatData,
-    getFlatDataFromTree,
-    getVisibleNodeInfoAtIndex,
-    map,
     walk,
 } from "@nosferatu500/react-sortable-tree";
 
@@ -191,10 +185,6 @@ function Tree() {
             moveOption();
             removeNode(selectedCategory.path);
         }
-        // setSelectedCategory({
-        //     title:"",
-        //     children:[],
-        // });
     };
 
     const pathLength = (path) => {
@@ -257,9 +247,6 @@ function Tree() {
                     canDrag={false}
                     searchQuery={searchNode}
                     scaffoldBlockPxWidth={30}
-                    // generateNodeProps={(param) => {
-                    //     console.log(param)
-                    // }}
                     generateNodeProps={({ node, path, parentNode }) => ({
                         title: (
                             <div
