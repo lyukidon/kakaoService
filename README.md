@@ -101,13 +101,14 @@ react-router-dom 이용해 SPA로 제작
 ```
 </details>
 
-<!-- <details>
-<summary>관리자 페이지</summary> -->
+<details>
+<summary>관리자 페이지</summary>
 
 ```
 컴포넌트:
 /src/admin/
   ├─admin.js
+  │
   ├─Article
   │ ├─Index.js
   │ ├─List.js
@@ -118,14 +119,11 @@ react-router-dom 이용해 SPA로 제작
   │ └─Warning.js
   ├─Nav
   │ └─Index.js
-  ├─
-  │ ├─
-  │ ├─
-  │ └─
-  ├─
-  │ ├─
+  ├─Qna
+  │ ├─Index.js
+  │ ├─List.js
   │ ├─Preview.js
-  │ └─Warning.js
+  │ └─Editor.js
   ├─ShowRequest.js
   ├─Graph.js
   └─Login.js
@@ -150,14 +148,14 @@ react-router-dom 이용해 SPA로 제작
           - [github](https://github.com/ckeditor/ckeditor5)
           - [demo](https://ckeditor.com/ckeditor-5/demo/)
        - 구현 기능
-          - 제목, 내용 데이터 변경 시, 적용
+          - 데이터 변경 시 적용
           - 저장하기 버튼: 콘솔창에서 데이터 확인 가능
     4. 카테고리 관리
         - 사용 라이브러리: React Sortable Tree
            - [github](https://github.com/frontend-collective/react-sortable-tree)
            - [demo](https://frontend-collective.github.io/react-sortable-tree/)
         - 구현 기능
-           - 카테고리 검색, 추가, 삭제, 이동, 이름 변경
+           - 카테고리 `검색`, `추가`, `삭제`, `이동`, `이름 변경`, `정보 확인`
   - qna (문의 관리)
     1. 문의 관리
     2. 문의 목록
@@ -167,4 +165,4 @@ react-router-dom 이용해 SPA로 제작
           - 사용 라이브러리: CKEditor 5
           - 저장하기 버튼
             - 클릭 시: 데이터 변경
-<!-- </details> -->
+</details>
