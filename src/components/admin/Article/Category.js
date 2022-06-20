@@ -141,7 +141,8 @@ function Tree() {
     // 이동하기 버튼
     // 데이터: pathForMove,selectedCategory
     const deleteRef = useRef([]);
-    const move = () => {
+
+    const moveOption = () => {
         if (selectedCategory.children) {
             setState((prev) => ({
                 treeData: addNodeUnderParent({
@@ -167,6 +168,19 @@ function Tree() {
                     getNodeKey: ({ treeIndex }) => treeIndex,
                 }).treeData,
             }));
+        }
+    };
+
+    const move = () => {
+        if (
+            selectedCategory.path[selectedCategory.path.length - 1] >
+            pathForMove[pathForMove.length - 1]
+        ) {
+            removeNode(selectedCategory.path)
+            moveOption();
+        }else{
+            moveOption()
+            removeNode(selectedCategory.path)
         }
         // setSelectedCategory({
         //     title:"",
@@ -325,7 +339,7 @@ function Tree() {
                                 }
                             }}
                         >
-                            위치에 복사하기
+                            위치로 이동하기
                         </button>
                     </div>
                 </div>
@@ -333,7 +347,9 @@ function Tree() {
                 <div className="treeInfo">
                     <div className="treeInfoTitle">선택된 카테고리</div>
                     <div>
-                        이름{selectedCategory.title !== "" && ` - ${selectedCategory.title}`}
+                        이름
+                        {selectedCategory.title !== "" &&
+                            ` - ${selectedCategory.title}`}
                     </div>
                     <div>
                         뎁스
