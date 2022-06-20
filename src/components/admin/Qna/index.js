@@ -24,7 +24,7 @@ function Qna() {
                 toggleData={toggleData}
                 setToggleData={setToggleData}
             />
-            {toggleId !== -1 && (
+            {toggleId !== -1 ? (
                 <>
                     <Preview
                         toggleId={toggleId}
@@ -39,6 +39,8 @@ function Qna() {
                         setToggleData={setToggleData}
                     />
                 </>
+            ) : (
+                <div className="requestSelect"><div className="request">문의글을 선택해주세요</div></div>
             )}
         </div>
     );

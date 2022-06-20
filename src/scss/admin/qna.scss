@@ -9,6 +9,20 @@
         "list editor";
     column-gap: 12px;
     row-gap: 12px;
+    > .requestSelect{
+        grid-row-start: preview;
+        grid-row-end: editor;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        > .request {
+            border: 3px double lightgrey;
+            border-radius: 20px;
+            padding: 18px 20px;
+            font-size: 17px;
+        }
+    }
+    > .requestSelect,
     > .listComponent,
     > .previewComponent,
     > .editorComponent {
@@ -81,14 +95,14 @@
                     border: none;
                 }
                 > .cancel {
-                    color: #D90000;
+                    color: #d90000;
                 }
                 > .answer {
-                    color: #146EBE;
+                    color: #146ebe;
                 }
                 > .disabled {
                     cursor: not-allowed;
-                    opacity: 0.3
+                    opacity: 0.3;
                 }
             }
             > input {
