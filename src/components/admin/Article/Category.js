@@ -176,11 +176,11 @@ function Tree() {
             selectedCategory.path[selectedCategory.path.length - 1] >
             pathForMove[pathForMove.length - 1]
         ) {
-            removeNode(selectedCategory.path)
+            removeNode(selectedCategory.path);
             moveOption();
-        }else{
-            moveOption()
-            removeNode(selectedCategory.path)
+        } else {
+            moveOption();
+            removeNode(selectedCategory.path);
         }
         // setSelectedCategory({
         //     title:"",
@@ -198,7 +198,7 @@ function Tree() {
             branch = `+ `.repeat(length - 2) + branch;
         }
         return branch;
-    }
+    };
 
     return (
         <>
@@ -330,14 +330,22 @@ function Tree() {
                             }}
                         >
                             <option value={-1}>선택해주세요</option>
-                            {flat.map((c) => (
-                                <option
-                                    key={c.path[c.path.length - 1]}
-                                    value={c.path[c.path.length - 1]}
-                                >
-                                    {`${pathLength(c.path)} ${c.title}`}
-                                </option>
-                            ))}
+                            {flat.map((c) => {
+                                const { path } = selectedCategory;
+                                if (
+                                    path[path.length - 1] !==
+                                    c.path[path.length - 1]
+                                ) {
+                                    return (
+                                        <option
+                                            key={c.path[c.path.length - 1]}
+                                            value={c.path[c.path.length - 1]}
+                                        >
+                                            {`${pathLength(c.path)} ${c.title}`}
+                                        </option>
+                                    );
+                                }
+                            })}
                         </select>
                         <button
                             type="button"
@@ -350,7 +358,7 @@ function Tree() {
                                 }
                             }}
                         >
-                            위치로 이동하기
+                            이동하기
                         </button>
                     </div>
                 </div>

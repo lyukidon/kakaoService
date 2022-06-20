@@ -101,8 +101,8 @@ react-router-dom 이용해 SPA로 제작
 ```
 </details>
 
-<details>
-<summary>관리자 페이지</summary>
+<!-- <details>
+<summary>관리자 페이지</summary> -->
 
 ```
 컴포넌트:
@@ -110,11 +110,22 @@ react-router-dom 이용해 SPA로 제작
   ├─admin.js
   ├─Article
   │ ├─Index.js
+  │ ├─List.js
   │ └─Cateogry.js
   ├─Editor
-  │ └─Index.js
+  │ ├─Index.js
+  │ ├─Preview.js
+  │ └─Warning.js
   ├─Nav
   │ └─Index.js
+  ├─
+  │ ├─
+  │ ├─
+  │ └─
+  ├─
+  │ ├─
+  │ ├─Preview.js
+  │ └─Warning.js
   ├─ShowRequest.js
   ├─Graph.js
   └─Login.js
@@ -124,25 +135,36 @@ react-router-dom 이용해 SPA로 제작
   1. 메인 페이지에서 로그인 클릭
   2. 로그인 페이지에서 관리자 계정 로그인 (test: admin1/1234)
 - 구현 페이지
-  - login
+  - login (로그인)
     - localStorage에 로그인 데이터 저장
-  - dashboard
-    - 트래픽 통계 (사용 라이브러리: Chart.js)
-    - 최근 문의
-    - 도움말 목록
-      - 카테고리 변경
-      - 카테고리 설정 별 배지
-  - faq
-    - 도움말 관리
-      - 도움말 추가
-      - 도움말 수정
-      - 도움말 제거
-    - 에디터
-      - 사용 라이브러리: CKEditor 5
-        - [github](https://github.com/ckeditor/ckeditor5)
-        - [demo](https://ckeditor.com/ckeditor-5/demo/)
-      - 저장하기 버튼
-        - 클릭 시, 콘솔에 변화된 데이터 확인
-    - 미리보기
-      - 데이터(제목, 내용) 미리보기 (innerHTML 사용)
-</details>
+  - dashboard (대시보드)
+    1. 트래픽 통계 (사용 라이브러리: Chart.js)
+    2. 문의 목록
+    3. 도움말 통계
+    4. 도움말 목록
+  - faq (도움말 관리)
+    1. 도움말 목록
+    2. 도움말 미리보기
+    3. 도움말 관리
+        - 사용 라이브러리: CKEditor 5
+          - [github](https://github.com/ckeditor/ckeditor5)
+          - [demo](https://ckeditor.com/ckeditor-5/demo/)
+       - 구현 기능
+          - 제목, 내용 데이터 변경 시, 적용
+          - 저장하기 버튼: 콘솔창에서 데이터 확인 가능
+    4. 카테고리 관리
+        - 사용 라이브러리: React Sortable Tree
+           - [github](https://github.com/frontend-collective/react-sortable-tree)
+           - [demo](https://frontend-collective.github.io/react-sortable-tree/)
+        - 구현 기능
+           - 카테고리 검색, 추가, 삭제, 이동, 이름 변경
+  - qna (문의 관리)
+    1. 문의 관리
+    2. 문의 목록
+         - 문의 글 상태 확인 (답변 대기, 답변 완료)
+    3. 문의 미리보기
+    4. 문의 관리
+          - 사용 라이브러리: CKEditor 5
+          - 저장하기 버튼
+            - 클릭 시: 데이터 변경
+<!-- </details> -->
