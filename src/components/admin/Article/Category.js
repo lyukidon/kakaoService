@@ -330,22 +330,22 @@ function Tree() {
                             }}
                         >
                             <option value={-1}>선택해주세요</option>
-                            {flat.map((c) => {
-                                const { path } = selectedCategory;
-                                if (
-                                    path[path.length - 1] !==
-                                    c.path[path.length - 1]
-                                ) {
-                                    return (
-                                        <option
-                                            key={c.path[c.path.length - 1]}
-                                            value={c.path[c.path.length - 1]}
-                                        >
-                                            {`${pathLength(c.path)} ${c.title}`}
-                                        </option>
-                                    );
-                                }
-                            })}
+                            {flat
+                                .filter(
+                                    (c) =>
+                                        selectedCategory.path[
+                                            selectedCategory.path.length - 1
+                                        ] !==
+                                        c.path[selectedCategory.path.length - 1]
+                                )
+                                .map((c) => (
+                                    <option
+                                        key={c.path[c.path.length - 1]}
+                                        value={c.path[c.path.length - 1]}
+                                    >
+                                        {`${pathLength(c.path)} ${c.title}`}
+                                    </option>
+                                ))}
                         </select>
                         <button
                             type="button"
