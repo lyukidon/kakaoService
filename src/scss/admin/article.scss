@@ -43,7 +43,7 @@
             }
             > .treeBox {
                 display: grid;
-                grid-template-columns: 400px 1fr;
+                grid-template-columns: 415px 1fr;
                 > .tree {
                     > .treeButton {
                         margin-bottom: 7px;
@@ -100,7 +100,7 @@
                 > .treeManage {
                     display: grid;
                     grid-template-rows: 70px auto 30px;
-                    margin-left: 30px;
+                    margin-left: 100px;
                     > .treeController {
                         > div {
                             margin-bottom: 10px;
