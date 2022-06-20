@@ -188,6 +188,18 @@ function Tree() {
         // });
     };
 
+    const pathLength = (path) => {
+        const length = path.length;
+        let branch = "";
+        if (length > 1) {
+            branch = "+ ";
+        }
+        if (length > 2) {
+            branch = `+ `.repeat(length - 2) + branch;
+        }
+        return branch;
+    }
+
     return (
         <>
             <div className="tree" style={{ height: 600 }}>
@@ -323,7 +335,7 @@ function Tree() {
                                     key={c.path[c.path.length - 1]}
                                     value={c.path[c.path.length - 1]}
                                 >
-                                    {c.title}
+                                    {`${pathLength(c.path)} ${c.title}`}
                                 </option>
                             ))}
                         </select>
@@ -332,7 +344,6 @@ function Tree() {
                             onClick={() => {
                                 const { title, path } = selectedCategory;
                                 if (title !== "") {
-                                    // deleteRef.current[path[path.length - 1]].click();
                                     move();
                                 } else {
                                     alert("카테고리를 선택해주세요");
