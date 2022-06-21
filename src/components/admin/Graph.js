@@ -42,6 +42,7 @@ const Graph = () => {
                 ],
                 labels: month,
             },
+
         });
         new Chart(ctx1, {
             type: "line",
@@ -65,6 +66,7 @@ const Graph = () => {
                 ],
                 labels: month,
             },
+
         });
         new Chart(ctx2, {
             type: "bar",
@@ -82,6 +84,7 @@ const Graph = () => {
                 ],
                 labels: ["카카오톡", "카카오계정", "카카오 이모티콘"],
             },
+
         });
         new Chart(ctx3, {
             type: "bar",
@@ -107,6 +110,7 @@ const Graph = () => {
                 ],
                 labels: ["카카오톡", "카카오계정", "카카오 이모티콘"],
             },
+
         });
     }, []);
 

@@ -1,6 +1,24 @@
 .adminBody {
     margin: 0px;
 }
+.graphTable {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    > div {
+        width: 90%;
+    }
+}
+@media (max-width: 1300px){
+    .graphTable{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        > div {
+            width: 90%;
+        }
+    }
+}
 .topNav {
     display: flex;
     flex-direction: row;
@@ -82,14 +100,7 @@
             }
         }
         .graph {
-            .graphTable {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 1fr 1fr;
-                > div {
-                    width: 90%;
-                }
-            }
+            
         }
         .statistic {
             > div {
