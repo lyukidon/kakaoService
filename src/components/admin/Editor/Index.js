@@ -34,7 +34,6 @@ function Warning({ setPreview, setCancel, setActivateEditor }) {
 }
 
 function Article({
-    ids,
     setIds,
     service,
     category,
