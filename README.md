@@ -43,6 +43,9 @@
   - React Router
   - Redux, Zustand
   - axios
+  - yup, React Hook Form
+  - React Sortable Tree
+  - Chart.js
 
 ## 프로젝트 설명
 
@@ -99,6 +102,20 @@ react-router-dom 이용해 SPA로 제작
 컴포넌트: /src/components/Request.js
 데이터: /public/data/countryNumber.json
 ```
+- 접속 방법
+    - 메인 페이지 > 카카오톡 > 도움말 클릭 > 문의하기
+    - 사용 라이브러리: yup, React Hook Form (유효성 검사)
+    - 구성
+        1. 이메일 주소
+        2. 휴대폰 번호
+        3. 문의 분류 (카테고리)
+        4. 문의 제목
+        5. 문의 내용
+        6. 첨부 파일 (용량 확인)
+        7. 개인 정보 수집 동의 (체크박스)
+    - 기타
+        - 현재 카테고리 위치 표시 (상단 네비게이션, 좌측 네비게이션)
+
 </details>
 
 <details>
@@ -131,24 +148,31 @@ react-router-dom 이용해 SPA로 제작
 ```
 - 접속방법
   1. 메인 페이지에서 로그인 클릭
-  2. 로그인 페이지에서 관리자 계정 로그인 (test: admin1/1234)
+  2. 로그인 페이지에서 관리자 계정 로그인 (test: `admin1/1234` , `admin2/1234`)
 - 구현 페이지
   - login (로그인)
     - localStorage에 로그인 데이터 저장
   - dashboard (대시보드)
-    1. 트래픽 통계 (사용 라이브러리: Chart.js)
-    2. 문의 목록
-    3. 도움말 통계
-    4. 도움말 목록
+    1. 네비게이션
+        - 상단 - 관리자 페이지 홈 이동 및 로그아웃
+        - 좌측 - 특정 페이지로 이동
+    2. 트래픽 통계 (사용 라이브러리: Chart.js)
+    3. 문의 목록 (페이지 당 7개)
+    4. 도움말 통계
+    5. 도움말 목록 (페이지 당 7개)
   - faq (도움말 관리)
     1. 도움말 목록
+       - 구현 기능
+          - 카테고리 배지
+          - 카테고리 필터
+          - 페이지네이션 (페이지 당 17개)
     2. 도움말 미리보기
     3. 도움말 관리
         - 사용 라이브러리: CKEditor 5
           - [github](https://github.com/ckeditor/ckeditor5)
           - [demo](https://ckeditor.com/ckeditor-5/demo/)
        - 구현 기능
-          - 데이터 변경 시 적용
+          - 데이터 변경 시, 도움말 목록에 적용
           - 저장하기 버튼: 콘솔창에서 데이터 확인 가능
     4. 카테고리 관리
         - 사용 라이브러리: React Sortable Tree
@@ -159,7 +183,10 @@ react-router-dom 이용해 SPA로 제작
   - qna (문의 관리)
     1. 문의 관리
     2. 문의 목록
-         - 문의 글 상태 확인 (답변 대기, 답변 완료)
+          - 구현 기능
+              - 문의 글 상태 배지 (답변 대기, 답변 완료)
+              - 상태 필터
+              - 페이지네이션
     3. 문의 미리보기
     4. 문의 관리
           - 사용 라이브러리: CKEditor 5
