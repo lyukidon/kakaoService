@@ -66,7 +66,7 @@ export default function List({
     // 페이지에 렌더링할 도움말 번호
     const [low, setLow] = useState(0);
     const [high, setHigh] = useState(0);
-    const editorRender = 18;
+    const editorRender = 17;
     const nonEditorRender = 7;
     useEffect(() => {
         let tmparr = [];
