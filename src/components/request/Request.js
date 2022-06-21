@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Helmet } from "react-helmet";
@@ -77,6 +77,9 @@ function Request() {
     const onFile = (event) => {
         setFile(event.target.value);
     };
+    const inputRef = useRef(null);
+    const [sizeCheck, setSizeCheck] = useState(false);
+
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="formBox">
             <Helmet>
@@ -192,11 +195,29 @@ function Request() {
                         type="file"
                         name="file"
                         id="file"
-                        onChange={onFile}
+                        ref={inputRef}
+                        onChange={(evt) => {
+                            if (inputRef.current.files[0].size > 30000000) {
+                                setSizeCheck(true);
+                            } else {
+                                setSizeCheck(false);
+                            }
+                            onFile(evt);
+                        }}
                     />
-                    {file && <div className="fileName">{file}</div>}
+                    {file && (
+                        <div className="fileName">{`${file} (${(
+                            inputRef.current.files[0].size / 1000000
+                        ).toFixed(3)} MB)`}</div>
+                    )}
                     <div className="condition block">
-                        첨부파일은 최대 5개, 30MB까지 등록 가능합니다.
+                        {!sizeCheck ? (
+                            <span>첨부파일은 30MB까지 등록 가능합니다.</span>
+                        ) : (
+                            <span style={{ color: "#ff0000" }}>
+                                용량이 너무 큽니다.
+                            </span>
+                        )}
                     </div>
                 </div>
             </div>
