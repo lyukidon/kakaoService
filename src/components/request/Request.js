@@ -205,18 +205,18 @@ function Request() {
                             onFile(evt);
                         }}
                     />
-                    {file && (
+                    {file && !sizeCheck && (
                         <div className="fileName">{`${file} (${(
                             inputRef.current.files[0].size / 1000000
-                        ).toFixed(3)} MB)`}</div>
+                        ).toFixed(2)} MB)`}</div>
                     )}
                     <div className="condition block">
-                        {!sizeCheck ? (
-                            <span>첨부파일은 30MB까지 등록 가능합니다.</span>
-                        ) : (
+                        {sizeCheck ? (
                             <span style={{ color: "#ff0000" }}>
-                                용량이 너무 큽니다.
+                                선택한 파일의 용량이 너무 큽니다.
                             </span>
+                        ) : (
+                            <span>첨부파일은 30MB까지 등록 가능합니다.</span>
                         )}
                     </div>
                 </div>
