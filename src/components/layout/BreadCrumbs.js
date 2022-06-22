@@ -17,7 +17,7 @@ function BreadCrumbs({ query }) {
     const [category, setCategory] = useState([]);
 
     useEffect(() => {
-        axios.get("/data/faq.json").then((res) => {
+        axios.get("/data/faqMain.json").then((res) => {
             setService(res.data.service[query.service]);
             if (query.category) {
                 setCategory([

@@ -10,7 +10,7 @@ const ContentIndex = styled.div`
 function RandomPick() {
     const [random, setRandom] = useState([]);
     useEffect(() => {
-        axios.get("/data/faq.json").then((res) => {
+        axios.get("/data/faqMain.json").then((res) => {
             const { article } = res.data;
             let arr = [];
             for (let i = 0; i < 10; i++) {

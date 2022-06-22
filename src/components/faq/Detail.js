@@ -57,7 +57,7 @@ function Content({ query }) {
     const [article, setArticle] = useState([]);
 
     useEffect(() => {
-        axios.get("/data/faq.json").then((res) => {
+        axios.get("/data/faqMain.json").then((res) => {
             if (query.platform) {
                 setArticle(
                     res.data.article[query.service][query.category][
@@ -111,7 +111,7 @@ function Detail() {
     const [platform, setPlatform] = useState([]);
 
     useEffect(() => {
-        axios.get("/data/faq.json").then((res) => {
+        axios.get("/data/faqMain.json").then((res) => {
             setCategory([...res.data.category[query.service]]);
             setPlatform([...res.data.platform[query.service]]);
         });

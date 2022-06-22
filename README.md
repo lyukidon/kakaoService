@@ -76,14 +76,14 @@ react-router-dom 이용해 SPA로 제작
   ├─BreadCrumbs.js
   ├─Detail.js
   └─SideMenu.js
-데이터: /public/data/faq.json
+데이터: /public/data/faqMain.json
 ```
 - 작동 방식
 
   1. /src/Route/RouteFaq.js에서 react-router-dom의 `useLocation()` hook을 이용해 query string 분석 및 query 변수 선언
       - query string 형태
         `service: 서비스 id category: 카테고리 id platform: 플랫폼 id articleId: 아티클 id`
-  2. query 이용, /public/data/faq.json 데이터 추출
+  2. query 이용, /public/data/faqMain.json 데이터 추출
     쿼리스트링에
       - service 있을 경우, json의 `service[query.service]`
       - category 있을 경우, json의 `category[query.service][query.category]`

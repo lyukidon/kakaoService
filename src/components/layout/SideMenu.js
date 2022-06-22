@@ -9,7 +9,7 @@ function SideMenu() {
     const [category, setCategory] = useState([]);
 
     useEffect(() => {
-        axios.get("/data/faq.json").then((res) => {
+        axios.get("/data/faqMain.json").then((res) => {
             setService(res.data.service[query.service]);
             setCategory([...res.data.category[query.service]]);
         });
