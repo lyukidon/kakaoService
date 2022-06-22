@@ -19,7 +19,7 @@ function RouteFaq() {
 
     useEffect(() => {
         axios
-            .get("/data/faq_temp.json")
+            .get("/data/faqAdmin.json")
             .then((res) => setFaqData({ ...faqData, ...res.data }));
     }, []);
 

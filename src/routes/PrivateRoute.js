@@ -48,7 +48,7 @@ function PrivateRoute() {
         const getfaq = async () => {
             dispatch({ type: "LOADING" });
             try {
-                const response = await axios.get("/data/faq_temp.json");
+                const response = await axios.get("/data/faqAdmin.json");
                 dispatch({ type: "SUCCESS", data: response.data });
             } catch (err) {
                 dispatch({ type: "ERROR", error: err });

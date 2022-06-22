@@ -144,7 +144,7 @@ react-router-dom 이용해 SPA로 제작
   ├─ShowRequest.js
   ├─Graph.js
   └─Login.js
-데이터: /public/data/faq_temp.json
+데이터: /public/data/faqAdmin.json
 ```
 - 접속방법
   1. 메인 페이지에서 로그인 클릭
