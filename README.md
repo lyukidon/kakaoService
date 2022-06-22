@@ -13,7 +13,7 @@
 ## 시작하기
 
 - 접속 방법
-  - aws: http://15.164.233.23:3001
+  - aws: http://15.164.233.23:3000
   - 로컬 접속
     ```
     git clone https://git.xsinc.co.kr/gd.ryu/practice-customer-center.git
