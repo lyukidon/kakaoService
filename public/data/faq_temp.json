@@ -48,42 +48,42 @@
             "category_id": 1,
             "platform_id": 1,
             "content": "안드로이드",
-            "color":"#ACFFB0"
+            "color":"#64FFA9"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 2,
             "content": "iOS",
-            "color":"#B8C2FB"
+            "color":"#D2D2D2"
         },
         {
             "service_id": 1,
             "category_id": 1,
             "platform_id": 3,
             "content": "Windows",
-            "color":"#93CFF8"
+            "color":"#8EDAF7"
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 1,
             "content": "안드로이드",
-            "color":"#ACFFB0"
+            "color":"#64FFA9"
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 2,
             "content": "iOS",
-            "color":"#B8C2FB"
+            "color":"#D2D2D2"
         },
         {
             "service_id": 1,
             "category_id": 2,
             "platform_id": 3,
             "content": "안드로이드(원스토어)",
-            "color":"#FFAFAC"
+            "color":"#F04D68"
         },
         {
             "service_id": 2,
