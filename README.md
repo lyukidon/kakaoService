@@ -179,7 +179,9 @@ react-router-dom 이용해 SPA로 제작
            - [github](https://github.com/frontend-collective/react-sortable-tree)
            - [demo](https://frontend-collective.github.io/react-sortable-tree/)
         - 구현 기능
-           - 카테고리 `검색`, `추가`, `삭제`, `이동`, `이름 변경`, `정보 확인`
+           - 카테고리 `검색` , `추가` , `삭제` , `이동` , `이름 변경` , `정보 확인`
+           - 정보 확인
+              - 카테고리 `이름` , `뎁스` , `상위 카테고리` , `하위 카테고리`
   - qna (문의 관리)
     1. 문의 관리
     2. 문의 목록
