@@ -6,23 +6,13 @@ import Warning from "./Warning";
 import "../../../scss/admin/preview.scss";
 
 function Preview({
-    ids,
-    setIds,
-    service,
-    category,
-    platform,
     article,
-    setService,
-    setCategory,
-    setPlatform,
     setArticle,
-    handleFunc,
     setPreview,
     setActivateEditor,
     articleId,
     setArticleId,
     singleArti,
-    setSingleArti,
 }) {
     const explainRef = useRef(null);
     useEffect(() => {
