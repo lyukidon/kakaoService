@@ -1,19 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import styled from "styled-components";
 import "../../scss/main/Header.scss";
-
-const Title = styled(Link)`
-    margin-top: 30px;
-    display: inline-block;
-    margin: 25px 30px 30px 0px;
-    &:hover {
-        text-decoration-line: none;
-    }
-    font-size: 30px;
-    font-weight: bold;
-`;
 
 function Header() {
     const [headerData, setHeaderData] = useState([]);
@@ -24,7 +12,7 @@ function Header() {
     }, []);
     return (
         <header className="common-width">
-            <Title to="/">kakao 고객센터</Title>
+            <Link className="PageTitle" to="/">kakao 고객센터</Link>
             <form className="searchBox">
                 <input
                     type="text"

@@ -1,20 +1,8 @@
 import React from "react";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import "../../scss/request/RequestBtn.scss";
-
-const Write = styled.div`
-    display: inline-block;
-    background-color: #e8e8e8;
-    background: url("/ico.png") no-repeat -80px -60px;
-    width: 17px;
-    height: 17px;
-    > a {
-        text-decoration: none;
-    }
-`;
 
 function RequestBtn({ query }) {
     return (
@@ -26,7 +14,7 @@ function RequestBtn({ query }) {
                 to={`/qna?service=${query.service}&category=${query.category}`}
                 className="inlineBlock reqButton"
             >
-                <Write />
+                <div />
                 문의하기
             </Link>
         </div>

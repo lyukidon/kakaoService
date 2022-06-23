@@ -153,4 +153,14 @@
     padding: 10px 55px;
     border: none;
     font-weight: bold;
+    > div {
+        display: inline-block;
+        background-color: #e8e8e8;
+        background: url("../../../public/ico.png") no-repeat -80px -60px;
+        width: 17px;
+        height: 17px;
+        > a {
+            text-decoration: none;
+        }
+    }
 }

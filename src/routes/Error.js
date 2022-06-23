@@ -1,14 +1,13 @@
 import React from "react";
-import styled from "styled-components";
 
-const ErrMessage = styled.div`
-    text-align: center;
-    font-size: 50px;
-    font-weight: bold;
-`;
+const style={
+    'textAlign': 'center',
+    'fontSize': '50px',
+    'fontWeight': 'bold',
+};
 
 function RouteError() {
-    return <ErrMessage>Error</ErrMessage>;
+    return <div style={style}>Error</div>;
 }
 
 export default RouteError;

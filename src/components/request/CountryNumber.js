@@ -1,28 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 
 import "../../scss/request/CountryNumber.scss";
 
-const SearchBox = styled.div`
-    width: 500px;
-    background-color: white;
-    border: 1px solid black;
-`;
-const SearchInput = styled.input`
-    width: 440px;
-    vertical-align: top;
-    border: none;
-`;
-
-const SearchImg = styled.div`
-    display: inline-block;
-    background: url("/ico.png") no-repeat 0 -64px;
-    width: 19px;
-    height: 20px;
-    margin: 10px;
-`;
 // 국가 보여주는 코드
 function Open({ onClickSelect, countries }) {
     return (
@@ -113,14 +94,15 @@ function CountryNumber() {
             </div>
             {toggle && (
                 <div className="nummmber">
-                    <SearchBox>
-                        <SearchImg />
-                        <SearchInput
+                    <div className="searchBox">
+                        <div className="searchImg" />
+                        <div
+                            className="searchInput"
                             type="text"
                             placeholder="국가 검색 (국가명)"
                             onChange={onChngSearch}
                         />
-                    </SearchBox>
+                    </div>
                     <div className="numberBox">
                         <Open
                             onClickSelect={onClickSelect}

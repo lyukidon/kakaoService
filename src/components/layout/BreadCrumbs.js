@@ -2,15 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
-import styled from "styled-components";
-
-const RightArrow = styled.div`
-    display: inline-block;
-    margin: 0px 10px;
-    background: url("/ico.png") no-repeat -84px -24px;
-    width: 5px;
-    height: 9px;
-`;
 
 function BreadCrumbs({ query }) {
     const [service, setService] = useState("");
@@ -29,9 +20,9 @@ function BreadCrumbs({ query }) {
     return (
         <div className="breadcrumb">
             <Link to="/">홈</Link>
-            <RightArrow />
+            <div />
             <Link to={`/faq?service=${query.service}`}>{service}</Link>
-            <RightArrow />
+            <div />
             {query.category ? (
                 <Link
                     to={`?service=${query.service}&category=${query.category}`}

@@ -1,5 +1,22 @@
 .nummmber {
     position: absolute;
+    > .searchBox {
+        width: 500px;
+        background-color: white;
+        border: 1px solid black;
+        > .searchImg {
+            display: inline-block;
+            background: url("../../../public/ico.png") no-repeat 0 -64px;
+            width: 19px;
+            height: 20px;
+            margin: 10px;
+        }
+        > .searchInput {
+            width: 440px;
+            vertical-align: top;
+            border: none;
+        }
+    }
 }
 .numberBox {
     overflow-y: scroll;

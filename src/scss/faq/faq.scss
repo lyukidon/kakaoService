@@ -2,6 +2,13 @@
     padding: 15px 0px;
     border-top: 2px solid #f3f3f3;
     border-bottom: 2px solid #f3f3f3;
+    > div {
+        display: inline-block;
+    margin: 0px 10px;
+    background: url("../../../public/ico.png") no-repeat -84px -24px;
+    width: 5px;
+    height: 9px;
+    }
 }
 .sidemenu {
     display: inline-block;
@@ -53,14 +60,15 @@
     .contentBox {
         border-top: 2px solid black;
         border-bottom: 2px solid black;
-        .content {
+        > .content {
+            color: orange;
             padding: 22px 0px;
-            .contentIndex {
+            > .contentIndex {
                 margin-right: 20px;
                 vertical-align: top;
                 display: inline-block;
             }
-            .contentLink {
+            > .contentLink {
                 display: inline-block;
                 width: 85%;
                 a:hover {
