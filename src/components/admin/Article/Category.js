@@ -262,17 +262,16 @@ function Tree() {
                                 style={
                                     selectCheck(node, path)
                                         ? {
-                                            backgroundColor:node.background,
+                                              backgroundColor: node.background,
                                               borderBottom: "3px solid #ff0000",
                                               borderRight: "3px solid #ff0000",
                                               borderLeft: "1px solid #ff0000",
                                               borderTop: "1px solid #ff0000",
                                               paddingBottom: "5px",
                                           }
-                                        : {backgroundColor:node.background}
+                                        : { backgroundColor: node.background }
                                 }
                                 className="treeNodes"
-                                // style={{backgroundColor:node.background}}
                             >
                                 <div className="nodeTitle">{node.title}</div>
                                 <div className="nodeButtons">
@@ -302,10 +301,42 @@ function Tree() {
                 />
             </div>
             <div className="treeManage">
-                <ColorPicker
-                    selectedCategory={selectedCategory}
-                    setSelectedCategory={setSelectedCategory}
-                />
+                <details>
+                    <summary className="treeInfoTitle">선택된 카테고리 정보</summary>
+                    <div className="treeInfo">
+                        <div>
+                            이름
+                            {selectedCategory.title !== "" &&
+                                ` - ${selectedCategory.title}`}
+                        </div>
+                        <div>
+                            배지 색깔
+                            {selectedCategory.background !== "" &&
+                                ` - ${selectedCategory.background}`}
+                        </div>
+                        <div>
+                            뎁스
+                            {selectedCategory.path.length !== 0 &&
+                                ` - ${selectedCategory.path.length}`}
+                        </div>
+                        <div>
+                            상위 카테고리
+                            {selectedCategory.parentNode !== undefined &&
+                                ` - ${selectedCategory.parentNode.title}`}
+                        </div>
+                        <div>
+                            하위 카테고리
+                            <ul>
+                                {selectedCategory && selectedCategory.children
+                                    ? selectedCategory.children.map((c) => (
+                                          <li key={c.title}>{c.title}</li>
+                                      ))
+                                    : "없음"}
+                            </ul>
+                        </div>
+                    </div>
+                </details>
+
                 <div className="treeController">
                     <div className="treeChangeTitle">
                         <input
@@ -323,7 +354,7 @@ function Tree() {
                                 changeTitle();
                             }}
                         >
-                            이름 바꾸기
+                            변경
                         </button>
                     </div>
                     <div className="treeMoveNode">
@@ -335,7 +366,7 @@ function Tree() {
                             }}
                         >
                             {selectedCategory.title.length === 0 && (
-                                <option value={-2}>선택해주세요</option>
+                                <option value={-2}>카테고리 이동</option>
                             )}
                             {selectedCategory.title.length !== 0 && (
                                 <option value={-1}>최상단</option>
@@ -360,7 +391,7 @@ function Tree() {
                         <button
                             type="button"
                             onClick={() => {
-                                const { title, path } = selectedCategory;
+                                const { title } = selectedCategory;
                                 if (title !== "") {
                                     move();
                                 } else {
@@ -368,44 +399,15 @@ function Tree() {
                                 }
                             }}
                         >
-                            이동하기
+                            이동
                         </button>
                     </div>
+                    <ColorPicker
+                        selectedCategory={selectedCategory}
+                        setSelectedCategory={setSelectedCategory}
+                    />
                 </div>
 
-                <div className="treeInfo">
-                    <div className="treeInfoTitle">선택된 카테고리</div>
-                    <div>
-                        이름
-                        {selectedCategory.title !== "" &&
-                            ` - ${selectedCategory.title}`}
-                    </div>
-                    <div>
-                        배지 색깔
-                        {selectedCategory.background !== "" &&
-                            ` - ${selectedCategory.background}`}
-                    </div>
-                    <div>
-                        뎁스
-                        {selectedCategory.path.length !== 0 &&
-                            ` - ${selectedCategory.path.length}`}
-                    </div>
-                    <div>
-                        상위 카테고리
-                        {selectedCategory.parentNode !== undefined &&
-                            ` - ${selectedCategory.parentNode.title}`}
-                    </div>
-                    <div>
-                        하위 카테고리
-                        <ul>
-                            {selectedCategory && selectedCategory.children
-                                ? selectedCategory.children.map((c) => (
-                                      <li key={c.title}>{c.title}</li>
-                                  ))
-                                : "없음"}
-                        </ul>
-                    </div>
-                </div>
                 <div className="treeSaveBtn">
                     <button
                         type="button"

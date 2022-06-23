@@ -99,30 +99,42 @@
                 }
                 > .treeManage {
                     display: grid;
-                    grid-template-rows: 70px auto 30px;
+                    grid-template-rows: repeat(4, auto);
                     margin-left: 100px;
+                    .changeHex {
+                        &:focus ~ .colorPicker {
+                            display: block;
+                        }
+                    }
+                    .colorPicker {
+                        display: none;
+                        position: absolute;
+                        &:hover {
+                            display: block;
+                        }
+                    }
+                    .treeChangeTitle {
+                        > input {
+                            width: 200px;
+                            margin-right: 10px;
+                            padding: 2.5px 6px;
+                            border: 1px solid #777777;
+                            border-radius: 7px;
+                            vertical-align: top;
+                        }
+                        > button {
+                            vertical-align: top;
+                            background-color: #ffffff;
+                            border-radius: 7px;
+                            border: 1px solid #000000;
+                            &:hover {
+                                background-color: #dddddd;
+                            }
+                        }
+                    }
                     > .treeController {
                         > div {
                             margin-bottom: 10px;
-                        }
-                        > .treeChangeTitle {
-                            > input {
-                                width: 200px;
-                                margin-right: 10px;
-                                padding: 2.5px 6px;
-                                border: 1px solid #777777;
-                                border-radius: 7px;
-                                vertical-align: top;
-                            }
-                            > button {
-                                vertical-align: top;
-                                background-color: #ffffff;
-                                border-radius: 7px;
-                                border: 1px solid #000000;
-                                &:hover {
-                                    background-color: #dddddd;
-                                }
-                            }
                         }
                         > .treeMoveNode {
                             > select {
@@ -142,13 +154,9 @@
                             }
                         }
                     }
-                    > .treeInfo {
-                        height: 200px;
-                        > .treeInfoTitle {
-                            margin: 20px 0px;
-                            font-weight: 800;
-                            font-size: 18px;
-                        }
+                    > details > .treeInfo {
+                        max-height: 200px;
+                        overflow-y: auto;
                         > div {
                             margin: 5px;
                         }
@@ -309,7 +317,7 @@
         }
     }
 }
-.previewWarning{
+.previewWarning {
     display: flex;
     flex-direction: column;
     position: absolute;

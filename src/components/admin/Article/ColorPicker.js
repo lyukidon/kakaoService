@@ -1,23 +1,45 @@
 import React, { useState } from "react";
-import { ChromePicker } from "react-color";
+import { SketchPicker } from "react-color";
 
 function ColorPicker({ selectedCategory, setSelectedCategory }) {
     const [hex, setHex] = useState({
-        background: "#ffffff",
+        background: "",
     });
     const handleHex = (color) => {
         setHex({
             background: color.hex,
         });
         const { background } = hex;
-        setSelectedCategory({
-            ...selectedCategory,
-            background,
-        });
+        // setSelectedCategory({
+        //     ...selectedCategory,
+        //     background,
+        // });
     };
     return (
-        <div>
-            <ChromePicker color={hex.background} onChange={handleHex} />
+        <div className="ColorPicker treeChangeTitle">
+            <input
+                type="text"
+                value={hex.background}
+                placeholder="색깔 변경"
+                className="changeHex"
+                onChange={(evt) => {
+                    setHex({ ...hex, background: evt.target.value });
+                }}
+            />
+            <button
+                type="button"
+                onClick={() => {
+                    setSelectedCategory({
+                        ...selectedCategory,
+                        background: hex.background,
+                    });
+                }}
+            >
+                변경
+            </button>
+            <div className="colorPicker">
+                <SketchPicker color={hex.background} onChange={handleHex} />
+            </div>
         </div>
     );
 }
