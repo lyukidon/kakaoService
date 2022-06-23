@@ -18,6 +18,7 @@ function Tree() {
     const [state, setState] = useState(categoryData);
     // 렌더링마다 작동
     // 펼치기
+    const [expandState, setExpandState] = useState(null);
     const expandStatus = (bool) => {
         setState((prev) => ({
             treeData: toggleExpandedForAll({
@@ -36,13 +37,22 @@ function Tree() {
         // walk: forEach랑 비슷한 것
         walk({
             treeData: state.treeData,
-            callback: ({ node, path }) =>
-                setFlat((prev) => [...prev, { ...node, path }]),
+            callback: ({ node, path }) => {
+                setFlat((prev) => [...prev, { ...node, path }]);
+            },
             getNodeKey: ({ treeIndex }) => treeIndex,
         });
     };
     useEffect(() => {
         getFlat();
+        for (let i = 0; i < flat.length; i++) {
+            if (flat[i].expanded === true) {
+                setExpandState(true);
+                break;
+            } else {
+                setExpandState(false);
+            }
+        }
     }, [state]);
     // 트리 상단 버튼 함수
     // 검색하기
@@ -207,20 +217,23 @@ function Tree() {
             <div className="tree" style={{ height: 600 }}>
                 <div className="treeButton">
                     <div className="expanded">
-                        <button
-                            type="button"
-                            onClick={() => expandStatus(true)}
-                        >
-                            <FontAwesomeIcon icon="fa-solid fa-arrow-down-wide-short" />{" "}
-                            펼치기
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => expandStatus(false)}
-                        >
-                            <FontAwesomeIcon icon="fa-solid fa-arrow-up-short-wide" />{" "}
-                            접기
-                        </button>
+                        {expandState ? (
+                            <button
+                                type="button"
+                                onClick={() => expandStatus(true)}
+                            >
+                                <FontAwesomeIcon icon="fa-solid fa-arrow-down-wide-short" />{" "}
+                                펼치기
+                            </button>
+                        ) : (
+                            <button
+                                type="button"
+                                onClick={() => expandStatus(false)}
+                            >
+                                <FontAwesomeIcon icon="fa-solid fa-arrow-up-short-wide" />{" "}
+                                접기
+                            </button>
+                        )}
                     </div>
                     <div className="searchInput">
                         <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
@@ -302,7 +315,9 @@ function Tree() {
             </div>
             <div className="treeManage">
                 <details>
-                    <summary className="treeInfoTitle">선택된 카테고리 정보</summary>
+                    <summary className="treeInfoTitle">
+                        선택된 카테고리 정보
+                    </summary>
                     <div className="treeInfo">
                         <div>
                             이름
@@ -336,7 +351,6 @@ function Tree() {
                         </div>
                     </div>
                 </details>
-
                 <div className="treeController">
                     <div className="treeChangeTitle">
                         <input
