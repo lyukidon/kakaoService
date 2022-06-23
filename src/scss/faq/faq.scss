@@ -60,15 +60,16 @@
     .contentBox {
         border-top: 2px solid black;
         border-bottom: 2px solid black;
-        > .content {
+        .content {
             color: orange;
             padding: 22px 0px;
-            > .contentIndex {
+            .contentIndex {
                 margin-right: 20px;
                 vertical-align: top;
                 display: inline-block;
             }
-            > .contentLink {
+            .contentLink {
+                color:#000;
                 display: inline-block;
                 width: 85%;
                 a:hover {
