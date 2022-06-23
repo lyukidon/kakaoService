@@ -9,6 +9,7 @@ import SortableTree, {
     changeNodeAtPath,
     walk,
 } from "@nosferatu500/react-sortable-tree";
+import ColorPicker from "./ColorPicker";
 
 import categoryData from "./categoryData";
 
@@ -74,6 +75,7 @@ function Tree() {
     // 카테고리 선택
     const [selectedCategory, setSelectedCategory] = useState({
         title: "",
+        background: "",
         children: [],
         parentNode: undefined,
         path: [],
@@ -81,6 +83,7 @@ function Tree() {
     const selectCategory = (node, path, parentNode) => {
         setSelectedCategory({
             title: node.title,
+            background: node.background,
             children: node.children,
             parentNode,
             expanded: node.expanded,
@@ -259,15 +262,17 @@ function Tree() {
                                 style={
                                     selectCheck(node, path)
                                         ? {
+                                            backgroundColor:node.background,
                                               borderBottom: "3px solid #ff0000",
                                               borderRight: "3px solid #ff0000",
                                               borderLeft: "1px solid #ff0000",
                                               borderTop: "1px solid #ff0000",
                                               paddingBottom: "5px",
                                           }
-                                        : {}
+                                        : {backgroundColor:node.background}
                                 }
                                 className="treeNodes"
+                                // style={{backgroundColor:node.background}}
                             >
                                 <div className="nodeTitle">{node.title}</div>
                                 <div className="nodeButtons">
@@ -297,6 +302,10 @@ function Tree() {
                 />
             </div>
             <div className="treeManage">
+                <ColorPicker
+                    selectedCategory={selectedCategory}
+                    setSelectedCategory={setSelectedCategory}
+                />
                 <div className="treeController">
                     <div className="treeChangeTitle">
                         <input
@@ -370,6 +379,11 @@ function Tree() {
                         이름
                         {selectedCategory.title !== "" &&
                             ` - ${selectedCategory.title}`}
+                    </div>
+                    <div>
+                        배지 색깔
+                        {selectedCategory.background !== "" &&
+                            ` - ${selectedCategory.background}`}
                     </div>
                     <div>
                         뎁스
