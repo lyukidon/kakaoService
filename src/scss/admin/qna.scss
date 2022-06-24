@@ -9,7 +9,7 @@
         "list editor";
     column-gap: 12px;
     row-gap: 12px;
-    > .requestSelect{
+    > .requestSelect {
         grid-row-start: preview;
         grid-row-end: editor;
         display: flex;
@@ -42,14 +42,6 @@
                 border: 1px solid #909090;
                 border-radius: 8px;
                 background-color: #ffffff;
-                &:focus, &:hover {
-                    outline: none;
-                    border-end-start-radius: 0px;
-                    border-end-end-radius: 0px;
-                    > option {
-                        background-color: #ffffff;
-                    }
-                }
             }
             > .list {
                 display: grid;
@@ -70,7 +62,7 @@
                     padding: 0px 5px;
                 }
                 .wait {
-                    background-color: #FEE35F;
+                    background-color: #fee35f;
                 }
                 .complete {
                     background-color: #bcfe41;
