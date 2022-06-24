@@ -30,13 +30,6 @@
         border-radius: 12px;
         box-shadow: 0px 0px 7px 3px #f2f2f2;
         overflow-y: auto;
-        &::-webkit-scrollbar {
-            width: 7px;
-        }
-        &::-webkit-scrollbar-thumb {
-            border-radius: 10px;
-            background-color: #bbbbbb;
-        }
     }
     > .listComponent {
         grid-area: list;
@@ -49,6 +42,14 @@
                 border: 1px solid #909090;
                 border-radius: 8px;
                 background-color: #ffffff;
+                &:focus, &:hover {
+                    outline: none;
+                    border-end-start-radius: 0px;
+                    border-end-end-radius: 0px;
+                    > option {
+                        background-color: #ffffff;
+                    }
+                }
             }
             > .list {
                 display: grid;

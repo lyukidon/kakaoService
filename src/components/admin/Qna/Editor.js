@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Warning({ setWarn, setToggleId, setToggleData, setChkEditor }) {
     return (
-        <div className="warning">
-            <div className="title">에디터를 닫으시겠습니까</div>
+        <div className="warning qnaWarning">
+            <div className="title">취소하시겠습니까?</div>
             <div>
                 <button
                     type="button"
@@ -91,9 +91,15 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                             </button>
                             <button
                                 type="button"
-                                className={`answer ${editorData === "" && "disabled"}`}
+                                className={`answer ${
+                                    editorData === "" && "disabled"
+                                }`}
                                 disabled={editorData === "" ? true : false}
-                                title={editorData === "" ? "답변을 입력해주세요" : ""}
+                                title={
+                                    editorData === ""
+                                        ? "답변을 입력해주세요"
+                                        : ""
+                                }
                                 onClick={() => {
                                     setToggleData({
                                         ...toggleData,
@@ -119,6 +125,7 @@ function Editor({ toggleId, setToggleId, toggleData, setToggleData }) {
                         editor={ClassicEditor}
                         config={{
                             placeholder: "답변을 입력해주세요",
+                            tabSpaces: 4,
                         }}
                         data={toggleData.answer ? toggleData.answer : ""}
                         onChange={(evt, editor) => {

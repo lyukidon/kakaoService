@@ -276,10 +276,10 @@ function Tree() {
                                     selectCheck(node, path)
                                         ? {
                                               backgroundColor: node.background,
-                                              borderBottom: "3px solid #ff0000",
-                                              borderRight: "3px solid #ff0000",
-                                              borderLeft: "1px solid #ff0000",
-                                              borderTop: "1px solid #ff0000",
+                                              borderBottom: "3px solid #000000",
+                                              borderRight: "3px solid #000000",
+                                              borderLeft: "1px solid #000000",
+                                              borderTop: "1px solid #000000",
                                               paddingBottom: "5px",
                                           }
                                         : { backgroundColor: node.background }

@@ -346,6 +346,33 @@
         }
     }
 }
+.qnaWarning{
+    z-index: 2;
+    padding: 16px 20px;
+    position: absolute;
+    border: 1px solid #909090;
+    border-radius: 8px;
+    background-color: #ffffff;
+    width: 150px;
+    right: 10px;
+    > .title {
+        margin-bottom: 15px;
+    }
+    > div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        > button {
+            min-width: 50px;
+            background-color: #ffffff;
+            border: 1px solid #909090;
+            border-radius: 7px;
+            &:hover {
+                background-color: #dddddd;
+            }
+        }
+    }
+}
 .page {
     display: flex;
     flex-direction: row;

@@ -52,7 +52,7 @@ function List({ editor, toggleId, setToggleId, toggleData, setToggleData }) {
                 )}
             </div>
             <div>
-                <select name="" id="" onChange={(evt) => setOption(evt)}>
+                <select onChange={(evt) => setOption(evt)}>
                     <option value="all">전체</option>
                     <option value="false">답변 대기</option>
                     <option value="true">답변 완료</option>
