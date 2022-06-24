@@ -224,11 +224,12 @@
                 border: 1px solid #909090;
                 border-radius: 8px;
                 background-color: #ffffff;
-                &:focus {
+                cursor:pointer;
+                &:focus, &:hover {
                     outline: none;
-                }
-                &:hover {
-                    background-color: #dddddd;
+                    border-end-start-radius: 0px;
+                    border-end-end-radius: 0px;
+                    // background-color: #dddddd;
                     > option {
                         background-color: #ffffff;
                     }
