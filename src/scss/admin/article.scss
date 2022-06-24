@@ -27,6 +27,7 @@
             height: 700px;
             opacity: 1;
             padding: 15px;
+            border-radius: 10px;
             > .modalBtn {
                 margin-bottom: 20px;
                 display: flex;
@@ -43,8 +44,10 @@
             }
             > .treeBox {
                 display: grid;
-                grid-template-columns: 415px 1fr;
+                grid-template-columns: 480px 1fr;
                 > .tree {
+                    padding-right: 130px;
+                    border-right: 1px solid black;
                     > .treeButton {
                         margin-bottom: 7px;
                         display: flex;
@@ -100,7 +103,7 @@
                 > .treeManage {
                     display: grid;
                     grid-template-rows: repeat(4, auto);
-                    margin-left: 100px;
+                    margin-left: 50px;
                     .changeHex {
                         &:focus ~ .colorPicker {
                             display: block;
