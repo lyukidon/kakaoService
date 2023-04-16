@@ -1,0 +1,376 @@
+[
+    {
+        "id": 0,
+        "title": "커뮤니케이션",
+        "service": [
+            {
+                "id": 0,
+                "serviceName": "카카오톡",
+                "serviceUrl": ""
+            },
+            {
+                "id": 1,
+                "serviceName": "뉴스봇",
+                "serviceUrl": ""
+            },
+            {
+                "id": 2,
+                "serviceName": "브런치"
+            },
+            {
+                "id": 3,
+                "serviceName": "스타봇",
+                "serviceUrl": ""
+            },
+            {
+                "id": 4,
+                "serviceName": "외개인아가",
+                "serviceUrl": ""
+            },
+            {
+                "id": 5,
+                "serviceName": "음mm",
+                "serviceUrl": ""
+            },
+            {
+                "id": 6,
+                "serviceName": "카카오메일",
+                "serviceUrl": ""
+            },
+            {
+                "id": 7,
+                "serviceName": "카카오스토리",
+                "serviceUrl": ""
+            },
+            {
+                "id": 8,
+                "serviceName": "카카오워크",
+                "serviceUrl": ""
+            },
+            {
+                "id": 9,
+                "serviceName": "프로야구봇",
+                "serviceUrl": ""
+            },
+            {
+                "id": 10,
+                "serviceName": "kakao i 번역",
+                "serviceUrl": ""
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "title": "콘텐츠",
+        "service": [
+            {
+                "id": 0,
+                "serviceName": "브랜드 이모티콘",
+                "serviceUrl": ""
+            },
+            {
+                "id": 1,
+                "serviceName": "스토리채널",
+                "serviceUrl": ""
+            },
+            {
+                "id": 2,
+                "serviceName": "카카오 뷰 창작센터",
+                "serviceUrl": ""
+            },
+            {
+                "id": 3,
+                "serviceName": "카카오 이모티콘",
+                "serviceUrl": ""
+            },
+            {
+                "id": 4,
+                "serviceName": "카카오하모니",
+                "serviceUrl": ""
+            },
+            {
+                "id": 5,
+                "serviceName": "콘텐츠뷰",
+                "serviceUrl": ""
+            },
+            {
+                "id": 6,
+                "serviceName": "티스토리",
+                "serviceUrl": ""
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "비즈니스",
+        "service": [
+            {
+                "id": 0,
+                "serviceName": "검색 광고",
+                "serviceUrl": ""
+            },
+            {
+                "id": 1,
+                "serviceName": "디스플레이/메시지 광고",
+                "serviceUrl": ""
+            },
+            {
+                "id": 2,
+                "serviceName": "비즈메세지",
+                "serviceUrl": ""
+            },
+            {
+                "id": 3,
+                "serviceName": "지식 관리자센터",
+                "serviceUrl": ""
+            },
+            {
+                "id": 4,
+                "serviceName": "챗봇 관리자센터",
+                "serviceUrl": ""
+            },
+            {
+                "id": 5,
+                "serviceName": "카카오 비즈계정",
+                "serviceUrl": ""
+            },
+            {
+                "id": 6,
+                "serviceName": "카카오비즈니스 관리자센터",
+                "serviceUrl": ""
+            },
+            {
+                "id": 7,
+                "serviceName": "카카오싱크",
+                "serviceUrl": ""
+            },
+            {
+                "id": 8,
+                "serviceName": "카카오애드핏",
+                "serviceUrl": ""
+            },
+            {
+                "id": 9,
+                "serviceName": "카카오 이모티콘 비즈샾",
+                "serviceUrl": ""
+            },
+            {
+                "id": 10,
+                "serviceName": "카카오톡 채널 관리자",
+                "serviceUrl": ""
+            },
+            {
+                "id": 11,
+                "serviceName": "카카오페이 구매 파트너센터",
+                "serviceUrl": ""
+            },
+            {
+                "id": 12,
+                "serviceName": "카카오 i 클라우드",
+                "serviceUrl": ""
+            },
+            {
+                "id": 13,
+                "serviceName": "카카오 i LaaS",
+                "serviceUrl": ""
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "라이프",
+        "service": [
+            {
+                "id": 0,
+                "serviceName": "주문하기 사장님센터",
+                "serviceUrl": ""
+            },
+            {
+                "id": 1,
+                "serviceName": "카카오구독ON",
+                "serviceUrl": ""
+            },
+            {
+                "id": 2,
+                "serviceName": "카카오맵 매장관리",
+                "serviceUrl": ""
+            },
+            {
+                "id": 3,
+                "serviceName": "카카오콘",
+                "serviceUrl": ""
+            },
+            {
+                "id": 4,
+                "serviceName": "카카오톡 주문하기",
+                "serviceUrl": ""
+            },
+            {
+                "id": 5,
+                "serviceName": "카카오톡 지갑",
+                "serviceUrl": ""
+            },
+            {
+                "id": 6,
+                "serviceName": "카카오페이 구매",
+                "serviceUrl": ""
+            },
+            {
+                "id": 7,
+                "serviceName": "카카오헤어샾",
+                "serviceUrl": ""
+            },
+            {
+                "id": 8,
+                "serviceName": "카카오홈",
+                "serviceUrl": ""
+            },
+            {
+                "id": 9,
+                "serviceName": "헤이카카오/제품",
+                "serviceUrl": ""
+            },
+            {
+                "id": 10,
+                "serviceName": "My 구독",
+                "serviceUrl": ""
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "title": "교통/지도",
+        "service": [
+            {
+                "id": 0,
+                "serviceName": "카카오내비",
+                "serviceUrl": ""
+            },
+            {
+                "id": 1,
+                "serviceName": "카카오맵",
+                "serviceUrl": ""
+            },
+            {
+                "id": 2,
+                "serviceName": "카카오버스",
+                "serviceUrl": ""
+            },
+            {
+                "id": 3,
+                "serviceName": "카카오지하철",
+                "serviceUrl": ""
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "title": "엔터테인먼트",
+        "service": [
+            {
+                "id": 0,
+                "serviceName": "카카오뮤직",
+                "serviceUrl": ""
+            },
+            {
+                "id": 1,
+                "serviceName": "카카오페이지",
+                "serviceUrl": ""
+            },
+            {
+                "id": 2,
+                "serviceName": "카카오웹툰",
+                "serviceUrl": ""
+            },
+            {
+                "id": 3,
+                "serviceName": "카카오TV",
+                "serviceUrl": ""
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "title": "소셜임팩트",
+        "service": [
+            {
+                "id": 0,
+                "serviceName": "카카오같이가치",
+                "serviceUrl": ""
+            },
+            {
+                "id": 1,
+                "serviceName": "카카오프로젝트100",
+                "serviceUrl": ""
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "title": "게임",
+        "service": [
+            {
+                "id": 0,
+                "serviceName": "카카오게임",
+                "serviceUrl": ""
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "title": "금융",
+        "service": [
+            {
+                "id": 0,
+                "serviceName": "카카오뱅크",
+                "serviceUrl": ""
+            },
+            {
+                "id": 1,
+                "serviceName": "카카오페이",
+                "serviceUrl": ""
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "title": "기타",
+        "service": [
+            {
+                "id": 0,
+                "serviceName": "카카오계정",
+                "serviceUrl": ""
+            },
+            {
+                "id": 1,
+                "serviceName": "신고센터",
+                "serviceUrl": ""
+            },
+            {
+                "id": 2,
+                "serviceName": "유료 서비스",
+                "serviceUrl": ""
+            },
+            {
+                "id": 3,
+                "serviceName": "이용자보호",
+                "serviceUrl": ""
+            },
+            {
+                "id": 4,
+                "serviceName": "청소년보호정책",
+                "serviceUrl": ""
+            },
+            {
+                "id": 5,
+                "serviceName": "카카오 권리침해 신고/소명",
+                "serviceUrl": ""
+            },
+            {
+                "id": 6,
+                "serviceName": "카카오데이터트랜드",
+                "serviceUrl": ""
+            }
+        ]
+    }
+]

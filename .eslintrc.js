@@ -51,5 +51,6 @@ module.exports = {
         "import/no-named-as-default":0,
         "import/no-named-as-default-member":0,
         "react/no-unstable-nested-components":1,
+        "import/no-unresolved": 2,
     },
 };
