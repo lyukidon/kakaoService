@@ -7,7 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 const root = ReactDOMClient.createRoot(document.getElementById("root"))
 
 root.render(
-    <BrowserRouter>
+    <BrowserRouter basename="/kakaoService">
         <App />
     </BrowserRouter>
 );
